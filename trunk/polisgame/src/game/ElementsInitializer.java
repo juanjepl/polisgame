@@ -1,0 +1,724 @@
+package game;
+
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+import java.util.Vector;
+import ui.TextModeUi;
+
+public class ElementsInitializer {
+
+	public ElementsInitializer(){}
+	
+	public static Game InitializeGameElements(){
+
+//// PLAYERS
+		
+		List<String> players = 	TextModeUi.requestPlayerNames();
+		Player sparta = new Player(players.get(0));
+		Player athens = new Player(players.get(1));
+		
+//// PROJECTS
+		Map<String,Integer> mapSocrates = new HashMap<String,Integer>();
+		mapSocrates.put("Silver", 6);
+		Project socrates = new Philosopher("Socrates",4,2,mapSocrates);
+		
+		Map<String,Integer> mapDemocrito = new HashMap<String,Integer>();
+		mapDemocrito.put("Silver", 5);
+		Project democrito = new Philosopher("Democrito",4,1,mapSocrates);
+		
+		Map<String,Integer> mapProtagoras = new HashMap<String,Integer>();
+		mapProtagoras.put("Silver", 3);
+		Project protagoras = new Philosopher("Protagoras",2,1,mapSocrates);
+		
+		Map<String,Integer> mapFidias = new HashMap<String,Integer>();
+		mapFidias.put("Silver", 4); 
+		Project fidias = new Artist("Fidias",null,2,mapFidias);// TODO UNSTABLE LINE, WARNING!!! XD (null)
+		
+		Map<String,Integer> mapZeusTemple = new HashMap<String,Integer>();
+		mapZeusTemple.put("Metal", 3);
+		mapZeusTemple.put("Wood", 4);
+		mapZeusTemple.put("Silver", 3);
+		Project zeusTemple = new Temple("ZeusTemple",4,3,mapZeusTemple);
+		
+		Map<String,Integer> mapApoloTemple = new HashMap<String,Integer>();
+		mapApoloTemple.put("Metal", 2);
+		mapApoloTemple.put("Wood", 3);
+		mapApoloTemple.put("Silver", 2);
+		Project apoloTemple = new Temple("ApoloTemple",3,2,mapApoloTemple);
+		
+		Map<String,Integer> mapTheatreWithEpseknion = new HashMap<String,Integer>();
+		mapTheatreWithEpseknion.put("Metal", 1);
+		mapTheatreWithEpseknion.put("Wood", 2);
+		mapTheatreWithEpseknion.put("Silver", 2);
+		Project theatreWithEpseknion = new Theatre("TheatreWithEpseknion",3,1,mapTheatreWithEpseknion);
+		
+		Map<String,Integer> mapNormalTheatre = new HashMap<String,Integer>();
+		mapNormalTheatre.put("Metal", 1);
+		mapNormalTheatre.put("Wood", 2);
+		mapNormalTheatre.put("Silver", 1);
+		Project normalTheatre = new Theatre("Theatre",2,1,mapNormalTheatre);
+		
+		Map<String,Integer> mapVenusStatue = new HashMap<String,Integer>();
+		mapVenusStatue.put("Metal", 1);
+		mapVenusStatue.put("Wood", 2);
+		Project venusStatue = new Statue("VenusStatue",1,1,mapVenusStatue);
+		
+		Map<String,Integer> mapEfeboStatue = new HashMap<String,Integer>();
+		mapEfeboStatue.put("Wood", 2);
+		Project efeboStatue = new Statue("EfeboStatue",1,0,mapEfeboStatue);
+		
+		Map<String,Integer> mapDemeterFestival = new HashMap<String,Integer>();
+		mapDemeterFestival.put("Wine", 3);
+		mapDemeterFestival.put("Oil", 1);
+		mapDemeterFestival.put("Silver", 1);
+		Project demeterFestival = new Festival("DemeterFestival",3,0,mapDemeterFestival);
+		
+		Map<String,Integer> mapDionisoFestival = new HashMap<String,Integer>();
+		mapDionisoFestival.put("Wine", 3);
+		mapDionisoFestival.put("Oil", 1);
+		Project dionisoFestival = new Festival("DionisoFestival",2,0,mapDionisoFestival);
+		
+		Map<String,Integer> mapNemeosGames = new HashMap<String,Integer>();
+		mapNemeosGames.put("Oil", 4);
+		mapNemeosGames.put("Silver", 1);
+		Project nemeosGames = new ProjectGame("NemeosGames",3,0,mapNemeosGames);
+		
+		Map<String,Integer> mapIstmicosGames = new HashMap<String,Integer>();
+		mapIstmicosGames.put("Wine", 2);
+		mapIstmicosGames.put("Oil", 2);
+		Project istmicosGames = new ProjectGame("IstmicosGames",2,0,mapIstmicosGames);
+		
+		
+		List<Project> gameProjects = new ArrayList<Project>();
+		gameProjects.add(socrates);
+		gameProjects.add(democrito);
+		gameProjects.add(protagoras);
+		gameProjects.add(fidias);
+		gameProjects.add(zeusTemple);
+		gameProjects.add(apoloTemple);
+		gameProjects.add(theatreWithEpseknion);
+		gameProjects.add(normalTheatre);
+		gameProjects.add(venusStatue);
+		gameProjects.add(efeboStatue);
+		gameProjects.add(demeterFestival);
+		gameProjects.add(dionisoFestival);
+		gameProjects.add(nemeosGames);
+		gameProjects.add(istmicosGames);
+		
+//// TERRITORIES
+		
+		// LACONIA
+		Vector<Integer> metalAtLaconia = new Vector<Integer>();
+		metalAtLaconia.add(1);
+		metalAtLaconia.add(3);
+		metalAtLaconia.add(6);
+		metalAtLaconia.add(10);
+		Vector<Integer> oilAtLaconia = new Vector<Integer>();
+		oilAtLaconia.add(1);
+		oilAtLaconia.add(3);
+		oilAtLaconia.add(6);
+		Vector<Integer> silverAtLaconia = new Vector<Integer>();
+		silverAtLaconia.add(1);
+		silverAtLaconia.add(3);
+		
+		Map<String,Vector<Integer>> laconiaResources = new HashMap<String,Vector<Integer>>();
+		laconiaResources.put("Metal", metalAtLaconia);
+		laconiaResources.put("Oil", oilAtLaconia);
+		
+		
+		// MESENIA
+		Vector<Integer> oilAtMesenia = new Vector<Integer>();
+		oilAtMesenia.add(1);
+		oilAtMesenia.add(3);
+		oilAtMesenia.add(6);
+		oilAtMesenia.add(10);
+		Vector<Integer> wheatAtMesenia = new Vector<Integer>();
+		wheatAtMesenia.add(1);
+		wheatAtMesenia.add(3);
+		wheatAtMesenia.add(6);
+		
+		Map<String,Vector<Integer>> meseniaResources = new HashMap<String,Vector<Integer>>();
+		meseniaResources.put("Oil", oilAtMesenia);
+		meseniaResources.put("Wheat", wheatAtMesenia);
+		
+		
+		//SICILIA
+		Vector<Integer> wineAtSicilia = new Vector<Integer>();
+		wineAtSicilia.add(1);
+		wineAtSicilia.add(3);
+		wineAtSicilia.add(6);
+		wineAtSicilia.add(10);
+		wineAtSicilia.add(15);
+		Vector<Integer> oilAtSicilia = new Vector<Integer>();
+		oilAtSicilia.add(1);
+		oilAtSicilia.add(3);
+		oilAtSicilia.add(6);
+		oilAtSicilia.add(10);
+		oilAtSicilia.add(15);
+		Vector<Integer> wheatAtSicilia = new Vector<Integer>();
+		wheatAtSicilia.add(1);
+		wheatAtSicilia.add(3);
+		wheatAtSicilia.add(6);
+		
+		Map<String,Vector<Integer>> siciliaResources = new HashMap<String,Vector<Integer>>();
+		siciliaResources.put("Wine", wineAtSicilia);
+		siciliaResources.put("Oil", oilAtSicilia);
+		siciliaResources.put("Wheat", wheatAtSicilia);
+		
+		
+		//MEGARIS
+		Vector<Integer> woodAtMegaris = new Vector<Integer>();
+		woodAtMegaris.add(1);
+		woodAtMegaris.add(3);
+		woodAtMegaris.add(6);
+		woodAtMegaris.add(10);
+		woodAtMegaris.add(15);
+		Vector<Integer> silverAtMegaris = new Vector<Integer>();
+		silverAtMegaris.add(1);
+		silverAtMegaris.add(3);
+		silverAtMegaris.add(6);
+		Vector<Integer> wheatAtMegaris = new Vector<Integer>();
+		wheatAtMegaris.add(1);
+		wheatAtMegaris.add(3);
+		
+		Map<String,Vector<Integer>> megarisResources = new HashMap<String,Vector<Integer>>();
+		megarisResources.put("Wood", woodAtMegaris);
+		megarisResources.put("Silver", silverAtMegaris);
+		megarisResources.put("Wheat", wheatAtMegaris);
+		
+		
+		//ARCADIA
+		Vector<Integer> metalAtArcadia = new Vector<Integer>();
+		metalAtArcadia.add(1);
+		metalAtArcadia.add(3);
+		metalAtArcadia.add(6);
+		metalAtArcadia.add(10);
+		
+		Vector<Integer> woodAtArcadia = new Vector<Integer>();
+		woodAtArcadia.add(1);
+		woodAtArcadia.add(3);
+		woodAtArcadia.add(6);
+		woodAtArcadia.add(10);
+		
+		Vector<Integer> wineAtArcadia = new Vector<Integer>();
+		wineAtArcadia.add(1);
+		wineAtArcadia.add(3);
+		
+		Vector<Integer> oilAtArcadia = new Vector<Integer>();
+		oilAtArcadia.add(1);
+		oilAtArcadia.add(3);
+		
+		Map<String,Vector<Integer>> arcadiaResources = new HashMap<String,Vector<Integer>>();
+		megarisResources.put("Metal", metalAtArcadia);
+		megarisResources.put("Wood", woodAtArcadia);
+		megarisResources.put("Wine", wineAtArcadia);
+		megarisResources.put("Oil", oilAtArcadia);
+		
+		
+		//ACAYA
+		Vector<Integer> metalAtAcaya = new Vector<Integer>();
+		metalAtAcaya.add(1);
+		metalAtAcaya.add(3);
+		Vector<Integer> woodAtAcaya = new Vector<Integer>();
+		woodAtAcaya.add(1);
+		woodAtAcaya.add(3);
+		Vector<Integer> wineAtAcaya = new Vector<Integer>();
+		wineAtAcaya.add(1);
+		Vector<Integer> oilAtAcaya = new Vector<Integer>();
+		oilAtAcaya.add(1);
+		
+		Map<String,Vector<Integer>> acayaResources = new HashMap<String,Vector<Integer>>();
+		acayaResources.put("Metal", metalAtAcaya);
+		acayaResources.put("Wood", woodAtAcaya);
+		acayaResources.put("Wine", wineAtAcaya);
+		acayaResources.put("Oil", oilAtAcaya);
+		
+		
+		//JONIA
+		Vector<Integer> wineAtJonia = new Vector<Integer>();
+		wineAtJonia.add(1);
+		wineAtJonia.add(3);
+		wineAtJonia.add(6);
+		wineAtJonia.add(10);
+		Vector<Integer> silverAtJonia = new Vector<Integer>();
+		silverAtJonia.add(1);
+		silverAtJonia.add(3);
+		Vector<Integer> wheatAtJonia = new Vector<Integer>();
+		wheatAtJonia.add(1);
+		
+		Map<String,Vector<Integer>> joniaResources = new HashMap<String,Vector<Integer>>();
+		joniaResources.put("Wine", wineAtJonia);
+		joniaResources.put("Silver", silverAtJonia);
+		joniaResources.put("Wheat", wheatAtJonia);
+		
+		
+		//ATICA
+		Vector<Integer> wineAtAtica = new Vector<Integer>();
+		wineAtAtica.add(1);
+		wineAtAtica.add(3);
+		wineAtAtica.add(6);
+		wineAtAtica.add(10);
+		Vector<Integer> oilAtAtica = new Vector<Integer>();
+		oilAtAtica.add(1);
+		oilAtAtica.add(3);
+		oilAtAtica.add(6);
+		oilAtAtica.add(10);
+		Vector<Integer> silverAtAtica = new Vector<Integer>();
+		silverAtAtica.add(1);
+		silverAtAtica.add(3);
+		silverAtAtica.add(6);
+		Vector<Integer> wheatAtAtica = new Vector<Integer>();
+		wheatAtAtica.add(1);
+		
+		Map<String,Vector<Integer>> aticaResources = new HashMap<String,Vector<Integer>>();
+		aticaResources.put("Wine", wineAtAtica);
+		aticaResources.put("Oil", oilAtAtica);
+		aticaResources.put("Silver", silverAtAtica);
+		aticaResources.put("Wheat", wheatAtAtica);
+		
+		//BEOCIA
+		Vector<Integer> metalAtBeocia = new Vector<Integer>();
+		metalAtBeocia.add(1);
+		metalAtBeocia.add(3);
+		metalAtBeocia.add(6);
+		metalAtBeocia.add(10);
+		metalAtBeocia.add(15);
+		Vector<Integer> woodAtBeocia = new Vector<Integer>();
+		woodAtBeocia.add(1);
+		woodAtBeocia.add(3);
+		woodAtBeocia.add(6);
+		woodAtBeocia.add(10);
+		Vector<Integer> oilAtBeocia = new Vector<Integer>();
+		oilAtBeocia.add(1);
+		oilAtBeocia.add(3);
+		oilAtBeocia.add(6);
+		Vector<Integer> wheatAtBeocia = new Vector<Integer>();
+		wheatAtBeocia.add(1);
+		
+		Map<String,Vector<Integer>> beociaResources = new HashMap<String,Vector<Integer>>();
+		beociaResources.put("Metal", metalAtBeocia);
+		beociaResources.put("Wood", woodAtBeocia);
+		beociaResources.put("Oil", oilAtBeocia);
+		beociaResources.put("Wheat", wheatAtBeocia);
+		
+		
+		//MACEDONIA
+		Vector<Integer> woodAtMacedonia = new Vector<Integer>();
+		woodAtMacedonia.add(1);
+		woodAtMacedonia.add(3);
+		woodAtMacedonia.add(6);
+		woodAtMacedonia.add(10);
+		Vector<Integer> wineAtMacedonia = new Vector<Integer>();
+		wineAtMacedonia.add(1);
+		wineAtMacedonia.add(3);
+		wineAtMacedonia.add(6);
+		Vector<Integer> wheatAtMacedonia = new Vector<Integer>();
+		wheatAtMacedonia.add(1);
+		wheatAtMacedonia.add(3);
+		
+		Map<String,Vector<Integer>> macedoniaResources = new HashMap<String,Vector<Integer>>();
+		macedoniaResources.put("Wood", woodAtMacedonia);
+		macedoniaResources.put("Wine", wineAtMacedonia);
+		macedoniaResources.put("Wheat", wheatAtMacedonia);
+		
+		
+		//TESALIA
+		Vector<Integer> metalAtTesalia = new Vector<Integer>();
+		metalAtTesalia.add(1);
+		metalAtTesalia.add(3);
+		metalAtTesalia.add(6);
+		Vector<Integer> woodAtTesalia = new Vector<Integer>();
+		woodAtTesalia.add(1);
+		woodAtTesalia.add(3);
+		woodAtTesalia.add(6);
+		Vector<Integer> wheatAtTesalia = new Vector<Integer>();
+		wheatAtTesalia.add(1);
+		
+		Map<String,Vector<Integer>> tesaliaResources = new HashMap<String,Vector<Integer>>();
+		tesaliaResources.put("Metal", metalAtTesalia);
+		tesaliaResources.put("Wood", woodAtTesalia);
+		tesaliaResources.put("Wheat", wheatAtTesalia);
+		
+		
+		//ACARNANIA
+		Vector<Integer> metalAtAcarnania = new Vector<Integer>();
+		metalAtAcarnania.add(1);
+		metalAtAcarnania.add(3);
+		metalAtAcarnania.add(6);
+		metalAtAcarnania.add(10);
+		Vector<Integer> wineAtAcarnania = new Vector<Integer>();
+		wineAtAcarnania.add(1);
+		wineAtAcarnania.add(3);
+		wineAtAcarnania.add(6);
+		Vector<Integer> silverAtAcarnania = new Vector<Integer>();
+		silverAtAcarnania.add(1);
+		silverAtAcarnania.add(3);
+		
+		Map<String,Vector<Integer>> acarnaniaResources = new HashMap<String,Vector<Integer>>();
+		acarnaniaResources.put("Metal", metalAtAcarnania);
+		acarnaniaResources.put("Wine", wineAtAcarnania);
+		acarnaniaResources.put("Silver", silverAtAcarnania);
+		
+		
+	//// Territories creation	
+		Territory laconia = new Territory("Laconia",laconiaResources);
+		Territory mesenia = new Territory("Mesenia",meseniaResources);
+		Territory sicilia = new Territory("Sicilia",siciliaResources);
+		Territory megaris = new Territory("Megaris",megarisResources);
+		Territory arcadia = new Territory("Arcadia",arcadiaResources);
+		Territory acaya = new Territory("Acaya",acayaResources);
+		Territory jonia = new Territory("Jonia",joniaResources);
+		Territory atica = new Territory("Atica",aticaResources);
+		Territory beocia = new Territory("Beocia",beociaResources);
+		Territory macedonia = new Territory("Macedonia",macedoniaResources);
+		Territory tesalia = new Territory("Tesalia",tesaliaResources);
+		Territory acarnania = new Territory("Acarnania",acarnaniaResources);
+		
+	//// Seas creation
+		
+		Sea jonicoSea = new Sea("JonicoSea");
+		Sea mirtosSea = new Sea("MirtosSea") ;
+		Sea esporadasSea = new Sea("EsporadasSea") ;
+		Sea cicladasSea = new Sea("CicladasSea") ;
+		Sea traciaSea = new Sea("TraciaSea") ;
+		
+	//// TradeDocks creation
+		
+		TradeDock spartaDock = new TradeDock("SpartaDock");
+		TradeDock athensDock = new TradeDock("AthensDock") ;
+	
+	//// Markets creation	
+		
+		Market iliria = new Market("Iliria") ;
+		Market tracia = new Market("Tracia") ;
+		Market euxinosPontos = new Market("EuxinosPontos") ;
+		Market imperioPersa = new Market("ImperioPersa") ;
+		Market egipto = new Market("Egipto") ;
+		
+//// POLIS CREATION
+	// epidamnos	
+		List<Project> possibleProjectsAtEpidamnos = new ArrayList<Project>();
+		possibleProjectsAtEpidamnos.add(venusStatue);
+		possibleProjectsAtEpidamnos.add(efeboStatue);
+		
+		List<Sea> startSeasAtEpidamnos = new ArrayList<Sea>();
+		startSeasAtEpidamnos.add(jonicoSea);
+		
+		Polis epidamnos = new Polis("Epidamnos",1,1,3,null,possibleProjectsAtEpidamnos,startSeasAtEpidamnos); // be careful with the null (no parent territory)
+		
+	// gela	
+		List<Project> possibleProjectsAtGela = new ArrayList<Project>();
+		possibleProjectsAtGela.add(venusStatue);
+		possibleProjectsAtGela.add(efeboStatue);
+		
+		List<Sea> startSeasAtGela = new ArrayList<Sea>();
+		startSeasAtGela.add(jonicoSea);
+		
+		Polis gela = new Polis("Gela",3,1,5,sicilia,possibleProjectsAtGela,startSeasAtGela);
+		
+	// siracusa
+		List<Project> possibleProjectsAtSiracusa = new ArrayList<Project>();
+		possibleProjectsAtSiracusa.add(zeusTemple);
+		possibleProjectsAtSiracusa.add(apoloTemple);
+		possibleProjectsAtSiracusa.add(socrates);
+		possibleProjectsAtSiracusa.add(democrito);
+		possibleProjectsAtSiracusa.add(protagoras);
+		
+		List<Sea> startSeasAtSiracusa = new ArrayList<Sea>();
+		startSeasAtSiracusa.add(jonicoSea);
+		
+		Polis siracusa = new Polis("Siracusa",4,2,7,sicilia,possibleProjectsAtSiracusa,startSeasAtSiracusa);
+		
+	// corcira
+		List<Project> possibleProjectsAtCorcira = new ArrayList<Project>();// Has no projects for the moment
+		
+		List<Sea> startSeasAtCorcira = new ArrayList<Sea>();
+		startSeasAtCorcira.add(jonicoSea);
+		
+		Polis corcira = new Polis("Corcira",2,1,3,acarnania,possibleProjectsAtCorcira,startSeasAtCorcira);
+		
+	// naupacto
+		List<Project> possibleProjectsAtNaupacto = new ArrayList<Project>(); // Has no projects for the moment
+		
+		List<Sea> startSeasAtNaupacto = new ArrayList<Sea>();
+		startSeasAtNaupacto.add(jonicoSea);
+		
+		Polis naupacto = new Polis("Naupacto",1,1,2,tesalia,possibleProjectsAtNaupacto,startSeasAtNaupacto);
+		
+	// pidna
+		List<Project> possibleProjectsAtPidna = new ArrayList<Project>();
+		possibleProjectsAtPidna.add(nemeosGames);
+		possibleProjectsAtPidna.add(istmicosGames);
+		
+		List<Sea> startSeasAtPidna = new ArrayList<Sea>();
+		startSeasAtPidna.add(traciaSea);
+		
+		Polis pidna = new Polis("Pidna",2,1,3,macedonia,possibleProjectsAtPidna,startSeasAtPidna);
+		
+	// pilos
+		List<Project> possibleProjectsAtPilos = new ArrayList<Project>(); // Has no projects for the moment
+		
+		List<Sea> startSeasAtPilos = new ArrayList<Sea>();
+		startSeasAtPilos.add(jonicoSea);
+		
+		Polis pilos = new Polis("Pilos",2,1,3,mesenia,possibleProjectsAtPilos,startSeasAtPilos);
+		
+	// esparta
+		List<Project> possibleProjectsAtEsparta = new ArrayList<Project>();
+		possibleProjectsAtEsparta.add(demeterFestival);
+		possibleProjectsAtEsparta.add(dionisoFestival);
+		possibleProjectsAtEsparta.add(venusStatue);
+		possibleProjectsAtEsparta.add(efeboStatue);
+		possibleProjectsAtEsparta.add(zeusTemple);
+		possibleProjectsAtEsparta.add(apoloTemple);
+		
+		List<Sea> startSeasAtEsparta = new ArrayList<Sea>(); // Has no sea for the moment
+		
+		Polis esparta = new Polis("Esparta",4,3,8,laconia,possibleProjectsAtEsparta,startSeasAtEsparta);
+		
+	// gition
+		List<Project> possibleProjectsAtGition = new ArrayList<Project>(); // Has no projects for the moment
+		
+		List<Sea> startSeasAtGition = new ArrayList<Sea>();
+		startSeasAtGition.add(mirtosSea);
+
+		Polis gition = new Polis("Gition",1,1,2,laconia,possibleProjectsAtGition,startSeasAtGition);
+		
+	// argos	
+		List<Project> possibleProjectsAtArgos = new ArrayList<Project>();
+		possibleProjectsAtArgos.add(nemeosGames);
+		possibleProjectsAtArgos.add(istmicosGames);
+		
+		List<Sea> startSeasAtArgos = new ArrayList<Sea>();
+		startSeasAtArgos.add(mirtosSea);
+		
+		Polis argos = new Polis("Argos",3,1,5,arcadia,possibleProjectsAtArgos,startSeasAtArgos);
+		
+	// corinto
+		List<Project> possibleProjectsAtCorinto = new ArrayList<Project>();
+		possibleProjectsAtCorinto.add(nemeosGames);
+		possibleProjectsAtCorinto.add(istmicosGames);
+		possibleProjectsAtCorinto.add(theatreWithEpseknion);
+		possibleProjectsAtCorinto.add(normalTheatre);
+		
+		List<Sea> startSeasAtCorinto = new ArrayList<Sea>();
+		startSeasAtCorinto.add(jonicoSea);
+		startSeasAtCorinto.add(cicladasSea);
+		
+		Polis corinto = new Polis("Corinto",4,2,6,megaris,possibleProjectsAtCorinto,startSeasAtCorinto);
+		
+	// tebas
+		List<Project> possibleProjectsAtTebas = new ArrayList<Project>();
+		possibleProjectsAtTebas.add(theatreWithEpseknion);
+		possibleProjectsAtTebas.add(normalTheatre);
+		
+		List<Sea> startSeasAtTebas = new ArrayList<Sea>(); // Has no sea for the moment
+		
+		Polis tebas = new Polis("Tebas",3,1,5,beocia,possibleProjectsAtTebas,startSeasAtTebas);
+		
+	// potidea
+		List<Project> possibleProjectsAtPotidea = new ArrayList<Project>();
+		possibleProjectsAtPotidea.add(demeterFestival);
+		possibleProjectsAtPotidea.add(dionisoFestival);
+		
+		List<Sea> startSeasAtPotidea = new ArrayList<Sea>();
+		startSeasAtPotidea.add(traciaSea);
+		
+		Polis potidea = new Polis("Potidea",2,1,3,macedonia,possibleProjectsAtPotidea,startSeasAtPotidea);
+		
+	// calcis
+		List<Project> possibleProjectsAtCalcis = new ArrayList<Project>(); // Has no projects for the moment
+		
+		List<Sea> startSeasAtCalcis = new ArrayList<Sea>();
+		startSeasAtCalcis.add(cicladasSea);
+		
+		Polis calcis = new Polis("Calcis",1,1,2,atica,possibleProjectsAtCalcis,startSeasAtCalcis);
+		
+	// atenas
+		List<Project> possibleProjectsAtAtenas = new ArrayList<Project>();
+		possibleProjectsAtAtenas.add(theatreWithEpseknion);
+		possibleProjectsAtAtenas.add(normalTheatre);
+		possibleProjectsAtAtenas.add(fidias);
+		possibleProjectsAtAtenas.add(socrates);
+		possibleProjectsAtAtenas.add(democrito);
+		possibleProjectsAtAtenas.add(protagoras);
+	
+		List<Sea> startSeasAtAtenas = new ArrayList<Sea>();
+		startSeasAtAtenas.add(cicladasSea);
+		
+		Polis atenas = new Polis("Atenas",5,3,10,atica,possibleProjectsAtAtenas,startSeasAtAtenas);
+		
+	// quios
+		List<Project> possibleProjectsAtQuios = new ArrayList<Project>(); // Has no projects for the moment
+		
+		List<Sea> startSeasAtQuios = new ArrayList<Sea>();
+		startSeasAtQuios.add(esporadasSea);
+		
+		Polis quios = new Polis("Quios",2,1,3,jonia,possibleProjectsAtQuios,startSeasAtQuios);
+		
+	// samos
+		List<Project> possibleProjectsAtSamos = new ArrayList<Project>();
+		possibleProjectsAtSamos.add(demeterFestival);
+		possibleProjectsAtSamos.add(dionisoFestival);
+		
+		List<Sea> startSeasAtSamos = new ArrayList<Sea>();
+		startSeasAtSamos.add(esporadasSea);
+		
+		Polis samos = new Polis("Samos",3,2,6,jonia,possibleProjectsAtSamos,startSeasAtSamos);
+		
+	// abdera
+		List<Project> possibleProjectsAtAbdera = new ArrayList<Project>();
+		possibleProjectsAtAbdera.add(venusStatue);
+		possibleProjectsAtAbdera.add(efeboStatue);
+		
+		List<Sea> startSeasAtAbdera = new ArrayList<Sea>();
+		startSeasAtAbdera.add(traciaSea);
+		
+		Polis abdera = new Polis("Abdera",1,1,3,null,possibleProjectsAtAbdera,startSeasAtAbdera); // be careful with the null (no parent territory)
+		
+	//// ALL POSITIONS (list)
+		
+		List<Position> positionsList = new ArrayList<Position>();
+		positionsList.add(laconia); // Territories
+		positionsList.add(mesenia);
+		positionsList.add(sicilia);
+		positionsList.add(megaris);
+		positionsList.add(arcadia);
+		positionsList.add(acaya);
+		positionsList.add(jonia);
+		positionsList.add(atica);
+		positionsList.add(beocia);
+		positionsList.add(macedonia);
+		positionsList.add(tesalia);
+		positionsList.add(acarnania);
+		positionsList.add(jonicoSea); // Seas
+		positionsList.add(mirtosSea);
+		positionsList.add(esporadasSea);
+		positionsList.add(cicladasSea);
+		positionsList.add(traciaSea);
+		positionsList.add(spartaDock);// TradeDock
+		positionsList.add(athensDock);
+		positionsList.add(iliria);// Markets
+		positionsList.add(tracia);
+		positionsList.add(euxinosPontos);
+		positionsList.add(imperioPersa);
+		positionsList.add(egipto);
+		positionsList.add(epidamnos);//Polis
+		positionsList.add(gela);
+		positionsList.add(siracusa);
+		positionsList.add(corcira);
+		positionsList.add(naupacto);
+		positionsList.add(pidna);
+		positionsList.add(pilos);
+		positionsList.add(esparta);
+		positionsList.add(gition);
+		positionsList.add(argos);
+		positionsList.add(corinto);
+		positionsList.add(tebas);
+		positionsList.add(potidea);
+		positionsList.add(calcis);
+		positionsList.add(atenas);
+		positionsList.add(quios);
+		positionsList.add(samos);
+		positionsList.add(abdera);
+
+		
+	//// GAME EVENTS
+		GameEvent r3_noEvent_01 = new GameEvent("r3_noEvent_01","","3"); 
+		GameEvent r3_earthquakeAtSparta = new GameEvent("earthquakeAtSparta","Esparta sufre un violento terremoto que los mesenios aprovechan para rebelarse, mientras los navíos cartagineses apoyan la causa espartana cuestionando el dominio ateniense en las cercanías de Sicilia.","3");
+		GameEvent r3_persianFleetDestruction = new GameEvent("persianFleetDestruction","Atenas destruye la flota persa que quedaba desde el fin de la Guerra Médica en la batalla de Eurimedonte. Persia decide apoyar a Esparta para debilitarla.","3");
+		
+		GameEvent r4_noEvent_01 = new GameEvent("r4_noEvent_01","","4");
+		GameEvent r4_noEvent_02 = new GameEvent("r4_noEvent_02","","4");
+		GameEvent r4_noEvent_03 = new GameEvent("r4_noEvent_03","","4");
+		GameEvent r4_peasantRevolts = new GameEvent("r4_peasantRevolts","Sintiéndose oprimidos por el imperialismo de ambos bandos, los campesinos de Mesenia y Jonia se rebelan","4");
+		GameEvent r4_periclesAge = new GameEvent("r4_periclesAge","Pericles toma el poder en Atenas y bajo su mandato la polis acomete numerosos proyectos arquitectónicos y artísticos, y florece el pensamiento filosófico. Su vecina Corinto recela del creciente poder ateniense.","4");
+		GameEvent r4_egyptRevoltsAgainstPersia = new GameEvent("r4_egyptRevoltsAgainstPersia","Atenas decide ayudar al rebelde Inaro en la lucha de Egipto por su independencia. Antes de comenzar la ronda, Atenas envía las Tirremes que desee Egipto (minimo 2, y si no puede pierde 1 Prestigio por cada una). Al final de la ronda recuperará sólo la mitad.","4");
+		GameEvent r4_treasuryTransfers = new GameEvent("r4_treasuryTransfers","Se traslada el Tesoro de la Liga de Delos hasta Atenas, y Esparta acepta la ayuda de Persia. Éstos métodos de impulsar la economía no estan bien vistos por el resto de Polis. Ambos jugadores deciden cuanto Prestigio pierden a cambio de recibir el doble en Plata (Mínimo 1 Prestigio por 2 Platas). ","4"); // TODO WTF!!!!???? a chat window for "according prize" ? XD
+		GameEvent r4_murderOfThePersianKing = new GameEvent("r4_murderOfThePersianKing","El rey persa es asesinado y los aspirantes al trono solicitan mercenarios griegos. Antes de comenzar la ronda, ambos jugadores pueden mandar Hoplitas a combatir en Persia. Consiguen +2 Prestigio por cada Hoplita. Al final de la ronda se recuperan todos y se colocarán 1 a 1 alternativamente en territorios que puedan albergarlos.","4");
+		GameEvent r4_betrayal = new GameEvent("r4_betrayal","Las intrigas de ambos jugadores surten efecto y provocan que 1 Polis de cada jugador con 1 punto de población (si la hay) cambie de bando. Se toman los Proyectos finalizados. No puede ser la capital ni la misma Polis.","4");
+		
+		GameEvent r5a_noEvent_01 = new GameEvent("r5a_noEvent_01","","5a");
+		GameEvent r5a_noEvent_02 = new GameEvent("r5a_noEvent_02","","5a");
+		GameEvent r5a_noEvent_03 = new GameEvent("r5a_noEvent_03","","5a");
+		GameEvent r5a_greeceEnemies = new GameEvent("r5a_greeceEnemies","Los hilotas de Mesenia se rebelan contra el yugo espartano mientras los persas alentan el bloqueo a Atenas en el Mediterráneo oriental.","5a");
+		GameEvent r5a_greatCommanders = new GameEvent("r5a_greatCommanders","Dos brillantes comandantes, el espartano Brásidas y el ateniense Cleón, toman el mando de las operaciones militares de ambos ejércitos. Cada jugador puede doblar el Prestigio que consigue en una (sólo una) batalla durante esta ronda. ","5a");
+		GameEvent r5a_afterTheLongWalls = new GameEvent("r5a_afterTheLongWalls","El miedo a las incursiones espartanas en el Ática provoca que la población de la región se resguarde tras los Muros Largos de Atenas.","5a");
+		GameEvent r5a_plagueAndHumiliation = new GameEvent("r5a_plagueAndHumiliation","La peste se extiende por Atenas diezmando su población. Durante la ronda buscará elevar de nuevo su Prestigio mediante una incursión en la isla de Esfacteria (Mesenia).","5a");
+		GameEvent r5a_murderOfThePersianKing = new GameEvent("r5a_murderOfThePersianKing","El rey persa es asesinado y los aspirantes al trono solicitan mercenarios griegos. Antes de comenzar la ronda ambos jugadores pueden mandar Hoplitas a combatir en Persia. Consiguen +2 Prestigio por cada Hoplita. Al final de la ronda se recuperan todos y se colocarán 1 a 1 alternativamente en territorios que puedan albergarlos.","5a");
+		GameEvent r5a_betrayal = new GameEvent("r5a_betrayal","Las intrigas de ambos jugadores surten efecto y provocan que 1 Polis de cada jugador con 1 punto de población (si la hay) cambie de bando. Se toman los Proyectos finalizados. No puede ser la capital ni la misma Polis","5a");
+		GameEvent r5a_mercenaries = new GameEvent("r5a_mercenaries","Ambos jugadores pueden crear Hoplitas o Tirremes pagando 2 Platas por cada uno sin perder población de sus Polis.","5a");
+		GameEvent r5a_freeTradeWithPersia = new GameEvent("r5a_freeTradeWithPersia","Persia exige a ambos jugadores liberar las rutas comerciales con su territorio y su satrapía de Egipto. Si un jugador al final de su turno bloquea al oponente sus rutas comerciales con Persia o Egipto, pierde 1 Prestigio (excepto que tenga ya 10 Trirremes en el mar Jónico y el mar de Tracia.","5a");
+		GameEvent r5a_pacifism = new GameEvent("r5a_pacifism","En las dos capitales surgen voces a favor del fin del confrontamiento que amenazan con desestabilizar ambos liderazgos. En la acción de recaudar, Esparta en Laconia y Atenas en Ática pueden destinar los Hoplitas que deseen (Máximo la población de la capital) a sofocar a los pacifistas en lugar de recaudar. Cada Hoplita que destine otorga 1 Prestigio.","5a");
+		
+		GameEvent r5b_noEvent_01 = new GameEvent("r5b_noEvent_01","","5b");
+		GameEvent r5b_noEvent_02 = new GameEvent("r5b_noEvent_02","","5b");
+		GameEvent r5b_noEvent_03 = new GameEvent("r5b_noEvent_03","","5b");
+		GameEvent r5b_alcibiadesFledToSparta = new GameEvent("r5b_alcibiadesFledToSparta","El general ateniense Alcibíades es condenado a muerte y huye a Esparta. Logra convencer a sus antiguos enemigos de que deben recrudecer el enfrentamiento bélico. Durante toda esta ronda las batallas se dan con al menos 7 Hoplitas o Trirremes presentes en la región.","5b");
+		GameEvent r5b_superstition = new GameEvent("r5b_superstition","Se produce un eclipse lunar. Durante esta ronda los generales de ambos bandos dudan al ejercer su mando. En caso de empate en la diferencia de las cartas elegidas por los jugadores en un asalto, éste vuelve a repetirse. Se aplica en batallas terrestres y navales.","5b");
+		GameEvent r5b_etnaEruption = new GameEvent("r5b_etnaEruption","La erupción del volcán Etna en Sicilia disminuye la producción de la region en esta ronda. El que recaude Sicilia podrá emplear 3 Hoplitas para ello como máximo.","5b");
+		GameEvent r5b_hermocopidas = new GameEvent("r5b_hermocopidas","Todas las estelas fálicas de Hermes en Atenas aparecen mutiladas. La polis culpa a Esparta de influir en el escándalo religioso mientras los oligarcas infunden el pánico con la intención de derrocar la democracia ateniense.","5b");
+		GameEvent r5b_freeingSlaves = new GameEvent("r5b_freeingSlaves","Esparta libera 20.000 esclavos que trabajan en las minas de plata de Laurión en Ática. Los valores del Vino y el Aceite se igualan al de la Plata y el Trigo, al aumentar la demanda de bienes y disminuir la extracción.","5b");
+		GameEvent r5b_carthageLandedInSicily = new GameEvent("r5b_carthageLandedInSicily","Los generales cartagineses Anibal Magón e Himicón desembarcan con sus tropas en la región de Sicilia. El jugador que posea el ejército más poderoso en Sicilia pierde (hasta) 2 Hoplitas en el combate. Si hay empate ambos pierden (hasta) 2 Hoplitas. Si no hay presencia de Hoplitas griegos, la región es tomada por Cartago y no podrá ser recaudada esta ronda (poner ficha).","5b");
+		GameEvent r5b_mercenaries = new GameEvent("r5b_mercenaries","Ambos jugadores pueden crear Hoplitas o Trirremes pagando 2 Platas por cada uno sin perder población de sus Polis.","5b");
+		GameEvent r5b_freeTradeWithPersia = new GameEvent("r5b_freeTradeWithPersia","Persia exige a ambos jugadores liberar las rutas comerciales con su territorio y su satrapía de Egipto. Si un jugador al final de su turno bloquea al oponente sus rutas comerciales con Persia o Egipto pierde 1 Prestigio (excepto que tenga ya 10 Trirremes en el mar Jónico y el mar de Tracia.","5b");
+		GameEvent r5b_pacifism = new GameEvent("r5b_pacifism","En las dos capitales surgen voces a favor del fin del confrontamiento que amenazan con desestabilizar ambos liderazgos. en la acción de recaudar, Esparta en Laconia y Atenas en Ática pueden destinar los Hoplitas que deseen (Máximo la poblaci´´on de la capital) a sofocar a los pacifistas en lugar de recaudar. Cada Hoplita que destine otorga 1 Prestigio.","5b");
+		
+		List<GameEvent> gameEventsList = new ArrayList<GameEvent>();
+		
+		gameEventsList.add(r3_noEvent_01);
+		gameEventsList.add(r3_earthquakeAtSparta);
+		gameEventsList.add(r3_persianFleetDestruction);
+		gameEventsList.add(r4_noEvent_01);
+		gameEventsList.add(r4_noEvent_02);
+		gameEventsList.add(r4_noEvent_03);
+		gameEventsList.add(r4_peasantRevolts);
+		gameEventsList.add(r4_periclesAge);
+		gameEventsList.add(r4_egyptRevoltsAgainstPersia);
+		gameEventsList.add(r4_treasuryTransfers);
+		gameEventsList.add(r4_murderOfThePersianKing);
+		gameEventsList.add(r4_betrayal);
+		gameEventsList.add(r5a_noEvent_01);
+		gameEventsList.add(r5a_noEvent_02);
+		gameEventsList.add(r5a_noEvent_03);
+		gameEventsList.add(r5a_greeceEnemies);
+		gameEventsList.add(r5a_greatCommanders);
+		gameEventsList.add(r5a_afterTheLongWalls);
+		gameEventsList.add(r5a_plagueAndHumiliation);
+		gameEventsList.add(r5a_murderOfThePersianKing);
+		gameEventsList.add(r5a_betrayal);
+		gameEventsList.add(r5a_mercenaries);
+		gameEventsList.add(r5a_freeTradeWithPersia);
+		gameEventsList.add(r5a_pacifism);
+		gameEventsList.add(r5b_noEvent_01);
+		gameEventsList.add(r5b_noEvent_02);
+		gameEventsList.add(r5b_noEvent_03);
+		gameEventsList.add(r5b_alcibiadesFledToSparta);
+		gameEventsList.add(r5b_superstition);
+		gameEventsList.add(r5b_etnaEruption);
+		gameEventsList.add(r5b_hermocopidas);
+		gameEventsList.add(r5b_freeingSlaves);
+		gameEventsList.add(r5b_carthageLandedInSicily);
+		gameEventsList.add(r5b_mercenaries);
+		gameEventsList.add(r5b_freeTradeWithPersia);
+		gameEventsList.add(r5b_pacifism);
+		
+	//// Round
+		Round theRound = new Round();
+		
+	//// Market Chart
+		MarketChart theMarketChart = new MarketChart();
+		
+		
+//// FINALLY, CREATE THE GAME:
+		
+		Game polisGame = new Game(sparta,athens,positionsList,gameProjects,gameEventsList,theRound,theMarketChart); // THIS IS A VERY BIG CALL (SERIOUSLY)
+		
+		TextModeUi.loadedGameElements(); // only screen information
+		
+		return polisGame;
+		
+	}
+}
