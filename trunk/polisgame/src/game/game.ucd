@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<editmodel:ClassDiagramEditModel xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:editmodel="editmodel.xmi" xmlns:options="options.xmi" size="1578,1959" id="game" metadata="uml2-1.0" initialized="true" scrolledY="1433" tag="1000" key="32303037303533312D3130303020504F4C49535F5448455F47414D452F4A75616E4A65">
-  <children xsi:type="editmodel:ClassEditModel" name="Game" location="255,1650" size="973,289" id="game/Game" runTimeClassModel="getProjectList(),round,getRound(),projectList,getSpartaPlayer(),gameEvents,spartaPlayer,getGamePositions(),Game(Lgame.Player;Lgame.Player;Ljava.util.List;Ljava.util.List;Ljava.util.List;Lgame.Round;Lgame.MarketChart;),gamePositions,getMarketChart(),getGameEvents(),athensPlayer,marketChart,getAthensPlayer()">
+<editmodel:ClassDiagramEditModel xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:editmodel="editmodel.xmi" xmlns:options="options.xmi" size="1578,1959" id="game" metadata="uml2-1.0" initialized="true" tag="1000" key="32303037303533312D3130303020504F4C49535F5448455F47414D452F4A75616E4A65">
+  <children xsi:type="editmodel:ClassEditModel" name="Game" location="255,1650" size="973,289" id="game/Game" runTimeClassModel="getProjectList(),round,getRound(),projectList,getSpartaPlayer(),gameEvents,spartaPlayer,getGamePositions(),gamePositions,Game(Lgame.Player;Lgame.Player;Ljava.util.List;Ljava.util.List;Ljava.util.List;Lgame.Round;Lgame.MarketChart;),getMarketChart(),getGameEvents(),athensPlayer,getAthensPlayer(),marketChart">
     <children xsi:type="editmodel:CompartmentEditModel" size="156,112">
       <children xsi:type="editmodel:AttributeEditModel" name="athensPlayer" id="game/Game#athensPlayer"/>
       <children xsi:type="editmodel:AttributeEditModel" name="gamePositions" id="game/Game#gamePositions"/>
@@ -23,7 +23,7 @@
     <children xsi:type="editmodel:CompartmentEditModel" size="0,0"/>
     <classifierPreferences xsi:type="editmodel:UMLClassDiagramClassifierPreference" showStereotype="true" showMethodsParameterTypes="true" showMethodsReturnType="true" showMethodsParameterNames="true" showMethodsParameterKinds="true" attributeSorter="Natural" methodSorter="Natural" innerClassSorter="Natural" showPrivateAttributes="true" showProtectedAttributes="true" showPublicAttributes="true" showPackageAttributes="true" showStaticAttributes="true" showProtectedMethods="true" showPublicMethods="true" showPackageMethods="true" showPrivateMethods="true" showStaticMethods="true" showProtectedInnerClasses="true" showPublicInnerClasses="true" showPackageInnerClasses="true" showPrivateInnerClasses="true" showStaticInnerClasses="true" packageIndication="3" showAttributeProperty="true" showAssociationMember="true"/>
   </children>
-  <children xsi:type="editmodel:ClassEditModel" name="GameEvent" location="285,1459" size="317,177" id="game/GameEvent" runTimeClassModel="getName(),text,GameEvent(Ljava.lang.String;Ljava.lang.String;Ljava.lang.String;),name,round,getRound(),getText(),executeAction(Ljava.lang.String;)">
+  <children xsi:type="editmodel:ClassEditModel" name="GameEvent" location="240,1458" size="317,177" id="game/GameEvent" runTimeClassModel="getName(),text,GameEvent(Ljava.lang.String;Ljava.lang.String;Ljava.lang.String;),name,round,getRound(),getText(),executeAction(Ljava.lang.String;)">
     <children xsi:type="editmodel:CompartmentEditModel" size="69,48">
       <children xsi:type="editmodel:AttributeEditModel" name="text" id="game/GameEvent#text"/>
       <children xsi:type="editmodel:AttributeEditModel" name="name" id="game/GameEvent#name"/>
@@ -47,7 +47,7 @@
     <children xsi:type="editmodel:CompartmentEditModel" size="0,0"/>
     <classifierPreferences xsi:type="editmodel:UMLClassDiagramClassifierPreference" showStereotype="true" showMethodsParameterTypes="true" showMethodsReturnType="true" showMethodsParameterNames="true" showMethodsParameterKinds="true" attributeSorter="Natural" methodSorter="Natural" innerClassSorter="Natural" showPrivateAttributes="true" showProtectedAttributes="true" showPublicAttributes="true" showPackageAttributes="true" showStaticAttributes="true" showProtectedMethods="true" showPublicMethods="true" showPackageMethods="true" showPrivateMethods="true" showStaticMethods="true" showProtectedInnerClasses="true" showPublicInnerClasses="true" showPackageInnerClasses="true" showPrivateInnerClasses="true" showStaticInnerClasses="true" packageIndication="3" showAttributeProperty="true" showAssociationMember="true"/>
   </children>
-  <children xsi:type="editmodel:ClassEditModel" name="Player" location="34,1260" size="186,529" id="game/Player" runTimeClassModel="setWheat(Ljava.lang.Integer;),getSilver(),wood,getPlayerPolis(),oil,getName(),setMetal(Ljava.lang.Integer;),prestige,metal,setWine(Ljava.lang.Integer;),name,setOil(Ljava.lang.Integer;),setPrestige(Ljava.lang.Integer;),getPrestige(),wine,wheat,getMetal(),setName(Ljava.lang.String;),setSilver(Ljava.lang.Integer;),silver,removePolis(Lgame.Polis;),getWood(),getWheat(),getWine(),rollTheDice(),playerPolis,Player(Ljava.lang.String;),addPolis(Lgame.Polis;),getOil(),setWood(Ljava.lang.Integer;)">
+  <children xsi:type="editmodel:ClassEditModel" name="Player" location="34,1260" size="186,529" id="game/Player" runTimeClassModel="setWheat(Ljava.lang.Integer;),getSilver(),wood,getPlayerPolis(),oil,setMetal(Ljava.lang.Integer;),getName(),prestige,metal,setWine(Ljava.lang.Integer;),name,setOil(Ljava.lang.Integer;),setPrestige(Ljava.lang.Integer;),getPrestige(),wine,wheat,getMetal(),setName(Ljava.lang.String;),silver,setSilver(Ljava.lang.Integer;),removePolis(Lgame.Polis;),getWood(),getWheat(),getWine(),rollTheDice(),playerPolis,Player(Ljava.lang.String;),addPolis(Lgame.Polis;),getOil(),setWood(Ljava.lang.Integer;)">
     <children xsi:type="editmodel:CompartmentEditModel" size="116,144">
       <children xsi:type="editmodel:AttributeEditModel" name="metal" id="game/Player#metal"/>
       <children xsi:type="editmodel:AttributeEditModel" name="name" id="game/Player#name"/>
@@ -85,7 +85,7 @@
     <children xsi:type="editmodel:CompartmentEditModel" size="0,0"/>
     <classifierPreferences xsi:type="editmodel:UMLClassDiagramClassifierPreference" showStereotype="true" showMethodsParameterTypes="true" showMethodsReturnType="true" showMethodsParameterNames="true" showMethodsParameterKinds="true" attributeSorter="Natural" methodSorter="Natural" innerClassSorter="Natural" showPrivateAttributes="true" showProtectedAttributes="true" showPublicAttributes="true" showPackageAttributes="true" showStaticAttributes="true" showProtectedMethods="true" showPublicMethods="true" showPackageMethods="true" showPrivateMethods="true" showStaticMethods="true" showProtectedInnerClasses="true" showPublicInnerClasses="true" showPackageInnerClasses="true" showPrivateInnerClasses="true" showStaticInnerClasses="true" packageIndication="3" showAttributeProperty="true" showAssociationMember="true"/>
   </children>
-  <children xsi:type="editmodel:ClassEditModel" name="Round" location="300,1275" size="154,161" id="game/Round" runTimeClassModel="getName(),name,turnList,getTurnList(),nextRound(),Round(),addTurn(Lgame.Turn;)">
+  <children xsi:type="editmodel:ClassEditModel" name="Round" location="285,1275" size="154,161" id="game/Round" runTimeClassModel="getName(),name,turnList,getTurnList(),nextRound(),Round(),addTurn(Lgame.Turn;)">
     <children xsi:type="editmodel:CompartmentEditModel" size="100,32">
       <children xsi:type="editmodel:AttributeEditModel" name="name" id="game/Round#name"/>
       <children xsi:type="editmodel:AttributeEditModel" name="turnList" id="game/Round#turnList"/>
@@ -100,7 +100,7 @@
     <children xsi:type="editmodel:CompartmentEditModel" size="0,0"/>
     <classifierPreferences xsi:type="editmodel:UMLClassDiagramClassifierPreference" showStereotype="true" showMethodsParameterTypes="true" showMethodsReturnType="true" showMethodsParameterNames="true" showMethodsParameterKinds="true" attributeSorter="Natural" methodSorter="Natural" innerClassSorter="Natural" showPrivateAttributes="true" showProtectedAttributes="true" showPublicAttributes="true" showPackageAttributes="true" showStaticAttributes="true" showProtectedMethods="true" showPublicMethods="true" showPackageMethods="true" showPrivateMethods="true" showStaticMethods="true" showProtectedInnerClasses="true" showPublicInnerClasses="true" showPackageInnerClasses="true" showPrivateInnerClasses="true" showStaticInnerClasses="true" packageIndication="3" showAttributeProperty="true" showAssociationMember="true"/>
   </children>
-  <children xsi:type="editmodel:ClassEditModel" name="Turn" location="645,1395" size="282,129" id="game/Turn" runTimeClassModel="secondAction,Turn(Lgame.Action;Lgame.Action;),firstAction,getSecondAction(),getFirstAction()">
+  <children xsi:type="editmodel:ClassEditModel" name="Turn" location="585,1320" size="282,129" id="game/Turn" runTimeClassModel="secondAction,Turn(Lgame.Action;Lgame.Action;),firstAction,getSecondAction(),getFirstAction()">
     <children xsi:type="editmodel:CompartmentEditModel" size="110,32">
       <children xsi:type="editmodel:AttributeEditModel" name="firstAction" id="game/Turn#firstAction"/>
       <children xsi:type="editmodel:AttributeEditModel" name="secondAction" id="game/Turn#secondAction"/>
@@ -121,7 +121,7 @@
     <children xsi:type="editmodel:CompartmentEditModel" size="0,0"/>
     <classifierPreferences xsi:type="editmodel:UMLClassDiagramClassifierPreference" showStereotype="true" showMethodsParameterTypes="true" showMethodsReturnType="true" showMethodsParameterNames="true" showMethodsParameterKinds="true" attributeSorter="Natural" methodSorter="Natural" innerClassSorter="Natural" showPrivateAttributes="true" showProtectedAttributes="true" showPublicAttributes="true" showPackageAttributes="true" showStaticAttributes="true" showProtectedMethods="true" showPublicMethods="true" showPackageMethods="true" showPrivateMethods="true" showStaticMethods="true" showProtectedInnerClasses="true" showPublicInnerClasses="true" showPackageInnerClasses="true" showPrivateInnerClasses="true" showStaticInnerClasses="true" packageIndication="3" showAttributeProperty="true" showAssociationMember="true"/>
   </children>
-  <children xsi:type="editmodel:ClassEditModel" name="CreatorAction" location="540,1215" size="269,129" id="game/CreatorAction" runTimeClassModel="createTirreme(Lgame.Player;Lgame.Polis;),createTradeBoat(Lgame.Player;Lgame.Polis;),CreatorAction(),createHoplite(Lgame.Player;Lgame.Polis;),createProxenus(Lgame.Player;Lgame.Polis;)">
+  <children xsi:type="editmodel:ClassEditModel" name="CreatorAction" location="480,1172" size="269,129" id="game/CreatorAction" runTimeClassModel="createTirreme(Lgame.Player;Lgame.Polis;),CreatorAction(),createTradeBoat(Lgame.Player;Lgame.Polis;),createProxenus(Lgame.Player;Lgame.Polis;),createHoplite(Lgame.Player;Lgame.Polis;)">
     <children xsi:type="editmodel:CompartmentEditModel" size="0,0"/>
     <children xsi:type="editmodel:CompartmentEditModel" size="246,80">
       <children xsi:type="editmodel:MethodEditModel" name="CreatorAction" id="game/CreatorAction#CreatorAction()"/>
@@ -137,23 +137,23 @@
     </sourceConnections>
     <classifierPreferences xsi:type="editmodel:UMLClassDiagramClassifierPreference" showStereotype="true" showMethodsParameterTypes="true" showMethodsReturnType="true" showMethodsParameterNames="true" showMethodsParameterKinds="true" attributeSorter="Natural" methodSorter="Natural" innerClassSorter="Natural" showPrivateAttributes="true" showProtectedAttributes="true" showPublicAttributes="true" showPackageAttributes="true" showStaticAttributes="true" showProtectedMethods="true" showPublicMethods="true" showPackageMethods="true" showPrivateMethods="true" showStaticMethods="true" showProtectedInnerClasses="true" showPublicInnerClasses="true" showPackageInnerClasses="true" showPrivateInnerClasses="true" showStaticInnerClasses="true" packageIndication="3" showAttributeProperty="true" showAssociationMember="true"/>
   </children>
-  <children xsi:type="editmodel:ClassEditModel" name="MilitaryAction" location="847,1215" size="542,129" id="game/MilitaryAction" runTimeClassModel="plunderTerritory(Lgame.Player;),MilitaryAction(),siegePolis(Lgame.Player;Lgame.Position;Lgame.Polis;),moveHoplite(Lgame.Player;Lgame.Position;Lgame.Position;Ljava.lang.Integer;),moveTirreme(Lgame.Player;Lgame.Sea;Lgame.Sea;Ljava.lang.Integer;)">
+  <children xsi:type="editmodel:ClassEditModel" name="MilitaryAction" location="763,1172" size="673,129" id="game/MilitaryAction" runTimeClassModel="plunderTerritory(Lgame.Player;),moveTirreme(Lgame.Player;Lgame.Sea;Lgame.Sea;Ljava.lang.Integer;Ljava.lang.Boolean;),MilitaryAction(),siegePolis(Lgame.Player;Lgame.Position;Lgame.Polis;),moveHoplite(Lgame.Player;Lgame.Position;Lgame.Position;Ljava.lang.Integer;Ljava.lang.Boolean;)">
     <children xsi:type="editmodel:CompartmentEditModel" size="0,0"/>
-    <children xsi:type="editmodel:CompartmentEditModel" size="519,80">
+    <children xsi:type="editmodel:CompartmentEditModel" size="650,80">
       <children xsi:type="editmodel:MethodEditModel" name="MilitaryAction" id="game/MilitaryAction#MilitaryAction()"/>
-      <children xsi:type="editmodel:MethodEditModel" name="moveHoplite" id="game/MilitaryAction#moveHoplite(Lgame.Player;Lgame.Position;Lgame.Position;Ljava.lang.Integer;)"/>
-      <children xsi:type="editmodel:MethodEditModel" name="moveTirreme" id="game/MilitaryAction#moveTirreme(Lgame.Player;Lgame.Sea;Lgame.Sea;Ljava.lang.Integer;)"/>
       <children xsi:type="editmodel:MethodEditModel" name="plunderTerritory" id="game/MilitaryAction#plunderTerritory(Lgame.Player;)"/>
       <children xsi:type="editmodel:MethodEditModel" name="siegePolis" id="game/MilitaryAction#siegePolis(Lgame.Player;Lgame.Position;Lgame.Polis;)"/>
+      <children xsi:type="editmodel:MethodEditModel" name="moveHoplite" id="game/MilitaryAction#moveHoplite(Lgame.Player;Lgame.Position;Lgame.Position;Ljava.lang.Integer;Ljava.lang.Boolean;)"/>
+      <children xsi:type="editmodel:MethodEditModel" name="moveTirreme" id="game/MilitaryAction#moveTirreme(Lgame.Player;Lgame.Sea;Lgame.Sea;Ljava.lang.Integer;Ljava.lang.Boolean;)"/>
     </children>
     <children xsi:type="editmodel:CompartmentEditModel" size="0,0"/>
     <sourceConnections xsi:type="editmodel:GeneralizationEditModel" autoLocated="true" id="game/Action&lt;-game/MilitaryAction" source="//@children.8" target="//@children.9/@sourceConnections.0" targetEnd="//@children.8/@sourceConnections.0/@children.1" sourceEnd="//@children.8/@sourceConnections.0/@children.0" connectionRouterKind="GeneralizationManhattan">
-      <children xsi:type="editmodel:AssociationEndEditModel" location="270,0" anchorKind="FixedAtEdge" attachSource="true"/>
+      <children xsi:type="editmodel:AssociationEndEditModel" location="335,0" anchorKind="FixedAtEdge" attachSource="true"/>
       <children xsi:type="editmodel:AssociationEndEditModel"/>
     </sourceConnections>
     <classifierPreferences xsi:type="editmodel:UMLClassDiagramClassifierPreference" showStereotype="true" showMethodsParameterTypes="true" showMethodsReturnType="true" showMethodsParameterNames="true" showMethodsParameterKinds="true" attributeSorter="Natural" methodSorter="Natural" innerClassSorter="Natural" showPrivateAttributes="true" showProtectedAttributes="true" showPublicAttributes="true" showPackageAttributes="true" showStaticAttributes="true" showProtectedMethods="true" showPublicMethods="true" showPackageMethods="true" showPrivateMethods="true" showStaticMethods="true" showProtectedInnerClasses="true" showPublicInnerClasses="true" showPackageInnerClasses="true" showPrivateInnerClasses="true" showStaticInnerClasses="true" packageIndication="3" showAttributeProperty="true" showAssociationMember="true"/>
   </children>
-  <children xsi:type="editmodel:ClassEditModel" name="EmptyAction" location="1440,1215" size="103,81" id="game/EmptyAction" runTimeClassModel="passTurn(),EmptyAction()">
+  <children xsi:type="editmodel:ClassEditModel" name="EmptyAction" location="1485,1180" size="103,81" id="game/EmptyAction" runTimeClassModel="passTurn(),EmptyAction()">
     <children xsi:type="editmodel:CompartmentEditModel" size="0,0"/>
     <children xsi:type="editmodel:CompartmentEditModel" size="80,32">
       <children xsi:type="editmodel:MethodEditModel" name="EmptyAction" id="game/EmptyAction#EmptyAction()"/>
@@ -166,7 +166,7 @@
     </sourceConnections>
     <classifierPreferences xsi:type="editmodel:UMLClassDiagramClassifierPreference" showStereotype="true" showMethodsParameterTypes="true" showMethodsReturnType="true" showMethodsParameterNames="true" showMethodsParameterKinds="true" attributeSorter="Natural" methodSorter="Natural" innerClassSorter="Natural" showPrivateAttributes="true" showProtectedAttributes="true" showPublicAttributes="true" showPackageAttributes="true" showStaticAttributes="true" showProtectedMethods="true" showPublicMethods="true" showPackageMethods="true" showPrivateMethods="true" showStaticMethods="true" showProtectedInnerClasses="true" showPublicInnerClasses="true" showPackageInnerClasses="true" showPrivateInnerClasses="true" showStaticInnerClasses="true" packageIndication="3" showAttributeProperty="true" showAssociationMember="true"/>
   </children>
-  <children xsi:type="editmodel:ClassEditModel" name="PoliticAction" location="1351,1376" size="103,65" id="game/PoliticAction" runTimeClassModel="PoliticAction()">
+  <children xsi:type="editmodel:ClassEditModel" name="PoliticAction" location="1410,1335" size="103,65" id="game/PoliticAction" runTimeClassModel="PoliticAction()">
     <children xsi:type="editmodel:CompartmentEditModel" size="0,0"/>
     <children xsi:type="editmodel:CompartmentEditModel" size="78,16">
       <children xsi:type="editmodel:MethodEditModel" name="PoliticAction" id="game/PoliticAction#PoliticAction()"/>
@@ -226,7 +226,7 @@
     </sourceConnections>
     <classifierPreferences xsi:type="editmodel:UMLClassDiagramClassifierPreference" showStereotype="true" showMethodsParameterTypes="true" showMethodsReturnType="true" showMethodsParameterNames="true" showMethodsParameterKinds="true" attributeSorter="Natural" methodSorter="Natural" innerClassSorter="Natural" showPrivateAttributes="true" showProtectedAttributes="true" showPublicAttributes="true" showPackageAttributes="true" showStaticAttributes="true" showProtectedMethods="true" showPublicMethods="true" showPackageMethods="true" showPrivateMethods="true" showStaticMethods="true" showProtectedInnerClasses="true" showPublicInnerClasses="true" showPackageInnerClasses="true" showPrivateInnerClasses="true" showStaticInnerClasses="true" packageIndication="3" showAttributeProperty="true" showAssociationMember="true"/>
   </children>
-  <children xsi:type="editmodel:ClassEditModel" targetConnections="//@children.11/@sourceConnections.0" name="Project" location="15,15" size="600,289" id="game/Project" runTimeClassModel="getPrestige(),setUsed(Ljava.lang.Boolean;),getFinished(),getUsed(),finished,Project(Ljava.lang.String;Ljava.lang.Integer;Ljava.lang.Integer;Ljava.util.Map;),used,setFinished(Ljava.lang.Boolean;),resourcesRequired,getName(),getResourcesRequired(),prestige,name,getPrestigeToPosterity(),prestigeToPosterity">
+  <children xsi:type="editmodel:ClassEditModel" targetConnections="//@children.11/@sourceConnections.0" name="Project" location="15,15" size="600,289" id="game/Project" runTimeClassModel="getPrestige(),setUsed(Ljava.lang.Boolean;),getFinished(),getUsed(),finished,Project(Ljava.lang.String;Ljava.lang.Integer;Ljava.lang.Integer;Ljava.util.Map;),used,setFinished(Ljava.lang.Boolean;),resourcesRequired,getName(),prestige,getResourcesRequired(),name,getPrestigeToPosterity(),prestigeToPosterity">
     <children xsi:type="editmodel:CompartmentEditModel" size="202,96">
       <children xsi:type="editmodel:AttributeEditModel" name="finished" id="game/Project#finished"/>
       <children xsi:type="editmodel:AttributeEditModel" name="name" id="game/Project#name"/>
@@ -285,7 +285,7 @@
     </sourceConnections>
     <classifierPreferences xsi:type="editmodel:UMLClassDiagramClassifierPreference" showStereotype="true" showMethodsParameterTypes="true" showMethodsReturnType="true" showMethodsParameterNames="true" showMethodsParameterKinds="true" attributeSorter="Natural" methodSorter="Natural" innerClassSorter="Natural" showPrivateAttributes="true" showProtectedAttributes="true" showPublicAttributes="true" showPackageAttributes="true" showStaticAttributes="true" showProtectedMethods="true" showPublicMethods="true" showPackageMethods="true" showPrivateMethods="true" showStaticMethods="true" showProtectedInnerClasses="true" showPublicInnerClasses="true" showPackageInnerClasses="true" showPrivateInnerClasses="true" showStaticInnerClasses="true" packageIndication="3" showAttributeProperty="true" showAssociationMember="true"/>
   </children>
-  <children xsi:type="editmodel:ClassEditModel" name="Trirreme" location="1009,1570" size="83,65" id="game/Trirreme" runTimeClassModel="Trirreme()">
+  <children xsi:type="editmodel:ClassEditModel" name="Trirreme" location="975,1545" size="83,65" id="game/Trirreme" runTimeClassModel="Trirreme()">
     <children xsi:type="editmodel:CompartmentEditModel" size="0,0"/>
     <children xsi:type="editmodel:CompartmentEditModel" size="60,16">
       <children xsi:type="editmodel:MethodEditModel" name="Trirreme" id="game/Trirreme#Trirreme()"/>
@@ -297,7 +297,7 @@
     </sourceConnections>
     <classifierPreferences xsi:type="editmodel:UMLClassDiagramClassifierPreference" showStereotype="true" showMethodsParameterTypes="true" showMethodsReturnType="true" showMethodsParameterNames="true" showMethodsParameterKinds="true" attributeSorter="Natural" methodSorter="Natural" innerClassSorter="Natural" showPrivateAttributes="true" showProtectedAttributes="true" showPublicAttributes="true" showPackageAttributes="true" showStaticAttributes="true" showProtectedMethods="true" showPublicMethods="true" showPackageMethods="true" showPrivateMethods="true" showStaticMethods="true" showProtectedInnerClasses="true" showPublicInnerClasses="true" showPackageInnerClasses="true" showPrivateInnerClasses="true" showStaticInnerClasses="true" packageIndication="3" showAttributeProperty="true" showAssociationMember="true"/>
   </children>
-  <children xsi:type="editmodel:ClassEditModel" name="TradeBoat" location="1148,1570" size="93,65" id="game/TradeBoat" runTimeClassModel="TradeBoat()">
+  <children xsi:type="editmodel:ClassEditModel" name="TradeBoat" location="1148,1545" size="93,65" id="game/TradeBoat" runTimeClassModel="TradeBoat()">
     <children xsi:type="editmodel:CompartmentEditModel" size="0,0"/>
     <children xsi:type="editmodel:CompartmentEditModel" size="70,16">
       <children xsi:type="editmodel:MethodEditModel" name="TradeBoat" id="game/TradeBoat#TradeBoat()"/>
@@ -309,7 +309,7 @@
     </sourceConnections>
     <classifierPreferences xsi:type="editmodel:UMLClassDiagramClassifierPreference" showStereotype="true" showMethodsParameterTypes="true" showMethodsReturnType="true" showMethodsParameterNames="true" showMethodsParameterKinds="true" attributeSorter="Natural" methodSorter="Natural" innerClassSorter="Natural" showPrivateAttributes="true" showProtectedAttributes="true" showPublicAttributes="true" showPackageAttributes="true" showStaticAttributes="true" showProtectedMethods="true" showPublicMethods="true" showPackageMethods="true" showPrivateMethods="true" showStaticMethods="true" showProtectedInnerClasses="true" showPublicInnerClasses="true" showPackageInnerClasses="true" showPrivateInnerClasses="true" showStaticInnerClasses="true" packageIndication="3" showAttributeProperty="true" showAssociationMember="true"/>
   </children>
-  <children xsi:type="editmodel:ClassEditModel" name="Hoplite" location="880,1570" size="75,65" id="game/Hoplite" runTimeClassModel="Hoplite()">
+  <children xsi:type="editmodel:ClassEditModel" name="Hoplite" location="795,1545" size="75,65" id="game/Hoplite" runTimeClassModel="Hoplite()">
     <children xsi:type="editmodel:CompartmentEditModel" size="0,0"/>
     <children xsi:type="editmodel:CompartmentEditModel" size="52,16">
       <children xsi:type="editmodel:MethodEditModel" name="Hoplite" id="game/Hoplite#Hoplite()"/>
@@ -321,7 +321,7 @@
     </sourceConnections>
     <classifierPreferences xsi:type="editmodel:UMLClassDiagramClassifierPreference" showStereotype="true" showMethodsParameterTypes="true" showMethodsReturnType="true" showMethodsParameterNames="true" showMethodsParameterKinds="true" attributeSorter="Natural" methodSorter="Natural" innerClassSorter="Natural" showPrivateAttributes="true" showProtectedAttributes="true" showPublicAttributes="true" showPackageAttributes="true" showStaticAttributes="true" showProtectedMethods="true" showPublicMethods="true" showPackageMethods="true" showPrivateMethods="true" showStaticMethods="true" showProtectedInnerClasses="true" showPublicInnerClasses="true" showPackageInnerClasses="true" showPrivateInnerClasses="true" showStaticInnerClasses="true" packageIndication="3" showAttributeProperty="true" showAssociationMember="true"/>
   </children>
-  <children xsi:type="editmodel:ClassEditModel" name="Proxenus" location="1290,1570" size="89,65" id="game/Proxenus" runTimeClassModel="Proxenus()">
+  <children xsi:type="editmodel:ClassEditModel" name="Proxenus" location="1322,1545" size="89,65" id="game/Proxenus" runTimeClassModel="Proxenus()">
     <children xsi:type="editmodel:CompartmentEditModel" size="0,0"/>
     <children xsi:type="editmodel:CompartmentEditModel" size="66,16">
       <children xsi:type="editmodel:MethodEditModel" name="Proxenus" id="game/Proxenus#Proxenus()"/>
@@ -333,7 +333,7 @@
     </sourceConnections>
     <classifierPreferences xsi:type="editmodel:UMLClassDiagramClassifierPreference" showStereotype="true" showMethodsParameterTypes="true" showMethodsReturnType="true" showMethodsParameterNames="true" showMethodsParameterKinds="true" attributeSorter="Natural" methodSorter="Natural" innerClassSorter="Natural" showPrivateAttributes="true" showProtectedAttributes="true" showPublicAttributes="true" showPackageAttributes="true" showStaticAttributes="true" showProtectedMethods="true" showPublicMethods="true" showPackageMethods="true" showPrivateMethods="true" showStaticMethods="true" showProtectedInnerClasses="true" showPublicInnerClasses="true" showPackageInnerClasses="true" showPrivateInnerClasses="true" showStaticInnerClasses="true" packageIndication="3" showAttributeProperty="true" showAssociationMember="true"/>
   </children>
-  <children xsi:type="editmodel:ClassEditModel" targetConnections="//@children.21/@sourceConnections.0" name="Unit" location="1009,1410" size="61,65" id="game/Unit" runTimeClassModel="Unit()">
+  <children xsi:type="editmodel:ClassEditModel" targetConnections="//@children.21/@sourceConnections.0" name="Unit" location="1009,1335" size="61,65" id="game/Unit" runTimeClassModel="Unit()">
     <children xsi:type="editmodel:CompartmentEditModel" size="0,0"/>
     <children xsi:type="editmodel:CompartmentEditModel" size="38,16">
       <children xsi:type="editmodel:MethodEditModel" name="Unit" location="1162,1384" id="game/Unit#Unit()"/>
@@ -341,7 +341,7 @@
     <children xsi:type="editmodel:CompartmentEditModel" size="0,0"/>
     <classifierPreferences xsi:type="editmodel:UMLClassDiagramClassifierPreference" showStereotype="true" showMethodsParameterTypes="true" showMethodsReturnType="true" showMethodsParameterNames="true" showMethodsParameterKinds="true" attributeSorter="Natural" methodSorter="Natural" innerClassSorter="Natural" showPrivateAttributes="true" showProtectedAttributes="true" showPublicAttributes="true" showPackageAttributes="true" showStaticAttributes="true" showProtectedMethods="true" showPublicMethods="true" showPackageMethods="true" showPrivateMethods="true" showStaticMethods="true" showProtectedInnerClasses="true" showPublicInnerClasses="true" showPackageInnerClasses="true" showPrivateInnerClasses="true" showStaticInnerClasses="true" packageIndication="3" showAttributeProperty="true" showAssociationMember="true"/>
   </children>
-  <children xsi:type="editmodel:ClassEditModel" targetConnections="//@children.29/@sourceConnections.0" name="Position" location="12,349" size="169,177" id="game/Position" runTimeClassModel="Position(Ljava.lang.String;),getName(),setUnits(Ljava.util.List;),removeUnit(Lgame.Unit;),getUnits(),name,addUnit(Lgame.Unit;),units">
+  <children xsi:type="editmodel:ClassEditModel" targetConnections="//@children.29/@sourceConnections.0" name="Position" location="12,349" size="169,177" id="game/Position" runTimeClassModel="getName(),Position(Ljava.lang.String;),setUnits(Ljava.util.List;),getUnits(),removeUnit(Lgame.Unit;),name,addUnit(Lgame.Unit;),units">
     <children xsi:type="editmodel:CompartmentEditModel" size="83,32">
       <children xsi:type="editmodel:AttributeEditModel" name="name" id="game/Position#name"/>
       <children xsi:type="editmodel:AttributeEditModel" name="units" id="game/Position#units"/>
@@ -387,7 +387,7 @@
     </sourceConnections>
     <classifierPreferences xsi:type="editmodel:UMLClassDiagramClassifierPreference" showStereotype="true" showMethodsParameterTypes="true" showMethodsReturnType="true" showMethodsParameterNames="true" showMethodsParameterKinds="true" attributeSorter="Natural" methodSorter="Natural" innerClassSorter="Natural" showPrivateAttributes="true" showProtectedAttributes="true" showPublicAttributes="true" showPackageAttributes="true" showStaticAttributes="true" showProtectedMethods="true" showPublicMethods="true" showPackageMethods="true" showPrivateMethods="true" showStaticMethods="true" showProtectedInnerClasses="true" showPublicInnerClasses="true" showPackageInnerClasses="true" showPrivateInnerClasses="true" showStaticInnerClasses="true" packageIndication="3" showAttributeProperty="true" showAssociationMember="true"/>
   </children>
-  <children xsi:type="editmodel:ClassEditModel" name="Polis" location="165,735" size="923,401" id="game/Polis" runTimeClassModel="maxGrowning,maxPopulation,getPossiblesProjects(),basePopulation,polisTerritory,getSieged(),sieged,getMaxPopulation(),setSieged(Ljava.lang.Boolean;),polisSeas,getBasePopulation(),getProjects(),getMaxGrowning(),projects,getPolisTerritory(),setActualPopulation(Ljava.lang.Integer;),Polis(Ljava.lang.String;Ljava.lang.Integer;Ljava.lang.Integer;Ljava.lang.Integer;Lgame.Territory;Ljava.util.List;Ljava.util.List;),addProject(Lgame.Project;),getActualPopulation(),actualPopulation,getPolisSeas(),possiblesProjects">
+  <children xsi:type="editmodel:ClassEditModel" name="Polis" location="165,735" size="923,401" id="game/Polis" runTimeClassModel="maxGrowning,maxPopulation,getPossiblesProjects(),basePopulation,polisTerritory,getSieged(),sieged,getMaxPopulation(),setSieged(Ljava.lang.Boolean;),polisSeas,getProjects(),getBasePopulation(),getMaxGrowning(),projects,getPolisTerritory(),setActualPopulation(Ljava.lang.Integer;),Polis(Ljava.lang.String;Ljava.lang.Integer;Ljava.lang.Integer;Ljava.lang.Integer;Lgame.Territory;Ljava.util.List;Ljava.util.List;),addProject(Lgame.Project;),getActualPopulation(),actualPopulation,getPolisSeas(),possiblesProjects">
     <children xsi:type="editmodel:CompartmentEditModel" size="160,144">
       <children xsi:type="editmodel:AttributeEditModel" name="actualPopulation" id="game/Polis#actualPopulation"/>
       <children xsi:type="editmodel:AttributeEditModel" name="basePopulation" id="game/Polis#basePopulation"/>
@@ -463,7 +463,7 @@
     <children xsi:type="editmodel:CompartmentEditModel" size="0,0"/>
     <classifierPreferences xsi:type="editmodel:UMLClassDiagramClassifierPreference" showStereotype="true" showMethodsParameterTypes="true" showMethodsReturnType="true" showMethodsParameterNames="true" showMethodsParameterKinds="true" attributeSorter="Natural" methodSorter="Natural" innerClassSorter="Natural" showPrivateAttributes="true" showProtectedAttributes="true" showPublicAttributes="true" showPackageAttributes="true" showStaticAttributes="true" showProtectedMethods="true" showPublicMethods="true" showPackageMethods="true" showPrivateMethods="true" showStaticMethods="true" showProtectedInnerClasses="true" showPublicInnerClasses="true" showPackageInnerClasses="true" showPrivateInnerClasses="true" showStaticInnerClasses="true" packageIndication="3" showAttributeProperty="true" showAssociationMember="true"/>
   </children>
-  <children xsi:type="editmodel:ClassEditModel" name="MarketChart" location="465,375" size="439,321" id="game/MarketChart" runTimeClassModel="getOilPrice(),r3_prices,winePricePointer,r5_prices,getWoodPrice(),winePrice,MarketChart(),getMetalPrice(),getWinePrice(),woodPrice,oilPrice,r4_prices,oilPricePointer,woodPricePointer,metalPricePointer,moveResourcePrice(Ljava.lang.String;Ljava.lang.String;Ljava.lang.Integer;),metalPrice">
+  <children xsi:type="editmodel:ClassEditModel" name="MarketChart" location="465,375" size="439,321" id="game/MarketChart" runTimeClassModel="getOilPrice(),r3_prices,winePricePointer,r5_prices,getWoodPrice(),winePrice,getMetalPrice(),MarketChart(),getWinePrice(),woodPrice,oilPrice,r4_prices,oilPricePointer,woodPricePointer,metalPricePointer,metalPrice,moveResourcePrice(Ljava.lang.String;Ljava.lang.String;Ljava.lang.Integer;)">
     <children xsi:type="editmodel:CompartmentEditModel" size="136,176">
       <children xsi:type="editmodel:AttributeEditModel" name="metalPrice" id="game/MarketChart#metalPrice"/>
       <children xsi:type="editmodel:AttributeEditModel" name="metalPricePointer" id="game/MarketChart#metalPricePointer"/>

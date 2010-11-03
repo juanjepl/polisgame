@@ -580,51 +580,51 @@ public class ElementsInitializer {
 		
 	//// ALL POSITIONS (list)
 		
-		List<Position> positionsList = new ArrayList<Position>();
-		positionsList.add(laconia); // Territories
-		positionsList.add(mesenia);
-		positionsList.add(sicilia);
-		positionsList.add(megaris);
-		positionsList.add(arcadia);
-		positionsList.add(acaya);
-		positionsList.add(jonia);
-		positionsList.add(atica);
-		positionsList.add(beocia);
-		positionsList.add(macedonia);
-		positionsList.add(tesalia);
-		positionsList.add(acarnania);
-		positionsList.add(jonicoSea); // Seas
-		positionsList.add(mirtosSea);
-		positionsList.add(esporadasSea);
-		positionsList.add(cicladasSea);
-		positionsList.add(traciaSea);
-		positionsList.add(spartaDock);// TradeDock
-		positionsList.add(athensDock);
-		positionsList.add(iliria);// Markets
-		positionsList.add(tracia);
-		positionsList.add(euxinosPontos);
-		positionsList.add(imperioPersa);
-		positionsList.add(egipto);
-		positionsList.add(epidamnos);//Polis
-		positionsList.add(gela);
-		positionsList.add(siracusa);
-		positionsList.add(corcira);
-		positionsList.add(naupacto);
-		positionsList.add(pidna);
-		positionsList.add(pilos);
-		positionsList.add(esparta);
-		positionsList.add(gition);
-		positionsList.add(argos);
-		positionsList.add(corinto);
-		positionsList.add(tebas);
-		positionsList.add(potidea);
-		positionsList.add(calcis);
-		positionsList.add(atenas);
-		positionsList.add(quios);
-		positionsList.add(samos);
-		positionsList.add(abdera);
-
+		Map<String,Position> positionsMap = new HashMap<String,Position>();
+		positionsMap.put("laconia", laconia); // Territories
+		positionsMap.put("mesenia",mesenia);
+		positionsMap.put("sicilia",sicilia);
+		positionsMap.put("megaris",megaris);
+		positionsMap.put("arcadia",arcadia);
+		positionsMap.put("acaya",acaya);
+		positionsMap.put("jonia",jonia);
+		positionsMap.put("atica",atica);
+		positionsMap.put("beocia",beocia);
+		positionsMap.put("macedonia",macedonia);
+		positionsMap.put("tesalia",tesalia);
+		positionsMap.put("acarnania",acarnania);
+		positionsMap.put("jonicoSea",jonicoSea); // Seas
+		positionsMap.put("mirtosSea",mirtosSea);
+		positionsMap.put("esporadasSea",esporadasSea);
+		positionsMap.put("cicladasSea",cicladasSea);
+		positionsMap.put("traciaSea",traciaSea);
+		positionsMap.put("spartaDock",spartaDock); // Trade Dock
+		positionsMap.put("athensDock",athensDock);
+		positionsMap.put("iliria",iliria); // Markets
+		positionsMap.put("tracia",tracia);
+		positionsMap.put("euxinosPontos",euxinosPontos);
+		positionsMap.put("imperioPersa",imperioPersa);
+		positionsMap.put("egipto",egipto);
+		positionsMap.put("epidamnos",epidamnos); // Polis
+		positionsMap.put("gela",gela);
+		positionsMap.put("siracusa",siracusa);
+		positionsMap.put("corcira",corcira);
+		positionsMap.put("naupacto",naupacto);
+		positionsMap.put("pidna",pidna);
+		positionsMap.put("pilos",pilos);
+		positionsMap.put("esparta",esparta);
+		positionsMap.put("gition",gition);
+		positionsMap.put("argos",argos);
+		positionsMap.put("corinto",corinto);
+		positionsMap.put("tebas",tebas);
+		positionsMap.put("potidea",potidea);
+		positionsMap.put("calcis",calcis);
+		positionsMap.put("atenas",atenas);
+		positionsMap.put("quios",quios);
+		positionsMap.put("samos",samos);
+		positionsMap.put("abdera",abdera);
 		
+				
 	//// GAME EVENTS
 		GameEvent r3_noEvent_01 = new GameEvent("r3_noEvent_01","","3"); 
 		GameEvent r3_earthquakeAtSparta = new GameEvent("earthquakeAtSparta","Esparta sufre un violento terremoto que los mesenios aprovechan para rebelarse, mientras los navíos cartagineses apoyan la causa espartana cuestionando el dominio ateniense en las cercanías de Sicilia.","3");
@@ -714,7 +714,7 @@ public class ElementsInitializer {
 		
 //// FINALLY, CREATE THE GAME:
 		
-		Game polisGame = new Game(sparta,athens,positionsList,gameProjects,gameEventsList,theRound,theMarketChart); // THIS IS A VERY BIG CALL (SERIOUSLY)
+		Game polisGame = new Game(sparta,athens,positionsMap,gameProjects,gameEventsList,theRound,theMarketChart); // THIS IS A VERY BIG CALL (SERIOUSLY)
 		
 		TextModeUi.loadedGameElements(); // only screen information
 		
