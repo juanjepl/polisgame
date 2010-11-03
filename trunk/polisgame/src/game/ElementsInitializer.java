@@ -581,129 +581,129 @@ public class ElementsInitializer {
 	//// ALL POSITIONS (list)
 		
 		Map<String,Position> positionsMap = new HashMap<String,Position>();
-		positionsMap.put("laconia", laconia); // Territories
-		positionsMap.put("mesenia",mesenia);
-		positionsMap.put("sicilia",sicilia);
-		positionsMap.put("megaris",megaris);
-		positionsMap.put("arcadia",arcadia);
-		positionsMap.put("acaya",acaya);
-		positionsMap.put("jonia",jonia);
-		positionsMap.put("atica",atica);
-		positionsMap.put("beocia",beocia);
-		positionsMap.put("macedonia",macedonia);
-		positionsMap.put("tesalia",tesalia);
-		positionsMap.put("acarnania",acarnania);
-		positionsMap.put("jonicoSea",jonicoSea); // Seas
-		positionsMap.put("mirtosSea",mirtosSea);
-		positionsMap.put("esporadasSea",esporadasSea);
-		positionsMap.put("cicladasSea",cicladasSea);
-		positionsMap.put("traciaSea",traciaSea);
-		positionsMap.put("spartaDock",spartaDock); // Trade Dock
-		positionsMap.put("athensDock",athensDock);
-		positionsMap.put("iliria",iliria); // Markets
-		positionsMap.put("tracia",tracia);
-		positionsMap.put("euxinosPontos",euxinosPontos);
-		positionsMap.put("imperioPersa",imperioPersa);
-		positionsMap.put("egipto",egipto);
-		positionsMap.put("epidamnos",epidamnos); // Polis
-		positionsMap.put("gela",gela);
-		positionsMap.put("siracusa",siracusa);
-		positionsMap.put("corcira",corcira);
-		positionsMap.put("naupacto",naupacto);
-		positionsMap.put("pidna",pidna);
-		positionsMap.put("pilos",pilos);
-		positionsMap.put("esparta",esparta);
-		positionsMap.put("gition",gition);
-		positionsMap.put("argos",argos);
-		positionsMap.put("corinto",corinto);
-		positionsMap.put("tebas",tebas);
-		positionsMap.put("potidea",potidea);
-		positionsMap.put("calcis",calcis);
-		positionsMap.put("atenas",atenas);
-		positionsMap.put("quios",quios);
-		positionsMap.put("samos",samos);
-		positionsMap.put("abdera",abdera);
+		positionsMap.put("Laconia", laconia); // Territories
+		positionsMap.put("Mesenia",mesenia);
+		positionsMap.put("Sicilia",sicilia);
+		positionsMap.put("Megaris",megaris);
+		positionsMap.put("Arcadia",arcadia);
+		positionsMap.put("Acaya",acaya);
+		positionsMap.put("Jonia",jonia);
+		positionsMap.put("Atica",atica);
+		positionsMap.put("Beocia",beocia);
+		positionsMap.put("Macedonia",macedonia);
+		positionsMap.put("Tesalia",tesalia);
+		positionsMap.put("Acarnania",acarnania);
+		positionsMap.put("JonicoSea",jonicoSea); // Seas
+		positionsMap.put("MirtosSea",mirtosSea);
+		positionsMap.put("EsporadasSea",esporadasSea);
+		positionsMap.put("CicladasSea",cicladasSea);
+		positionsMap.put("TraciaSea",traciaSea);
+		positionsMap.put("SpartaDock",spartaDock); // Trade Dock
+		positionsMap.put("AthensDock",athensDock);
+		positionsMap.put("Iliria",iliria); // Markets
+		positionsMap.put("Tracia",tracia);
+		positionsMap.put("EuxinosPontos",euxinosPontos);
+		positionsMap.put("ImperioPersa",imperioPersa);
+		positionsMap.put("Egipto",egipto);
+		positionsMap.put("Epidamnos",epidamnos); // Polis
+		positionsMap.put("Gela",gela);
+		positionsMap.put("Siracusa",siracusa);
+		positionsMap.put("Corcira",corcira);
+		positionsMap.put("Naupacto",naupacto);
+		positionsMap.put("Pidna",pidna);
+		positionsMap.put("Pilos",pilos);
+		positionsMap.put("Esparta",esparta);
+		positionsMap.put("Gition",gition);
+		positionsMap.put("Argos",argos);
+		positionsMap.put("Corinto",corinto);
+		positionsMap.put("Tebas",tebas);
+		positionsMap.put("Potidea",potidea);
+		positionsMap.put("Calcis",calcis);
+		positionsMap.put("Atenas",atenas);
+		positionsMap.put("Quios",quios);
+		positionsMap.put("Samos",samos);
+		positionsMap.put("Abdera",abdera);
 		
 				
 	//// GAME EVENTS
-		GameEvent r3_noEvent_01 = new GameEvent("r3_noEvent_01","","3"); 
-		GameEvent r3_earthquakeAtSparta = new GameEvent("earthquakeAtSparta","Esparta sufre un violento terremoto que los mesenios aprovechan para rebelarse, mientras los navíos cartagineses apoyan la causa espartana cuestionando el dominio ateniense en las cercanías de Sicilia.","3");
-		GameEvent r3_persianFleetDestruction = new GameEvent("persianFleetDestruction","Atenas destruye la flota persa que quedaba desde el fin de la Guerra Médica en la batalla de Eurimedonte. Persia decide apoyar a Esparta para debilitarla.","3");
+		GameEvent round3_noEvent_01 = new GameEvent("round3_noEvent_01","","3"); 
+		GameEvent round3_earthquakeAtSparta = new GameEvent("round3_rearthquakeAtSparta","Esparta sufre un violento terremoto que los mesenios aprovechan para rebelarse, mientras los navíos cartagineses apoyan la causa espartana cuestionando el dominio ateniense en las cercanías de Sicilia.","3");
+		GameEvent round3_persianFleetDestruction = new GameEvent("round3_persianFleetDestruction","Atenas destruye la flota persa que quedaba desde el fin de la Guerra Médica en la batalla de Eurimedonte. Persia decide apoyar a Esparta para debilitarla.","3");
 		
-		GameEvent r4_noEvent_01 = new GameEvent("r4_noEvent_01","","4");
-		GameEvent r4_noEvent_02 = new GameEvent("r4_noEvent_02","","4");
-		GameEvent r4_noEvent_03 = new GameEvent("r4_noEvent_03","","4");
-		GameEvent r4_peasantRevolts = new GameEvent("r4_peasantRevolts","Sintiéndose oprimidos por el imperialismo de ambos bandos, los campesinos de Mesenia y Jonia se rebelan","4");
-		GameEvent r4_periclesAge = new GameEvent("r4_periclesAge","Pericles toma el poder en Atenas y bajo su mandato la polis acomete numerosos proyectos arquitectónicos y artísticos, y florece el pensamiento filosófico. Su vecina Corinto recela del creciente poder ateniense.","4");
-		GameEvent r4_egyptRevoltsAgainstPersia = new GameEvent("r4_egyptRevoltsAgainstPersia","Atenas decide ayudar al rebelde Inaro en la lucha de Egipto por su independencia. Antes de comenzar la ronda, Atenas envía las Tirremes que desee Egipto (minimo 2, y si no puede pierde 1 Prestigio por cada una). Al final de la ronda recuperará sólo la mitad.","4");
-		GameEvent r4_treasuryTransfers = new GameEvent("r4_treasuryTransfers","Se traslada el Tesoro de la Liga de Delos hasta Atenas, y Esparta acepta la ayuda de Persia. Éstos métodos de impulsar la economía no estan bien vistos por el resto de Polis. Ambos jugadores deciden cuanto Prestigio pierden a cambio de recibir el doble en Plata (Mínimo 1 Prestigio por 2 Platas). ","4"); // TODO WTF!!!!???? a chat window for "according prize" ? XD
-		GameEvent r4_murderOfThePersianKing = new GameEvent("r4_murderOfThePersianKing","El rey persa es asesinado y los aspirantes al trono solicitan mercenarios griegos. Antes de comenzar la ronda, ambos jugadores pueden mandar Hoplitas a combatir en Persia. Consiguen +2 Prestigio por cada Hoplita. Al final de la ronda se recuperan todos y se colocarán 1 a 1 alternativamente en territorios que puedan albergarlos.","4");
-		GameEvent r4_betrayal = new GameEvent("r4_betrayal","Las intrigas de ambos jugadores surten efecto y provocan que 1 Polis de cada jugador con 1 punto de población (si la hay) cambie de bando. Se toman los Proyectos finalizados. No puede ser la capital ni la misma Polis.","4");
+		GameEvent round4_noEvent_01 = new GameEvent("round4_noEvent_01","","4");
+		GameEvent round4_noEvent_02 = new GameEvent("round4_noEvent_02","","4");
+		GameEvent round4_noEvent_03 = new GameEvent("round4_noEvent_03","","4");
+		GameEvent round4_peasantRevolts = new GameEvent("round4_peasantRevolts","Sintiéndose oprimidos por el imperialismo de ambos bandos, los campesinos de Mesenia y Jonia se rebelan","4");
+		GameEvent round4_periclesAge = new GameEvent("round4_periclesAge","Pericles toma el poder en Atenas y bajo su mandato la polis acomete numerosos proyectos arquitectónicos y artísticos, y florece el pensamiento filosófico. Su vecina Corinto recela del creciente poder ateniense.","4");
+		GameEvent round4_egyptRevoltsAgainstPersia = new GameEvent("round4_egyptRevoltsAgainstPersia","Atenas decide ayudar al rebelde Inaro en la lucha de Egipto por su independencia. Antes de comenzar la ronda, Atenas envía las Tirremes que desee Egipto (minimo 2, y si no puede pierde 1 Prestigio por cada una). Al final de la ronda recuperará sólo la mitad.","4");
+		GameEvent round4_treasuryTransfers = new GameEvent("round4_treasuryTransfers","Se traslada el Tesoro de la Liga de Delos hasta Atenas, y Esparta acepta la ayuda de Persia. Éstos métodos de impulsar la economía no estan bien vistos por el resto de Polis. Ambos jugadores deciden cuanto Prestigio pierden a cambio de recibir el doble en Plata (Mínimo 1 Prestigio por 2 Platas). ","4");
+		GameEvent round4_murderOfThePersianKing = new GameEvent("round4_murderOfThePersianKing","El rey persa es asesinado y los aspirantes al trono solicitan mercenarios griegos. Antes de comenzar la ronda, ambos jugadores pueden mandar Hoplitas a combatir en Persia. Consiguen +2 Prestigio por cada Hoplita. Al final de la ronda se recuperan todos y se colocarán 1 a 1 alternativamente en territorios que puedan albergarlos.","4");
+		GameEvent round4_betrayal = new GameEvent("round4_betrayal","Las intrigas de ambos jugadores surten efecto y provocan que 1 Polis de cada jugador con 1 punto de población (si la hay) cambie de bando. Se toman los Proyectos finalizados. No puede ser la capital ni la misma Polis.","4");
 		
-		GameEvent r5a_noEvent_01 = new GameEvent("r5a_noEvent_01","","5a");
-		GameEvent r5a_noEvent_02 = new GameEvent("r5a_noEvent_02","","5a");
-		GameEvent r5a_noEvent_03 = new GameEvent("r5a_noEvent_03","","5a");
-		GameEvent r5a_greeceEnemies = new GameEvent("r5a_greeceEnemies","Los hilotas de Mesenia se rebelan contra el yugo espartano mientras los persas alentan el bloqueo a Atenas en el Mediterráneo oriental.","5a");
-		GameEvent r5a_greatCommanders = new GameEvent("r5a_greatCommanders","Dos brillantes comandantes, el espartano Brásidas y el ateniense Cleón, toman el mando de las operaciones militares de ambos ejércitos. Cada jugador puede doblar el Prestigio que consigue en una (sólo una) batalla durante esta ronda. ","5a");
-		GameEvent r5a_afterTheLongWalls = new GameEvent("r5a_afterTheLongWalls","El miedo a las incursiones espartanas en el Ática provoca que la población de la región se resguarde tras los Muros Largos de Atenas.","5a");
-		GameEvent r5a_plagueAndHumiliation = new GameEvent("r5a_plagueAndHumiliation","La peste se extiende por Atenas diezmando su población. Durante la ronda buscará elevar de nuevo su Prestigio mediante una incursión en la isla de Esfacteria (Mesenia).","5a");
-		GameEvent r5a_murderOfThePersianKing = new GameEvent("r5a_murderOfThePersianKing","El rey persa es asesinado y los aspirantes al trono solicitan mercenarios griegos. Antes de comenzar la ronda ambos jugadores pueden mandar Hoplitas a combatir en Persia. Consiguen +2 Prestigio por cada Hoplita. Al final de la ronda se recuperan todos y se colocarán 1 a 1 alternativamente en territorios que puedan albergarlos.","5a");
-		GameEvent r5a_betrayal = new GameEvent("r5a_betrayal","Las intrigas de ambos jugadores surten efecto y provocan que 1 Polis de cada jugador con 1 punto de población (si la hay) cambie de bando. Se toman los Proyectos finalizados. No puede ser la capital ni la misma Polis","5a");
-		GameEvent r5a_mercenaries = new GameEvent("r5a_mercenaries","Ambos jugadores pueden crear Hoplitas o Tirremes pagando 2 Platas por cada uno sin perder población de sus Polis.","5a");
-		GameEvent r5a_freeTradeWithPersia = new GameEvent("r5a_freeTradeWithPersia","Persia exige a ambos jugadores liberar las rutas comerciales con su territorio y su satrapía de Egipto. Si un jugador al final de su turno bloquea al oponente sus rutas comerciales con Persia o Egipto, pierde 1 Prestigio (excepto que tenga ya 10 Trirremes en el mar Jónico y el mar de Tracia.","5a");
-		GameEvent r5a_pacifism = new GameEvent("r5a_pacifism","En las dos capitales surgen voces a favor del fin del confrontamiento que amenazan con desestabilizar ambos liderazgos. En la acción de recaudar, Esparta en Laconia y Atenas en Ática pueden destinar los Hoplitas que deseen (Máximo la población de la capital) a sofocar a los pacifistas en lugar de recaudar. Cada Hoplita que destine otorga 1 Prestigio.","5a");
+		GameEvent round5a_noEvent_01 = new GameEvent("round5a_noEvent_01","","5a");
+		GameEvent round5a_noEvent_02 = new GameEvent("round5a_noEvent_02","","5a");
+		GameEvent round5a_noEvent_03 = new GameEvent("round5a_noEvent_03","","5a");
+		GameEvent round5a_greeceEnemies = new GameEvent("round5a_greeceEnemies","Los hilotas de Mesenia se rebelan contra el yugo espartano mientras los persas alentan el bloqueo a Atenas en el Mediterráneo oriental.","5a");
+		GameEvent round5a_greatCommanders = new GameEvent("round5a_greatCommanders","Dos brillantes comandantes, el espartano Brásidas y el ateniense Cleón, toman el mando de las operaciones militares de ambos ejércitos. Cada jugador puede doblar el Prestigio que consigue en una (sólo una) batalla durante esta ronda. ","5a");
+		GameEvent round5a_afterTheLongWalls = new GameEvent("round5a_afterTheLongWalls","El miedo a las incursiones espartanas en el Ática provoca que la población de la región se resguarde tras los Muros Largos de Atenas.","5a");
+		GameEvent round5a_plagueAndHumiliation = new GameEvent("round5a_plagueAndHumiliation","La peste se extiende por Atenas diezmando su población. Durante la ronda buscará elevar de nuevo su Prestigio mediante una incursión en la isla de Esfacteria (Mesenia).","5a");
+		GameEvent round5a_murderOfThePersianKing = new GameEvent("round5a_murderOfThePersianKing","El rey persa es asesinado y los aspirantes al trono solicitan mercenarios griegos. Antes de comenzar la ronda ambos jugadores pueden mandar Hoplitas a combatir en Persia. Consiguen +2 Prestigio por cada Hoplita. Al final de la ronda se recuperan todos y se colocarán 1 a 1 alternativamente en territorios que puedan albergarlos.","5a");
+		GameEvent round5a_betrayal = new GameEvent("round5a_betrayal","Las intrigas de ambos jugadores surten efecto y provocan que 1 Polis de cada jugador con 1 punto de población (si la hay) cambie de bando. Se toman los Proyectos finalizados. No puede ser la capital ni la misma Polis","5a");
+		GameEvent round5a_mercenaries = new GameEvent("round5a_mercenaries","Ambos jugadores pueden crear Hoplitas o Tirremes pagando 2 Platas por cada uno sin perder población de sus Polis.","5a");
+		GameEvent round5a_freeTradeWithPersia = new GameEvent("round5a_freeTradeWithPersia","Persia exige a ambos jugadores liberar las rutas comerciales con su territorio y su satrapía de Egipto. Si un jugador al final de su turno bloquea al oponente sus rutas comerciales con Persia o Egipto, pierde 1 Prestigio (excepto que tenga ya 10 Trirremes en el mar Jónico y el mar de Tracia.","5a");
+		GameEvent round5a_pacifism = new GameEvent("round5a_pacifism","En las dos capitales surgen voces a favor del fin del confrontamiento que amenazan con desestabilizar ambos liderazgos. En la acción de recaudar, Esparta en Laconia y Atenas en Ática pueden destinar los Hoplitas que deseen (Máximo la población de la capital) a sofocar a los pacifistas en lugar de recaudar. Cada Hoplita que destine otorga 1 Prestigio.","5a");
 		
-		GameEvent r5b_noEvent_01 = new GameEvent("r5b_noEvent_01","","5b");
-		GameEvent r5b_noEvent_02 = new GameEvent("r5b_noEvent_02","","5b");
-		GameEvent r5b_noEvent_03 = new GameEvent("r5b_noEvent_03","","5b");
-		GameEvent r5b_alcibiadesFledToSparta = new GameEvent("r5b_alcibiadesFledToSparta","El general ateniense Alcibíades es condenado a muerte y huye a Esparta. Logra convencer a sus antiguos enemigos de que deben recrudecer el enfrentamiento bélico. Durante toda esta ronda las batallas se dan con al menos 7 Hoplitas o Trirremes presentes en la región.","5b");
-		GameEvent r5b_superstition = new GameEvent("r5b_superstition","Se produce un eclipse lunar. Durante esta ronda los generales de ambos bandos dudan al ejercer su mando. En caso de empate en la diferencia de las cartas elegidas por los jugadores en un asalto, éste vuelve a repetirse. Se aplica en batallas terrestres y navales.","5b");
-		GameEvent r5b_etnaEruption = new GameEvent("r5b_etnaEruption","La erupción del volcán Etna en Sicilia disminuye la producción de la region en esta ronda. El que recaude Sicilia podrá emplear 3 Hoplitas para ello como máximo.","5b");
-		GameEvent r5b_hermocopidas = new GameEvent("r5b_hermocopidas","Todas las estelas fálicas de Hermes en Atenas aparecen mutiladas. La polis culpa a Esparta de influir en el escándalo religioso mientras los oligarcas infunden el pánico con la intención de derrocar la democracia ateniense.","5b");
-		GameEvent r5b_freeingSlaves = new GameEvent("r5b_freeingSlaves","Esparta libera 20.000 esclavos que trabajan en las minas de plata de Laurión en Ática. Los valores del Vino y el Aceite se igualan al de la Plata y el Trigo, al aumentar la demanda de bienes y disminuir la extracción.","5b");
-		GameEvent r5b_carthageLandedInSicily = new GameEvent("r5b_carthageLandedInSicily","Los generales cartagineses Anibal Magón e Himicón desembarcan con sus tropas en la región de Sicilia. El jugador que posea el ejército más poderoso en Sicilia pierde (hasta) 2 Hoplitas en el combate. Si hay empate ambos pierden (hasta) 2 Hoplitas. Si no hay presencia de Hoplitas griegos, la región es tomada por Cartago y no podrá ser recaudada esta ronda (poner ficha).","5b");
-		GameEvent r5b_mercenaries = new GameEvent("r5b_mercenaries","Ambos jugadores pueden crear Hoplitas o Trirremes pagando 2 Platas por cada uno sin perder población de sus Polis.","5b");
-		GameEvent r5b_freeTradeWithPersia = new GameEvent("r5b_freeTradeWithPersia","Persia exige a ambos jugadores liberar las rutas comerciales con su territorio y su satrapía de Egipto. Si un jugador al final de su turno bloquea al oponente sus rutas comerciales con Persia o Egipto pierde 1 Prestigio (excepto que tenga ya 10 Trirremes en el mar Jónico y el mar de Tracia.","5b");
-		GameEvent r5b_pacifism = new GameEvent("r5b_pacifism","En las dos capitales surgen voces a favor del fin del confrontamiento que amenazan con desestabilizar ambos liderazgos. en la acción de recaudar, Esparta en Laconia y Atenas en Ática pueden destinar los Hoplitas que deseen (Máximo la poblaci´´on de la capital) a sofocar a los pacifistas en lugar de recaudar. Cada Hoplita que destine otorga 1 Prestigio.","5b");
+		GameEvent round5b_noEvent_01 = new GameEvent("round5b_noEvent_01","","5b");
+		GameEvent round5b_noEvent_02 = new GameEvent("round5b_noEvent_02","","5b");
+		GameEvent round5b_noEvent_03 = new GameEvent("round5b_noEvent_03","","5b");
+		GameEvent round5b_alcibiadesFledToSparta = new GameEvent("round5b_alcibiadesFledToSparta","El general ateniense Alcibíades es condenado a muerte y huye a Esparta. Logra convencer a sus antiguos enemigos de que deben recrudecer el enfrentamiento bélico. Durante toda esta ronda las batallas se dan con al menos 7 Hoplitas o Trirremes presentes en la región.","5b");
+		GameEvent round5b_superstition = new GameEvent("round5b_superstition","Se produce un eclipse lunar. Durante esta ronda los generales de ambos bandos dudan al ejercer su mando. En caso de empate en la diferencia de las cartas elegidas por los jugadores en un asalto, éste vuelve a repetirse. Se aplica en batallas terrestres y navales.","5b");
+		GameEvent round5b_etnaEruption = new GameEvent("round5b_etnaEruption","La erupción del volcán Etna en Sicilia disminuye la producción de la region en esta ronda. El que recaude Sicilia podrá emplear 3 Hoplitas para ello como máximo.","5b");
+		GameEvent round5b_hermocopidas = new GameEvent("round5b_hermocopidas","Todas las estelas fálicas de Hermes en Atenas aparecen mutiladas. La polis culpa a Esparta de influir en el escándalo religioso mientras los oligarcas infunden el pánico con la intención de derrocar la democracia ateniense.","5b");
+		GameEvent round5b_freeingSlaves = new GameEvent("round5b_freeingSlaves","Esparta libera 20.000 esclavos que trabajan en las minas de plata de Laurión en Ática. Los valores del Vino y el Aceite se igualan al de la Plata y el Trigo, al aumentar la demanda de bienes y disminuir la extracción.","5b");
+		GameEvent round5b_carthageLandedInSicily = new GameEvent("round5b_carthageLandedInSicily","Los generales cartagineses Anibal Magón e Himicón desembarcan con sus tropas en la región de Sicilia. El jugador que posea el ejército más poderoso en Sicilia pierde (hasta) 2 Hoplitas en el combate. Si hay empate ambos pierden (hasta) 2 Hoplitas. Si no hay presencia de Hoplitas griegos, la región es tomada por Cartago y no podrá ser recaudada esta ronda (poner ficha).","5b");
+		GameEvent round5b_mercenaries = new GameEvent("round5b_mercenaries","Ambos jugadores pueden crear Hoplitas o Trirremes pagando 2 Platas por cada uno sin perder población de sus Polis.","5b");
+		GameEvent round5b_freeTradeWithPersia = new GameEvent("round5b_freeTradeWithPersia","Persia exige a ambos jugadores liberar las rutas comerciales con su territorio y su satrapía de Egipto. Si un jugador al final de su turno bloquea al oponente sus rutas comerciales con Persia o Egipto pierde 1 Prestigio (excepto que tenga ya 10 Trirremes en el mar Jónico y el mar de Tracia.","5b");
+		GameEvent round5b_pacifism = new GameEvent("round5b_pacifism","En las dos capitales surgen voces a favor del fin del confrontamiento que amenazan con desestabilizar ambos liderazgos. en la acción de recaudar, Esparta en Laconia y Atenas en Ática pueden destinar los Hoplitas que deseen (Máximo la poblaci´´on de la capital) a sofocar a los pacifistas en lugar de recaudar. Cada Hoplita que destine otorga 1 Prestigio.","5b");
 		
 		List<GameEvent> gameEventsList = new ArrayList<GameEvent>();
 		
-		gameEventsList.add(r3_noEvent_01);
-		gameEventsList.add(r3_earthquakeAtSparta);
-		gameEventsList.add(r3_persianFleetDestruction);
-		gameEventsList.add(r4_noEvent_01);
-		gameEventsList.add(r4_noEvent_02);
-		gameEventsList.add(r4_noEvent_03);
-		gameEventsList.add(r4_peasantRevolts);
-		gameEventsList.add(r4_periclesAge);
-		gameEventsList.add(r4_egyptRevoltsAgainstPersia);
-		gameEventsList.add(r4_treasuryTransfers);
-		gameEventsList.add(r4_murderOfThePersianKing);
-		gameEventsList.add(r4_betrayal);
-		gameEventsList.add(r5a_noEvent_01);
-		gameEventsList.add(r5a_noEvent_02);
-		gameEventsList.add(r5a_noEvent_03);
-		gameEventsList.add(r5a_greeceEnemies);
-		gameEventsList.add(r5a_greatCommanders);
-		gameEventsList.add(r5a_afterTheLongWalls);
-		gameEventsList.add(r5a_plagueAndHumiliation);
-		gameEventsList.add(r5a_murderOfThePersianKing);
-		gameEventsList.add(r5a_betrayal);
-		gameEventsList.add(r5a_mercenaries);
-		gameEventsList.add(r5a_freeTradeWithPersia);
-		gameEventsList.add(r5a_pacifism);
-		gameEventsList.add(r5b_noEvent_01);
-		gameEventsList.add(r5b_noEvent_02);
-		gameEventsList.add(r5b_noEvent_03);
-		gameEventsList.add(r5b_alcibiadesFledToSparta);
-		gameEventsList.add(r5b_superstition);
-		gameEventsList.add(r5b_etnaEruption);
-		gameEventsList.add(r5b_hermocopidas);
-		gameEventsList.add(r5b_freeingSlaves);
-		gameEventsList.add(r5b_carthageLandedInSicily);
-		gameEventsList.add(r5b_mercenaries);
-		gameEventsList.add(r5b_freeTradeWithPersia);
-		gameEventsList.add(r5b_pacifism);
+		gameEventsList.add(round3_noEvent_01);
+		gameEventsList.add(round3_earthquakeAtSparta);
+		gameEventsList.add(round3_persianFleetDestruction);
+		gameEventsList.add(round4_noEvent_01);
+		gameEventsList.add(round4_noEvent_02);
+		gameEventsList.add(round4_noEvent_03);
+		gameEventsList.add(round4_peasantRevolts);
+		gameEventsList.add(round4_periclesAge);
+		gameEventsList.add(round4_egyptRevoltsAgainstPersia);
+		gameEventsList.add(round4_treasuryTransfers);
+		gameEventsList.add(round4_murderOfThePersianKing);
+		gameEventsList.add(round4_betrayal);
+		gameEventsList.add(round5a_noEvent_01);
+		gameEventsList.add(round5a_noEvent_02);
+		gameEventsList.add(round5a_noEvent_03);
+		gameEventsList.add(round5a_greeceEnemies);
+		gameEventsList.add(round5a_greatCommanders);
+		gameEventsList.add(round5a_afterTheLongWalls);
+		gameEventsList.add(round5a_plagueAndHumiliation);
+		gameEventsList.add(round5a_murderOfThePersianKing);
+		gameEventsList.add(round5a_betrayal);
+		gameEventsList.add(round5a_mercenaries);
+		gameEventsList.add(round5a_freeTradeWithPersia);
+		gameEventsList.add(round5a_pacifism);
+		gameEventsList.add(round5b_noEvent_01);
+		gameEventsList.add(round5b_noEvent_02);
+		gameEventsList.add(round5b_noEvent_03);
+		gameEventsList.add(round5b_alcibiadesFledToSparta);
+		gameEventsList.add(round5b_superstition);
+		gameEventsList.add(round5b_etnaEruption);
+		gameEventsList.add(round5b_hermocopidas);
+		gameEventsList.add(round5b_freeingSlaves);
+		gameEventsList.add(round5b_carthageLandedInSicily);
+		gameEventsList.add(round5b_mercenaries);
+		gameEventsList.add(round5b_freeTradeWithPersia);
+		gameEventsList.add(round5b_pacifism);
 		
 	//// Round
 		Round theRound = new Round();
