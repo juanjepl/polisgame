@@ -7,13 +7,11 @@ public class MilitaryAction extends Action{
 		
 	}
 	
-	public void moveHoplite(Player player, Position initialPosition, Position finalPosition, Integer numberOfUnits){
+	public void moveHoplite(Player player, Position initialPosition, Position finalPosition, Integer numberOfUnits, Boolean multiMovement){
 		//TODO
-		// -> sobrecargar este método para hacer multimovimiento ( varios initial y final y varios numeros de unidades, todo con sus restricciones, por supuesto. )
 	}
-	public void moveTirreme(Player player, Sea initialSea, Sea finalSea, Integer numberOfUnits){
+	public void moveTirreme(Player player, Sea initialSea, Sea finalSea, Integer numberOfUnits, Boolean multiMovement){
 		//TODO
-		// (mismo modus operandi.)
 	}
 	public void siegePolis(Player player,Position initialPosition, Polis siegedPolis ){
 		//TODO
