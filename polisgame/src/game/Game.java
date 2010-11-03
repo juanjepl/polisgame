@@ -1,20 +1,21 @@
 package game;
 
 import java.util.List;
+import java.util.Map;
 
 public class Game {
 
 	private Player spartaPlayer;
 	private Player athensPlayer;
 	private List<Project> projectList;
-	private List<Position> gamePositions;
+	private Map<String,Position> gamePositions;
 	private List<GameEvent> gameEvents;
 	private MarketChart marketChart;
 	private Round round;
 	
 
 	
-	public Game(Player spartaPlayer, Player athensPlayer, List<Position> gamePositions, List<Project> projectList, List<GameEvent> gameEvents,Round round,MarketChart marketChart){
+	public Game(Player spartaPlayer, Player athensPlayer, Map<String,Position> gamePositions, List<Project> projectList, List<GameEvent> gameEvents,Round round,MarketChart marketChart){
 		this.spartaPlayer = spartaPlayer;
 		this.athensPlayer = athensPlayer;
 		this.gamePositions = gamePositions;
@@ -33,7 +34,7 @@ public class Game {
 		return athensPlayer;
 	}
 
-	public List<Position> getGamePositions() {
+	public Map<String,Position> getGamePositions() {
 		return gamePositions;
 	}
 
