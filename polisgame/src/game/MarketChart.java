@@ -14,49 +14,49 @@ public class MarketChart {
 	private Integer winePricePointer;
 	private Integer oilPricePointer;
 
-	private Vector<Integer> r3_prices = new Vector<Integer>();
-	private Vector<Integer> r4_prices = new Vector<Integer>();
-	private Vector<Integer> r5_prices = new Vector<Integer>();
+	private Vector<Integer> round3_prices = new Vector<Integer>();
+	private Vector<Integer> round4_prices = new Vector<Integer>();
+	private Vector<Integer> round5_prices = new Vector<Integer>();
 	
 	
 	public MarketChart(){
 		
 		// initializes the 3 vectors
-		r3_prices.add(3);
-		r3_prices.add(4);
-		r3_prices.add(4);
-		r3_prices.add(4);
-		r3_prices.add(4);
-		r3_prices.add(4);
-		r3_prices.add(4);
-		r3_prices.add(5);
-		r3_prices.add(5);
-		r3_prices.add(5);
-		r3_prices.add(5);
+		round3_prices.add(3);
+		round3_prices.add(4);
+		round3_prices.add(4);
+		round3_prices.add(4);
+		round3_prices.add(4);
+		round3_prices.add(4);
+		round3_prices.add(4);
+		round3_prices.add(5);
+		round3_prices.add(5);
+		round3_prices.add(5);
+		round3_prices.add(5);
 		
-		r4_prices.add(4);
-		r4_prices.add(5);
-		r4_prices.add(5);
-		r4_prices.add(5);
-		r4_prices.add(5);
-		r4_prices.add(6);
-		r4_prices.add(6);
-		r4_prices.add(7);
-		r4_prices.add(7);
-		r4_prices.add(8);
-		r4_prices.add(8);
+		round4_prices.add(4);
+		round4_prices.add(5);
+		round4_prices.add(5);
+		round4_prices.add(5);
+		round4_prices.add(5);
+		round4_prices.add(6);
+		round4_prices.add(6);
+		round4_prices.add(7);
+		round4_prices.add(7);
+		round4_prices.add(8);
+		round4_prices.add(8);
 		
-		r5_prices.add(5);
-		r5_prices.add(6);
-		r5_prices.add(6);
-		r5_prices.add(7);
-		r5_prices.add(7);
-		r5_prices.add(8);
-		r5_prices.add(9);
-		r5_prices.add(10);
-		r5_prices.add(11);
-		r5_prices.add(12);
-		r5_prices.add(13);
+		round5_prices.add(5);
+		round5_prices.add(6);
+		round5_prices.add(6);
+		round5_prices.add(7);
+		round5_prices.add(7);
+		round5_prices.add(8);
+		round5_prices.add(9);
+		round5_prices.add(10);
+		round5_prices.add(11);
+		round5_prices.add(12);
+		round5_prices.add(13);
 		
 		// pointers
 		metalPricePointer = 0;
@@ -66,10 +66,10 @@ public class MarketChart {
 		
 		
 		// round 3 default
-		metalPrice = r3_prices.get(metalPricePointer);
-		woodPrice = r3_prices.get(woodPricePointer);
-		winePrice = r3_prices.get(winePricePointer);
-		oilPrice = r3_prices.get(oilPricePointer);
+		metalPrice = round3_prices.get(metalPricePointer);
+		woodPrice = round3_prices.get(woodPricePointer);
+		winePrice = round3_prices.get(winePricePointer);
+		oilPrice = round3_prices.get(oilPricePointer);
 		
 		
 	}
@@ -88,13 +88,13 @@ public class MarketChart {
 			
 			// adjusts price
 			if(activeRound.equals("3")){
-				metalPrice = r3_prices.get(metalPricePointer);
+				metalPrice = round3_prices.get(metalPricePointer);
 			}
 			else if(activeRound.equals("4")){
-				metalPrice = r4_prices.get(metalPricePointer);
+				metalPrice = round4_prices.get(metalPricePointer);
 			}
 			else if((activeRound.equals("5a"))||(activeRound.equals("5b"))){
-				metalPrice = r5_prices.get(metalPricePointer);
+				metalPrice = round5_prices.get(metalPricePointer);
 			}		
 		}
 		
@@ -110,13 +110,13 @@ public class MarketChart {
 			
 			// adjusts price
 			if(activeRound.equals("3")){
-				woodPrice = r3_prices.get(woodPricePointer);
+				woodPrice = round3_prices.get(woodPricePointer);
 			}
 			else if(activeRound.equals("4")){
-				woodPrice = r4_prices.get(woodPricePointer);
+				woodPrice = round4_prices.get(woodPricePointer);
 			}
 			else if((activeRound.equals("5a"))||(activeRound.equals("5b"))){
-				woodPrice = r5_prices.get(woodPricePointer);
+				woodPrice = round5_prices.get(woodPricePointer);
 			}		
 		}
 		
@@ -132,13 +132,13 @@ public class MarketChart {
 			
 			// adjusts price
 			if(activeRound.equals("3")){
-				winePrice = r3_prices.get(winePricePointer);
+				winePrice = round3_prices.get(winePricePointer);
 			}
 			else if(activeRound.equals("4")){
-				winePrice = r4_prices.get(winePricePointer);
+				winePrice = round4_prices.get(winePricePointer);
 			}
 			else if((activeRound.equals("5a"))||(activeRound.equals("5b"))){
-				winePrice = r5_prices.get(winePricePointer);
+				winePrice = round5_prices.get(winePricePointer);
 			}		
 		}
 		
@@ -154,13 +154,13 @@ public class MarketChart {
 			
 			// adjusts price
 			if(activeRound.equals("3")){
-				oilPrice = r3_prices.get(oilPricePointer);
+				oilPrice = round3_prices.get(oilPricePointer);
 			}
 			else if(activeRound.equals("4")){
-				oilPrice = r4_prices.get(oilPricePointer);
+				oilPrice = round4_prices.get(oilPricePointer);
 			}
 			else if((activeRound.equals("5a"))||(activeRound.equals("5b"))){
-				oilPrice = r5_prices.get(oilPricePointer);
+				oilPrice = round5_prices.get(oilPricePointer);
 			}		
 		}
 	}
