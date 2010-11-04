@@ -3,8 +3,8 @@ package game;
 
 public class Hoplite extends Unit{
 	
-	public Hoplite(){
-		
+	public Hoplite(Player p){
+		super(p);
 	}
 
 }

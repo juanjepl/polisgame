@@ -12,13 +12,7 @@ public class ElementsInitializer {
 	public ElementsInitializer(){}
 	
 	public static Game InitializeGameElements(){
-
-//// PLAYERS
-		
-		List<String> players = 	TextModeUi.requestPlayerNames();
-		Player sparta = new Player(players.get(0));
-		Player athens = new Player(players.get(1));
-		
+	
 //// PROJECTS
 		Map<String,Integer> mapSocrates = new HashMap<String,Integer>();
 		mapSocrates.put("Silver", 6);
@@ -578,53 +572,60 @@ public class ElementsInitializer {
 		
 		Polis abdera = new Polis("Abdera",1,1,3,null,possibleProjectsAtAbdera,startSeasAtAbdera); // be careful with the null (no parent territory)
 		
-	//// ALL POSITIONS (list)
+	//// ALL POSITIONS (some maps)
 		
-		Map<String,Position> positionsMap = new HashMap<String,Position>();
-		positionsMap.put("Laconia", laconia); // Territories
-		positionsMap.put("Mesenia",mesenia);
-		positionsMap.put("Sicilia",sicilia);
-		positionsMap.put("Megaris",megaris);
-		positionsMap.put("Arcadia",arcadia);
-		positionsMap.put("Acaya",acaya);
-		positionsMap.put("Jonia",jonia);
-		positionsMap.put("Atica",atica);
-		positionsMap.put("Beocia",beocia);
-		positionsMap.put("Macedonia",macedonia);
-		positionsMap.put("Tesalia",tesalia);
-		positionsMap.put("Acarnania",acarnania);
-		positionsMap.put("JonicoSea",jonicoSea); // Seas
-		positionsMap.put("MirtosSea",mirtosSea);
-		positionsMap.put("EsporadasSea",esporadasSea);
-		positionsMap.put("CicladasSea",cicladasSea);
-		positionsMap.put("TraciaSea",traciaSea);
-		positionsMap.put("SpartaDock",spartaDock); // Trade Dock
-		positionsMap.put("AthensDock",athensDock);
-		positionsMap.put("Iliria",iliria); // Markets
-		positionsMap.put("Tracia",tracia);
-		positionsMap.put("EuxinosPontos",euxinosPontos);
-		positionsMap.put("ImperioPersa",imperioPersa);
-		positionsMap.put("Egipto",egipto);
-		positionsMap.put("Epidamnos",epidamnos); // Polis
-		positionsMap.put("Gela",gela);
-		positionsMap.put("Siracusa",siracusa);
-		positionsMap.put("Corcira",corcira);
-		positionsMap.put("Naupacto",naupacto);
-		positionsMap.put("Pidna",pidna);
-		positionsMap.put("Pilos",pilos);
-		positionsMap.put("Esparta",esparta);
-		positionsMap.put("Gition",gition);
-		positionsMap.put("Argos",argos);
-		positionsMap.put("Corinto",corinto);
-		positionsMap.put("Tebas",tebas);
-		positionsMap.put("Potidea",potidea);
-		positionsMap.put("Calcis",calcis);
-		positionsMap.put("Atenas",atenas);
-		positionsMap.put("Quios",quios);
-		positionsMap.put("Samos",samos);
-		positionsMap.put("Abdera",abdera);
+		Map<String,Territory> territoriesMap = new HashMap<String,Territory>();
+		territoriesMap.put("Laconia",laconia);
+		territoriesMap.put("Mesenia",mesenia);
+		territoriesMap.put("Sicilia",sicilia);
+		territoriesMap.put("Megaris",megaris);
+		territoriesMap.put("Arcadia",arcadia);
+		territoriesMap.put("Acaya",acaya);
+		territoriesMap.put("Jonia",jonia);
+		territoriesMap.put("Atica",atica);
+		territoriesMap.put("Beocia",beocia);
+		territoriesMap.put("Macedonia",macedonia);
+		territoriesMap.put("Tesalia",tesalia);
+		territoriesMap.put("Acarnania",acarnania);
 		
-				
+		Map<String,Sea> seasMap = new HashMap<String,Sea>();
+		seasMap.put("JonicoSea",jonicoSea);
+		seasMap.put("MirtosSea",mirtosSea);
+		seasMap.put("EsporadasSea",esporadasSea);
+		seasMap.put("CicladasSea",cicladasSea);
+		seasMap.put("TraciaSea",traciaSea);
+		
+		Map<String,TradeDock> tradeDocksMap = new HashMap<String,TradeDock>();
+		tradeDocksMap.put("SpartaDock",spartaDock);
+		tradeDocksMap.put("AthensDock",athensDock);
+		
+		Map<String,Market> marketsMap = new HashMap<String,Market>();
+		marketsMap.put("Iliria",iliria);
+		marketsMap.put("Tracia",tracia);
+		marketsMap.put("EuxinosPontos",euxinosPontos);
+		marketsMap.put("ImperioPersa",imperioPersa);
+		marketsMap.put("Egipto",egipto);
+		
+		Map<String,Polis> polisMap = new HashMap<String,Polis>();
+		polisMap.put("Epidamnos",epidamnos);
+		polisMap.put("Gela",gela);
+		polisMap.put("Siracusa",siracusa);
+		polisMap.put("Corcira",corcira);
+		polisMap.put("Naupacto",naupacto);
+		polisMap.put("Pidna",pidna);
+		polisMap.put("Pilos",pilos);
+		polisMap.put("Esparta",esparta);
+		polisMap.put("Gition",gition);
+		polisMap.put("Argos",argos);
+		polisMap.put("Corinto",corinto);
+		polisMap.put("Tebas",tebas);
+		polisMap.put("Potidea",potidea);
+		polisMap.put("Calcis",calcis);
+		polisMap.put("Atenas",atenas);
+		polisMap.put("Quios",quios);
+		polisMap.put("Samos",samos);
+		polisMap.put("Abdera",abdera);
+		
 	//// GAME EVENTS
 		GameEvent round3_noEvent_01 = new GameEvent("round3_noEvent_01","","3"); 
 		GameEvent round3_earthquakeAtSparta = new GameEvent("round3_rearthquakeAtSparta","Esparta sufre un violento terremoto que los mesenios aprovechan para rebelarse, mientras los navíos cartagineses apoyan la causa espartana cuestionando el dominio ateniense en las cercanías de Sicilia.","3");
@@ -711,12 +712,17 @@ public class ElementsInitializer {
 	//// Market Chart
 		MarketChart theMarketChart = new MarketChart();
 		
+//// PLAYERS
+		
+		List<String> players = 	TextModeUi.requestPlayerNames();
+		Player sparta = new Player(players.get(0));
+		Player athens = new Player(players.get(1));
+		
+
 		
 //// FINALLY, CREATE THE GAME:
 		
-		Game polisGame = new Game(sparta,athens,positionsMap,gameProjects,gameEventsList,theRound,theMarketChart); // THIS IS A VERY BIG CALL (SERIOUSLY)
-		
-		TextModeUi.loadedGameElements(); // only screen information
+		Game polisGame = new Game(sparta,athens,territoriesMap,seasMap,tradeDocksMap,marketsMap,polisMap,gameProjects,gameEventsList,theRound,theMarketChart);
 		
 		return polisGame;
 		
