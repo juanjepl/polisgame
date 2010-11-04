@@ -37,13 +37,5 @@ public class TextModeUi {
 	
 	}
 	
-	public static void loadedGameElements(){
-		System.out.println("All Game Elements Loaded . . . . . OK");
-	}
-	
-	public static void loadedStandardStartPosition(){
-		System.out.println("Standard Start Position Loaded . . OK");
-	}
-	
-	
+
 }

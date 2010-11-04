@@ -3,7 +3,7 @@ package game;
 
 public class Proxenus extends Unit{
 
-	public Proxenus(){
-		
+	public Proxenus(Player p){
+		super(p);
 	}
 }
