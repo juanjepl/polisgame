@@ -9,14 +9,14 @@ import java.util.HashMap;
 
 public class PolReader { // Reads .pol files
 	
-	/*public PolReader(){}
+	public PolReader(){}
 	
 	public Map<String,Sea> readSeas(){
 		Map<String,Sea> seasMap = new HashMap<String,Sea>();
 		return seasMap;
 	}
 		
-	*/	
+		
 	
 	
 	
