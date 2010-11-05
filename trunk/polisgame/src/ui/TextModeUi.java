@@ -5,12 +5,12 @@ import java.io.InputStreamReader;
 import java.util.List;
 import java.util.ArrayList;
 
-public class TextModeUi {
+public class TextModeUi implements IUserInterface{
 
 	public TextModeUi(){}
 	
 	// This method request player's name and returns them.
-	public static List<String> requestPlayerNames(){
+	public List<String> requestPlayerNames(){
 	
 	String spartaPlayer = "";	
 	String athensPlayer = "";

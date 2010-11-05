@@ -13,7 +13,17 @@ public class ElementsInitializer {
 	public ElementsInitializer(){}
 	
 	public static Game InitializeGameElements(){ // TODO must be SERIOUSLY MODULARIZED using external files
-	
+
+//// PLAYERS
+		
+		TextModeUi userInterface = new TextModeUi(); // Creates a user interface object -> in the future, choose graphical/text mode in cfg. 
+		List<String> players = 	userInterface.requestPlayerNames();
+		
+		Player sparta = new Player(players.get(0));
+		Player athens = new Player(players.get(1));
+		
+		
+		
 //// PROJECTS
 		Map<String,Integer> mapSocrates = new HashMap<String,Integer>();
 		mapSocrates.put("Silver", 6);
@@ -372,7 +382,7 @@ public class ElementsInitializer {
 		Territory acarnania = new Territory("Acarnania",acarnaniaResources);
 		
 	//// Seas creation
-		//FIXME -> OBSOLETE, now: external files
+		//FIXME -> OBSOLETE, now: external files -> not delete for the moment, first remove its coupling with the others initializations
 		Sea jonicoSea = new Sea("JonicoSea");
 		Sea mirtosSea = new Sea("MirtosSea") ;
 		Sea esporadasSea = new Sea("EsporadasSea") ;
@@ -708,13 +718,6 @@ public class ElementsInitializer {
 	//// Market Chart
 		MarketChart theMarketChart = new MarketChart();
 		
-//// PLAYERS
-		
-		List<String> players = 	TextModeUi.requestPlayerNames();
-		Player sparta = new Player(players.get(0));
-		Player athens = new Player(players.get(1));
-		
-
 		
 //// FINALLY, CREATE THE GAME:
 		
