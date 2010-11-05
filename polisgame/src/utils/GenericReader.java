@@ -27,15 +27,13 @@ public class GenericReader {
 			br = new BufferedReader(fr);
 
 			String line;
-			while ((line = br.readLine()) != null)
-				
-				if(line.startsWith("#"))
+			while ((line = br.readLine()) != null) // TODO a white line it's null?? test it.
+				if(line.startsWith("#")) // in order to add some comments in texts
 				{
 					continue;
 				}
 				
 				fileContents.add(line);
-				
 	    } 
 	    
 	    catch (Exception e) {

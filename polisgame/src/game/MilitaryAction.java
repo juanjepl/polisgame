@@ -15,7 +15,7 @@ public class MilitaryAction extends Action{
 	}
 	public void siegePolis(Player player,Position initialPosition, Polis siegedPolis ){
 		//TODO
-		// hacer subuso del moveHoplite, no necesito el numero, ya que sera forzosamente el q digan las reglas, si se puede si , si no no
+		// not needs numberOfUnits (u can or NOT can siegue a polis)
 		
 	}
 	public void plunderTerritory(Player player){

@@ -11,7 +11,7 @@ public class ElementsInitializer {
 
 	public ElementsInitializer(){}
 	
-	public static Game InitializeGameElements(){
+	public static Game InitializeGameElements(){ // TODO must be SERIOUSLY MODULARIZED using external files
 	
 //// PROJECTS
 		Map<String,Integer> mapSocrates = new HashMap<String,Integer>();

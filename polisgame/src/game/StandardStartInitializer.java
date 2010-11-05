@@ -1,6 +1,6 @@
 package game;
 
-public class StandardStartInitializer {
+public class StandardStartInitializer { //TODO also needs initialize proyects and game events
 
 	public StandardStartInitializer(){}
 	
