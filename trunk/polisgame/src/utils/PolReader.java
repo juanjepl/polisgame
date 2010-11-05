@@ -11,7 +11,7 @@ public class PolReader { // Reads .pol files
 	public PolReader(){}
 	
 	// This method reads all Seas files and returns a map with the Sea objects
-	public Map<String,Sea> readSeas(){
+	public static Map<String,Sea> readSeas(){
 		String pathOfSeas = "/data/seas/";
 		Map<String,Sea> seasMap = new HashMap<String,Sea>();
 

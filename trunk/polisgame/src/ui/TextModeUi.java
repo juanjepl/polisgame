@@ -9,6 +9,7 @@ public class TextModeUi {
 
 	public TextModeUi(){}
 	
+	// This method request player's name and returns them.
 	public static List<String> requestPlayerNames(){
 	
 	String spartaPlayer = "";	
@@ -30,7 +31,7 @@ public class TextModeUi {
 		//TODO
 	}
 	
-	List<String> twoNames = new ArrayList<String>(2); // 
+	List<String> twoNames = new ArrayList<String>(2);
 	twoNames.add(spartaPlayer);
 	twoNames.add(athensPlayer);
 	return twoNames;

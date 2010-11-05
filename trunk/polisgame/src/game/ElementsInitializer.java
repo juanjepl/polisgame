@@ -6,6 +6,7 @@ import java.util.List;
 import java.util.Map;
 import java.util.Vector;
 import ui.TextModeUi;
+import utils.PolReader;
 
 public class ElementsInitializer {
 
@@ -371,7 +372,7 @@ public class ElementsInitializer {
 		Territory acarnania = new Territory("Acarnania",acarnaniaResources);
 		
 	//// Seas creation
-		
+		//FIXME -> OBSOLETE, now: external files
 		Sea jonicoSea = new Sea("JonicoSea");
 		Sea mirtosSea = new Sea("MirtosSea") ;
 		Sea esporadasSea = new Sea("EsporadasSea") ;
@@ -588,12 +589,7 @@ public class ElementsInitializer {
 		territoriesMap.put("Tesalia",tesalia);
 		territoriesMap.put("Acarnania",acarnania);
 		
-		Map<String,Sea> seasMap = new HashMap<String,Sea>();
-		seasMap.put("JonicoSea",jonicoSea);
-		seasMap.put("MirtosSea",mirtosSea);
-		seasMap.put("EsporadasSea",esporadasSea);
-		seasMap.put("CicladasSea",cicladasSea);
-		seasMap.put("TraciaSea",traciaSea);
+		Map<String,Sea> seasMap = PolReader.readSeas(); // new-using-external-files-call
 		
 		Map<String,TradeDock> tradeDocksMap = new HashMap<String,TradeDock>();
 		tradeDocksMap.put("SpartaDock",spartaDock);
