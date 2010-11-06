@@ -10,7 +10,6 @@ public class Round {
 	
 	public Round(){
 		name = "3";
-		
 		turnList = new LinkedList<Turn>();
 	}
 	
