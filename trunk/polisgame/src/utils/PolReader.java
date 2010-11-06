@@ -12,6 +12,7 @@ import game.Market;
 import java.util.Map;
 import java.util.HashMap;
 import java.util.List;
+import java.util.ArrayList;
 
 
 public class PolReader { // Reads .pol files
@@ -50,28 +51,37 @@ public class PolReader { // Reads .pol files
 	
 	public static List<Project> readProjects(){
 		
+		List<Project> projectList = new ArrayList<Project>();
 		//TODO
-		
+		return projectList;
 	}
 	
 	public static Map<String,Market> readMarkets(){
 		
+		Map<String,Market> marketsMap = new HashMap<String,Market>();
 		//TODO
+		return marketsMap;
 	}
 	
 	public static List<GameEvent> readGameEvents(){
 		
+		List<GameEvent> gameEventsList = new ArrayList<GameEvent>();
 		//TODO
+		return gameEventsList;
 	}
 	
 	public static Map<String,Polis> readPolis(){
 		
+		Map<String,Polis> polisMap = new HashMap<String,Polis>();
 		//TODO
+		return polisMap;
 	}
 	
 	public static Map<String,Territory> readTerritories(){
 		
+		Map<String,Territory> territoriesMap = new HashMap<String,Territory>();
 		//TODO
+		return territoriesMap;
 	}
 	
 }
