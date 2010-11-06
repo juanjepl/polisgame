@@ -4,8 +4,8 @@ package game;
 
 public class Sea extends Position{
 
-	public Sea(String name){
-		super(name);
+	public Sea(String sysName,String name){
+		super(sysName,name);
 
 	}
 }

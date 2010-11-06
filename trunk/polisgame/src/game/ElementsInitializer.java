@@ -368,39 +368,39 @@ public class ElementsInitializer {
 		
 		
 	//// Territories creation	
-		Territory laconia = new Territory("Laconia",laconiaResources);
-		Territory mesenia = new Territory("Mesenia",meseniaResources);
-		Territory sicilia = new Territory("Sicilia",siciliaResources);
-		Territory megaris = new Territory("Megaris",megarisResources);
-		Territory arcadia = new Territory("Arcadia",arcadiaResources);
-		Territory acaya = new Territory("Acaya",acayaResources);
-		Territory jonia = new Territory("Jonia",joniaResources);
-		Territory atica = new Territory("Atica",aticaResources);
-		Territory beocia = new Territory("Beocia",beociaResources);
-		Territory macedonia = new Territory("Macedonia",macedoniaResources);
-		Territory tesalia = new Territory("Tesalia",tesaliaResources);
-		Territory acarnania = new Territory("Acarnania",acarnaniaResources);
+		Territory laconia = new Territory("Laconia","Laconia",laconiaResources);
+		Territory mesenia = new Territory("Mesenia","Mesenia",meseniaResources);
+		Territory sicilia = new Territory("Sicilia","Sicilia",siciliaResources);
+		Territory megaris = new Territory("Megaris","Megaris",megarisResources);
+		Territory arcadia = new Territory("Arcadia","Arcadia",arcadiaResources);
+		Territory acaya = new Territory("Acaya","Acaya",acayaResources);
+		Territory jonia = new Territory("Jonia","Jonia",joniaResources);
+		Territory atica = new Territory("Atica","Atica",aticaResources);
+		Territory beocia = new Territory("Beocia","Beocia",beociaResources);
+		Territory macedonia = new Territory("Macedonia","Macedonia",macedoniaResources);
+		Territory tesalia = new Territory("Tesalia","Tesalia",tesaliaResources);
+		Territory acarnania = new Territory("Acarnania","Acarnania",acarnaniaResources);
 		
 	//// Seas creation
 		//FIXME -> OBSOLETE, now: external files -> not delete for the moment, first remove its coupling with the others initializations
-		Sea jonicoSea = new Sea("JonicoSea");
-		Sea mirtosSea = new Sea("MirtosSea") ;
-		Sea esporadasSea = new Sea("EsporadasSea") ;
-		Sea cicladasSea = new Sea("CicladasSea") ;
-		Sea traciaSea = new Sea("TraciaSea") ;
+		Sea jonicoSea = new Sea("JonicoSea","JonicoSea");
+		Sea mirtosSea = new Sea("MirtosSea","MirtosSea") ;
+		Sea esporadasSea = new Sea("EsporadasSea","EsporadasSea") ;
+		Sea cicladasSea = new Sea("CicladasSea","CicladasSea") ;
+		Sea traciaSea = new Sea("TraciaSea","TraciaSea") ;
 		
 	//// TradeDocks creation
 		
-		TradeDock spartaDock = new TradeDock("SpartaDock");
-		TradeDock athensDock = new TradeDock("AthensDock") ;
+		TradeDock spartaDock = new TradeDock("SpartaDock","SpartaDock");
+		TradeDock athensDock = new TradeDock("AthensDock","AthensDock") ;
 	
 	//// Markets creation	
 		
-		Market iliria = new Market("Iliria") ;
-		Market tracia = new Market("Tracia") ;
-		Market euxinosPontos = new Market("EuxinosPontos") ;
-		Market imperioPersa = new Market("ImperioPersa") ;
-		Market egipto = new Market("Egipto") ;
+		Market iliria = new Market("Iliria","Iliria") ;
+		Market tracia = new Market("Tracia","Tracia") ;
+		Market euxinosPontos = new Market("EuxinosPontos","EuxinosPontos") ;
+		Market imperioPersa = new Market("ImperioPersa","ImperioPersa") ;
+		Market egipto = new Market("Egipto","Egipto") ;
 		
 //// POLIS CREATION
 	// epidamnos	
@@ -411,7 +411,7 @@ public class ElementsInitializer {
 		List<Sea> startSeasAtEpidamnos = new ArrayList<Sea>();
 		startSeasAtEpidamnos.add(jonicoSea);
 		
-		Polis epidamnos = new Polis("Epidamnos",1,1,3,null,possibleProjectsAtEpidamnos,startSeasAtEpidamnos); // be careful with the null (no parent territory)
+		Polis epidamnos = new Polis("Epidamnos","Epidamnos",1,1,3,null,possibleProjectsAtEpidamnos,startSeasAtEpidamnos); // be careful with the null (no parent territory)
 		
 	// gela	
 		List<Project> possibleProjectsAtGela = new ArrayList<Project>();
@@ -421,7 +421,7 @@ public class ElementsInitializer {
 		List<Sea> startSeasAtGela = new ArrayList<Sea>();
 		startSeasAtGela.add(jonicoSea);
 		
-		Polis gela = new Polis("Gela",3,1,5,sicilia,possibleProjectsAtGela,startSeasAtGela);
+		Polis gela = new Polis("Gela","Gela",3,1,5,sicilia,possibleProjectsAtGela,startSeasAtGela);
 		
 	// siracusa
 		List<Project> possibleProjectsAtSiracusa = new ArrayList<Project>();
@@ -434,7 +434,7 @@ public class ElementsInitializer {
 		List<Sea> startSeasAtSiracusa = new ArrayList<Sea>();
 		startSeasAtSiracusa.add(jonicoSea);
 		
-		Polis siracusa = new Polis("Siracusa",4,2,7,sicilia,possibleProjectsAtSiracusa,startSeasAtSiracusa);
+		Polis siracusa = new Polis("Siracusa","Siracusa",4,2,7,sicilia,possibleProjectsAtSiracusa,startSeasAtSiracusa);
 		
 	// corcira
 		List<Project> possibleProjectsAtCorcira = new ArrayList<Project>();// Has no projects for the moment
@@ -442,7 +442,7 @@ public class ElementsInitializer {
 		List<Sea> startSeasAtCorcira = new ArrayList<Sea>();
 		startSeasAtCorcira.add(jonicoSea);
 		
-		Polis corcira = new Polis("Corcira",2,1,3,acarnania,possibleProjectsAtCorcira,startSeasAtCorcira);
+		Polis corcira = new Polis("Corcira","Corcira",2,1,3,acarnania,possibleProjectsAtCorcira,startSeasAtCorcira);
 		
 	// naupacto
 		List<Project> possibleProjectsAtNaupacto = new ArrayList<Project>(); // Has no projects for the moment
@@ -450,7 +450,7 @@ public class ElementsInitializer {
 		List<Sea> startSeasAtNaupacto = new ArrayList<Sea>();
 		startSeasAtNaupacto.add(jonicoSea);
 		
-		Polis naupacto = new Polis("Naupacto",1,1,2,tesalia,possibleProjectsAtNaupacto,startSeasAtNaupacto);
+		Polis naupacto = new Polis("Naupacto","Naupacto",1,1,2,tesalia,possibleProjectsAtNaupacto,startSeasAtNaupacto);
 		
 	// pidna
 		List<Project> possibleProjectsAtPidna = new ArrayList<Project>();
@@ -460,7 +460,7 @@ public class ElementsInitializer {
 		List<Sea> startSeasAtPidna = new ArrayList<Sea>();
 		startSeasAtPidna.add(traciaSea);
 		
-		Polis pidna = new Polis("Pidna",2,1,3,macedonia,possibleProjectsAtPidna,startSeasAtPidna);
+		Polis pidna = new Polis("Pidna","Pidna",2,1,3,macedonia,possibleProjectsAtPidna,startSeasAtPidna);
 		
 	// pilos
 		List<Project> possibleProjectsAtPilos = new ArrayList<Project>(); // Has no projects for the moment
@@ -468,7 +468,7 @@ public class ElementsInitializer {
 		List<Sea> startSeasAtPilos = new ArrayList<Sea>();
 		startSeasAtPilos.add(jonicoSea);
 		
-		Polis pilos = new Polis("Pilos",2,1,3,mesenia,possibleProjectsAtPilos,startSeasAtPilos);
+		Polis pilos = new Polis("Pilos","Pilos",2,1,3,mesenia,possibleProjectsAtPilos,startSeasAtPilos);
 		
 	// esparta
 		List<Project> possibleProjectsAtEsparta = new ArrayList<Project>();
@@ -481,7 +481,7 @@ public class ElementsInitializer {
 		
 		List<Sea> startSeasAtEsparta = new ArrayList<Sea>(); // Has no sea for the moment
 		
-		Polis esparta = new Polis("Esparta",4,3,8,laconia,possibleProjectsAtEsparta,startSeasAtEsparta);
+		Polis esparta = new Polis("Esparta","Esparta",4,3,8,laconia,possibleProjectsAtEsparta,startSeasAtEsparta);
 		
 	// gition
 		List<Project> possibleProjectsAtGition = new ArrayList<Project>(); // Has no projects for the moment
@@ -489,7 +489,7 @@ public class ElementsInitializer {
 		List<Sea> startSeasAtGition = new ArrayList<Sea>();
 		startSeasAtGition.add(mirtosSea);
 
-		Polis gition = new Polis("Gition",1,1,2,laconia,possibleProjectsAtGition,startSeasAtGition);
+		Polis gition = new Polis("Gition","Gition",1,1,2,laconia,possibleProjectsAtGition,startSeasAtGition);
 		
 	// argos	
 		List<Project> possibleProjectsAtArgos = new ArrayList<Project>();
@@ -499,7 +499,7 @@ public class ElementsInitializer {
 		List<Sea> startSeasAtArgos = new ArrayList<Sea>();
 		startSeasAtArgos.add(mirtosSea);
 		
-		Polis argos = new Polis("Argos",3,1,5,arcadia,possibleProjectsAtArgos,startSeasAtArgos);
+		Polis argos = new Polis("Argos","Argos",3,1,5,arcadia,possibleProjectsAtArgos,startSeasAtArgos);
 		
 	// corinto
 		List<Project> possibleProjectsAtCorinto = new ArrayList<Project>();
@@ -512,7 +512,7 @@ public class ElementsInitializer {
 		startSeasAtCorinto.add(jonicoSea);
 		startSeasAtCorinto.add(cicladasSea);
 		
-		Polis corinto = new Polis("Corinto",4,2,6,megaris,possibleProjectsAtCorinto,startSeasAtCorinto);
+		Polis corinto = new Polis("Corinto","Corinto",4,2,6,megaris,possibleProjectsAtCorinto,startSeasAtCorinto);
 		
 	// tebas
 		List<Project> possibleProjectsAtTebas = new ArrayList<Project>();
@@ -521,7 +521,7 @@ public class ElementsInitializer {
 		
 		List<Sea> startSeasAtTebas = new ArrayList<Sea>(); // Has no sea for the moment
 		
-		Polis tebas = new Polis("Tebas",3,1,5,beocia,possibleProjectsAtTebas,startSeasAtTebas);
+		Polis tebas = new Polis("Tebas","Tebas",3,1,5,beocia,possibleProjectsAtTebas,startSeasAtTebas);
 		
 	// potidea
 		List<Project> possibleProjectsAtPotidea = new ArrayList<Project>();
@@ -531,7 +531,7 @@ public class ElementsInitializer {
 		List<Sea> startSeasAtPotidea = new ArrayList<Sea>();
 		startSeasAtPotidea.add(traciaSea);
 		
-		Polis potidea = new Polis("Potidea",2,1,3,macedonia,possibleProjectsAtPotidea,startSeasAtPotidea);
+		Polis potidea = new Polis("Potidea","Potidea",2,1,3,macedonia,possibleProjectsAtPotidea,startSeasAtPotidea);
 		
 	// calcis
 		List<Project> possibleProjectsAtCalcis = new ArrayList<Project>(); // Has no projects for the moment
@@ -539,7 +539,7 @@ public class ElementsInitializer {
 		List<Sea> startSeasAtCalcis = new ArrayList<Sea>();
 		startSeasAtCalcis.add(cicladasSea);
 		
-		Polis calcis = new Polis("Calcis",1,1,2,atica,possibleProjectsAtCalcis,startSeasAtCalcis);
+		Polis calcis = new Polis("Calcis","Calcis",1,1,2,atica,possibleProjectsAtCalcis,startSeasAtCalcis);
 		
 	// atenas
 		List<Project> possibleProjectsAtAtenas = new ArrayList<Project>();
@@ -553,7 +553,7 @@ public class ElementsInitializer {
 		List<Sea> startSeasAtAtenas = new ArrayList<Sea>();
 		startSeasAtAtenas.add(cicladasSea);
 		
-		Polis atenas = new Polis("Atenas",5,3,10,atica,possibleProjectsAtAtenas,startSeasAtAtenas);
+		Polis atenas = new Polis("Atenas","Atenas",5,3,10,atica,possibleProjectsAtAtenas,startSeasAtAtenas);
 		
 	// quios
 		List<Project> possibleProjectsAtQuios = new ArrayList<Project>(); // Has no projects for the moment
@@ -561,7 +561,7 @@ public class ElementsInitializer {
 		List<Sea> startSeasAtQuios = new ArrayList<Sea>();
 		startSeasAtQuios.add(esporadasSea);
 		
-		Polis quios = new Polis("Quios",2,1,3,jonia,possibleProjectsAtQuios,startSeasAtQuios);
+		Polis quios = new Polis("Quios","Quios",2,1,3,jonia,possibleProjectsAtQuios,startSeasAtQuios);
 		
 	// samos
 		List<Project> possibleProjectsAtSamos = new ArrayList<Project>();
@@ -571,7 +571,7 @@ public class ElementsInitializer {
 		List<Sea> startSeasAtSamos = new ArrayList<Sea>();
 		startSeasAtSamos.add(esporadasSea);
 		
-		Polis samos = new Polis("Samos",3,2,6,jonia,possibleProjectsAtSamos,startSeasAtSamos);
+		Polis samos = new Polis("Samos","Samos",3,2,6,jonia,possibleProjectsAtSamos,startSeasAtSamos);
 		
 	// abdera
 		List<Project> possibleProjectsAtAbdera = new ArrayList<Project>();
@@ -581,7 +581,7 @@ public class ElementsInitializer {
 		List<Sea> startSeasAtAbdera = new ArrayList<Sea>();
 		startSeasAtAbdera.add(traciaSea);
 		
-		Polis abdera = new Polis("Abdera",1,1,3,null,possibleProjectsAtAbdera,startSeasAtAbdera); // be careful with the null (no parent territory)
+		Polis abdera = new Polis("Abdera","Abdera",1,1,3,null,possibleProjectsAtAbdera,startSeasAtAbdera); // be careful with the null (no parent territory)
 		
 	//// ALL POSITIONS (some maps)
 		

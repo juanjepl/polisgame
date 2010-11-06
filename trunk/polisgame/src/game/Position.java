@@ -4,11 +4,13 @@ import java.util.List;
 import java.util.LinkedList;
 
 public abstract class Position {
+	private String sysName;
 	private String name;
 	private List<Unit> units;
 	
 	
-	public Position(String name){
+	public Position(String sysName,String name){
+		this.sysName = sysName;
 		this.name = name;
 		this.units = new LinkedList<Unit>();
 	}
@@ -31,5 +33,9 @@ public abstract class Position {
 	
 	public void removeUnit(Unit unit){
 		//TODO
+	}
+
+	public String getSysName() {
+		return sysName;
 	}
 }
