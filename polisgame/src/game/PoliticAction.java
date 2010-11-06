@@ -3,6 +3,8 @@ package game;
 
 public class PoliticAction extends Action{
 
+	private final String actionType = "politicAction";
+	
 	public PoliticAction(){}
 	
 	public void startProyect(Player player, Project project, Polis polis){
@@ -20,5 +22,10 @@ public class PoliticAction extends Action{
 	public void civilWar(Player player, Polis designatedPolis){
 		//TODO
 	}
+
+	public String getActionType() {
+		return actionType;
+	}
+	
 	
 }
