@@ -19,7 +19,7 @@ public class PolReader { // Reads .pol files
 		
 		
 		for(List<String> seaInfo:seasTexts){
-			seasMap.put(seaInfo.get(0), new Sea(seaInfo.get(0))); //TODO not tested!!
+			seasMap.put(seaInfo.get(0), new Sea(seaInfo.get(0),seaInfo.get(1))); //TODO not tested!!
 		}
 		
 		return seasMap;

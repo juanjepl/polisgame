@@ -14,8 +14,8 @@ public class Polis extends Position{
 	private Territory polisTerritory;
 	private List<Sea> polisSeas;
 	
-	public Polis(String name, Integer basePopulation, Integer maxGrowning, Integer maxPopulation, Territory polisTerritory, List<Project> possiblesProjects, List<Sea> polisSeas){
-		super(name);
+	public Polis(String sysName,String name, Integer basePopulation, Integer maxGrowning, Integer maxPopulation, Territory polisTerritory, List<Project> possiblesProjects, List<Sea> polisSeas){
+		super(sysName,name);
 		this.basePopulation = basePopulation;
 		this.maxGrowning = maxGrowning;
 		this.maxPopulation = maxPopulation;

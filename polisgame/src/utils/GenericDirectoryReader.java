@@ -18,7 +18,7 @@ public class GenericDirectoryReader {
 		String filesInDirectory[] = directory.list();
 		
 		for(String f:filesInDirectory){	
-			if(f.endsWith(".pol")){
+			if(f.endsWith(".pol")){			//TODO not tested...
 				directoryFiles.add(GenericReader.getFileContents(f)); // adds the list to the list
 			}
 		}

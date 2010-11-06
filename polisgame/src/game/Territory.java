@@ -9,8 +9,8 @@ public class Territory extends Position{
 	private Map<String,Vector<Integer>> resources;
 	private Boolean plundered;
 	
-	public Territory(String name, Map<String,Vector<Integer>> resources){
-		super(name);
+	public Territory(String sysName,String name, Map<String,Vector<Integer>> resources){
+		super(sysName,name);
 		this.resources = resources;
 		this.plundered = false;
 		
