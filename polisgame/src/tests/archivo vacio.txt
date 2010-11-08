@@ -1,2 +1,0 @@
-despues de pasar turno el otro jugador debe pagar para seguir jugando
-poner atributo para marcar jugador que ha pasado turno
