@@ -13,9 +13,11 @@ public class Player {
 	private Integer oil;
 	private Integer wheat;
 	private Integer silver;
+	private Boolean hasPassedTurn;
 	
 	public Player(String name){
 		this.name = name;
+		hasPassedTurn = false;
 		playerPolis = new LinkedList<Polis>();
 		prestige = 0;
 		wood = 0;
@@ -101,11 +103,21 @@ public class Player {
 		//TODO
 	}
 	
+	public Boolean getHasPassedTurn() {
+		return hasPassedTurn;
+	}
+
+	public void setHasPassedTurn(Boolean hasPassedTurn) {
+		this.hasPassedTurn = hasPassedTurn;
+	}
+	
 	public static Integer rollTheDice(){
 		Integer number = 0;
 		//TODO a dice with 4 faces
 		return number;
 	}
+
+
 	
 	
 }
