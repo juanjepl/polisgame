@@ -14,6 +14,10 @@ public class BattleManager {
 	
 	public BattleManager(){}
 	
-	
+		public void assault(){
+			
+			
+			
+		}
 	
 }
