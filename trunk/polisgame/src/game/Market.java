@@ -18,7 +18,12 @@ public class Market extends Sea{
 	public Integer tradeResources(String resource1, String resource2)
 	{
 		//this method trades resource1 with resource2 and return an integer value of resource2
-		return resources.get(resource1).get(resource2);
+		if(resources.containsKey(resource1))
+		{
+			return resources.get(resource1).get(resource2);
+		} else {
+			return -1;
+		}
 	}
 
 	
