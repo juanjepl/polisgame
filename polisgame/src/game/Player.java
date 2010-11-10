@@ -2,6 +2,7 @@ package game;
 
 import java.util.List;
 import java.util.LinkedList;
+import java.util.Random;
 
 public class Player {
 	private String name;
@@ -111,13 +112,12 @@ public class Player {
 		this.hasPassedTurn = hasPassedTurn;
 	}
 	
+	/**
+	 * Returns a random number between 1 and 4.
+	 * @return The random number.
+	 */
 	public static Integer rollTheDice(){
-		Integer number = 0;
-		//TODO a dice with 4 faces
-		return number;
+		Random generator = new Random();
+		return generator.nextInt(4) + 1;
 	}
-
-
-	
-	
 }
