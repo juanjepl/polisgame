@@ -1,12 +1,12 @@
 package game;
 
-public class StandardStartInitializer { //TODO also needs initialize proyects and game events
+public class StandardStartInitializer {
 
 	public StandardStartInitializer(){}
 	
 	public static void standardStart(Game theGame){
 	
-	// Sparta	
+//// Sparta	
 		// Put start resources
 		theGame.getSpartaPlayer().setPrestige(4);
 		theGame.getSpartaPlayer().setMetal(4);
@@ -51,7 +51,7 @@ public class StandardStartInitializer { //TODO also needs initialize proyects an
 		theGame.getGameTradeDocks().get("SpartaDock").addUnit(new TradeBoat(theGame.getSpartaPlayer()));
 		theGame.getGamePolis().get("Esparta").addUnit(new Proxenus(theGame.getSpartaPlayer()));
 		
-	// Athens	
+//// Athens	
 		// Put start resources	
 		theGame.getAthensPlayer().setPrestige(4);
 		theGame.getAthensPlayer().setMetal(4);

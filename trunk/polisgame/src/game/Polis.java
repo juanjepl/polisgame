@@ -7,17 +7,17 @@ public class Polis extends Position{
 	private Integer basePopulation;
 	private Integer actualPopulation;
 	private Integer maxPopulation;
-	private Integer maxGrowning;
+	private Integer maxGrowth;
 	private Boolean sieged;
 	private List<Project> possiblesProjects;
 	private List<Project> projects;
 	private Territory polisTerritory;
 	private List<Sea> polisSeas;
 	
-	public Polis(String sysName,String name, Integer basePopulation, Integer maxGrowning, Integer maxPopulation, Territory polisTerritory, List<Project> possiblesProjects, List<Sea> polisSeas){
+	public Polis(String sysName,String name, Integer basePopulation, Integer maxGrowth, Integer maxPopulation, Territory polisTerritory, List<Project> possiblesProjects, List<Sea> polisSeas){
 		super(sysName,name);
 		this.basePopulation = basePopulation;
-		this.maxGrowning = maxGrowning;
+		this.maxGrowth = maxGrowth;
 		this.maxPopulation = maxPopulation;
 		this.possiblesProjects = possiblesProjects;
 		projects = new LinkedList<Project>();
@@ -71,8 +71,8 @@ public class Polis extends Position{
 		return maxPopulation;
 	}
 
-	public Integer getMaxGrowning() {
-		return maxGrowning;
+	public Integer getMaxGrowth() {
+		return maxGrowth;
 	}
 	
 }

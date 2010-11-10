@@ -16,7 +16,7 @@ public class EndRoundManager {
 			//TODO
 		}
 		
-		public void checkGrowning(){
+		public void checkGrowth(){
 			//TODO
 		}
 		
