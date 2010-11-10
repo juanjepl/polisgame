@@ -635,13 +635,13 @@ public class ElementsInitializer {
 		polisMap.put("Abdera",abdera);
 		
 	//// GAME EVENTS
-		GameEvent round3_noEvent_01 = new GameEvent("round3_noEvent_01","","3"); 
+		GameEvent round3_noEvent_01 = new GameEvent("round3_noEvent_01","Sin evento","3"); 
 		GameEvent round3_earthquakeAtSparta = new GameEvent("round3_rearthquakeAtSparta","Esparta sufre un violento terremoto que los mesenios aprovechan para rebelarse, mientras los navíos cartagineses apoyan la causa espartana cuestionando el dominio ateniense en las cercanías de Sicilia.","3");
 		GameEvent round3_persianFleetDestruction = new GameEvent("round3_persianFleetDestruction","Atenas destruye la flota persa que quedaba desde el fin de la Guerra Médica en la batalla de Eurimedonte. Persia decide apoyar a Esparta para debilitarla.","3");
 		
-		GameEvent round4_noEvent_01 = new GameEvent("round4_noEvent_01","","4");
-		GameEvent round4_noEvent_02 = new GameEvent("round4_noEvent_02","","4");
-		GameEvent round4_noEvent_03 = new GameEvent("round4_noEvent_03","","4");
+		GameEvent round4_noEvent_01 = new GameEvent("round4_noEvent_01","Sin evento","4");
+		GameEvent round4_noEvent_02 = new GameEvent("round4_noEvent_02","Sin evento","4");
+		GameEvent round4_noEvent_03 = new GameEvent("round4_noEvent_03","Sin evento","4");
 		GameEvent round4_peasantRevolts = new GameEvent("round4_peasantRevolts","Sintiéndose oprimidos por el imperialismo de ambos bandos, los campesinos de Mesenia y Jonia se rebelan","4");
 		GameEvent round4_periclesAge = new GameEvent("round4_periclesAge","Pericles toma el poder en Atenas y bajo su mandato la polis acomete numerosos proyectos arquitectónicos y artísticos, y florece el pensamiento filosófico. Su vecina Corinto recela del creciente poder ateniense.","4");
 		GameEvent round4_egyptRevoltsAgainstPersia = new GameEvent("round4_egyptRevoltsAgainstPersia","Atenas decide ayudar al rebelde Inaro en la lucha de Egipto por su independencia. Antes de comenzar la ronda, Atenas envía las Tirremes que desee Egipto (minimo 2, y si no puede pierde 1 Prestigio por cada una). Al final de la ronda recuperará sólo la mitad.","4");
@@ -649,9 +649,9 @@ public class ElementsInitializer {
 		GameEvent round4_murderOfThePersianKing = new GameEvent("round4_murderOfThePersianKing","El rey persa es asesinado y los aspirantes al trono solicitan mercenarios griegos. Antes de comenzar la ronda, ambos jugadores pueden mandar Hoplitas a combatir en Persia. Consiguen +2 Prestigio por cada Hoplita. Al final de la ronda se recuperan todos y se colocarán 1 a 1 alternativamente en territorios que puedan albergarlos.","4");
 		GameEvent round4_betrayal = new GameEvent("round4_betrayal","Las intrigas de ambos jugadores surten efecto y provocan que 1 Polis de cada jugador con 1 punto de población (si la hay) cambie de bando. Se toman los Proyectos finalizados. No puede ser la capital ni la misma Polis.","4");
 		
-		GameEvent round5a_noEvent_01 = new GameEvent("round5a_noEvent_01","","5a");
-		GameEvent round5a_noEvent_02 = new GameEvent("round5a_noEvent_02","","5a");
-		GameEvent round5a_noEvent_03 = new GameEvent("round5a_noEvent_03","","5a");
+		GameEvent round5a_noEvent_01 = new GameEvent("round5a_noEvent_01","Sin evento","5a");
+		GameEvent round5a_noEvent_02 = new GameEvent("round5a_noEvent_02","Sin evento","5a");
+		GameEvent round5a_noEvent_03 = new GameEvent("round5a_noEvent_03","Sin evento","5a");
 		GameEvent round5a_greeceEnemies = new GameEvent("round5a_greeceEnemies","Los hilotas de Mesenia se rebelan contra el yugo espartano mientras los persas alentan el bloqueo a Atenas en el Mediterráneo oriental.","5a");
 		GameEvent round5a_greatCommanders = new GameEvent("round5a_greatCommanders","Dos brillantes comandantes, el espartano Brásidas y el ateniense Cleón, toman el mando de las operaciones militares de ambos ejércitos. Cada jugador puede doblar el Prestigio que consigue en una (sólo una) batalla durante esta ronda. ","5a");
 		GameEvent round5a_afterTheLongWalls = new GameEvent("round5a_afterTheLongWalls","El miedo a las incursiones espartanas en el Ática provoca que la población de la región se resguarde tras los Muros Largos de Atenas.","5a");
@@ -662,9 +662,9 @@ public class ElementsInitializer {
 		GameEvent round5a_freeTradeWithPersia = new GameEvent("round5a_freeTradeWithPersia","Persia exige a ambos jugadores liberar las rutas comerciales con su territorio y su satrapía de Egipto. Si un jugador al final de su turno bloquea al oponente sus rutas comerciales con Persia o Egipto, pierde 1 Prestigio (excepto que tenga ya 10 Trirremes en el mar Jónico y el mar de Tracia.","5a");
 		GameEvent round5a_pacifism = new GameEvent("round5a_pacifism","En las dos capitales surgen voces a favor del fin del confrontamiento que amenazan con desestabilizar ambos liderazgos. En la acción de recaudar, Esparta en Laconia y Atenas en Ática pueden destinar los Hoplitas que deseen (Máximo la población de la capital) a sofocar a los pacifistas en lugar de recaudar. Cada Hoplita que destine otorga 1 Prestigio.","5a");
 		
-		GameEvent round5b_noEvent_01 = new GameEvent("round5b_noEvent_01","","5b");
-		GameEvent round5b_noEvent_02 = new GameEvent("round5b_noEvent_02","","5b");
-		GameEvent round5b_noEvent_03 = new GameEvent("round5b_noEvent_03","","5b");
+		GameEvent round5b_noEvent_01 = new GameEvent("round5b_noEvent_01","Sin evento","5b");
+		GameEvent round5b_noEvent_02 = new GameEvent("round5b_noEvent_02","Sin evento","5b");
+		GameEvent round5b_noEvent_03 = new GameEvent("round5b_noEvent_03","Sin evento","5b");
 		GameEvent round5b_alcibiadesFledToSparta = new GameEvent("round5b_alcibiadesFledToSparta","El general ateniense Alcibíades es condenado a muerte y huye a Esparta. Logra convencer a sus antiguos enemigos de que deben recrudecer el enfrentamiento bélico. Durante toda esta ronda las batallas se dan con al menos 7 Hoplitas o Trirremes presentes en la región.","5b");
 		GameEvent round5b_superstition = new GameEvent("round5b_superstition","Se produce un eclipse lunar. Durante esta ronda los generales de ambos bandos dudan al ejercer su mando. En caso de empate en la diferencia de las cartas elegidas por los jugadores en un asalto, éste vuelve a repetirse. Se aplica en batallas terrestres y navales.","5b");
 		GameEvent round5b_etnaEruption = new GameEvent("round5b_etnaEruption","La erupción del volcán Etna en Sicilia disminuye la producción de la region en esta ronda. El que recaude Sicilia podrá emplear 3 Hoplitas para ello como máximo.","5b");

@@ -8,6 +8,9 @@ public class Round {
 	private String name;
 	private List<Turn> turnList;
 	
+	private List<Project> projectsInThisRound;
+	private GameEvent gameEventInThisRound;
+	
 	public Round(){
 		name = "3";
 		turnList = new LinkedList<Turn>();
@@ -40,4 +43,30 @@ public class Round {
 	public List<Turn> getTurnList(){
 		return this.turnList;
 	}
+	
+	public List<Project> getProjectsInThisRound() {
+		return projectsInThisRound;
+	}
+
+	public void setProjectsInThisRound(List<Project> projectsInThisRound) { // EndRoundManager.initializeNextRound() will need that "set"
+		this.projectsInThisRound = projectsInThisRound;
+	}
+
+	public GameEvent getGameEventInThisRound() {
+		return gameEventInThisRound;
+	}
+
+	public void setGameEventInThisRound(GameEvent gameEventInThisRound) {
+		this.gameEventInThisRound = gameEventInThisRound;
+	}
+
+	public void startRound(){
+		//TODO
+		// Add 3 random projects of all
+		//TODO
+		// Add and execute a GameEvent
+		
+		
+	}
+	
 }
