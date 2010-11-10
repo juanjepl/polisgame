@@ -6,6 +6,7 @@ import java.util.List;
 import java.util.Map;
 import java.util.Vector;
 import ui.TextModeUi;
+import utils.IPolisFilesReader;
 import utils.PolReader;
 
 public class ElementsInitializer {
@@ -599,7 +600,8 @@ public class ElementsInitializer {
 		territoriesMap.put("Tesalia",tesalia);
 		territoriesMap.put("Acarnania",acarnania);
 		
-		Map<String,Sea> seasMap = PolReader.readSeas(); // new-using-external-files-call
+		IPolisFilesReader archivesReader = new PolReader();
+		Map<String,Sea> seasMap = archivesReader.readSeas(); // new-using-external-files-call
 		
 		Map<String,TradeDock> tradeDocksMap = new HashMap<String,TradeDock>();
 		tradeDocksMap.put("SpartaDock",spartaDock);
