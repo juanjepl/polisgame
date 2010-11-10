@@ -15,12 +15,12 @@ import java.util.List;
 import java.util.ArrayList;
 
 
-public class PolReader { // Reads .pol files
+public class PolReader implements IPolisFilesReader{ // Reads .pol files
 	
 	public PolReader(){}
 	
 	// This method reads all Seas files and returns a map with the Sea objects
-	public static Map<String,Sea> readSeas(){
+	public Map<String,Sea> readSeas(){
 		String pathOfSeas = GameConfigurations.pathOfSeas;
 		Map<String,Sea> seasMap = new HashMap<String,Sea>();
 
@@ -34,7 +34,7 @@ public class PolReader { // Reads .pol files
 	}
 	
 	// Same with Trade Docks files
-	public static Map<String,TradeDock> readTradeDocks(){
+	public Map<String,TradeDock> readTradeDocks(){
 		String pathOfTradeDocks = GameConfigurations.pathOfTradeDocks;
 		Map<String,TradeDock> tradeDocksMap = new HashMap<String,TradeDock>();
 		
@@ -49,35 +49,35 @@ public class PolReader { // Reads .pol files
 	}
 	
 	
-	public static List<Project> readProjects(){
+	public List<Project> readProjects(){
 		
 		List<Project> projectList = new ArrayList<Project>();
 		//TODO
 		return projectList;
 	}
 	
-	public static Map<String,Market> readMarkets(){
+	public Map<String,Market> readMarkets(){
 		
 		Map<String,Market> marketsMap = new HashMap<String,Market>();
 		//TODO
 		return marketsMap;
 	}
 	
-	public static List<GameEvent> readGameEvents(){
+	public List<GameEvent> readGameEvents(){
 		
 		List<GameEvent> gameEventsList = new ArrayList<GameEvent>();
 		//TODO
 		return gameEventsList;
 	}
 	
-	public static Map<String,Polis> readPolis(){
+	public Map<String,Polis> readPolis(){
 		
 		Map<String,Polis> polisMap = new HashMap<String,Polis>();
 		//TODO
 		return polisMap;
 	}
 	
-	public static Map<String,Territory> readTerritories(){
+	public Map<String,Territory> readTerritories(){
 		
 		Map<String,Territory> territoriesMap = new HashMap<String,Territory>();
 		//TODO
