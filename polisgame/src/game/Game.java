@@ -15,13 +15,18 @@ public class Game {
 	private Map<String,Market> gameMarkets;
 	private Map<String,Polis> gamePolis;
 	
-	private List<GameEvent> gameEvents;
+	private List<GameEvent> gameEventsRound3;
+	private List<GameEvent> gameEventsRound4;
+	private List<GameEvent> gameEventsRound5a;
+	private List<GameEvent> gameEventsRound5b;
+	
+	
 	private MarketChart marketChart;
 	private Round round;
 	
 	//Map<String,Territory> territoriesMap, Map<String,Sea> seasMap, Map<String,TradeDock> tradeDocksMap, Map<String,Market> marketsMap, Map<String,Polis> polisMap
 	
-	public Game(Player sparta, Player athens, Map<String,Territory> territoriesMap, Map<String,Sea> seasMap, Map<String,TradeDock> tradeDocksMap, Map<String,Market> marketsMap, Map<String,Polis> polisMap, List<Project> gameProjects, List<GameEvent> gameEventsList, Round theRound, MarketChart theMarketChart){
+	public Game(Player sparta, Player athens, Map<String,Territory> territoriesMap, Map<String,Sea> seasMap, Map<String,TradeDock> tradeDocksMap, Map<String,Market> marketsMap, Map<String,Polis> polisMap, List<Project> gameProjects, List<List<GameEvent>> gameEventsList, Round theRound, MarketChart theMarketChart){
 
 		spartaPlayer = sparta;
 		athensPlayer = athens;
@@ -33,7 +38,11 @@ public class Game {
 		gamePolis = polisMap;
 		
 		projectList = gameProjects;
-		gameEvents = gameEventsList;
+		gameEventsRound3 = gameEventsList.get(0);
+		gameEventsRound4 = gameEventsList.get(1);
+		gameEventsRound5a = gameEventsList.get(2);
+		gameEventsRound5b = gameEventsList.get(3);
+		
 		round = theRound;
 		marketChart = theMarketChart;
 		
@@ -52,8 +61,20 @@ public class Game {
 		return projectList;
 	}
 
-	public List<GameEvent> getGameEvents() {
-		return gameEvents;
+	public List<GameEvent> getGameEventsRound3() {
+		return gameEventsRound3;
+	}
+
+	public List<GameEvent> getGameEventsRound4() {
+		return gameEventsRound4;
+	}
+
+	public List<GameEvent> getGameEventsRound5a() {
+		return gameEventsRound5a;
+	}
+
+	public List<GameEvent> getGameEventsRound5b() {
+		return gameEventsRound5b;
 	}
 
 	public MarketChart getMarketChart() {

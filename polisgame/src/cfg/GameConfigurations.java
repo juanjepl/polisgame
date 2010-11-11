@@ -2,14 +2,65 @@ package cfg;
 
 public class GameConfigurations { 
 
-	// public static atributes... Be careful.
-	public static String pathOfSeas = "/data/seas/";
-	public static String pathOfTradeDocks = "/data/tradeDocks/";
-	public static String pathOfMarkets = "/data/markets/";
-	public static String pathOfPolis = "/data/polis/";
-	public static String pathOfTerritories = "/data/territories";
-	public static String pathOfProjects = "/data/projects";
+	// static atributes who saved the game folders path
+	private static String pathOfSeas = "/data/seas/ES/";
+	private static String pathOfTradeDocks = "/data/tradeDocks/ES/";
+	private static String pathOfMarkets = "/data/markets/ES/";
+	private static String pathOfPolis = "/data/polis/ES/";
+	private static String pathOfTerritories = "/data/territories/ES/";
+	private static String pathOfProjects = "/data/projects/ES/";
+	private static String pathOfGameEvents = "/data/gameEvents/ES/";
 	
-	//TODO
+	public GameConfigurations(){
+		//TODO
+	}
+
+	public static String getPathOfSeas() {
+		return pathOfSeas;
+	}
+
+	public static String getPathOfTradeDocks() {
+		return pathOfTradeDocks;
+	}
+
+	public static String getPathOfMarkets() {
+		return pathOfMarkets;
+	}
+
+	public static String getPathOfPolis() {
+		return pathOfPolis;
+	}
+
+	public static String getPathOfTerritories() {
+		return pathOfTerritories;
+	}
+
+	public static String getPathOfProjects() {
+		return pathOfProjects;
+	}
+
+	public static String getPathOfGameEvents() {
+		return pathOfGameEvents;
+	}
+	
+	public void setLanguageToSpanish(){
+		pathOfSeas = "/data/seas/ES/";
+		pathOfTradeDocks = "/data/tradeDocks/ES/";
+		pathOfMarkets = "/data/markets/ES/";
+		pathOfPolis = "/data/polis/ES/";
+		pathOfTerritories = "/data/territories/ES/";
+		pathOfProjects = "/data/projects/ES/";
+		pathOfGameEvents = "/data/gameEvents/ES/";
+	}
+	
+	public void setLanguageToEnglish(){ //TODO make first files in EN folders
+		pathOfSeas = "/data/seas/EN/";
+		pathOfTradeDocks = "/data/tradeDocks/EN/";
+		pathOfMarkets = "/data/markets/EN/";
+		pathOfPolis = "/data/polis/EN/";
+		pathOfTerritories = "/data/territories/EN/";
+		pathOfProjects = "/data/projects/EN/";
+		pathOfGameEvents = "/data/gameEvents/EN/";
+	}
 	
 }
