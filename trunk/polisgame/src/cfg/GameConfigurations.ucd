@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<editmodel:ClassDiagramEditModel xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:editmodel="editmodel.xmi" xmlns:options="options.xmi" name="GameConfigurations" size="1577,837" id="cfg" metadata="uml2-1.0" initialized="true" tag="1000" key="32303037303533312D3130303020504F4C49535F5448455F47414D452F4A75616E4A65">
+  <children xsi:type="editmodel:ClassEditModel" name="GameConfigurations" location="90,75" size="186,321" id="cfg/GameConfigurations" runTimeClassModel="getPathOfProjects(),pathOfProjects,pathOfSeas,getPathOfPolis(),getPathOfMarkets(),pathOfGameEvents,pathOfTerritories,getPathOfTradeDocks(),pathOfMarkets,getPathOfGameEvents(),pathOfPolis,getPathOfTerritories(),pathOfTradeDocks,getPathOfSeas(),setLanguageToSpanish(),GameConfigurations(),setLanguageToEnglish()">
+    <children xsi:type="editmodel:CompartmentEditModel" size="135,112">
+      <children xsi:type="editmodel:AttributeEditModel" name="pathOfGameEvents" id="cfg/GameConfigurations#pathOfGameEvents"/>
+      <children xsi:type="editmodel:AttributeEditModel" name="pathOfMarkets" id="cfg/GameConfigurations#pathOfMarkets"/>
+      <children xsi:type="editmodel:AttributeEditModel" name="pathOfPolis" id="cfg/GameConfigurations#pathOfPolis"/>
+      <children xsi:type="editmodel:AttributeEditModel" name="pathOfProjects" id="cfg/GameConfigurations#pathOfProjects"/>
+      <children xsi:type="editmodel:AttributeEditModel" name="pathOfSeas" id="cfg/GameConfigurations#pathOfSeas"/>
+      <children xsi:type="editmodel:AttributeEditModel" name="pathOfTerritories" id="cfg/GameConfigurations#pathOfTerritories"/>
+      <children xsi:type="editmodel:AttributeEditModel" name="pathOfTradeDocks" id="cfg/GameConfigurations#pathOfTradeDocks"/>
+    </children>
+    <children xsi:type="editmodel:CompartmentEditModel" size="133,160">
+      <children xsi:type="editmodel:MethodEditModel" name="GameConfigurations" id="cfg/GameConfigurations#GameConfigurations()"/>
+      <children xsi:type="editmodel:MethodEditModel" name="getPathOfGameEvents" id="cfg/GameConfigurations#getPathOfGameEvents()"/>
+      <children xsi:type="editmodel:MethodEditModel" name="getPathOfMarkets" id="cfg/GameConfigurations#getPathOfMarkets()"/>
+      <children xsi:type="editmodel:MethodEditModel" name="getPathOfPolis" id="cfg/GameConfigurations#getPathOfPolis()"/>
+      <children xsi:type="editmodel:MethodEditModel" name="getPathOfProjects" id="cfg/GameConfigurations#getPathOfProjects()"/>
+      <children xsi:type="editmodel:MethodEditModel" name="getPathOfSeas" id="cfg/GameConfigurations#getPathOfSeas()"/>
+      <children xsi:type="editmodel:MethodEditModel" name="getPathOfTerritories" id="cfg/GameConfigurations#getPathOfTerritories()"/>
+      <children xsi:type="editmodel:MethodEditModel" name="getPathOfTradeDocks" id="cfg/GameConfigurations#getPathOfTradeDocks()"/>
+      <children xsi:type="editmodel:MethodEditModel" name="setLanguageToEnglish" id="cfg/GameConfigurations#setLanguageToEnglish()"/>
+      <children xsi:type="editmodel:MethodEditModel" name="setLanguageToSpanish" id="cfg/GameConfigurations#setLanguageToSpanish()"/>
+    </children>
+    <children xsi:type="editmodel:CompartmentEditModel" size="0,0"/>
+    <classifierPreferences xsi:type="editmodel:UMLClassDiagramClassifierPreference" showStereotype="true" showMethodsParameterTypes="true" showMethodsReturnType="true" showMethodsParameterNames="true" showMethodsParameterKinds="true" attributeSorter="Natural" methodSorter="Natural" innerClassSorter="Natural" showPrivateAttributes="true" showProtectedAttributes="true" showPublicAttributes="true" showPackageAttributes="true" showStaticAttributes="true" showProtectedMethods="true" showPublicMethods="true" showPackageMethods="true" showPrivateMethods="true" showStaticMethods="true" showProtectedInnerClasses="true" showPublicInnerClasses="true" showPackageInnerClasses="true" showPrivateInnerClasses="true" showStaticInnerClasses="true" packageIndication="3" showAttributeProperty="true" showAssociationMember="true"/>
+  </children>
+  <diagramOptions xsi:type="options:ClassDiagramOptions" interactive="false" properties="open=cfg/GameConfigurations;wireOptions=1;Product=eUML2"/>
+  <boardSetting snapToGeometry="true" gridEnabled="true" gridSpacing="15,15" gridOrigin="0,0" rulerUnit="pixel" gridVisibility="false">
+    <leftRuler/>
+    <topRuler/>
+  </boardSetting>
+  <classDiagramPreferences xsi:type="editmodel:UMLClassDiagramPreference" showPopupBars="true" showConnectionHandles="true" showMethodsParameterTypes="true" showMethodsReturnType="true" showMethodsParameterNames="true" showMethodsParameterKinds="true" attributeSorter="Natural" methodSorter="Natural" showClassStereotype="true" showPackageStereotype="true" showDependencyStereotype="true" showInterfaceStereotype="true" innerClassSorter="Natural" showPrivateAttributes="true" showProtectedAttributes="true" showPublicAttributes="true" showPackageAttributes="true" showStaticAttributes="true" showProtectedMethods="true" showPublicMethods="true" showPackageMethods="true" showPrivateMethods="true" showStaticMethods="true" showProtectedInnerClasses="true" showPublicInnerClasses="true" showPackageInnerClasses="true" showPrivateInnerClasses="true" showStaticInnerClasses="true" packageIndication="3" showAttributeProperty="true" showAssociationMember="true"/>
+</editmodel:ClassDiagramEditModel>
