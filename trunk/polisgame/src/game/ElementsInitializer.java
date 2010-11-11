@@ -15,95 +15,7 @@ public class ElementsInitializer {
 	
 	public static Game InitializeGameElements(){ // TODO must be SERIOUSLY MODULARIZED using external files
 
-		
-//// PROJECTS
-		Map<String,Integer> mapSocrates = new HashMap<String,Integer>();
-		mapSocrates.put("Silver", 6);
-		Project socrates = new Philosopher("Socrates",4,2,mapSocrates);
-		
-		Map<String,Integer> mapDemocrito = new HashMap<String,Integer>();
-		mapDemocrito.put("Silver", 5);
-		Project democrito = new Philosopher("Democrito",4,1,mapSocrates);
-		
-		Map<String,Integer> mapProtagoras = new HashMap<String,Integer>();
-		mapProtagoras.put("Silver", 3);
-		Project protagoras = new Philosopher("Protagoras",2,1,mapSocrates);
-		
-		Map<String,Integer> mapFidias = new HashMap<String,Integer>();
-		mapFidias.put("Silver", 4); 
-		Project fidias = new Artist("Fidias",null,2,mapFidias);// TODO UNSTABLE LINE, WARNING!!! XD (null)
-		
-		Map<String,Integer> mapZeusTemple = new HashMap<String,Integer>();
-		mapZeusTemple.put("Metal", 3);
-		mapZeusTemple.put("Wood", 4);
-		mapZeusTemple.put("Silver", 3);
-		Project zeusTemple = new Temple("ZeusTemple",4,3,mapZeusTemple);
-		
-		Map<String,Integer> mapApoloTemple = new HashMap<String,Integer>();
-		mapApoloTemple.put("Metal", 2);
-		mapApoloTemple.put("Wood", 3);
-		mapApoloTemple.put("Silver", 2);
-		Project apoloTemple = new Temple("ApoloTemple",3,2,mapApoloTemple);
-		
-		Map<String,Integer> mapTheatreWithEpseknion = new HashMap<String,Integer>();
-		mapTheatreWithEpseknion.put("Metal", 1);
-		mapTheatreWithEpseknion.put("Wood", 2);
-		mapTheatreWithEpseknion.put("Silver", 2);
-		Project theatreWithEpseknion = new Theatre("TheatreWithEpseknion",3,1,mapTheatreWithEpseknion);
-		
-		Map<String,Integer> mapNormalTheatre = new HashMap<String,Integer>();
-		mapNormalTheatre.put("Metal", 1);
-		mapNormalTheatre.put("Wood", 2);
-		mapNormalTheatre.put("Silver", 1);
-		Project normalTheatre = new Theatre("Theatre",2,1,mapNormalTheatre);
-		
-		Map<String,Integer> mapVenusStatue = new HashMap<String,Integer>();
-		mapVenusStatue.put("Metal", 1);
-		mapVenusStatue.put("Wood", 2);
-		Project venusStatue = new Statue("VenusStatue",1,1,mapVenusStatue);
-		
-		Map<String,Integer> mapEfeboStatue = new HashMap<String,Integer>();
-		mapEfeboStatue.put("Wood", 2);
-		Project efeboStatue = new Statue("EfeboStatue",1,0,mapEfeboStatue);
-		
-		Map<String,Integer> mapDemeterFestival = new HashMap<String,Integer>();
-		mapDemeterFestival.put("Wine", 3);
-		mapDemeterFestival.put("Oil", 1);
-		mapDemeterFestival.put("Silver", 1);
-		Project demeterFestival = new Festival("DemeterFestival",3,0,mapDemeterFestival);
-		
-		Map<String,Integer> mapDionisoFestival = new HashMap<String,Integer>();
-		mapDionisoFestival.put("Wine", 3);
-		mapDionisoFestival.put("Oil", 1);
-		Project dionisoFestival = new Festival("DionisoFestival",2,0,mapDionisoFestival);
-		
-		Map<String,Integer> mapNemeosGames = new HashMap<String,Integer>();
-		mapNemeosGames.put("Oil", 4);
-		mapNemeosGames.put("Silver", 1);
-		Project nemeosGames = new ProjectGame("NemeosGames",3,0,mapNemeosGames);
-		
-		Map<String,Integer> mapIstmicosGames = new HashMap<String,Integer>();
-		mapIstmicosGames.put("Wine", 2);
-		mapIstmicosGames.put("Oil", 2);
-		Project istmicosGames = new ProjectGame("IstmicosGames",2,0,mapIstmicosGames);
-		
-		
-		List<Project> gameProjects = new ArrayList<Project>();
-		gameProjects.add(socrates);
-		gameProjects.add(democrito);
-		gameProjects.add(protagoras);
-		gameProjects.add(fidias);
-		gameProjects.add(zeusTemple);
-		gameProjects.add(apoloTemple);
-		gameProjects.add(theatreWithEpseknion);
-		gameProjects.add(normalTheatre);
-		gameProjects.add(venusStatue);
-		gameProjects.add(efeboStatue);
-		gameProjects.add(demeterFestival);
-		gameProjects.add(dionisoFestival);
-		gameProjects.add(nemeosGames);
-		gameProjects.add(istmicosGames);
-		
+			
 //// TERRITORIES
 		
 		// LACONIA
@@ -628,13 +540,17 @@ public class ElementsInitializer {
 		polisMap.put("Samos",samos);
 		polisMap.put("Abdera",abdera);
 		
-	//// GAME EVENTS
+		
+//// PROJECTS
+		List<Project> gameProjects = archivesReader.readProjects();
+		
+//// GAME EVENTS
 		List<List<GameEvent>> gameEventsList = archivesReader.readGameEvents();
 		
-	//// Round
+//// ROUND
 		Round theRound = new Round();
 		
-	//// Market Chart
+//// MARKET CHART
 		MarketChart theMarketChart = new MarketChart();
 		
 //// PLAYERS
