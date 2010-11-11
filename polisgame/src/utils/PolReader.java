@@ -8,6 +8,13 @@ import game.GameEvent;
 import game.Territory;
 import game.Polis;
 import game.Market;
+import game.Philosopher;
+import game.Artist;
+import game.Temple;
+import game.ProjectGame;
+import game.Theatre;
+import game.Statue;
+import game.Festival;
 
 import java.util.Map;
 import java.util.HashMap;
@@ -49,9 +56,51 @@ public class PolReader implements IPolisFilesReader{ // Reads .pol files
 	}
 	
 	public List<Project> readProjects(){
-		
+		String pathOfProjects = GameConfigurations.getPathOfProjects();
 		List<Project> projectList = new ArrayList<Project>();
-		//TODO
+		
+		List<List<String>> projectTexts = GenericDirectoryReader.getDirectoryFiles(pathOfProjects);
+		
+		for(List<String> projectInfo : projectTexts){
+			Map<String,Integer> proyectRequestedResources = new HashMap<String,Integer>();
+			
+			for(int i=4; i < projectTexts.size(); i++){
+				List<String> mapField = StringUtilities.stringSplitterForPolis(projectInfo.get(i),":");
+				proyectRequestedResources.put(mapField.get(0), Integer.parseInt(mapField.get(1)));
+			}
+			
+			if(projectInfo.get(0).endsWith("Philosopher")){
+				Project project = new Philosopher(projectInfo.get(0),projectInfo.get(1),Integer.parseInt(projectInfo.get(2)),Integer.parseInt(projectInfo.get(3)),proyectRequestedResources);
+				projectList.add(project);
+			}
+			else if(projectInfo.get(0).endsWith("Artist")){
+				Project project = new Artist(projectInfo.get(0),projectInfo.get(1),Integer.parseInt(projectInfo.get(2)),Integer.parseInt(projectInfo.get(3)),proyectRequestedResources);
+				projectList.add(project);
+			}
+			else if(projectInfo.get(0).endsWith("Temple")){
+				Project project = new Temple(projectInfo.get(0),projectInfo.get(1),Integer.parseInt(projectInfo.get(2)),Integer.parseInt(projectInfo.get(3)),proyectRequestedResources);
+				projectList.add(project);
+			}
+			else if(projectInfo.get(0).endsWith("Theatre")){
+				Project project = new Theatre(projectInfo.get(0),projectInfo.get(1),Integer.parseInt(projectInfo.get(2)),Integer.parseInt(projectInfo.get(3)),proyectRequestedResources);
+				projectList.add(project);
+			}
+			else if(projectInfo.get(0).endsWith("Statue")){
+				Project project = new Statue(projectInfo.get(0),projectInfo.get(1),Integer.parseInt(projectInfo.get(2)),Integer.parseInt(projectInfo.get(3)),proyectRequestedResources);
+				projectList.add(project);
+			}
+			else if(projectInfo.get(0).endsWith("Festival")){
+				Project project = new Festival(projectInfo.get(0),projectInfo.get(1),Integer.parseInt(projectInfo.get(2)),Integer.parseInt(projectInfo.get(3)),proyectRequestedResources);
+				projectList.add(project);
+			}
+			else if(projectInfo.get(0).endsWith("ProjectGame")){
+				Project project = new ProjectGame(projectInfo.get(0),projectInfo.get(1),Integer.parseInt(projectInfo.get(2)),Integer.parseInt(projectInfo.get(3)),proyectRequestedResources);
+				projectList.add(project);
+			}
+			else{
+				//TODO possible exception, wrong format name for project files
+			}
+		}
 		return projectList;
 	}
 	

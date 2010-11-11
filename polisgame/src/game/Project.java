@@ -3,6 +3,7 @@ package game;
 import java.util.Map;
 
 public abstract class Project {
+	private String sysName;
 	private String name;
 	private Integer prestige;
 	private Integer prestigeToPosterity;
@@ -10,8 +11,9 @@ public abstract class Project {
 	private Boolean finished;
 	private Boolean used;
 	
-	public Project(String name, Integer prestige, Integer prestigeToPosterity, Map<String,Integer> resourcesRequired){
+	public Project(String sysName,String name, Integer prestige, Integer prestigeToPosterity, Map<String,Integer> resourcesRequired){
 		
+		this.sysName = sysName;
 		this.name = name;
 		this.prestige = prestige;
 		this.prestigeToPosterity = prestigeToPosterity;
@@ -23,18 +25,27 @@ public abstract class Project {
 	public Boolean getFinished() {
 		return finished;
 	}
+	
 	public void setFinished(Boolean finished) {
 		this.finished = finished;
 	}
+	
+	public String getSysName() {
+		return sysName;
+	}
+	
 	public String getName() {
 		return name;
 	}
+	
 	public Integer getPrestige() {
 		return prestige;
 	}
+	
 	public Integer getPrestigeToPosterity() {
 		return prestigeToPosterity;
 	}
+	
 	public Map<String, Integer> getResourcesRequired() {
 		return resourcesRequired;
 	}
