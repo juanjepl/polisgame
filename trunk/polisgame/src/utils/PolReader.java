@@ -21,7 +21,7 @@ public class PolReader implements IPolisFilesReader{ // Reads .pol files
 	
 	// This method reads all Seas files and returns a map with the Sea objects
 	public Map<String,Sea> readSeas(){
-		String pathOfSeas = GameConfigurations.pathOfSeas;
+		String pathOfSeas = GameConfigurations.getPathOfSeas();
 		Map<String,Sea> seasMap = new HashMap<String,Sea>();
 
 		List<List<String>> seasTexts = GenericDirectoryReader.getDirectoryFiles(pathOfSeas);
@@ -35,7 +35,7 @@ public class PolReader implements IPolisFilesReader{ // Reads .pol files
 	
 	// Same with Trade Docks files
 	public Map<String,TradeDock> readTradeDocks(){
-		String pathOfTradeDocks = GameConfigurations.pathOfTradeDocks;
+		String pathOfTradeDocks = GameConfigurations.getPathOfTradeDocks();
 		Map<String,TradeDock> tradeDocksMap = new HashMap<String,TradeDock>();
 		
 		List<List<String>> tradeDocksTexts = GenericDirectoryReader.getDirectoryFiles(pathOfTradeDocks);
@@ -47,7 +47,6 @@ public class PolReader implements IPolisFilesReader{ // Reads .pol files
 		return tradeDocksMap;
 		
 	}
-	
 	
 	public List<Project> readProjects(){
 		
@@ -63,10 +62,39 @@ public class PolReader implements IPolisFilesReader{ // Reads .pol files
 		return marketsMap;
 	}
 	
-	public List<GameEvent> readGameEvents(){
+	public List<List<GameEvent>> readGameEvents(){
+		String pathOfGameEvents = GameConfigurations.getPathOfGameEvents();
+		List<List<GameEvent>> gameEventsList = new ArrayList<List<GameEvent>>();
+
+		List<List<String>> gameEventsTexts = GenericDirectoryReader.getDirectoryFiles(pathOfGameEvents);
 		
-		List<GameEvent> gameEventsList = new ArrayList<GameEvent>();
-		//TODO
+		List<GameEvent> gameEventListForRound3 = new ArrayList<GameEvent>();
+		List<GameEvent> gameEventListForRound4 = new ArrayList<GameEvent>();
+		List<GameEvent> gameEventListForRound5a = new ArrayList<GameEvent>();
+		List<GameEvent> gameEventListForRound5b = new ArrayList<GameEvent>();
+		
+		for(List<String> gameEventInfo :gameEventsTexts ){
+			if(gameEventInfo.get(3).equals("3")){
+				gameEventListForRound3.add(new GameEvent(gameEventInfo.get(0),gameEventInfo.get(1),gameEventInfo.get(2),gameEventInfo.get(3)));
+			}
+			else if(gameEventInfo.get(3).equals("4")){
+				gameEventListForRound4.add(new GameEvent(gameEventInfo.get(0),gameEventInfo.get(1),gameEventInfo.get(2),gameEventInfo.get(3)));
+			}
+			else if(gameEventInfo.get(3).equals("5a")){
+				gameEventListForRound5a.add(new GameEvent(gameEventInfo.get(0),gameEventInfo.get(1),gameEventInfo.get(2),gameEventInfo.get(3)));
+			}
+			else if(gameEventInfo.get(3).equals("5b")){
+				gameEventListForRound5b.add(new GameEvent(gameEventInfo.get(0),gameEventInfo.get(1),gameEventInfo.get(2),gameEventInfo.get(3)));
+			}
+			else{
+				//TODO possible file reader exception ( no correct String value in file's round line )
+			}
+		}
+	
+		gameEventsList.add(gameEventListForRound3);
+		gameEventsList.add(gameEventListForRound4);
+		gameEventsList.add(gameEventListForRound5a);
+		gameEventsList.add(gameEventListForRound5b);
 		return gameEventsList;
 	}
 	

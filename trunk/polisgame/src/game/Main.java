@@ -18,6 +18,7 @@ public class Main {
 				
 				//TODO main loop
 				
+				gameRound.startRound();
 				
 				
 			}			
