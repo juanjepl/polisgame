@@ -147,10 +147,61 @@ public class PolReader implements IPolisFilesReader{ // Reads .pol files
 		return gameEventsList;
 	}
 	
-	public Map<String,Polis> readPolis(){
-		
+	public Map<String,Polis> readPolis(Map<String,Territory> territoriesMap,Map<String,Sea> seasMap,List<Project> gameProjects){
+		String pathOfPolis = GameConfigurations.getPathOfPolis();
 		Map<String,Polis> polisMap = new HashMap<String,Polis>();
-		//TODO
+		
+		List<List<String>> gamePolisTexts = GenericDirectoryReader.getDirectoryFiles(pathOfPolis);
+		
+		for(List<String> polisInfo : gamePolisTexts){
+			List<Project> polisProjects = new ArrayList<Project>();
+			List<Sea> polisSeas = new ArrayList<Sea>();
+			Territory polisParentTerritory = null;
+			Boolean hasTradeDock = false;
+			
+			if(!(polisInfo.get(5).startsWith("none"))){
+				List<String> projectsForPolis = StringUtilities.stringSplitterForPolis(polisInfo.get(5), ":");
+				for(String s: projectsForPolis){
+					for(Project proj : gameProjects){
+						if(proj.getSysName().equals(s)){
+							polisProjects.add(proj);
+						}
+					}					
+				}
+			}
+			else{
+				// Do nothing.
+			}
+			
+			if(!(polisInfo.get(6).startsWith("none"))){
+				// Territory always is a single String, don't need to be splitted.
+				polisParentTerritory = territoriesMap.get(polisInfo.get(6));
+			}
+			else{
+				// Do nothing.
+			}
+			
+			if(!(polisInfo.get(7).startsWith("none"))){
+				List<String> seasForPolis = StringUtilities.stringSplitterForPolis(polisInfo.get(7), ":");
+				for(String str : seasForPolis){
+					polisSeas.add(seasMap.get(str));
+				}	
+			}
+			else{
+				// Do nothing.
+			}
+			
+			if( polisInfo.get(0).equals("athens") || polisInfo.get(0).equals("pylos") || polisInfo.get(0).equals("gythion")){
+				hasTradeDock = true;
+			}
+			else{
+				// Do nothing.
+			}
+
+		Polis thePolis = new Polis(polisInfo.get(0),polisInfo.get(1),Integer.parseInt(polisInfo.get(2)),Integer.parseInt(polisInfo.get(3)),Integer.parseInt(polisInfo.get(4)),polisParentTerritory,polisProjects,polisSeas,hasTradeDock);
+		polisMap.put(polisInfo.get(0), thePolis);
+		}
+
 		return polisMap;
 	}
 	

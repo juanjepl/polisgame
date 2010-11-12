@@ -17,7 +17,7 @@ public interface IPolisFilesReader {
 	public List<Project> readProjects();
 	public Map<String,Market> readMarkets();
 	public List<List<GameEvent>> readGameEvents();
-	public Map<String,Polis> readPolis();
+	public Map<String,Polis> readPolis(Map<String,Territory> territoriesMap,Map<String,Sea> seasMap,List<Project> gameProjects);
 	public Map<String,Territory> readTerritories();
 	
 }

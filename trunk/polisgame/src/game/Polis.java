@@ -11,18 +11,20 @@ public class Polis extends Position{
 	private Boolean sieged;
 	private List<Project> possiblesProjects;
 	private List<Project> projects;
-	private Territory polisTerritory;
+	private Territory polisParentTerritory;
 	private List<Sea> polisSeas;
+	private Boolean hasTradeDock;
 	
-	public Polis(String sysName,String name, Integer basePopulation, Integer maxGrowth, Integer maxPopulation, Territory polisTerritory, List<Project> possiblesProjects, List<Sea> polisSeas){
+	public Polis(String sysName,String name, Integer basePopulation, Integer maxGrowth, Integer maxPopulation, Territory polisParentTerritory, List<Project> possiblesProjects, List<Sea> polisSeas, Boolean hasTradeDock){
 		super(sysName,name);
 		this.basePopulation = basePopulation;
 		this.maxGrowth = maxGrowth;
 		this.maxPopulation = maxPopulation;
 		this.possiblesProjects = possiblesProjects;
 		projects = new LinkedList<Project>();
-		this.polisTerritory = polisTerritory;
+		this.polisParentTerritory = polisParentTerritory;
 		this.polisSeas = polisSeas; 
+		this.hasTradeDock = hasTradeDock;
 
 	}
 
@@ -51,12 +53,12 @@ public class Polis extends Position{
 	}
 	
 	public void addProject(Project p){
-		// add a precondition (p must be in possiblesProjects)
+		// FIXME add a precondition (p must be in possiblesProjects)
 		this.projects.add(p);
 	}
 
-	public Territory getPolisTerritory() {
-		return polisTerritory;
+	public Territory getPolisParentTerritory() {
+		return polisParentTerritory;
 	}
 
 	public List<Sea> getPolisSeas() {
@@ -73,6 +75,10 @@ public class Polis extends Position{
 
 	public Integer getMaxGrowth() {
 		return maxGrowth;
+	}
+
+	public Boolean getHasTradeDock() {
+		return hasTradeDock;
 	}
 	
 }
