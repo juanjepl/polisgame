@@ -6,7 +6,7 @@ public class StandardStartInitializer {
 	
 	public static void standardStart(Game theGame){
 	
-//// Sparta	
+//// For Sparta	
 		// Put start resources
 		theGame.getSpartaPlayer().setPrestige(4);
 		theGame.getSpartaPlayer().setMetal(4);
@@ -17,25 +17,25 @@ public class StandardStartInitializer {
 		theGame.getSpartaPlayer().setWheat(0);
 		
 		// Polis assignation and polis initial population.
-		theGame.getSpartaPlayer().addPolis(theGame.getGamePolis().get("Esparta")); //TODO CASTING WILL BE NOT NECESARY IF I DIVIDE POSITIONS MAP IN GAME INTO TYPE'S MAPS
-		theGame.getSpartaPlayer().addPolis(theGame.getGamePolis().get("Gition"));
-		theGame.getSpartaPlayer().addPolis(theGame.getGamePolis().get("Pilos"));
+		theGame.getSpartaPlayer().addPolis(theGame.getGamePolis().get("sparta"));
+		theGame.getSpartaPlayer().addPolis(theGame.getGamePolis().get("gythion"));
+		theGame.getSpartaPlayer().addPolis(theGame.getGamePolis().get("pylos"));
 		
 		for(Polis p : theGame.getSpartaPlayer().getPlayerPolis()){
-			if(p.getName().equals("Esparta")){
+			if(p.getSysName().equals("sparta")){
 				p.setActualPopulation(4);
 				break;
 			}
 		}	
 		for(Polis p : theGame.getSpartaPlayer().getPlayerPolis()){	
-			if(p.getName().equals("Gition")){
+			if(p.getSysName().equals("gythion")){
 				p.setActualPopulation(1);
 				break;
 			}
 		}	
 		
 		for(Polis p : theGame.getSpartaPlayer().getPlayerPolis()){	
-			if(p.getName().equals("Pilos")){
+			if(p.getSysName().equals("pylos")){
 				p.setActualPopulation(2);
 				break;
 			}
@@ -43,15 +43,15 @@ public class StandardStartInitializer {
 		
 		
 		// Units assignation
-		theGame.getGameTerritories().get("Laconia").addUnit(new Hoplite(theGame.getSpartaPlayer())); // 3x Hoplites at Laconia
-		theGame.getGameTerritories().get("Laconia").addUnit(new Hoplite(theGame.getSpartaPlayer()));
-		theGame.getGameTerritories().get("Laconia").addUnit(new Hoplite(theGame.getSpartaPlayer()));
-		theGame.getGameSeas().get("JonicoSea").addUnit(new Trirreme(theGame.getSpartaPlayer()));
-		theGame.getGameSeas().get("MirtosSea").addUnit(new Trirreme(theGame.getSpartaPlayer()));
-		theGame.getGameTradeDocks().get("SpartaDock").addUnit(new TradeBoat(theGame.getSpartaPlayer()));
-		theGame.getGamePolis().get("Esparta").addUnit(new Proxenus(theGame.getSpartaPlayer()));
+		theGame.getGameTerritories().get("laconia").addUnit(new Hoplite(theGame.getSpartaPlayer())); // 3x Hoplites at Laconia
+		theGame.getGameTerritories().get("laconia").addUnit(new Hoplite(theGame.getSpartaPlayer()));
+		theGame.getGameTerritories().get("laconia").addUnit(new Hoplite(theGame.getSpartaPlayer()));
+		theGame.getGameSeas().get("ionianSea").addUnit(new Trirreme(theGame.getSpartaPlayer())); // A trirreme at ionian sea
+		theGame.getGameSeas().get("myrtoanSea").addUnit(new Trirreme(theGame.getSpartaPlayer())); // A trirreme at myrtoan sea
+		theGame.getGameTradeDocks().get("spartaDock").addUnit(new TradeBoat(theGame.getSpartaPlayer())); // A trade boat at sparta's dock 
+		theGame.getGamePolis().get("sparta").addUnit(new Proxenus(theGame.getSpartaPlayer())); // The proxenus in Sparta
 		
-//// Athens	
+//// For Athens	
 		// Put start resources	
 		theGame.getAthensPlayer().setPrestige(4);
 		theGame.getAthensPlayer().setMetal(4);
@@ -62,24 +62,24 @@ public class StandardStartInitializer {
 		theGame.getAthensPlayer().setWheat(4);
 		
 		// Polis assignation and polis initial population.
-		theGame.getAthensPlayer().addPolis(theGame.getGamePolis().get("Atenas")); //TODO SAME AS SPARTA
-		theGame.getAthensPlayer().addPolis(theGame.getGamePolis().get("Calcis"));
-		theGame.getAthensPlayer().addPolis(theGame.getGamePolis().get("Quios"));
+		theGame.getAthensPlayer().addPolis(theGame.getGamePolis().get("athens"));
+		theGame.getAthensPlayer().addPolis(theGame.getGamePolis().get("chalcis"));
+		theGame.getAthensPlayer().addPolis(theGame.getGamePolis().get("chios"));
 		
 		for(Polis p : theGame.getAthensPlayer().getPlayerPolis()){
-			if(p.getName().equals("Atenas")){
+			if(p.getSysName().equals("athens")){
 				p.setActualPopulation(5);
 				break;
 			}
 		}
 		for(Polis p : theGame.getAthensPlayer().getPlayerPolis()){
-			if(p.getName().equals("Calcis")){
+			if(p.getSysName().equals("chalcis")){
 				p.setActualPopulation(1);
 				break;
 			}
 		}
 		for(Polis p : theGame.getAthensPlayer().getPlayerPolis()){
-			if(p.getName().equals("Quios")){
+			if(p.getSysName().equals("chios")){
 				p.setActualPopulation(2);
 				break;
 			}
@@ -87,16 +87,16 @@ public class StandardStartInitializer {
 		}
 	
 		// Units assignation
-		theGame.getGameTerritories().get("Atica").addUnit(new Hoplite(theGame.getAthensPlayer())); // 3x Hoplites at Atica
-		theGame.getGameTerritories().get("Atica").addUnit(new Hoplite(theGame.getAthensPlayer()));
-		theGame.getGameTerritories().get("Atica").addUnit(new Hoplite(theGame.getAthensPlayer()));
-		theGame.getGameTerritories().get("Jonia").addUnit(new Hoplite(theGame.getAthensPlayer()));
-		theGame.getGameTerritories().get("Jonia").addUnit(new Hoplite(theGame.getAthensPlayer()));
-		theGame.getGameSeas().get("CicladasSea").addUnit(new Trirreme(theGame.getAthensPlayer()));
-		theGame.getGameSeas().get("CicladasSea").addUnit(new Trirreme(theGame.getAthensPlayer()));
-		theGame.getGameSeas().get("EsporadasSea").addUnit(new Trirreme(theGame.getAthensPlayer()));
-		theGame.getGameTradeDocks().get("AthensDock").addUnit(new TradeBoat(theGame.getAthensPlayer()));
-		theGame.getGamePolis().get("Atenas").addUnit(new Proxenus(theGame.getAthensPlayer()));
+		theGame.getGameTerritories().get("attica").addUnit(new Hoplite(theGame.getAthensPlayer())); // 3x Hoplites at Attica (assignation mode like Sparta)
+		theGame.getGameTerritories().get("attica").addUnit(new Hoplite(theGame.getAthensPlayer()));
+		theGame.getGameTerritories().get("attica").addUnit(new Hoplite(theGame.getAthensPlayer()));
+		theGame.getGameTerritories().get("ionia").addUnit(new Hoplite(theGame.getAthensPlayer()));
+		theGame.getGameTerritories().get("ionia").addUnit(new Hoplite(theGame.getAthensPlayer()));
+		theGame.getGameSeas().get("cycladesIslands").addUnit(new Trirreme(theGame.getAthensPlayer()));
+		theGame.getGameSeas().get("cycladesIslands").addUnit(new Trirreme(theGame.getAthensPlayer()));
+		theGame.getGameSeas().get("sporadesIslands").addUnit(new Trirreme(theGame.getAthensPlayer()));
+		theGame.getGameTradeDocks().get("athensDock").addUnit(new TradeBoat(theGame.getAthensPlayer()));
+		theGame.getGamePolis().get("athens").addUnit(new Proxenus(theGame.getAthensPlayer()));
 		
 	}
 }
