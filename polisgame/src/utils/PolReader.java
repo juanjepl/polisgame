@@ -20,6 +20,7 @@ import java.util.Map;
 import java.util.HashMap;
 import java.util.List;
 import java.util.ArrayList;
+import java.util.Vector;
 
 
 public class PolReader implements IPolisFilesReader{ // Reads .pol files
@@ -39,8 +40,7 @@ public class PolReader implements IPolisFilesReader{ // Reads .pol files
 		
 		return seasMap;
 	}
-	
-	// Same with Trade Docks files
+
 	public Map<String,TradeDock> readTradeDocks(){
 		String pathOfTradeDocks = GameConfigurations.getPathOfTradeDocks();
 		Map<String,TradeDock> tradeDocksMap = new HashMap<String,TradeDock>();
@@ -64,7 +64,7 @@ public class PolReader implements IPolisFilesReader{ // Reads .pol files
 		for(List<String> projectInfo : projectTexts){
 			Map<String,Integer> proyectRequestedResources = new HashMap<String,Integer>();
 			
-			for(int i=4; i < projectTexts.size(); i++){
+			for(int i=4; i < projectInfo.size(); i++){
 				List<String> mapField = StringUtilities.stringSplitterForPolis(projectInfo.get(i),":");
 				proyectRequestedResources.put(mapField.get(0), Integer.parseInt(mapField.get(1)));
 			}
@@ -155,10 +155,33 @@ public class PolReader implements IPolisFilesReader{ // Reads .pol files
 	}
 	
 	public Map<String,Territory> readTerritories(){
-		
+		String pathOfTerritories = GameConfigurations.getPathOfTerritories();
 		Map<String,Territory> territoriesMap = new HashMap<String,Territory>();
-		//TODO
+		
+		List<List<String>> gameTerritoriesTexts = GenericDirectoryReader.getDirectoryFiles(pathOfTerritories);
+		
+		for(List<String> gameTerritoryInfo : gameTerritoriesTexts){
+			
+			Map<String,Vector<Integer>> territoryResources = new HashMap<String,Vector<Integer>>();
+			
+			for(int i=2 ; i<gameTerritoryInfo.size() ; i++){
+				List<String> mapField = StringUtilities.stringSplitterForPolis(gameTerritoryInfo.get(i),":");
+				
+				Vector<Integer> elementResources = new Vector<Integer>();
+		
+				for ( int j=1 ; j<mapField.size() ; j++ ){
+					elementResources.add(Integer.parseInt(mapField.get(j)));
+				}
+				
+				territoryResources.put(mapField.get(0),elementResources);
+			}
+			
+			Territory territory = new Territory(gameTerritoryInfo.get(0),gameTerritoryInfo.get(1),territoryResources);
+			territoriesMap.put(gameTerritoryInfo.get(0),territory);
+		}
+		
+
 		return territoriesMap;
-	}
-	
+	}	
+
 }
