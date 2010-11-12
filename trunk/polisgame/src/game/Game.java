@@ -3,7 +3,7 @@ package game;
 import java.util.List;
 import java.util.Map;
 
-public class Game {
+public class Game { //TODO add Graphs
 
 	private Player spartaPlayer;
 	private Player athensPlayer;
@@ -24,7 +24,6 @@ public class Game {
 	private MarketChart marketChart;
 	private Round round;
 	
-	//Map<String,Territory> territoriesMap, Map<String,Sea> seasMap, Map<String,TradeDock> tradeDocksMap, Map<String,Market> marketsMap, Map<String,Polis> polisMap
 	
 	public Game(Player sparta, Player athens, Map<String,Territory> territoriesMap, Map<String,Sea> seasMap, Map<String,TradeDock> tradeDocksMap, Map<String,Market> marketsMap, Map<String,Polis> polisMap, List<Project> gameProjects, List<List<GameEvent>> gameEventsList, Round theRound, MarketChart theMarketChart){
 
