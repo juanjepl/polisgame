@@ -9,7 +9,7 @@ import game.TradeDock;
 import game.GameEvent;
 import game.Polis;
 
-
+/** Interface with the readers classes methods */
 public interface IPolisFilesReader {
 
 	public Map<String,Sea> readSeas();
