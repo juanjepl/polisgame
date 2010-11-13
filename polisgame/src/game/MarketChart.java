@@ -2,26 +2,27 @@ package game;
 
 import java.util.Vector;
 
+/** Class who manages game market chart */
 public class MarketChart {
 	
-	private Integer metalPrice;
+	private Integer metalPrice; // Prices by element 
 	private Integer woodPrice;
 	private Integer winePrice;
 	private Integer oilPrice;
 	
-	private Integer metalPricePointer;
+	private Integer metalPricePointer; // Pointers who point price's vector actual position
 	private Integer woodPricePointer;
 	private Integer winePricePointer;
 	private Integer oilPricePointer;
 
-	private Vector<Integer> round3_prices = new Vector<Integer>();
+	private Vector<Integer> round3_prices = new Vector<Integer>(); // Prices's container vector by round
 	private Vector<Integer> round4_prices = new Vector<Integer>();
 	private Vector<Integer> round5_prices = new Vector<Integer>();
 	
 	
 	public MarketChart(){
 		
-		// initializes the 3 vectors
+		// initializes the 3 vectors with prices values by round
 		round3_prices.add(3);
 		round3_prices.add(4);
 		round3_prices.add(4);
@@ -58,33 +59,32 @@ public class MarketChart {
 		round5_prices.add(12);
 		round5_prices.add(13);
 		
-		// pointers
+		// pointers initialization ( 0 because it's the first position in a Array/Vector/List ... )
 		metalPricePointer = 0;
 		woodPricePointer = 0;
 		winePricePointer = 0;
 		oilPricePointer = 0;
 		
 		
-		// round 3 default
+		// Initializes start prices. (round 3 by default)
 		metalPrice = round3_prices.get(metalPricePointer);
 		woodPrice = round3_prices.get(woodPricePointer);
 		winePrice = round3_prices.get(winePricePointer);
 		oilPrice = round3_prices.get(oilPricePointer);
-		
-		
 	}
 	
-	public void moveResourcePrice(String activeRound, String resource, Integer positions){
+	/** Method that manages variations in market chart's prices */
+	public void moveResourcePrice(String activeRound, String resource, Integer positions){ // positions must be negative value in some times (when player uses silver to pay)
 		
 		if(resource.equals("Metal")){
 			// adjusts price pointer
-			metalPricePointer += positions; // positions must be negative in some cases
-			if(metalPricePointer > 10){
-				metalPricePointer = 10;
-			}
-			else if(metalPricePointer < 0){
-				metalPricePointer = 0;
-			}
+			metalPricePointer += positions;  
+			if(metalPricePointer > 10){        //
+				metalPricePointer = 10;        //
+			}                                  //  Prevents out of range fails (same in all next resources source code)
+			else if(metalPricePointer < 0){    //
+				metalPricePointer = 0;         //
+			}                                  //
 			
 			// adjusts price
 			if(activeRound.equals("3")){
@@ -100,7 +100,7 @@ public class MarketChart {
 		
 		if(resource.equals("Wood")){
 			// adjusts price pointer
-			woodPricePointer += positions; // positions must be negative in some cases
+			woodPricePointer += positions;
 			if(woodPricePointer > 10){
 				woodPricePointer = 10;
 			}
@@ -122,7 +122,7 @@ public class MarketChart {
 		
 		if(resource.equals("Wine")){
 			// adjusts price pointer
-			winePricePointer += positions; // positions must be negative in some cases
+			winePricePointer += positions;
 			if(winePricePointer > 10){
 				winePricePointer = 10;
 			}
@@ -144,7 +144,7 @@ public class MarketChart {
 		
 		if(resource.equals("Oil")){
 			// adjusts price pointer
-			oilPricePointer += positions; // positions must be negative in some cases
+			oilPricePointer += positions;
 			if(oilPricePointer > 10){
 				oilPricePointer = 10;
 			}
@@ -165,6 +165,9 @@ public class MarketChart {
 		}
 	}
 
+	
+	/** Price getters */
+	
 	public Integer getMetalPrice() {
 		return metalPrice;
 	}
