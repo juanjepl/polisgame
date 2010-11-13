@@ -22,12 +22,12 @@ import java.util.List;
 import java.util.ArrayList;
 import java.util.Vector;
 
-
+/** This class reads game files and returns game objects instantiations, each method one type of them */
 public class PolReader implements IPolisFilesReader{ // Reads .pol files
 	
 	public PolReader(){}
 	
-	// This method reads all Seas files and returns a map with the Sea objects
+	/** This method reads all seas files and returns a map with the Sea objects */
 	public Map<String,Sea> readSeas(){
 		String pathOfSeas = GameConfigurations.getPathOfSeas();
 		Map<String,Sea> seasMap = new HashMap<String,Sea>();
@@ -41,6 +41,7 @@ public class PolReader implements IPolisFilesReader{ // Reads .pol files
 		return seasMap;
 	}
 
+	/** This method read all trade docks files and returns a map with the trade docks objects */
 	public Map<String,TradeDock> readTradeDocks(){
 		String pathOfTradeDocks = GameConfigurations.getPathOfTradeDocks();
 		Map<String,TradeDock> tradeDocksMap = new HashMap<String,TradeDock>();
@@ -55,6 +56,7 @@ public class PolReader implements IPolisFilesReader{ // Reads .pol files
 		
 	}
 	
+	/** This method reads all projects files and returns a list with the projects objects */
 	public List<Project> readProjects(){
 		String pathOfProjects = GameConfigurations.getPathOfProjects();
 		List<Project> projectList = new ArrayList<Project>();
@@ -104,6 +106,7 @@ public class PolReader implements IPolisFilesReader{ // Reads .pol files
 		return projectList;
 	}
 	
+	/** This method reads all markets files and returns a map with the markets objects */
 	public Map<String,Market> readMarkets(){
 		
 		Map<String,Market> marketsMap = new HashMap<String,Market>();
@@ -111,6 +114,7 @@ public class PolReader implements IPolisFilesReader{ // Reads .pol files
 		return marketsMap;
 	}
 	
+	/** This method reads all game events files and returns a list with the game events objects */
 	public List<List<GameEvent>> readGameEvents(){
 		String pathOfGameEvents = GameConfigurations.getPathOfGameEvents();
 		List<List<GameEvent>> gameEventsList = new ArrayList<List<GameEvent>>();
@@ -147,6 +151,7 @@ public class PolReader implements IPolisFilesReader{ // Reads .pol files
 		return gameEventsList;
 	}
 	
+	/** This method reads all polis files and returns a map with the polis objects, using also the territories, seas and projects to composite it */
 	public Map<String,Polis> readPolis(Map<String,Territory> territoriesMap,Map<String,Sea> seasMap,List<Project> gameProjects){
 		String pathOfPolis = GameConfigurations.getPathOfPolis();
 		Map<String,Polis> polisMap = new HashMap<String,Polis>();
@@ -205,6 +210,7 @@ public class PolReader implements IPolisFilesReader{ // Reads .pol files
 		return polisMap;
 	}
 	
+	/** This method reads all territories files and returns a map with the territories objects */
 	public Map<String,Territory> readTerritories(){
 		String pathOfTerritories = GameConfigurations.getPathOfTerritories();
 		Map<String,Territory> territoriesMap = new HashMap<String,Territory>();
