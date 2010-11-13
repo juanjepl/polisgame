@@ -6,7 +6,7 @@ public class ProjectGame extends Project{
 
 	public ProjectGame(String sysName, String name, Integer prestige, Integer prestigeToPosterity, Map<String,Integer> resourcesRequired){
 		
-		super(sysName,name,prestige,prestigeToPosterity,resourcesRequired);
+		super(sysName,name,prestige,prestigeToPosterity,resourcesRequired); // Uses the Project constructor
 		
 	}
 }
