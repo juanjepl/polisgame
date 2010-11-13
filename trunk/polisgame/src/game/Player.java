@@ -4,9 +4,10 @@ import java.util.List;
 import java.util.LinkedList;
 import java.util.Random;
 
+/** Game player class */
 public class Player {
 	private String name;
-	private List<Polis> playerPolis;
+	private List<Polis> playerPolis;  // Polis of which we own
 	private Integer prestige;
 	private Integer wood;
 	private Integer metal;
@@ -14,7 +15,8 @@ public class Player {
 	private Integer oil;
 	private Integer wheat;
 	private Integer silver;
-	private Boolean hasPassedTurn;
+	private Boolean hasPassedTurn; // If this player has passed the turn for actual round
+	
 	
 	public Player(String name){
 		this.name = name;
@@ -29,11 +31,13 @@ public class Player {
 		silver = 0;
 	}
 
+	/** Getters and setters */
+	
 	public String getName() {
 		return name;
 	}
 
-	public void setName(String name) {
+	public void setName(String name) { // Player's name can be setted in order to, after this creation, we'll change it in game display
 		this.name = name;
 	}
 
@@ -93,17 +97,6 @@ public class Player {
 		this.silver = silver;
 	}
 
-	public List<Polis> getPlayerPolis() {
-		return playerPolis;
-	}
-	
-	public void addPolis(Polis polis){
-		//TODO
-	}
-	public void removePolis(Polis polis){
-		//TODO
-	}
-	
 	public Boolean getHasPassedTurn() {
 		return hasPassedTurn;
 	}
@@ -112,6 +105,20 @@ public class Player {
 		this.hasPassedTurn = hasPassedTurn;
 	}
 	
+	public List<Polis> getPlayerPolis() {
+		return playerPolis;
+	}
+	
+	/** Method to add a polis to our owns */
+	public void addPolis(Polis polis){
+		//TODO
+	}
+	
+	/** Method to remove polis from our owns */
+	public void removePolis(Polis polis){
+		//TODO
+	}
+
 	/**
 	 * Returns a random number between 1 and 4.
 	 * @return The random number.

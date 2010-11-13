@@ -1,11 +1,13 @@
 package game;
 
 
+/** Class who manages everything related with Game Events */
 public class GameEvent {
 	private String sysName;
 	private String name;
 	private String text;
 	private String round;
+	
 	
 	public GameEvent(String sysName,String name, String text, String round){
 		this.sysName = sysName;
@@ -15,15 +17,18 @@ public class GameEvent {
 		
 	}
 	
-	
+	/** This method executes the game event by its system name */
 	public static void executeAction(String eventName){
-		//TODO
+		
+		//TODO ¿with switch()? ¿else if()? by sysName
+		
 	}
+	
+	/** Getters and Setters */
 	
 	public String getSysName() {
 		return sysName;
 	}
-
 
 	public String getName() {
 		return name;

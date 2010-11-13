@@ -2,26 +2,23 @@ package game;
 
 import java.util.Set;
 
+/** This class represents a vertex, used like base component by Graph class */
 public class Vertex {
 	
-	private String name;
+	private String vertexName;
+	private Set<Vertex> adjacents; // The group of all adjacents vertex to this vertex
 	
-	private Set<Vertex> adyacents;
-	
-	public Vertex(String name, Set<Vertex>adyacents)
-	{
-		this.name = name;
-		this.adyacents = adyacents;
+	public Vertex(String vertexName, Set<Vertex> adjacents){
+		this.vertexName = vertexName;
+		this.adjacents = adjacents;
 	}
 	
-	public String getName()
-	{
-		return name;
+	public String getVertexName(){
+		return vertexName;
 	}
 	
-	public Set<Vertex> getAdyacents()
-	{
-		return adyacents;
+	public Set<Vertex> getAdjacents(){
+		return adjacents;
 	}
 
 }

@@ -1,13 +1,17 @@
 package game;
 
-
+/** Main class, where starts game main thread */
 public class Main {
 
 	public static void main(String[] args) {
 		
-		Game polis_game = ElementsInitializer.InitializeGameElements(); // Initializes Game's elements
-		StandardStartInitializer.standardStart(polis_game); // Initializes Game's start position
+		Game polis_game = ElementsInitializer.InitializeGameElements(); // Initializes all game elements
+		StandardStartInitializer.standardStart(polis_game); // Initializes the game standard start position
 		
+		
+		//TODO game main loop.
+		
+		/*
 		Round gameRound = polis_game.getRound();
 		
 		Boolean gameEndCondition = false;
@@ -16,18 +20,17 @@ public class Main {
 			Boolean endOfRound = false;
 			while(endOfRound == false){
 				
-				//TODO main loop
+				//TODO
+				//TODO
+				//TODO
 				
-				gameRound.startRound();
-				
-				
-			}			
-			
-			
-			
+				gameRound.startRound();		
+			}
 		}
+		 */	
 		
 		
-	
+		
+		
 	}
 }

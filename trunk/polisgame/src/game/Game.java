@@ -3,6 +3,7 @@ package game;
 import java.util.List;
 import java.util.Map;
 
+/** The most important class in the game, It contains players, rounds, and any all elements of the game */
 public class Game { //TODO add Graphs
 
 	private Player spartaPlayer;
@@ -20,11 +21,11 @@ public class Game { //TODO add Graphs
 	private List<GameEvent> gameEventsRound5a;
 	private List<GameEvent> gameEventsRound5b;
 	
-	
 	private MarketChart marketChart;
 	private Round round;
 	
 	
+	/** Game constructor */
 	public Game(Player sparta, Player athens, Map<String,Territory> territoriesMap, Map<String,Sea> seasMap, Map<String,TradeDock> tradeDocksMap, Map<String,Market> marketsMap, Map<String,Polis> polisMap, List<Project> gameProjects, List<List<GameEvent>> gameEventsList, Round theRound, MarketChart theMarketChart){
 
 		spartaPlayer = sparta;
@@ -44,9 +45,12 @@ public class Game { //TODO add Graphs
 		
 		round = theRound;
 		marketChart = theMarketChart;
-		
 	}
 
+	
+	/** Getter and Setters methods */
+	
+	
 	public Player getSpartaPlayer() {
 		return spartaPlayer;
 	}
@@ -54,7 +58,6 @@ public class Game { //TODO add Graphs
 	public Player getAthensPlayer() {
 		return athensPlayer;
 	}
-
 
 	public List<Project> getProjectList() {
 		return projectList;

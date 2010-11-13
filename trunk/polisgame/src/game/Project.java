@@ -2,14 +2,15 @@ package game;
 
 import java.util.Map;
 
+/** Game project class*/
 public abstract class Project {
-	private String sysName;
-	private String name;
+	private String sysName; // system name to compare strings for example
+	private String name;    // "beautiful" name to be displayed, it can change in translations
 	private Integer prestige;
 	private Integer prestigeToPosterity;
-	private Map<String,Integer> resourcesRequired;
+	private Map<String,Integer> resourcesRequired; // resources required to start this project into a polis
 	private Boolean finished;
-	private Boolean used;
+	private Boolean used; // if this project has been used from the maze in game (no matter if assigned to a polis)
 	
 	public Project(String sysName,String name, Integer prestige, Integer prestigeToPosterity, Map<String,Integer> resourcesRequired){
 		
@@ -21,6 +22,8 @@ public abstract class Project {
 		this.finished = false;
 		this.used = false;
 	}
+	
+	/** Getters and setters */
 	
 	public Boolean getFinished() {
 		return finished;
