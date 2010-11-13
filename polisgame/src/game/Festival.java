@@ -7,7 +7,7 @@ public class Festival extends Project{
 
 	public Festival(String sysName, String name, Integer prestige, Integer prestigeToPosterity, Map<String,Integer> resourcesRequired){
 		
-		super(sysName,name,prestige,prestigeToPosterity,resourcesRequired);
+		super(sysName,name,prestige,prestigeToPosterity,resourcesRequired); // Uses the Project constructor
 		
 	}
 }

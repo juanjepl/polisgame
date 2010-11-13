@@ -2,6 +2,8 @@ package game;
 
 public class BattleManager {
 
+	// FIXME (spanish text)
+	
 	// Pasos a seguir:
 	// se comprueba que en el territorio o mar hay 8 o mas unidades entre los 2 bandos
 	// asalto
@@ -14,10 +16,10 @@ public class BattleManager {
 	
 	public BattleManager(){}
 	
-		public void assault(){
+	public void assault(){
 			
+		//TODO
 			
-			
-		}
+	}
 	
 }

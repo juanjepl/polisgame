@@ -1,5 +1,6 @@
 package cfg;
 
+/** This class contains folders pahs and methods to change game's configurations, for example, switch language */
 public class GameConfigurations { 
 
 	// static atributes who saved the game folders path
@@ -11,9 +12,9 @@ public class GameConfigurations {
 	private static String pathOfProjects = "/data/projects/ES/";
 	private static String pathOfGameEvents = "/data/gameEvents/ES/";
 	
-	public GameConfigurations(){
-		//TODO
-	}
+	
+	public GameConfigurations(){}
+	
 
 	public static String getPathOfSeas() {
 		return pathOfSeas;
@@ -43,6 +44,7 @@ public class GameConfigurations {
 		return pathOfGameEvents;
 	}
 	
+	/** Set game's texts to Spanish */
 	public void setLanguageToSpanish(){
 		pathOfSeas = "/data/seas/ES/";
 		pathOfTradeDocks = "/data/tradeDocks/ES/";
@@ -53,6 +55,7 @@ public class GameConfigurations {
 		pathOfGameEvents = "/data/gameEvents/ES/";
 	}
 	
+	/** Set game's texts to English */
 	public void setLanguageToEnglish(){ //TODO make first files in EN folders
 		pathOfSeas = "/data/seas/EN/";
 		pathOfTradeDocks = "/data/tradeDocks/EN/";
