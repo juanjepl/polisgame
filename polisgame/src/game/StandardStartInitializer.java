@@ -1,9 +1,11 @@
 package game;
 
+/** This class is responsible to initialize the game start */
 public class StandardStartInitializer {
 
 	public StandardStartInitializer(){}
 	
+	/** Method responsible to initialize the game start */
 	public static void standardStart(Game theGame){
 	
 //// For Sparta	
@@ -21,6 +23,7 @@ public class StandardStartInitializer {
 		theGame.getSpartaPlayer().addPolis(theGame.getGamePolis().get("gythion"));
 		theGame.getSpartaPlayer().addPolis(theGame.getGamePolis().get("pylos"));
 		
+		// Searches the polis and assign it to the player's owns (same with 2 players) 
 		for(Polis p : theGame.getSpartaPlayer().getPlayerPolis()){
 			if(p.getSysName().equals("sparta")){
 				p.setActualPopulation(4);

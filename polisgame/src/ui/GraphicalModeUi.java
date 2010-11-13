@@ -3,6 +3,7 @@ package ui;
 import java.util.List;
 import java.util.ArrayList;
 
+/** Graphical-mode user interface class */
 public class GraphicalModeUi implements IUserInterface{
 	
 	public GraphicalModeUi(){}
