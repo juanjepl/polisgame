@@ -1,16 +1,30 @@
 package game;
 
-
+/** Class that manage game turns */
 public class Turn {
-	private Action firstAction;
-	private Action secondAction;
+	private Action firstAction = null;
+	private Action secondAction = null;
 	
-	public Turn(Action firstAction, Action secondAction){
-		//first and second actions must have different type (sons of Action, create.... military...)
-		this.firstAction = firstAction;
-		this.secondAction = secondAction;
-				
+	public Turn(){}
+
+	/** This method adds an action to the turn */
+	public void addAction(Action action) {
+		if (firstAction.equals(null)){
+			firstAction = action;
+		}
+		else{
+			if(secondAction.equals(null)){
+				secondAction = action;
+			}
+			else{
+				//TODO Exception: no more than 2 actions by turn
+			}
+			
+		}
 	}
+
+	
+	/** Getters */
 
 	public Action getFirstAction() {
 		return firstAction;
