@@ -108,9 +108,33 @@ public class PolReader implements IPolisFilesReader{ // Reads .pol files
 	
 	/** This method reads all markets files and returns a map with the markets objects */
 	public Map<String,Market> readMarkets(){
-		
+		String pathOfMarkets = GameConfigurations.getPathOfMarkets();
 		Map<String,Market> marketsMap = new HashMap<String,Market>();
-		//TODO
+
+		List<List<String>> marketsTexts = GenericDirectoryReader.getDirectoryFiles(pathOfMarkets);
+		
+		Map<String, Map<String, Integer>> resources = new HashMap<String, Map<String, Integer>>();
+		
+		for(List<String> marketInfo :marketsTexts)
+		{
+			for(int i = 2; i < marketInfo.size(); i++)
+			{
+				List<String> trade = StringUtilities.stringSplitterForPolis(marketInfo.get(i), ":");
+				Map<String, Integer> resource2 = new HashMap<String, Integer>();
+				resource2.put(trade.get(1), Integer.parseInt(trade.get(2)));
+				if(resources.containsKey(trade.get(0)))
+				{
+					resources.get(trade.get(0)).put(trade.get(1), Integer.parseInt(trade.get(2)));
+				} 
+				else
+				{
+					resources.put(trade.get(0), resource2);
+				}
+			}
+			
+			Market market = new Market(marketInfo.get(0), marketInfo.get(1), resources);
+			marketsMap.put(marketInfo.get(0), market);
+		}
 		return marketsMap;
 	}
 	
