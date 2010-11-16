@@ -112,11 +112,9 @@ public class Player {
 	/** Method to add a polis to our owns */
 	public void addPolis(Polis polis){
 		//TODO
-//		private List<Polis> playerPolis;  // Polis of which we own
 		if (playerPolis.contains(polis)){
 			//FIXME Player must know that this polis is under own control
 		}else{
-			
 			playerPolis.add(polis);
 		}
 		
@@ -125,6 +123,11 @@ public class Player {
 	/** Method to remove polis from our owns */
 	public void removePolis(Polis polis){
 		//TODO
+		if (playerPolis.contains(polis)){
+			playerPolis.remove(polis);
+		}else {
+			//FIXME You can´t remove a Polis that you don´t have under your control.
+		}
 	}
 
 	/**
