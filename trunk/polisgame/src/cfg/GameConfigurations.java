@@ -11,7 +11,7 @@ public class GameConfigurations {
 	private static String pathOfTerritories = "/data/territories/ES/";
 	private static String pathOfProjects = "/data/projects/ES/";
 	private static String pathOfGameEvents = "/data/gameEvents/ES/";
-	
+	private static String pathOfGraphs = "/data/graphs/";
 	
 	public GameConfigurations(){}
 	
@@ -42,6 +42,10 @@ public class GameConfigurations {
 
 	public static String getPathOfGameEvents() {
 		return pathOfGameEvents;
+	}
+	
+	public static String getPathOfGraphs() {
+		return pathOfGraphs;
 	}
 	
 	/** Set game's texts to Spanish */

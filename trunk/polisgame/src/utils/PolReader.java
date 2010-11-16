@@ -15,6 +15,7 @@ import game.ProjectGame;
 import game.Theatre;
 import game.Statue;
 import game.Festival;
+import game.Vertex;
 
 import java.util.Map;
 import java.util.HashMap;
@@ -263,6 +264,14 @@ public class PolReader implements IPolisFilesReader{ // Reads .pol files
 		
 
 		return territoriesMap;
-	}	
+	}
+	
+	public List<Vertex> readGraph(){
+		List<Vertex> graph = new ArrayList<Vertex>();
+		
+		
+		return graph;
+		
+	}
 
 }
