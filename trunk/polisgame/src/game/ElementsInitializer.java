@@ -3,7 +3,6 @@ package game;
 import java.util.List;
 import java.util.Map;
 import ui.TextModeUi;
-import utils.IPolisFilesReader;
 import utils.PolReader;
 
 /** This class is responsible for initializing the elements of the game */
@@ -15,7 +14,7 @@ public class ElementsInitializer {
 	public static Game InitializeGameElements(){ // TODO Game graphs need to be initialized
 	
 		//// Initialization of the game files reader utility		
-		IPolisFilesReader polisFilesReader = new PolReader();
+		PolReader polisFilesReader = new PolReader();
 
 		//// Readings and initialization for territories	
 		Map<String,Territory> territoriesMap = polisFilesReader.readTerritories();
