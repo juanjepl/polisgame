@@ -6,12 +6,11 @@ import java.util.List;
 public class Graph{
 
 	private List<Vertex> graph; // They're all vertex of this graph
-	
-	
+
 	public Graph(List<Vertex> graph){
 		this.graph = graph;
 	}
-	
+
 	public List<Vertex> getGraph(){
 		return graph;
 	}
