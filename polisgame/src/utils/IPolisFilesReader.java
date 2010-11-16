@@ -8,6 +8,7 @@ import game.Project;
 import game.TradeDock;
 import game.GameEvent;
 import game.Polis;
+import game.Vertex;
 
 /** Interface with the readers classes methods */
 public interface IPolisFilesReader {
@@ -19,5 +20,6 @@ public interface IPolisFilesReader {
 	public List<List<GameEvent>> readGameEvents();
 	public Map<String,Polis> readPolis(Map<String,Territory> territoriesMap,Map<String,Sea> seasMap,List<Project> gameProjects);
 	public Map<String,Territory> readTerritories();
+	public List<Vertex> readGraph();
 	
 }

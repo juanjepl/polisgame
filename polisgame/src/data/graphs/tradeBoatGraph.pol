@@ -1,0 +1,7 @@
+illyria:ionianSea
+ionianSea:illyria:spartaDock
+spartaDock:ionianSea:myrtoanSea
+myrtoanSea:spartaDock:athensDock:sporadesIslands
+sporadesIslands:egypt:persianEmpire:athensDock:thraceSea
+athensDock:myrtoanSea:sporadesIslands:thraceSea
+thraceSea:thracia:euxinePontos:athensDock:sporadesIslands

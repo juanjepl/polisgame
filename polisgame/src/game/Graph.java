@@ -3,16 +3,16 @@ package game;
 import java.util.List;
 
 /** This class is used to calculate unit movements on the game map */
-public class Graph {
+public class Graph<P extends Position> {
 
-	private List<Vertex> graph; // They're all vertex of this graph
+	private List<Vertex<P>> graph; // They're all vertex of this graph
 	
 	
-	public Graph(List<Vertex> graph){
+	public Graph(List<Vertex<P>> graph){
 		this.graph = graph;
 	}
 	
-	public List<Vertex> getGraph(){
+	public List<Vertex<P>> getGraph(){
 		return graph;
 	}
 }

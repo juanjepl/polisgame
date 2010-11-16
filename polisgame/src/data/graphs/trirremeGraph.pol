@@ -1,0 +1,5 @@
+thraceSea:cycladesIslands:sporadesIslands
+cycladesIslands:thraceSea:sporadesIslands:myrtoanSea
+sporadesIslands:thraceSea:cycladesIslands:myrtoanSea
+myrtoanSea:cycladesIslands:sporadesIslands:ionianSea
+ionianSea:myrtoanSea
