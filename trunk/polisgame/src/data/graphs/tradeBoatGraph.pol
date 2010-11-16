@@ -4,4 +4,8 @@ spartaDock:ionianSea:myrtoanSea
 myrtoanSea:spartaDock:athensDock:sporadesIslands
 sporadesIslands:egypt:persianEmpire:athensDock:thraceSea
 athensDock:myrtoanSea:sporadesIslands:thraceSea
-thraceSea:thracia:euxinePontos:athensDock:sporadesIslands
+thraceSea:thrace:euxinePontos:athensDock:sporadesIslands
+thrace:thraceSea
+euxinePontos:thraceSea
+persianEmpire:sporadesIslands
+egypt:sporadesIslands
