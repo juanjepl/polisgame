@@ -1,7 +1,6 @@
 package utils;
 
 import cfg.GameConfigurations;
-import game.Position;
 import game.Sea;
 import game.TradeDock;
 import game.Project;
@@ -25,7 +24,7 @@ import java.util.ArrayList;
 import java.util.Vector;
 
 /** This class reads game files and returns game objects instantiations, each method one type of them */
-public class PolReader<P extends Position>{ // Reads .pol files
+public class PolReader{ // Reads .pol files
 	
 	public PolReader(){}
 	
@@ -267,8 +266,8 @@ public class PolReader<P extends Position>{ // Reads .pol files
 		return territoriesMap;
 	}
 	
-	public List<Vertex<P>> readGraph(){
-		List<Vertex<P>> graph = new ArrayList<Vertex<P>>();
+	public List<Vertex> readGraph(){
+		List<Vertex> graph = new ArrayList<Vertex>();
 		
 		
 		return graph;

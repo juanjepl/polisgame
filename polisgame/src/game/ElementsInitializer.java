@@ -11,7 +11,7 @@ public class ElementsInitializer {
 	public ElementsInitializer(){}
 	
 	/** Method who initialize all elements of the game */
-	public static Game InitializeGameElements(){ // TODO Game graphs need to be initialized
+	public Game InitializeGameElements(){ // TODO Game graphs need to be initialized
 	
 		//// Initialization of the game files reader utility		
 		PolReader polisFilesReader = new PolReader();
