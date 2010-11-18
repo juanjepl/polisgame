@@ -9,20 +9,20 @@ public class EndGameManager {
 	public EndGameManager(){}
 	
 	
-	/** This method checks if any player has losed his capital */
+	/** This method checks if any player has lost his capital */
 	public Boolean checkCapitals(){ 
-		Boolean losedCapital = false;
+		Boolean lostCapital = false;
 		
-		//TODO this method checks no one player has losed his capital (game over)
+		//TODO this method checks no one player has lost his capital (game over)
 		
-		return losedCapital;
+		return lostCapital;
 	}
 	
-	/** This method cecks if any player has losed all prestige points */
+	/** This method checks if any player has lost all prestige points */
 	public Boolean checkNoPrestige(){
 		Boolean playerWithNoPrestige = false;
 		
-		//TODO this method checks no one player has losed all his prestige (game over)
+		//TODO this method checks no one player has lost all his prestige (game over)
 		
 		return playerWithNoPrestige;
 	}
@@ -34,12 +34,12 @@ public class EndGameManager {
 		
 	}
 	
-	public Player getWinner(){
+	public Player getWinner(){ // FIXME is it necessary?
 		//TODO
 		return winner;
 	}
 	
-	/** This method ends the game */
+	/** This method ends the game */ //FIXME is also it necessary?
 	public void endTheGame(){
 		
 		//TODO

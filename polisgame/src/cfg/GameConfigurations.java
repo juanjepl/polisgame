@@ -13,6 +13,7 @@ public class GameConfigurations {
 	private static String pathOfGameEvents = "/data/gameEvents/ES/";
 	private static String pathOfGraphs = "/data/graphs/";
 	private static Integer minNumberToBattle = 8;
+	private static String starterPlayer = "sparta";
 	
 	public GameConfigurations(){}
 	
@@ -48,7 +49,11 @@ public class GameConfigurations {
 	public static String getPathOfGraphs() {
 		return pathOfGraphs;
 	}
-	
+		
+	public static String getStarterPlayer() {
+		return starterPlayer;
+	}
+
 	public static Integer getMinNumberToBattle() {
 		return minNumberToBattle;
 	}

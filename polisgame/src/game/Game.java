@@ -3,11 +3,16 @@ package game;
 import java.util.List;
 import java.util.Map;
 
+import cfg.GameConfigurations;
+
 /** The most important class in the game, It contains players, rounds, and any all elements of the game */
 public class Game { //TODO add Graphs
 
 	private Player spartaPlayer;
 	private Player athensPlayer;
+	
+	private Player whoHasTheTurn;
+	
 	private List<Project> projectList;
 
 	private Map<String,Territory> gameTerritories ;
@@ -30,6 +35,8 @@ public class Game { //TODO add Graphs
 
 		spartaPlayer = sparta;
 		athensPlayer = athens;
+		
+		setStarterPlayer(); // initializes starter player using a class own method
 		
 		gameTerritories = territoriesMap;
 		gameSeas = seasMap;
@@ -106,4 +113,25 @@ public class Game { //TODO add Graphs
 	public Map<String, Polis> getGamePolis() {
 		return gamePolis;
 	}
+
+	public Player getWhoHasTheTurn() {
+		return whoHasTheTurn;
+	}
+
+	public void setWhoHasTheTurn(Player whoHasTheTurn) {
+		this.whoHasTheTurn = whoHasTheTurn;
+	}
+	
+	public void setStarterPlayer(){
+		if(GameConfigurations.getStarterPlayer().equals("sparta")){
+			whoHasTheTurn = spartaPlayer;
+		}
+		else if(GameConfigurations.getStarterPlayer().equals("athens")){
+			whoHasTheTurn = athensPlayer;
+		}
+		else{
+			//TODO possible exception if in game configurations, name isn't "sparta" or "athens"
+		}
+	}
+	
 }
