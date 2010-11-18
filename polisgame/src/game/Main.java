@@ -23,7 +23,7 @@ public class Main{
 				Boolean theEndOfTheTurn = false;
 				while(!theEndOfTheTurn){
 					
-					//TODO: first GameConfigurations.getStarterPlayer(), after the other one.
+					//TODO: game.whoHasTheTurn(), after the other one.
 					
 					//TODO-> call to User interface "select action" method, this checks available methods and manages player decision.
 					//TODO-> add action to the current turn
@@ -32,6 +32,8 @@ public class Main{
 					//TODO-> add action to the current turn (2th)
 					
 					EndTurnManager.checkBattles(polis_game);
+					
+					//TODO-> change who has the Turn
 				}
 
 				//TODO-> add turn to the turnList in Round
