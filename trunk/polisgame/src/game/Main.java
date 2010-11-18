@@ -7,31 +7,24 @@ public class Main{
 		
 		ElementsInitializer gameElements = new ElementsInitializer();
 		Game polis_game = gameElements.InitializeGameElements(); // Initializes all game elements
+		
 		StandardStartInitializer.standardStart(polis_game); // Initializes the game standard start position
 		
+		Boolean theEndOfTheGame = false;
+		polis_game.getRound().startRound(); // Starts initial round
 		
-		//TODO game main loop.
-		
-		/*
-		Round gameRound = polis_game.getRound();
-		
-		Boolean gameEndCondition = false;
-		while(gameEndCondition == false){
+		while(!theEndOfTheGame){
 			
-			Boolean endOfRound = false;
-			while(endOfRound == false){
+			//TODO GAME LOOP
+			Boolean theEndOfTheRound = false;
+			
+			while(!theEndOfTheRound){
 				
-				//TODO
-				//TODO
-				//TODO
 				
-				gameRound.startRound();		
+				
 			}
+			//
 		}
-		 */	
-		
-		
-		
 		
 	}
 }
