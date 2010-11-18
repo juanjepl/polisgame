@@ -4,14 +4,14 @@ package cfg;
 public class GameConfigurations { 
 
 	// static atributes who saved the game folders path
-	private static String pathOfSeas = "/data/seas/ES/";
-	private static String pathOfTradeDocks = "/data/tradeDocks/ES/";
-	private static String pathOfMarkets = "/data/markets/ES/";
-	private static String pathOfPolis = "/data/polis/ES/";
-	private static String pathOfTerritories = "/data/territories/ES/";
-	private static String pathOfProjects = "/data/projects/ES/";
-	private static String pathOfGameEvents = "/data/gameEvents/ES/";
-	private static String pathOfGraphs = "/data/graphs/";
+	private static String pathOfSeas = "src/data/seas/ES/";
+	private static String pathOfTradeDocks = "src/data/tradeDocks/ES/";
+	private static String pathOfMarkets = "src/data/markets/ES/";
+	private static String pathOfPolis = "src/data/polis/ES/";
+	private static String pathOfTerritories = "src/data/territories/ES/";
+	private static String pathOfProjects = "src/data/projects/ES/";
+	private static String pathOfGameEvents = "src/data/gameEvents/ES/";
+	private static String pathOfGraphs = "src/data/graphs/";
 	private static Integer minNumberToBattle = 8;
 	private static String starterPlayer = "sparta";
 	
