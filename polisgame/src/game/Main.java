@@ -13,6 +13,7 @@ public class Main{
 		Boolean theEndOfTheGame = false;
 		polis_game.getRound().startRound(); // Starts initial round
 		
+		/*
 		while(!theEndOfTheGame){
 			
 			Boolean theEndOfTheRound = false;
@@ -42,7 +43,7 @@ public class Main{
 			
 		}
 		
-	}
+	*/}
 }
 
 //TODO finish main loop
