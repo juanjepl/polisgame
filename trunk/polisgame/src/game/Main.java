@@ -15,16 +15,32 @@ public class Main{
 		
 		while(!theEndOfTheGame){
 			
-			//TODO GAME LOOP
 			Boolean theEndOfTheRound = false;
-			
 			while(!theEndOfTheRound){
 				
+				//TODO-> Create the turn
 				
+				Boolean theEndOfTheTurn = false;
+				while(!theEndOfTheTurn){
+					
+					//TODO: first GameConfigurations.getStarterPlayer(), after the other one.
+					
+					//TODO-> call to User interface "select action" method, this checks available methods and manages player decision.
+					//TODO-> add action to the current turn
+					
+					//TODO-> 2nd action (the same with the conditions...)
+					//TODO-> add action to the current turn (2th)
+					
+					EndTurnManager.checkBattles(polis_game);
+				}
+
+				//TODO-> add turn to the turnList in Round
 				
 			}
-			//
+			
 		}
 		
 	}
 }
+
+//TODO finish main loop

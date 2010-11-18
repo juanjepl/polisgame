@@ -7,7 +7,7 @@ public class EndRoundManager {
 	public EndRoundManager(){}
 	
 	
-	/** This method checks for any siegued polis, if siegue completes or not */
+	/** This method checks for any sieged polis, if siege completes or not */
 	public void checkSiegues(){
 		
 		//TODO
