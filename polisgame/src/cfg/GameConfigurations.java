@@ -12,6 +12,7 @@ public class GameConfigurations {
 	private static String pathOfProjects = "/data/projects/ES/";
 	private static String pathOfGameEvents = "/data/gameEvents/ES/";
 	private static String pathOfGraphs = "/data/graphs/";
+	private static Integer minNumberToBattle = 8;
 	
 	public GameConfigurations(){}
 	
@@ -48,6 +49,15 @@ public class GameConfigurations {
 		return pathOfGraphs;
 	}
 	
+	public static Integer getMinNumberToBattle() {
+		return minNumberToBattle;
+	}
+
+	public static void setMinNumberToBattle(Integer minNumberToBattle) {
+		GameConfigurations.minNumberToBattle = minNumberToBattle;
+	}
+
+
 	/** Set game's texts to Spanish */
 	public void setLanguageToSpanish(){
 		pathOfSeas = "/data/seas/ES/";
