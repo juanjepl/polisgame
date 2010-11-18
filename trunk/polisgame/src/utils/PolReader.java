@@ -241,7 +241,6 @@ public class PolReader{ // Reads .pol files
 		Map<String,Territory> territoriesMap = new HashMap<String,Territory>();
 		
 		List<List<String>> gameTerritoriesTexts = GenericDirectoryReader.getDirectoryFiles(pathOfTerritories);
-		
 		for(List<String> gameTerritoryInfo : gameTerritoriesTexts){
 			
 			Map<String,Vector<Integer>> territoryResources = new HashMap<String,Vector<Integer>>();
