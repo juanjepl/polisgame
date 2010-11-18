@@ -17,7 +17,7 @@ public class TextModeUi implements IUserInterface{
 	String spartaPlayer = "";	
 	String athensPlayer = "";
 	
-	System.out.print("Sparta player's name: "); //TODO rescue this text from data.gametexts
+	System.out.print("Sparta player's nickname: "); //TODO rescue this text from data.gametexts
 	
 	BufferedReader br_sparta = new BufferedReader(new InputStreamReader(System.in)); // request sparta's player's name
 	try {
@@ -26,13 +26,26 @@ public class TextModeUi implements IUserInterface{
 		//TODO
 	}
 
-	System.out.print("Athens player's name: ");
+	System.out.print("Athens player's nickname: ");
+
 	BufferedReader br_athens = new BufferedReader(new InputStreamReader(System.in)); // request athens's player's name
 	try {
 		athensPlayer = br_athens.readLine();
 	} catch (Exception e) {	
 		//TODO
 	}
+	
+	while(athensPlayer.equals(spartaPlayer)){ // requests the Athens player's name, while hasn't changed.
+		System.out.print("Your name cannot be the same as the other player, please, retype your nickname: ");
+		BufferedReader br_athens_tries = new BufferedReader(new InputStreamReader(System.in));
+		try {
+			athensPlayer = br_athens_tries.readLine();
+		} catch (Exception e) {	
+			//TODO
+		}
+		
+	}
+	
 	
 	List<String> twoNames = new ArrayList<String>(2); // create a list with the 2 names and returns it
 	twoNames.add(spartaPlayer);

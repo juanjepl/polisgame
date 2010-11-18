@@ -19,18 +19,15 @@ public class GenericDirectoryReader {
 		if(!(directory.exists())){
 			
 			System.out.println("Look the paths, this error is about folder not exists");
-			//TODO throws exception
-			
+			//TODO throws exception	
 		}
-		
-		
 		
 		String filesInDirectory[] = directory.list(); // gets the files in the directory
 		
 		for(String f:filesInDirectory){ // iteration on all files in the directory
 			//for(int i = 0 ; i<filesInDirectory.length ; i++){
 			if(f.endsWith(".pol")){	// if the file that we're reading ends with .pol (to differentiate and ignore other file extensions like .jpg)
-				directoryFiles.add(GenericReader.getFileContents(f)); // calls the individual file reader, and adds the list(a file-> list of strings, one per line) to the list of lists (all files in directory)
+				directoryFiles.add(GenericReader.getFileContents(directoryName+f)); // calls the individual file reader, and adds the list(a file-> list of strings, one per line) to the list of lists (all files in directory)
 			}
 		}
 		

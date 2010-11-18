@@ -9,11 +9,11 @@ public class Main{
 		Game polis_game = gameElements.InitializeGameElements(); // Initializes all game elements
 		
 		StandardStartInitializer.standardStart(polis_game); // Initializes the game standard start position
-		
+
+		/*
 		Boolean theEndOfTheGame = false;
 		polis_game.getRound().startRound(); // Starts initial round
 		
-		/*
 		while(!theEndOfTheGame){
 			
 			Boolean theEndOfTheRound = false;

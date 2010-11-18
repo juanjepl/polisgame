@@ -28,14 +28,16 @@ public class GenericReader {
 			br = new BufferedReader(fr);
 
 			String line;
-			while ((line = br.readLine()) != null) // TODO white line == null?? test it.
+			while ((line = br.readLine()) != null){ // TODO white line == null?? test it.
+				
 				if(line.startsWith("#")){ // ignore line if starts with "#" character. (in order to add some comments in texts)
 					continue; // goes to next iteration
 				}
 				fileContents.add(line);
-	    } 
+			} 
+	    }
 	    catch (Exception e){
-	    	e.printStackTrace();
+	    	e.printStackTrace(); //FIXME modify this exception to best control about it
 		} 
 	    finally {
 			
