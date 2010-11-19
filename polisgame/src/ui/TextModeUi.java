@@ -6,8 +6,11 @@ import java.util.List;
 import java.util.ArrayList;
 import java.util.LinkedList;
 
+import game.Game;
+import game.Turn;
+
 /** Text-mode user interface class */
-public class TextModeUi implements IUserInterface{
+public class TextModeUi implements IUserInterface{ //TODO rescue language texts from data.gameTexts
 
 	public TextModeUi(){}
 	
@@ -55,20 +58,14 @@ public class TextModeUi implements IUserInterface{
 	}
 	
 	/** This method shows the actual player-round-turn */
-	public void showPlayerTurn(){
-		String message = "";
-		
-		//TODO a "xxxxx's turns round x turn x " --> use translation of data.gameTexts and Game->Players->getnamePlayerX
-		
+	public void showPlayerTurn(Game game){
+		String message = "Turn: "+Turn.getTurnCount()+" "+"Player: "+game.getWhoHasTheTurn().getName();		
 		System.out.println(message);
 	}
 	
 	/** This method shows a change-of-round advice */
-	public void showNewRound(){
-		String message = "";
-		
-		//TODO an advice of changing round
-		
+	public void showNewRound(Game game){
+		String message = "New Round: "+game.getRound().getName();
 		System.out.println(message);
 	}
 	
