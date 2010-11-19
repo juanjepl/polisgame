@@ -27,11 +27,11 @@ public class Game { //TODO add Graphs
 	private List<GameEvent> gameEventsRound5b;
 	
 	private MarketChart marketChart;
-	private Round round;
+	private Round<Project> round; //FIXME look at <Project> ¿<T>? 
 	
 	
 	/** Game constructor */
-	public Game(Player sparta, Player athens, Map<String,Territory> territoriesMap, Map<String,Sea> seasMap, Map<String,TradeDock> tradeDocksMap, Map<String,Market> marketsMap, Map<String,Polis> polisMap, List<Project> gameProjects, List<List<GameEvent>> gameEventsList, Round theRound, MarketChart theMarketChart){
+	public Game(Player sparta, Player athens, Map<String,Territory> territoriesMap, Map<String,Sea> seasMap, Map<String,TradeDock> tradeDocksMap, Map<String,Market> marketsMap, Map<String,Polis> polisMap, List<Project> gameProjects, List<List<GameEvent>> gameEventsList, Round<Project> theRound, MarketChart theMarketChart){
 
 		spartaPlayer = sparta;
 		athensPlayer = athens;
@@ -90,7 +90,7 @@ public class Game { //TODO add Graphs
 		return marketChart;
 	}
 
-	public Round getRound() {
+	public Round<Project> getRound() {
 		return round;
 	}
 

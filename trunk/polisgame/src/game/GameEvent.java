@@ -18,7 +18,7 @@ public class GameEvent {
 	}
 	
 	/** This method executes the game event by its system name */
-	public static void executeAction(String eventName){
+	public void executeAction(){
 		
 		//TODO ¿with switch()? ¿else if()? by sysName
 		
