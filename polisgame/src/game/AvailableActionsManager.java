@@ -20,8 +20,37 @@ public class AvailableActionsManager {
 	
 	public static Boolean checkCreateHopliteAction(Game g,Player p){
 		Boolean available = false;
+		//TODO returns the polis availables to create hoplites?
+		
+		// Checks if player have resources to pay the action
+		Boolean condition_haveResources = p.getMetal()>= 2 || p.getSilver()>= 2;
+		if(condition_haveResources){
+			for(Polis city : p.getPlayerPolis()){
+				Boolean condition_enoughPopulation = city.getActualPopulation() > 1;
+				Boolean condition_hasParentTerritory = city.getPolisParentTerritory() != null;
+				Boolean condition_notSieged = city.getSieged();
+				Boolean condition_TerritoryWithSlot = false;
+				for(Unit u : city.getPolisParentTerritory().getUnits()){
+					Integer ownUnits = 0;
+					if(u.getOwner().equals(p)){
+						ownUnits += 1;
+					}
+					if(g.getRound().getMaximumPositionSlotsForThisRound() > ownUnits){ // > , not >=
+						condition_TerritoryWithSlot = true;
+					}
+					
+				}
+				
+				if(condition_enoughPopulation && condition_hasParentTerritory && condition_notSieged && condition_TerritoryWithSlot){
+					available = true;
+					break;
+				}
+			}
+			
+		}else{
+			//Do nothing, available still false
+		}
 		return available;
-		//TODO
 	}
 	public static Boolean checkCreateTrirremeAction(Game g,Player p){
 		Boolean available = false;

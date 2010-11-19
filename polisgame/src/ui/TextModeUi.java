@@ -8,6 +8,7 @@ import java.util.LinkedList;
 
 import game.Game;
 import game.Turn;
+import game.Player;
 
 /** Text-mode user interface class */
 public class TextModeUi implements IUserInterface{ //TODO rescue language texts from data.gameTexts
@@ -70,17 +71,20 @@ public class TextModeUi implements IUserInterface{ //TODO rescue language texts 
 	}
 	
 	/** This method shows the possibles actions that a player can do */
-	public List<String> showAvailableActions(){
+	public List<String> showAvailableActions(Game g, Player p){
 		List<String> availableActions = new LinkedList<String>();
 		
 		//TODO also the texts in data.gameTexts
-		
+		/*
 		Integer index = 1;
 		for(String possibleAction : availableActions){
 			
 			System.out.println(index + " - " + possibleAction);
 			index += 1;
-		}
+		}*/
+		
+		//TODO -> from "system" strings rescued, use gametexts "names"
+		
 		return availableActions;
 	}
 	
