@@ -1,8 +1,8 @@
 package game;
 
-import java.util.List;
-import java.util.LinkedList;
-import java.util.Random;
+import java.util.*;
+
+import utils.RandomCollections;
 
 /** Game player class */
 public class Player {
@@ -126,7 +126,7 @@ public class Player {
 		if (playerPolis.contains(polis)){
 			playerPolis.remove(polis);
 		}else {
-			//FIXME You can´t remove a Polis that you don´t have under your control.
+			//FIXME You canï¿½t remove a Polis that you donï¿½t have under your control.
 		}
 	}
 
@@ -135,7 +135,14 @@ public class Player {
 	 * @return The random number.
 	 */
 	public static Integer rollTheDice(){
-		Random generator = new Random();
-		return generator.nextInt(4) + 1;
+		List<Integer> dice = new ArrayList<Integer>(4);
+		for(int i = 1; i <= 4; i++) dice.add(i);
+		RandomCollections<Integer> diceManager = new RandomCollections<Integer>();
+		
+		return (diceManager.getRandomSublist(dice, 1)).get(0);
+		
+		// Better solution:
+		//Random generator = new Random()dice;
+		//return generator.nextInt(4) + 1;
 	}
 }
