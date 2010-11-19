@@ -1,7 +1,8 @@
 package game;
 
-import java.util.*;
-
+import java.util.List;
+import java.util.ArrayList;
+import java.util.LinkedList;
 import utils.RandomCollections;
 
 /** Game player class */
@@ -126,7 +127,7 @@ public class Player {
 		if (playerPolis.contains(polis)){
 			playerPolis.remove(polis);
 		}else {
-			//FIXME You can�t remove a Polis that you don�t have under your control.
+			//FIXME You can't remove a Polis that you don't have under your control.
 		}
 	}
 
