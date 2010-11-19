@@ -3,8 +3,10 @@ package game;
 import java.util.List;
 import java.util.LinkedList;
 
+import utils.RandomCollections;
+
 /** Class for game's rounds */
-public class Round {
+public class Round<T> {
 
 	private String name;
 	private List<Turn> turnList;
@@ -32,7 +34,7 @@ public class Round {
 			//TODO possible exception.
 		}
 		
-		//TODO more functionalities for this method?
+		//FIXME more functionalities for this method?
 	}
 	
 	
@@ -68,13 +70,37 @@ public class Round {
 	}
 
 	/** This method initializes the round (can be used by EndRoundManager.initializeNextRound() */
-	public void startRound(){
-		//TODO
-		// Add 3 random projects of all
-		//TODO
-		// Add and execute a GameEvent
+	public void startRound(Game game){
+		
+		// Takes from the game projects list, 3 random projects
+		RandomCollections<Project> randomListOfProjects = new RandomCollections<Project>();
+		projectsInThisRound = randomListOfProjects.getRandomSublist(game.getProjectList(),3);
 		
 		
+		// Takes one random GameEvent from actual round
+		RandomCollections<GameEvent> randomGameEvent = new RandomCollections<GameEvent>();
+		if(getName().equals("3")){
+			List<GameEvent>randomGameEventList = randomGameEvent.getRandomSublist(game.getGameEventsRound3(), 1);
+			gameEventInThisRound = randomGameEventList.get(0);
+		}
+		else if(getName().equals("4")){
+			List<GameEvent>randomGameEventList = randomGameEvent.getRandomSublist(game.getGameEventsRound4(), 1);
+			gameEventInThisRound = randomGameEventList.get(0);
+		}
+		else if(getName().equals("5a")){
+			List<GameEvent>randomGameEventList = randomGameEvent.getRandomSublist(game.getGameEventsRound5a(), 1);
+			gameEventInThisRound = randomGameEventList.get(0);
+		}
+		else if(getName().equals("4")){
+			List<GameEvent>randomGameEventList = randomGameEvent.getRandomSublist(game.getGameEventsRound5b(), 1);
+			gameEventInThisRound = randomGameEventList.get(0);
+		}
+		else{
+			//FIXME possible exception (attribute name has wrong value of String)
+		}
+		
+		//Executes the Game Event
+		gameEventInThisRound.executeAction();
 	}
 	
 }
