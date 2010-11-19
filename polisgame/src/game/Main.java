@@ -55,7 +55,8 @@ public class Main{
 				
 				// Checks if exists battles in the end of this turn
 				EndTurnManager.checkBattles(polis_game);
-				polis_game.getRound().addTurn(actualTurn);				
+				polis_game.getRound().addTurn(actualTurn);
+				break; //FIXME --> ONLY FOR TESTING
 			}
 			//TODO-> EndRoundManager methods...
 		}

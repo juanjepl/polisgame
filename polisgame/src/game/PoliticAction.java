@@ -10,7 +10,7 @@ public class PoliticAction extends Action{
 	
 	
 	/** Method to manage when a player starts a project into a polis */
-	public void startProyect(Player player, Project project, Polis polis){
+	public void startProject(Player player, Project project, Polis polis){
 		
 		//TODO
 		
