@@ -6,15 +6,18 @@ public class AvailableActionsManager {
 	/** This method returns the possible actions to do for player p */
 	public AvailableActionsManager(){}
 		
-	/*public static Boolean checkCreatorAction(Game g,Player p){
-		return checkCreateHopliteAction(g,p)||checkCreateTrirremeAction(g,p)||checkCreateTradeBoatAction(g,p)||checkCreateProxenusAction(g,p);
+	/*public static Boolean checkCreatorAction(Game game,Player player){
+		return checkCreateHopliteAction(player,game)||checkCreateTrirremeAction(g,p)||checkCreateTradeBoatAction(g,p)||checkCreateProxenusAction(g,p);
 	}
+	
+	/*
 	public static Boolean checkMilitaryAction(Game g,Player p){
 		return checkMoveHopliteAction(g,p)||checkMoveTrirremeAction(g,p)||checkSiegePolisAction(g,p)||checkPlunderTerritoryAction(g,p);
 	}
 	public static Boolean checkPoliticAction(Game g,Player p){
 		return checkStartProjectAction(g,p)||checkTradeAction(g,p)||checkMoveProxenusAction(g,p)||checkCivilWarAction(g,p);
 	}
+	*/
 	
 	/** Sub methods */
 
@@ -31,7 +34,6 @@ public class AvailableActionsManager {
 		available = condition_imTheOwnerOfThePolis && condition_haveResources && condition_enoughPopulation && condition_hasParentTerritory && condition_notSieged && condition_TerritoryWithSlot;
 		return available;
 	}
-
 	public static Boolean checkCreateTrirremeAction(Player player, Polis polis, Round round){
 		Boolean available = false;
 		
@@ -46,7 +48,6 @@ public class AvailableActionsManager {
 		available = condition_imTheOwnerOfThePolis && condition_haveResources && condition_enoughPopulation && condition_polisHasSea && condition_notSieged && (condition_SeaWithSlotA || condition_SeaWithSlotB);
 		return available;
 	}
-	
 	public static Boolean checkCreateTradeBoatAction(Player player, Polis polis, Round round){
 		Boolean available = false;
 		//TODO
@@ -60,14 +61,31 @@ public class AvailableActionsManager {
 		available = condition_imTheOwnerOfThePolis && condition_haveResources && condition_enoughPopulation && condition_hasTradeDock && condition_notSieged && condition_TradeDockWithSlot;
 		return available;
 	}
-	
-	/*
-	public static Boolean checkCreateProxenusAction(Game g,Player p){
+	public static Boolean checkCreateProxenusAction(Player player, Polis polis, Round round){
 		Boolean available = false;
-		//TODO
+		
+		Boolean condition_imTheOwnerOfThePolis = player.getPlayerPolis().contains(polis);
+		Boolean condition_haveResources = player.getSilver()>= 5;
+		Boolean condition_enoughPopulation = polis.getActualPopulation() > 1;
+		Boolean condition_notSieged = polis.getSieged();
+		Boolean condition_notExistsAnotherProxenus = true;
+		for(Polis p: player.getPlayerPolis()){
+			for(Unit u: p.getUnits()){
+				if(u instanceof Proxenus){ //FIXME test it...
+					condition_notExistsAnotherProxenus = false;
+					break;
+				}
+			}
+			if(!condition_notExistsAnotherProxenus){
+				break; //FIXME test it...
+			}
+		}
+		available = condition_imTheOwnerOfThePolis && condition_haveResources && condition_enoughPopulation && condition_notSieged && condition_notExistsAnotherProxenus;
 		return available;
 	}
 	
+	
+	/*
 	public static Boolean checkMoveHopliteAction(Game g,Player p){
 		Boolean available = false;
 		//TODO

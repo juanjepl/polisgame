@@ -30,7 +30,6 @@ public class Player {
 		oil = 0;
 		wheat = 0;
 		silver = 0;
-		playerTradeDock = null;
 	}
 
 	/** Getters and setters */
