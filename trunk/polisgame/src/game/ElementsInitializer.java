@@ -38,7 +38,7 @@ public class ElementsInitializer {
 		List<List<GameEvent>> gameEventsList = polisFilesReader.readGameEvents();
 		
 		//// Initialization of the round
-		Round<Project> theRound = new Round<Project>();
+		Round theRound = new Round();
 		
 		//// Initialization of the market chart
 		MarketChart theMarketChart = new MarketChart();

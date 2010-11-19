@@ -2,13 +2,13 @@ package game;
 
 import java.util.List;
 import java.util.ArrayList;
-import java.util.LinkedList;
 import utils.RandomCollections;
 
 /** Game player class */
 public class Player {
 	private String name;
 	private List<Polis> playerPolis;  // Polis of which we own
+	private TradeDock playerTradeDock; // Own Trade Dock
 	private Integer prestige;
 	private Integer wood;
 	private Integer metal;
@@ -22,7 +22,7 @@ public class Player {
 	public Player(String name){
 		this.name = name;
 		hasPassedTurn = false;
-		playerPolis = new LinkedList<Polis>();
+		playerPolis = new ArrayList<Polis>();
 		prestige = 0;
 		wood = 0;
 		metal = 0;
@@ -30,6 +30,7 @@ public class Player {
 		oil = 0;
 		wheat = 0;
 		silver = 0;
+		playerTradeDock = null;
 	}
 
 	/** Getters and setters */
@@ -109,7 +110,15 @@ public class Player {
 	public List<Polis> getPlayerPolis() {
 		return playerPolis;
 	}
-	
+
+	public TradeDock getPlayerTradeDock() {
+		return playerTradeDock;
+	}
+
+	public void setPlayerTradeDock(TradeDock playerTradeDock) {
+		this.playerTradeDock = playerTradeDock;
+	}
+
 	/** Method to add a polis to our owns */
 	public void addPolis(Polis polis){
 		//TODO
