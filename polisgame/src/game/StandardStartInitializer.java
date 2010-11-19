@@ -18,6 +18,9 @@ public class StandardStartInitializer {
 		theGame.getSpartaPlayer().setSilver(4);
 		theGame.getSpartaPlayer().setWheat(0);
 		
+		// TradeDock assignation
+		theGame.getSpartaPlayer().setPlayerTradeDock(theGame.getGameTradeDocks().get("spartaTradeDock"));
+		
 		// Polis assignation and polis initial population.
 		theGame.getSpartaPlayer().addPolis(theGame.getGamePolis().get("sparta"));
 		theGame.getSpartaPlayer().addPolis(theGame.getGamePolis().get("gythion"));
@@ -51,7 +54,7 @@ public class StandardStartInitializer {
 		theGame.getGameTerritories().get("laconia").addUnit(new Hoplite(theGame.getSpartaPlayer()));
 		theGame.getGameSeas().get("ionianSea").addUnit(new Trirreme(theGame.getSpartaPlayer())); // A trirreme at ionian sea
 		theGame.getGameSeas().get("myrtoanSea").addUnit(new Trirreme(theGame.getSpartaPlayer())); // A trirreme at myrtoan sea
-		theGame.getGameTradeDocks().get("spartaDock").addUnit(new TradeBoat(theGame.getSpartaPlayer())); // A trade boat at sparta's dock 
+		theGame.getGameTradeDocks().get("spartaTradeDock").addUnit(new TradeBoat(theGame.getSpartaPlayer())); // A trade boat at sparta's dock 
 		theGame.getGamePolis().get("sparta").addUnit(new Proxenus(theGame.getSpartaPlayer())); // The proxenus in Sparta
 		
 //// For Athens	
@@ -63,6 +66,9 @@ public class StandardStartInitializer {
 		theGame.getAthensPlayer().setOil(4);
 		theGame.getAthensPlayer().setSilver(0);
 		theGame.getAthensPlayer().setWheat(4);
+		
+		// TradeDock assignation
+		theGame.getAthensPlayer().setPlayerTradeDock(theGame.getGameTradeDocks().get("athensTradeDock"));
 		
 		// Polis assignation and polis initial population.
 		theGame.getAthensPlayer().addPolis(theGame.getGamePolis().get("athens"));
@@ -98,7 +104,7 @@ public class StandardStartInitializer {
 		theGame.getGameSeas().get("cycladesIslands").addUnit(new Trirreme(theGame.getAthensPlayer()));
 		theGame.getGameSeas().get("cycladesIslands").addUnit(new Trirreme(theGame.getAthensPlayer()));
 		theGame.getGameSeas().get("sporadesIslands").addUnit(new Trirreme(theGame.getAthensPlayer()));
-		theGame.getGameTradeDocks().get("athensDock").addUnit(new TradeBoat(theGame.getAthensPlayer()));
+		theGame.getGameTradeDocks().get("athensTradeDock").addUnit(new TradeBoat(theGame.getAthensPlayer()));
 		theGame.getGamePolis().get("athens").addUnit(new Proxenus(theGame.getAthensPlayer()));
 		
 	}

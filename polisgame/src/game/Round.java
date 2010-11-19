@@ -6,7 +6,7 @@ import java.util.LinkedList;
 import utils.RandomCollections;
 
 /** Class for game's rounds */
-public class Round<T> {
+public class Round {
 
 	private String name;
 	private List<Turn> turnList;

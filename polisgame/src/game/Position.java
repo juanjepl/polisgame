@@ -51,7 +51,26 @@ public abstract class Position {
 	public void removeGroupOfUnits(List<Unit> group){
 		//TODO using List.removeAll() method
 	}
-
+	
+	/** This method without attribute, returns the number of total free slots for this round */
+	public Integer getNumberOfTotalFreeSlots(Round round){
+		Integer slots = round.getMaximumPositionSlotsForThisRound() - getUnits().size();
+		return slots;
+	}
+	
+	/** This method without attribute, returns the number of free slots for this player and round in position */
+	public Integer getNumberOfFreeSlotsForAPlayer(Player player, Round round){
+		Integer slots = 0;
+		for(Unit u : getUnits()){
+			Integer playerUnits = 0;
+			if(u.getOwner().equals(player)){
+				playerUnits += 1;				
+			}
+			slots = round.getMaximumPositionSlotsForThisRound()- playerUnits; //FIXME can be an exception returning this a negative integer?
+		}
+		return slots;
+	}
+	
 	public String getSysName() {
 		return sysName;
 	}
