@@ -61,6 +61,26 @@ public class Round<T> {
 		this.projectsInThisRound = projectsInThisRound;
 	}
 
+	public Integer getMaximumPositionSlotsForThisRound(){
+		Integer slots = 0;
+		
+		if(getName().equals("3")){
+			slots = 3;
+		}
+		else if(getName().equals("4")){
+			slots = 4;
+		}
+		else if(getName().equals("5a")||getName().equals("5b")){
+			slots = 5;
+		}
+		else{
+			// Do nothing (if name isn't one of the 4, this possible exception is captured before.
+		}
+		
+		
+		return slots;
+	}
+	
 	public GameEvent getGameEventInThisRound() {
 		return gameEventInThisRound;
 	}
@@ -91,7 +111,7 @@ public class Round<T> {
 			List<GameEvent>randomGameEventList = randomGameEvent.getRandomSublist(game.getGameEventsRound5a(), 1);
 			gameEventInThisRound = randomGameEventList.get(0);
 		}
-		else if(getName().equals("4")){
+		else if(getName().equals("5b")){
 			List<GameEvent>randomGameEventList = randomGameEvent.getRandomSublist(game.getGameEventsRound5b(), 1);
 			gameEventInThisRound = randomGameEventList.get(0);
 		}
