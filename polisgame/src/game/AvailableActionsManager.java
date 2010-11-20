@@ -40,10 +40,10 @@ public class AvailableActionsManager {
 		Boolean condition_imTheOwnerOfThePolis = player.getPlayerPolis().contains(polis);
 		Boolean condition_haveResources = player.getWood()>= 1 || player.getSilver()>= 1;
 		Boolean condition_enoughPopulation = polis.getActualPopulation() > 1;
-		Boolean condition_polisHasSea = polis.getPolisSeas().get(0)!= null; //FIXME is correct this get(0)?
+		Boolean condition_polisHasSea = polis.getPolisSeas().get(0)!= null; //FIXME is correct this get(0)? ¿CAN BE AN NULL POINTER EXCEPTION OR OUT OF BOUNDS?
 		Boolean condition_notSieged = polis.getSieged();
-		Boolean condition_SeaWithSlotA = polis.getPolisSeas().get(0).getNumberOfFreeSlotsForAPlayer(player, round)>= 1;
-		Boolean condition_SeaWithSlotB = polis.getPolisSeas().get(1).getNumberOfFreeSlotsForAPlayer(player, round)>= 1;
+		Boolean condition_SeaWithSlotA = polis.getPolisSeas().get(0).getNumberOfFreeSlotsForAPlayer(player, round)>= 1; //FIXME IF HAVENT SEAS, BOTH CONDITIONS MAYBE THROW A NULL POINTER EXCEPTION
+		Boolean condition_SeaWithSlotB = polis.getPolisSeas().get(1).getNumberOfFreeSlotsForAPlayer(player, round)>= 1; //FIXME
 
 		available = condition_imTheOwnerOfThePolis && condition_haveResources && condition_enoughPopulation && condition_polisHasSea && condition_notSieged && (condition_SeaWithSlotA || condition_SeaWithSlotB);
 		return available;
