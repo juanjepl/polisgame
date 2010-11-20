@@ -10,28 +10,26 @@ public class Game { //TODO add Graphs
 
 	private Player spartaPlayer;
 	private Player athensPlayer;
-	
 	private Player whoHasTheTurn;
-	
 	private List<Project> projectList;
-
 	private Map<String,Territory> gameTerritories ;
 	private Map<String,Sea> gameSeas;
 	private Map<String,TradeDock> gameTradeDocks ;
 	private Map<String,Market> gameMarkets;
 	private Map<String,Polis> gamePolis;
-	
 	private List<GameEvent> gameEventsRound3;
 	private List<GameEvent> gameEventsRound4;
 	private List<GameEvent> gameEventsRound5a;
 	private List<GameEvent> gameEventsRound5b;
-	
 	private MarketChart marketChart;
 	private Round round;
-	
+	private Graph hopliteGraph;
+	private Graph trirremeGraph;
+	private Graph proxenusGraph;
+	private Graph tradeBoatGraph;
 	
 	/** Game constructor */
-	public Game(Player sparta, Player athens, Map<String,Territory> territoriesMap, Map<String,Sea> seasMap, Map<String,TradeDock> tradeDocksMap, Map<String,Market> marketsMap, Map<String,Polis> polisMap, List<Project> gameProjects, List<List<GameEvent>> gameEventsList, Round theRound, MarketChart theMarketChart){
+	public Game(Player sparta, Player athens, Map<String,Territory> territoriesMap, Map<String,Sea> seasMap, Map<String,TradeDock> tradeDocksMap, Map<String,Market> marketsMap, Map<String,Polis> polisMap, List<Project> gameProjects, List<List<GameEvent>> gameEventsList, Round theRound, MarketChart theMarketChart, Graph hopliteGraph, Graph trirremeGraph, Graph proxenusGraph,Graph tradeBoatGraph){
 
 		spartaPlayer = sparta;
 		athensPlayer = athens;
@@ -52,6 +50,11 @@ public class Game { //TODO add Graphs
 		
 		round = theRound;
 		marketChart = theMarketChart;
+		
+		this.hopliteGraph = hopliteGraph;
+		this.trirremeGraph = trirremeGraph;
+		this.proxenusGraph = proxenusGraph;
+		this.tradeBoatGraph = tradeBoatGraph;
 	}
 
 	
@@ -122,6 +125,22 @@ public class Game { //TODO add Graphs
 		this.whoHasTheTurn = whoHasTheTurn;
 	}
 	
+	public Graph getHopliteGraph() {
+		return hopliteGraph;
+	}
+
+	public Graph getTrirremeGraph() {
+		return trirremeGraph;
+	}
+
+	public Graph getProxenusGraph() {
+		return proxenusGraph;
+	}
+
+	public Graph getTradeBoatGraph() {
+		return tradeBoatGraph;
+	}
+
 	public void setStarterPlayer(){
 		if(GameConfigurations.getStarterPlayer().equals("sparta")){
 			whoHasTheTurn = spartaPlayer;
