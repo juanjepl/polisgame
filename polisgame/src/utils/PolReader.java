@@ -266,14 +266,17 @@ public class PolReader{ // Reads .pol files
 		return territoriesMap;
 	}
 	
-	public Map<Vertex<? extends Position>, List<Vertex<? extends Position>>> readGraph(Map<String,Polis> polisMap,Map<String,Territory> territoriesMap,Map<String,Sea> seasMap, Map<String,Market> marketsMap, Map<String, TradeDock> tradesMap){
+	/** This method reads all graphs files and return a map with map type and map values */
+	public Map<String,Map<Vertex<? extends Position>, List<Vertex<? extends Position>>>> readGraphs(Map<String,Polis> polisMap,Map<String,Territory> territoriesMap,Map<String,Sea> seasMap, Map<String,Market> marketsMap, Map<String, TradeDock> tradesMap){
 		String pathOfGraphs = GameConfigurations.getPathOfGraphs();
-		Map<Vertex<? extends Position>, List<Vertex<? extends Position>>> graphMap = new HashMap<Vertex<? extends Position>, List<Vertex<? extends Position>>>();
+		Map<Vertex<? extends Position>, List<Vertex<? extends Position>>> graphVertexMap = new HashMap<Vertex<? extends Position>, List<Vertex<? extends Position>>>();
+		Map<String, Map<Vertex<? extends Position>, List<Vertex<? extends Position>>>> graphsMap = new HashMap<String, Map<Vertex<? extends Position>, List<Vertex<? extends Position>>>>();
+		Map<String,List<String>> gameGraphTexts = GenericDirectoryReader.getDirectoryFilesMap(pathOfGraphs);
 		
-		List<List<String>> gameGraphTexts = GenericDirectoryReader.getDirectoryFiles(pathOfGraphs);
+		for(String filename: gameGraphTexts.keySet()){
 		
-		for(List<String> gameGraphInfo : gameGraphTexts){
-		
+			List<String> gameGraphInfo = gameGraphTexts.get(filename);
+			
 			for(int i=0 ; i<gameGraphInfo.size() ; i++){
 				List<String> vertices = StringUtilities.stringSplitterForPolis(gameGraphInfo.get(i),":");
 				
@@ -309,13 +312,14 @@ public class PolReader{ // Reads .pol files
 						adjacents.add(vertex);
 					}
 					
-					graphMap.put(adjacents.get(0), adjacents.subList(1, adjacents.size()));
+					graphVertexMap.put(adjacents.get(0), adjacents.subList(1, adjacents.size()));
 				}
 			}
+			graphsMap.put(filename, graphVertexMap);
 			
 		}
 		
-		return graphMap;
+		return graphsMap;
 		
 	}
 
