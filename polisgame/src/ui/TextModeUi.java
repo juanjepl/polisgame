@@ -16,7 +16,7 @@ public class TextModeUi implements IUserInterface{ //TODO rescue language texts 
 	public TextModeUi(){}
 	
 	/** This method request player's name and returns them */
-	public List<String> requestPlayerNames(){
+	public static List<String> requestPlayerNames(){
 	
 	String spartaPlayer = "";	
 	String athensPlayer = "";
@@ -59,13 +59,13 @@ public class TextModeUi implements IUserInterface{ //TODO rescue language texts 
 	}
 	
 	/** This method shows the actual player-round-turn */
-	public void showPlayerTurn(Game game){
+	public static void showPlayerTurn(Game game){
 		String message = "Turn: "+Turn.getTurnCount()+" "+"Player: "+game.getWhoHasTheTurn().getName();		
 		System.out.println(message);
 	}
 	
 	/** This method shows a change-of-round advice */
-	public void showNewRound(Game game){
+	public static void showNewRound(Game game){
 		String message = "New Round: "+game.getRound().getName();
 		System.out.println(message);
 	}
@@ -88,6 +88,15 @@ public class TextModeUi implements IUserInterface{ //TODO rescue language texts 
 		return availableActions;
 	}
 	
+	public static String requestPaidMethod(String paidReference){ // -> Paid reference: hoplite,trirreme, etc.
+		String paid = "";
+		
+		// if paidReference ...
+		
+		//TODO request 
+		
+		return paid;
+	}
 	//TODO more and more methods required.
 	
 

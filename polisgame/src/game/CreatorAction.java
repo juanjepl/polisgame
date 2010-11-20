@@ -1,5 +1,7 @@
 package game;
 
+import ui.TextModeUi;
+
 /** This class contains the methods for execute creation actions in the game */
 public class CreatorAction extends Action{
 	
@@ -8,11 +10,14 @@ public class CreatorAction extends Action{
 	public CreatorAction(){}
 	
 	/** Creates an Hoplite unit in polis's parent territory */
-	public Boolean createHoplite(Player owner, Polis polis, Round round, String paid){
+	public Boolean createHoplite(Player owner, Polis polis, Round round){
 		Boolean success = false;
 		success = AvailableActionsManager.checkCreateHopliteAction(owner, polis, round);
 		
 		if(success){
+
+			String paid = TextModeUi.requestPaidMethod("hoplite");
+			
 			if(paid.equals("Metal")){
 				owner.setMetal(owner.getMetal() - 1);
 			}else if(paid.equals("Silver")){
@@ -30,7 +35,7 @@ public class CreatorAction extends Action{
 	}
 	
 	/** Creates a Trirreme unit in polis's sea */
-	public Boolean createTirreme(Player owner, Polis polis, String paid){
+	public Boolean createTirreme(Player owner, Polis polis){
 		Boolean success = false;
 		
 		//TODO 
@@ -39,15 +44,14 @@ public class CreatorAction extends Action{
 	}
 	
 	/** Creates a Trade Boat unit in polis's trade dock */
-	public Boolean createTradeBoat(Player owner, Polis polis, String paid){
+	public Boolean createTradeBoat(Player owner, Polis polis){
 		Boolean success = false;
 		//TODO
 		return success;
 	}
 	
 	/** Creates a Proxenus unit in selected polis */
-	public Boolean createProxenus(Player owner, Polis polis, String paid){
-		// In this method, String paid isn't neccesary, because proxenus only can be paid by 5 silver, but this rule can change...
+	public Boolean createProxenus(Player owner, Polis polis){
 		Boolean success = false;
 		//TODO
 		return success;
