@@ -6,8 +6,6 @@ import ui.TextModeUi;
 public class Main{
 
 	public static void main(String[] args) {
-		
-		TextModeUi userInterface = new TextModeUi();
 		ElementsInitializer gameElements = new ElementsInitializer();
 		Game polis_game = gameElements.InitializeGameElements(); // Initializes all game elements
 		
@@ -19,13 +17,13 @@ public class Main{
 		
 		while(!theEndOfTheGame){
 			
-			userInterface.showNewRound(polis_game);
+			TextModeUi.showNewRound(polis_game);
 			Boolean theEndOfTheRound = false;
 			while(!theEndOfTheRound){
 				
 				
 				Turn actualTurn = new Turn();
-				userInterface.showPlayerTurn(polis_game);
+				TextModeUi.showPlayerTurn(polis_game);
 				
 				Boolean theEndOfTheTurn = false;
 				while(!theEndOfTheTurn){

@@ -50,8 +50,7 @@ public class ElementsInitializer {
 		Graph tradeBoatGraph = new Graph(polisFilesReader.readGraphs(polisMap, territoriesMap, seasMap, marketsMap, tradeDocksMap).get("tradeBoatGraph"));
 		
 		//// Initialization of the game players
-		TextModeUi userInterface = new TextModeUi(); //TODO Creates a user interface object -> in the future, choose graphical/text mode in cfg. 
-		List<String> players = 	userInterface.requestPlayerNames(); // A method who request Game users their names
+		List<String> players = 	TextModeUi.requestPlayerNames(); // A method who request Game users their names
 		
 		Player sparta = new Player(players.get(0)); // When Game requests players names, the method returns a list with 2 names, this 2 lines takes this information to create Players instances.
 		Player athens = new Player(players.get(1));
