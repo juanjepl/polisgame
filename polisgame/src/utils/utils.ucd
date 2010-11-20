@@ -4,7 +4,7 @@
     <children xsi:type="editmodel:CompartmentEditModel" size="0,0"/>
     <children xsi:type="editmodel:CompartmentEditModel" size="137,32">
       <children xsi:type="editmodel:MethodEditModel" name="GenericDirectoryReader" id="utils/GenericDirectoryReader#GenericDirectoryReader()"/>
-      <children xsi:type="editmodel:MethodEditModel" name="getDirectoryFiles" id="utils/GenericDirectoryReader#getDirectoryFiles(Ljava.lang.String;)"/>
+      <children xsi:type="editmodel:MethodEditModel" name="getDirectoryFiles" id="utils/GenericDirectoryReader#getDirectoryFilesMap(Ljava.lang.String;)"/>
     </children>
     <children xsi:type="editmodel:CompartmentEditModel" size="0,0"/>
     <classifierPreferences xsi:type="editmodel:UMLClassDiagramClassifierPreference" showStereotype="true" showMethodsParameterTypes="true" showMethodsReturnType="true" showMethodsParameterNames="true" showMethodsParameterKinds="true" attributeSorter="Natural" methodSorter="Natural" innerClassSorter="Natural" showPrivateAttributes="true" showProtectedAttributes="true" showPublicAttributes="true" showPackageAttributes="true" showStaticAttributes="true" showProtectedMethods="true" showPublicMethods="true" showPackageMethods="true" showPrivateMethods="true" showStaticMethods="true" showProtectedInnerClasses="true" showPublicInnerClasses="true" showPackageInnerClasses="true" showPrivateInnerClasses="true" showStaticInnerClasses="true" packageIndication="3" showAttributeProperty="true" showAssociationMember="true"/>
@@ -18,7 +18,7 @@
     <children xsi:type="editmodel:CompartmentEditModel" size="0,0"/>
     <classifierPreferences xsi:type="editmodel:UMLClassDiagramClassifierPreference" showStereotype="true" showMethodsParameterTypes="true" showMethodsReturnType="true" showMethodsParameterNames="true" showMethodsParameterKinds="true" attributeSorter="Natural" methodSorter="Natural" innerClassSorter="Natural" showPrivateAttributes="true" showProtectedAttributes="true" showPublicAttributes="true" showPackageAttributes="true" showStaticAttributes="true" showProtectedMethods="true" showPublicMethods="true" showPackageMethods="true" showPrivateMethods="true" showStaticMethods="true" showProtectedInnerClasses="true" showPublicInnerClasses="true" showPackageInnerClasses="true" showPrivateInnerClasses="true" showStaticInnerClasses="true" packageIndication="3" showAttributeProperty="true" showAssociationMember="true"/>
   </children>
-  <children xsi:type="editmodel:InterfaceEditModel" targetConnections="//@children.3/@sourceConnections.0" name="IPolisFilesReader" location="116,103" size="245,175" id="utils/IPolisFilesReader" runTimeClassModel="readSeas(),readMarkets(),readPolis(),readProjects(),readTradeDocks(),readGameEvents(),readTerritories()">
+  <children xsi:type="editmodel:InterfaceEditModel" targetConnections="//@children.3/@sourceConnections.0" name="IPolisFilesReader" location="116,103" size="245,175" id="utils/IPolisFilesReader" runTimeClassModel="readMarkets(),readSeas(),readTradeDocks(),readProjects(),readPolis(),readGameEvents(),readTerritories()">
     <children xsi:type="editmodel:CompartmentEditModel" size="0,0"/>
     <children xsi:type="editmodel:CompartmentEditModel" size="103,112">
       <children xsi:type="editmodel:MethodEditModel" name="readGameEvents" id="utils/IPolisFilesReader#readGameEvents()"/>
@@ -32,7 +32,7 @@
     <children xsi:type="editmodel:CompartmentEditModel" size="0,0"/>
     <classifierPreferences xsi:type="editmodel:UMLClassDiagramClassifierPreference" showStereotype="true" showMethodsParameterTypes="true" showMethodsReturnType="true" showMethodsParameterNames="true" showMethodsParameterKinds="true" attributeSorter="Natural" methodSorter="Natural" innerClassSorter="Natural" showPrivateAttributes="true" showProtectedAttributes="true" showPublicAttributes="true" showPackageAttributes="true" showStaticAttributes="true" showProtectedMethods="true" showPublicMethods="true" showPackageMethods="true" showPrivateMethods="true" showStaticMethods="true" showProtectedInnerClasses="true" showPublicInnerClasses="true" showPackageInnerClasses="true" showPrivateInnerClasses="true" showStaticInnerClasses="true" packageIndication="3" showAttributeProperty="true" showAssociationMember="true"/>
   </children>
-  <children xsi:type="editmodel:ClassEditModel" name="PolReader" location="116,345" size="245,177" id="utils/PolReader" runTimeClassModel="readMarkets(),readSeas(),PolReader(),readTradeDocks(),readProjects(),readPolis(),readGameEvents(),readTerritories()">
+  <children xsi:type="editmodel:ClassEditModel" name="PolReader" location="116,345" size="245,177" id="utils/PolReader" runTimeClassModel="readSeas(),readMarkets(),PolReader(),readPolis(),readProjects(),readTradeDocks(),readGameEvents(),readTerritories()">
     <children xsi:type="editmodel:CompartmentEditModel" size="0,0"/>
     <children xsi:type="editmodel:CompartmentEditModel" size="103,128">
       <children xsi:type="editmodel:MethodEditModel" name="PolReader" id="utils/PolReader#PolReader()"/>
