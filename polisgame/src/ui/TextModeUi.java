@@ -90,12 +90,65 @@ public class TextModeUi implements IUserInterface{ //TODO rescue language texts 
 	
 	public static String requestPaidMethod(String paidReference){ // -> Paid reference: hoplite,trirreme, etc.
 		String paid = "";
+		String resource = "";
 		
-		// if paidReference ...
+		System.out.println("Please, choose the paid method: "); //TODO -> rescue text from data.gameTexts
 		
-		//TODO request 
+		// For pay an hoplite
+		if(paidReference.equals("hoplite")){
+			System.out.println("1 - Metal"); //TODO -> from gameTexts
+			System.out.println("2 - Silver");//TODO -> from gameTexts
+			BufferedReader br_paid = new BufferedReader(new InputStreamReader(System.in));
+			try {
+				paid = br_paid.readLine();
+			} catch (Exception e) {	
+				//TODO
+			}
+			while(!(paid.equals("1")||paid.equals("2"))){
+				System.out.print("Please, insert a correct value (1 or 2): ");//TODO -> from gameTexts
+				BufferedReader br_paid_tries = new BufferedReader(new InputStreamReader(System.in));
+				try {
+					paid = br_paid_tries.readLine();
+				} catch (Exception e) {	
+					//TODO
+				}
+			}
+			if(paid.equals("1")){
+				resource = "Metal";
+			}else{
+				resource = "Silver";
+			}
+			
+		}else if(paidReference.equals("trirreme") || paidReference.equals("tradeBoat")){ // same paid trirreme than tradeBoat
+			System.out.println("1 - Wood"); //TODO -> from gameTexts
+			System.out.println("2 - Silver");//TODO -> from gameTexts
+			BufferedReader br_paid = new BufferedReader(new InputStreamReader(System.in));
+			try {
+				paid = br_paid.readLine();
+			} catch (Exception e) {	
+				//TODO
+			}
+			while(!(paid.equals("1")||paid.equals("2"))){
+				System.out.print("Please, insert a correct value (1 or 2): ");//TODO -> from gameTexts
+				BufferedReader br_paid_tries = new BufferedReader(new InputStreamReader(System.in));
+				try {
+					paid = br_paid_tries.readLine();
+				} catch (Exception e) {	
+					//TODO
+				}
+			}
+			if(paid.equals("1")){
+				resource = "Wood";
+			}else{
+				resource = "Silver";
+			}
+			
+		}
+		//TODO else if( ){} for any types
 		
-		return paid;
+		 
+		
+		return resource;
 	}
 	//TODO more and more methods required.
 	
