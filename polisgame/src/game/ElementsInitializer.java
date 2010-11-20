@@ -43,16 +43,10 @@ public class ElementsInitializer {
 		//// Initialization of the market chart
 		MarketChart theMarketChart = new MarketChart();
 				
-		//// Initialization of hoplite Graph
+		//// Initialization of game graphs
 		Graph hopliteGraph = new Graph(polisFilesReader.readGraphs(polisMap, territoriesMap, seasMap, marketsMap, tradeDocksMap).get("hopliteGraph"));
-		
-		//// Initialization of trirreme Graph
 		Graph trirremeGraph = new Graph(polisFilesReader.readGraphs(polisMap, territoriesMap, seasMap, marketsMap, tradeDocksMap).get("trirremeGraph"));
-		
-		//// Initialization of proxenus Graph
 		Graph proxenusGraph = new Graph(polisFilesReader.readGraphs(polisMap, territoriesMap, seasMap, marketsMap, tradeDocksMap).get("proxenusGraph"));
-		
-	//// Initialization of tradeBoat Graph
 		Graph tradeBoatGraph = new Graph(polisFilesReader.readGraphs(polisMap, territoriesMap, seasMap, marketsMap, tradeDocksMap).get("tradeBoatGraph"));
 		
 		//// Initialization of the game players
@@ -63,7 +57,7 @@ public class ElementsInitializer {
 		Player athens = new Player(players.get(1));
 		
 		//// Initialization of the Game object, who contains all elements of the game initialized before.
-		Game polisGame = new Game(sparta,athens,territoriesMap,seasMap,tradeDocksMap,marketsMap,polisMap,gameProjects,gameEventsList,theRound,theMarketChart);
+		Game polisGame = new Game(sparta,athens,territoriesMap,seasMap,tradeDocksMap,marketsMap,polisMap,gameProjects,gameEventsList,theRound,theMarketChart,hopliteGraph,trirremeGraph,proxenusGraph,tradeBoatGraph);
 		return polisGame;
 	}
 }
