@@ -43,6 +43,18 @@ public class ElementsInitializer {
 		//// Initialization of the market chart
 		MarketChart theMarketChart = new MarketChart();
 				
+		//// Initialization of hoplite Graph
+		Graph hopliteGraph = new Graph(polisFilesReader.readGraphs(polisMap, territoriesMap, seasMap, marketsMap, tradeDocksMap).get("hopliteGraph"));
+		
+		//// Initialization of trirreme Graph
+		Graph trirremeGraph = new Graph(polisFilesReader.readGraphs(polisMap, territoriesMap, seasMap, marketsMap, tradeDocksMap).get("trirremeGraph"));
+		
+		//// Initialization of proxenus Graph
+		Graph proxenusGraph = new Graph(polisFilesReader.readGraphs(polisMap, territoriesMap, seasMap, marketsMap, tradeDocksMap).get("proxenusGraph"));
+		
+	//// Initialization of tradeBoat Graph
+		Graph tradeBoatGraph = new Graph(polisFilesReader.readGraphs(polisMap, territoriesMap, seasMap, marketsMap, tradeDocksMap).get("tradeBoatGraph"));
+		
 		//// Initialization of the game players
 		TextModeUi userInterface = new TextModeUi(); //TODO Creates a user interface object -> in the future, choose graphical/text mode in cfg. 
 		List<String> players = 	userInterface.requestPlayerNames(); // A method who request Game users their names
