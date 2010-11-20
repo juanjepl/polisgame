@@ -1,6 +1,7 @@
 package utils;
 
 import cfg.GameConfigurations;
+import game.Position;
 import game.Sea;
 import game.TradeDock;
 import game.Project;
@@ -265,11 +266,56 @@ public class PolReader{ // Reads .pol files
 		return territoriesMap;
 	}
 	
-	public List<Vertex> readGraph(){
-		List<Vertex> graph = new ArrayList<Vertex>();
+	public Map<Vertex<? extends Position>, List<Vertex<? extends Position>>> readGraph(Map<String,Polis> polisMap,Map<String,Territory> territoriesMap,Map<String,Sea> seasMap, Map<String,Market> marketsMap, Map<String, TradeDock> tradesMap){
+		String pathOfGraphs = GameConfigurations.getPathOfGraphs();
+		Map<Vertex<? extends Position>, List<Vertex<? extends Position>>> graphMap = new HashMap<Vertex<? extends Position>, List<Vertex<? extends Position>>>();
 		
+		List<List<String>> gameGraphTexts = GenericDirectoryReader.getDirectoryFiles(pathOfGraphs);
 		
-		return graph;
+		for(List<String> gameGraphInfo : gameGraphTexts){
+		
+			for(int i=0 ; i<gameGraphInfo.size() ; i++){
+				List<String> vertices = StringUtilities.stringSplitterForPolis(gameGraphInfo.get(i),":");
+				
+				List<Vertex<? extends Position>> adjacents = new ArrayList<Vertex<? extends Position>>();
+				
+				
+				for(int j=0; i<vertices.size(); j++)
+				{
+					if(territoriesMap.containsKey(vertices.get(j)))
+					{
+						Territory position = territoriesMap.get(vertices.get(j));
+						Vertex<Territory> vertex = new Vertex<Territory>(position);
+						adjacents.add(vertex);
+					}else if(seasMap.containsKey(vertices.get(j)))
+					{
+						Sea position = seasMap.get(vertices.get(j));
+						Vertex<Sea> vertex = new Vertex<Sea>(position);
+						adjacents.add(vertex);
+					}else if(marketsMap.containsKey(vertices.get(j)))
+					{
+						Market position = marketsMap.get(vertices.get(j));
+						Vertex<Market> vertex = new Vertex<Market>(position);
+						adjacents.add(vertex);
+					}else if(tradesMap.containsKey(vertices.get(j)))
+					{
+						TradeDock position = tradesMap.get(vertices.get(j));
+						Vertex<TradeDock> vertex = new Vertex<TradeDock>(position);
+						adjacents.add(vertex);
+					}else if(polisMap.containsKey(vertices.get(j)))
+					{
+						Polis position = polisMap.get(vertices.get(j));
+						Vertex<Polis> vertex = new Vertex<Polis>(position);
+						adjacents.add(vertex);
+					}
+					
+					graphMap.put(adjacents.get(0), adjacents.subList(1, adjacents.size()));
+				}
+			}
+			
+		}
+		
+		return graphMap;
 		
 	}
 

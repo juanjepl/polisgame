@@ -1,24 +1,16 @@
 package game;
 
-import java.util.Set;
-
 /** This class represents a vertex, used like base component by Graph class */
-public class Vertex{
+public class Vertex<P extends Position>{
     
-	private Position vertexReference;
-    private Set<Vertex> adjacents; // The group of all adjacents vertex to this vertex
+	private P vertexReference;
     
-    public Vertex(Position vertexReference, Set<Vertex> adjacents){
+    public Vertex(P vertexReference){
         this.vertexReference = vertexReference;
-        this.adjacents = adjacents;
     }
     
     public Position getVertexReference(){
         return vertexReference;
-    }
-    
-    public Set<Vertex> getAdjacents(){
-        return adjacents;
     }
 
 }
