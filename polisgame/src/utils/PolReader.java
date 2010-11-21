@@ -277,13 +277,13 @@ public class PolReader{ // Reads .pol files
 		
 			List<String> gameGraphInfo = gameGraphTexts.get(filename);
 			
-			for(int i=0 ; i<gameGraphInfo.size() ; i++){
+			for(int i=1 ; i<gameGraphInfo.size() ; i++){
 				List<String> vertices = StringUtilities.stringSplitterForPolis(gameGraphInfo.get(i),":");
 				
 				List<Vertex<? extends Position>> adjacents = new ArrayList<Vertex<? extends Position>>();
 				
 				
-				for(int j=0; i<vertices.size(); j++)
+				for(int j=0; j<vertices.size(); j++)
 				{
 					if(territoriesMap.containsKey(vertices.get(j)))
 					{
@@ -312,7 +312,11 @@ public class PolReader{ // Reads .pol files
 						adjacents.add(vertex);
 					}
 					
+					
+
 					graphVertexMap.put(adjacents.get(0), adjacents.subList(1, adjacents.size()));
+					
+					
 				}
 			}
 			graphsMap.put(filename, graphVertexMap);

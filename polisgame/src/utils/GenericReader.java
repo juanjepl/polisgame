@@ -32,6 +32,9 @@ public class GenericReader {
 				
 				if(line.startsWith("#")){ // ignore line if starts with "#" character. (in order to add some comments in texts)
 					continue; // goes to next iteration
+				}else if(line == null)
+				{
+					continue; // goes to next iteration
 				}
 				fileContents.add(line);
 			} 
