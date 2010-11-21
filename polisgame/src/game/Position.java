@@ -17,6 +17,10 @@ public abstract class Position {
 	
 	/** Getters and setters */
 	
+	public String getSysName() {
+		return sysName;
+	}
+	
 	public String getName() {
 		return name;
 	}
@@ -30,26 +34,31 @@ public abstract class Position {
 	}
 
 	/** Adds an unit to the position */
-	public void addUnit(Unit unit){
-		//TODO
-		//FIXME -> WARNING WITH PRECONDITIONS
+	public void addUnit(Unit unit){		
+		units.add(unit);
 	}
 	
 	/** Removes an unit from the position */
 	public void removeUnit(Unit unit){
-		//TODO
-		
+		if(units.contains(unit)){
+			units.remove(unit);
+		}else{
+			//TODO manage this exception
+		}
 	}
 	
 	/** Adds a group of units to the position */
 	public void addGroupOfUnits(List<Unit> group){
-		//TODO using List.addAll() method
-		//FIXME -> WARNING WITH PRECONDITIONS
+		units.addAll(group);
 	}
 	
 	/** Removes a group of units from the position */
 	public void removeGroupOfUnits(List<Unit> group){
-		//TODO using List.removeAll() method
+		if(units.containsAll(group)){
+			units.removeAll(group);
+		}else{
+			//TODO manage this exception
+		}
 	}
 	
 	/** This method without attribute, returns the number of total free slots for this round */
@@ -71,7 +80,22 @@ public abstract class Position {
 		return slots;
 	}
 	
-	public String getSysName() {
-		return sysName;
+	public Boolean getLockForAPlayer(Player player){
+		Boolean locked = false;
+		Integer owns = 0;
+		Integer enemies = 0;
+		for(Unit u: units){
+			if(u.getOwner().equals(player)){
+				owns += 1;
+			}else{
+				enemies += 1;
+			}
+		}
+		if(enemies > owns){ // >, not >=, in ties, position isn't locked
+			locked = true;
+		}else{
+			//Do nothing
+		}
+		return locked;
 	}
 }
