@@ -16,6 +16,28 @@ public class TextModeUi implements IUserInterface{ //TODO rescue language texts 
 
 	public TextModeUi(){}
 	
+	/** Welcome message */
+	public static void creditsMessage(){
+		
+		System.out.println("****************************************************************");
+		System.out.println("*                                                              *");
+		System.out.println("*           P O L I S  :          T H E    G A M E             *");
+		System.out.println("*                                                              *");
+		System.out.println("****************************************************************");
+		System.out.println("*                                                              *");
+		System.out.println("*  Status: Pre-Alpha non-functional                            *");
+		System.out.println("*  Developer Team:    Samuel Navas Portillo                    *");
+		System.out.println("*                     Juan Jesús Pérez Luna                    *");
+		System.out.println("*                     Ángel Martínez Olivares                  *");
+		System.out.println("*                     María José Sancha Maya                   *");
+		System.out.println("*                     José Antonio Jiménez Carmona             *");
+		System.out.println("*                     Manuel de los Santos Campos              *");
+		System.out.println("*                                                              *");
+		System.out.println("****************************************************************");
+		System.out.println("");
+		
+	}
+	
 	/** This method request player's name and returns them */
 	public static List<String> requestPlayerNames(){
 	
