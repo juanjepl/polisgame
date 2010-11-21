@@ -118,7 +118,8 @@ public class TextModeUi implements IUserInterface{ //TODO rescue language texts 
 			}else{
 				resource = "Silver";
 			}
-			
+		
+		// For pay a trirreme or a tradeBoat	
 		}else if(paidReference.equals("trirreme") || paidReference.equals("tradeBoat")){ // same paid trirreme than tradeBoat
 			System.out.println("1 - Wood"); //TODO -> from gameTexts
 			System.out.println("2 - Silver");//TODO -> from gameTexts
