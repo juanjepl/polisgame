@@ -15,19 +15,28 @@ public class CreatorAction extends Action{
 		success = AvailableActionsManager.checkCreateHopliteAction(owner, polis, round);
 		
 		if(success){
-
-			String paid = TextModeUi.requestPaidMethod("hoplite");
 			
-			if(paid.equals("Metal")){
+			// if only have metal to pay, uses it, same with silver. if both -> player chooses.
+			if(owner.getMetal() >= 1 && owner.getSilver() < 1){
 				owner.setMetal(owner.getMetal() - 1);
-			}else if(paid.equals("Silver")){
+			}else if(owner.getMetal() < 1 && owner.getSilver() >= 1){
 				owner.setSilver(owner.getSilver() - 1);
 			}else{
-				success = false; // Invalid resource ( wrong value of paid )
+				
+				String paid = TextModeUi.requestPaidMethod("hoplite");
+				
+				if(paid.equals("Metal")){
+					owner.setMetal(owner.getMetal() - 1);
+				}else if(paid.equals("Silver")){
+					owner.setSilver(owner.getSilver() - 1);
+				}else{
+					success = false; // Invalid resource ( wrong value of paid )
+				}	
 			}
+			
 			polis.setActualPopulation(polis.getActualPopulation() - 1);
 			polis.getPolisParentTerritory().addUnit(new Hoplite(owner));
-
+			
 		}else{
 			// Do nothing -> success returns false
 		}
@@ -40,14 +49,23 @@ public class CreatorAction extends Action{
 		success = AvailableActionsManager.checkCreateTrirremeAction(owner, polis, round);
 		
 		if(success){
-			String paid = TextModeUi.requestPaidMethod("trirreme");
-			if(paid.equals("Wood")){
+			
+			// if only have wood to pay, uses it, same with silver. if both -> player chooses.
+			if(owner.getWood() >= 1 && owner.getSilver() < 1){
 				owner.setMetal(owner.getWood() - 1);
-			}else if(paid.equals("Silver")){
+			}else if(owner.getWood() < 1 && owner.getSilver() >= 1){
 				owner.setSilver(owner.getSilver() - 1);
 			}else{
-				success = false; // Invalid resource ( wrong value of paid )
+				String paid = TextModeUi.requestPaidMethod("trirreme");
+				if(paid.equals("Wood")){
+					owner.setMetal(owner.getWood() - 1);
+				}else if(paid.equals("Silver")){
+					owner.setSilver(owner.getSilver() - 1);
+				}else{
+					success = false; // Invalid resource ( wrong value of paid )
+				}
 			}
+			
 			polis.setActualPopulation(polis.getActualPopulation() - 1);
 			
 			// the trirreme is created in the free sea if 2. if both are free, player chooses.
