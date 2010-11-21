@@ -1,3 +1,6 @@
+#System name
+proxenusGraph
+#territory
 illyria:ionianSea
 ionianSea:illyria:spartaDock
 spartaDock:ionianSea:myrtoanSea

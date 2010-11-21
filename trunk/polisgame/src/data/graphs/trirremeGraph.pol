@@ -1,3 +1,6 @@
+#System name
+trirremeGraph
+#territory
 thraceSea:cycladesIslands:sporadesIslands
 cycladesIslands:thraceSea:sporadesIslands:myrtoanSea
 sporadesIslands:thraceSea:cycladesIslands:myrtoanSea
