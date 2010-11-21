@@ -9,6 +9,7 @@ import java.util.LinkedList;
 import game.Game;
 import game.Turn;
 import game.Player;
+import game.Sea;
 
 /** Text-mode user interface class */
 public class TextModeUi implements IUserInterface{ //TODO rescue language texts from data.gameTexts
@@ -146,12 +147,42 @@ public class TextModeUi implements IUserInterface{ //TODO rescue language texts 
 			
 		}
 		//TODO else if( ){} for any types
-		
-		 
-		
+
 		return resource;
 	}
 	//TODO more and more methods required.
 	
-
+	public static Sea requestSeaForCreation(List<Sea> seas){
+		
+		Sea toReturnSea;
+		
+		System.out.println("Please, choose the sea to create trirreme: "); //TODO -> rescue text from data.gameTexts
+		System.out.println("1 - "+seas.get(0).getName());
+		System.out.println("2 - "+seas.get(1).getName());
+		
+		String chosenSea = "";
+		
+		BufferedReader br_sea = new BufferedReader(new InputStreamReader(System.in));
+		try {
+			chosenSea = br_sea.readLine();
+		} catch (Exception e) {	
+			//TODO
+		}
+		while(!(chosenSea.equals("1")||chosenSea.equals("2"))){
+			System.out.print("Please, insert a correct value (1 or 2): ");//TODO -> from gameTexts
+			BufferedReader br_sea_tries = new BufferedReader(new InputStreamReader(System.in));
+			try {
+				chosenSea = br_sea_tries.readLine();
+			} catch (Exception e) {	
+				//TODO
+			}
+		}
+		if(chosenSea.equals("1")){
+			toReturnSea = seas.get(0);
+		}else{
+			toReturnSea = seas.get(1);
+		}
+		
+		return toReturnSea;
+	}
 }

@@ -35,16 +35,40 @@ public class CreatorAction extends Action{
 	}
 	
 	/** Creates a Trirreme unit in polis's sea */
-	public Boolean createTirreme(Player owner, Polis polis){
+	public Boolean createTirreme(Player owner, Polis polis, Round round){
 		Boolean success = false;
+		success = AvailableActionsManager.checkCreateTrirremeAction(owner, polis, round);
 		
-		//TODO 
-		
+		if(success){
+			String paid = TextModeUi.requestPaidMethod("trirreme");
+			if(paid.equals("Wood")){
+				owner.setMetal(owner.getWood() - 1);
+			}else if(paid.equals("Silver")){
+				owner.setSilver(owner.getSilver() - 1);
+			}else{
+				success = false; // Invalid resource ( wrong value of paid )
+			}
+			polis.setActualPopulation(polis.getActualPopulation() - 1);
+			
+			// the trirreme is created in the free sea if 2. if both are free, player chooses.
+			if(polis.getPolisSeas().size() == 2){ //TODO re-view this if
+				if((polis.getPolisSeas().get(0).getNumberOfFreeSlotsForAPlayer(owner, round)>= 1) && (polis.getPolisSeas().get(1).getNumberOfFreeSlotsForAPlayer(owner, round) < 1)){
+					polis.getPolisSeas().get(0).addUnit(new Trirreme(owner));
+				}else if((polis.getPolisSeas().get(0).getNumberOfFreeSlotsForAPlayer(owner, round) < 1) && (polis.getPolisSeas().get(1).getNumberOfFreeSlotsForAPlayer(owner, round) >= 1)){
+					polis.getPolisSeas().get(1).addUnit(new Trirreme(owner));
+				}else{
+					TextModeUi.requestSeaForCreation(polis.getPolisSeas()).addUnit(new Trirreme(owner)); // Adds the trirreme to the Sea chosen by the player
+				}
+
+			}else{
+				polis.getPolisSeas().get(0).addUnit(new Trirreme(owner));
+			}
+		}
 		return success;
 	}
 	
 	/** Creates a Trade Boat unit in polis's trade dock */
-	public Boolean createTradeBoat(Player owner, Polis polis){
+	public Boolean createTradeBoat(Player owner, Polis polis, Round round){
 		Boolean success = false;
 		//TODO
 		return success;
