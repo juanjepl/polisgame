@@ -3,11 +3,36 @@ package game;
 /** This class contains methods for check available player's possible actions */
 public class AvailableActionsManager {
 
-	/** This method returns the possible actions to do for player p */
 	public AvailableActionsManager(){}
 		
-	/*public static Boolean checkCreatorAction(Game game,Player player){
-		return checkCreateHopliteAction(player,game)||checkCreateTrirremeAction(g,p)||checkCreateTradeBoatAction(g,p)||checkCreateProxenusAction(g,p);
+	/** This method returns if is possible to do a creator action for player */
+	public static Boolean checkCreatorAction(Game game,Player player){
+		Boolean available = false;
+
+		// checks if in one of all creator actions is affirmative.
+		for(Polis p : game.getGamePolis().values()){ 
+			if(checkCreateHopliteAction(player,p,game.getRound())){
+				available = true;
+				break;
+			}
+			
+			if(checkCreateTrirremeAction(player,p,game.getRound())){ // if, not else if.
+				available = true;
+				break;
+			}
+			
+			if(checkCreateTradeBoatAction(player,p,game.getRound())){ 
+				available = true;
+				break;
+			}
+			
+			if(checkCreateProxenusAction(player,p,game.getRound())){ 
+				available = true;
+				break;
+			}
+		}
+			
+		return available;
 	}
 	
 	/*
@@ -40,11 +65,17 @@ public class AvailableActionsManager {
 		Boolean condition_imTheOwnerOfThePolis = player.getPlayerPolis().contains(polis);
 		Boolean condition_haveResources = player.getWood()>= 1 || player.getSilver()>= 1;
 		Boolean condition_enoughPopulation = polis.getActualPopulation() > 1;
-		Boolean condition_polisHasSea = polis.getPolisSeas().get(0)!= null; //FIXME is correct this get(0)? ¿CAN BE AN NULL POINTER EXCEPTION OR OUT OF BOUNDS?
 		Boolean condition_notSieged = polis.getSieged();
-		Boolean condition_SeaWithSlotA = polis.getPolisSeas().get(0).getNumberOfFreeSlotsForAPlayer(player, round)>= 1; //FIXME IF HAVENT SEAS, BOTH CONDITIONS MAYBE THROW A NULL POINTER EXCEPTION
-		Boolean condition_SeaWithSlotB = polis.getPolisSeas().get(1).getNumberOfFreeSlotsForAPlayer(player, round)>= 1; //FIXME
-
+		Boolean condition_polisHasSea = polis.getPolisSeas().isEmpty() == false;
+		Boolean condition_SeaWithSlotA = false;
+		Boolean condition_SeaWithSlotB = false;
+		if(polis.getPolisSeas().isEmpty() == false){ // To avoid possible exceptions
+			condition_SeaWithSlotA = polis.getPolisSeas().get(0).getNumberOfFreeSlotsForAPlayer(player, round)>= 1;
+			if(polis.getPolisSeas().size() == 2){ // To avoid more possible exceptions
+			condition_SeaWithSlotB = polis.getPolisSeas().get(1).getNumberOfFreeSlotsForAPlayer(player, round)>= 1;
+			}
+		}
+		
 		available = condition_imTheOwnerOfThePolis && condition_haveResources && condition_enoughPopulation && condition_polisHasSea && condition_notSieged && (condition_SeaWithSlotA || condition_SeaWithSlotB);
 		return available;
 	}
