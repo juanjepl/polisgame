@@ -6,6 +6,8 @@ import ui.TextModeUi;
 public class Main{
 
 	public static void main(String[] args) {
+		
+		TextModeUi.creditsMessage();
 		ElementsInitializer gameElements = new ElementsInitializer();
 		Game polis_game = gameElements.InitializeGameElements(); // Initializes all game elements
 		
