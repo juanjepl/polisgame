@@ -30,12 +30,11 @@ public class Main{
 				Boolean theEndOfTheTurn = false;
 				while(!theEndOfTheTurn){
 					
-					//CreatorAction ac1 = new CreatorAction();//FIXME
-					//System.out.println(polis_game.getGamePolis().get("pylos").getActualPopulation());
-					//System.out.println(polis_game.getSpartaPlayer().getMetal());
 					
-					//polis_game.setWhoHasTheTurn(polis_game.getSpartaPlayer());
-					//Boolean testingVar = ac1.createHoplite(polis_game.getSpartaPlayer(),polis_game.getGamePolis().get("pylos"), polis_game.getRound()); //FIXME testing.
+
+					// CreatorAction ac1 = new CreatorAction();//FIXME
+					// polis_game.setWhoHasTheTurn(polis_game.getSpartaPlayer());				
+					// ac1.createTirreme(polis_game.getSpartaPlayer(), polis_game.getGamePolis().get("pylos"), polis_game.getRound());
 					//TODO: game.whoHasTheTurn(), after the other one.
 					
 					//TODO-> create first action

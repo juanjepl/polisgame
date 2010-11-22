@@ -70,16 +70,22 @@ public abstract class Position {
 	/** This method without attribute, returns the number of free slots for this player and round in position */
 	public Integer getNumberOfFreeSlotsForAPlayer(Player player, Round round){
 		Integer slots = 0;
-		for(Unit u : getUnits()){
+		
+		if(getUnits().isEmpty()){
+			slots = round.getMaximumPositionSlotsForThisRound();
+		}else{
 			Integer playerUnits = 0;
-			if(u.getOwner().equals(player)){
-				playerUnits += 1;				
+			for(Unit u : getUnits()){
+				if(u.getOwner().equals(player)){
+					playerUnits += 1;				
+				}
+				slots = round.getMaximumPositionSlotsForThisRound() - playerUnits; //FIXME can be an exception returning this a negative integer?
 			}
-			slots = round.getMaximumPositionSlotsForThisRound()- playerUnits; //FIXME can be an exception returning this a negative integer?
 		}
 		return slots;
 	}
 	
+	/** This method renurns a Boolean with "if we can cross this position" */
 	public Boolean getLockForAPlayer(Player player){
 		Boolean locked = false;
 		Integer owns = 0;
