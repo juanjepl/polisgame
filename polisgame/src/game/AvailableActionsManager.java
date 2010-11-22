@@ -53,9 +53,9 @@ public class AvailableActionsManager {
 		Boolean condition_haveResources = player.getMetal()>= 1 || player.getSilver()>= 1;
 		Boolean condition_enoughPopulation = polis.getActualPopulation() > 1;
 		Boolean condition_hasParentTerritory = polis.getPolisParentTerritory() != null;
-		Boolean condition_notSieged = polis.getSieged();
+		Boolean condition_notSieged = !polis.getSieged();
 		Boolean condition_TerritoryWithSlot = polis.getPolisParentTerritory().getNumberOfFreeSlotsForAPlayer(player, round)>= 1;
-		
+
 		available = condition_imTheOwnerOfThePolis && condition_haveResources && condition_enoughPopulation && condition_hasParentTerritory && condition_notSieged && condition_TerritoryWithSlot;
 		return available;
 	}
@@ -65,7 +65,7 @@ public class AvailableActionsManager {
 		Boolean condition_imTheOwnerOfThePolis = player.getPlayerPolis().contains(polis);
 		Boolean condition_haveResources = player.getWood()>= 1 || player.getSilver()>= 1;
 		Boolean condition_enoughPopulation = polis.getActualPopulation() > 1;
-		Boolean condition_notSieged = polis.getSieged();
+		Boolean condition_notSieged = !polis.getSieged();
 		Boolean condition_polisHasSea = polis.getPolisSeas().isEmpty() == false;
 		Boolean condition_SeaWithSlotA = false;
 		Boolean condition_SeaWithSlotB = false;
@@ -86,7 +86,7 @@ public class AvailableActionsManager {
 		Boolean condition_haveResources = player.getWood()>= 1 || player.getSilver()>= 1;
 		Boolean condition_enoughPopulation = polis.getActualPopulation() > 1;
 		Boolean condition_hasTradeDock = polis.getHasTradeDock();
-		Boolean condition_notSieged = polis.getSieged();
+		Boolean condition_notSieged = !polis.getSieged();
 		Boolean condition_TradeDockWithSlot = player.getPlayerTradeDock().getNumberOfFreeSlotsForAPlayer(player, round)>= 1;
 		
 		available = condition_imTheOwnerOfThePolis && condition_haveResources && condition_enoughPopulation && condition_hasTradeDock && condition_notSieged && condition_TradeDockWithSlot;
@@ -98,7 +98,7 @@ public class AvailableActionsManager {
 		Boolean condition_imTheOwnerOfThePolis = player.getPlayerPolis().contains(polis);
 		Boolean condition_haveResources = player.getSilver()>= 5;
 		Boolean condition_enoughPopulation = polis.getActualPopulation() > 1;
-		Boolean condition_notSieged = polis.getSieged();
+		Boolean condition_notSieged = !polis.getSieged();
 		Boolean condition_notExistsAnotherProxenus = true;
 		for(Polis p: player.getPlayerPolis()){
 			for(Unit u: p.getUnits()){

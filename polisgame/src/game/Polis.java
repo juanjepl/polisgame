@@ -27,6 +27,7 @@ public class Polis extends Position{
 		this.hasTradeDock = hasTradeDock;
 		projects = new LinkedList<Project>();
 		actualPopulation = basePopulation;
+		sieged = false;
 	}
 
 	/** Getters and setters */
