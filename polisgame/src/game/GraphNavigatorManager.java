@@ -18,22 +18,16 @@ public class GraphNavigatorManager {
 		if(type.equals("hoplite"))
 		{
 			graph = Game.getHopliteGraph();
-			System.out.println(graph.getGraph());
 		}else if(type.equals("trirreme"))
 		{
 			graph = Game.getTrirremeGraph();
-			System.out.println(graph);
 		}else if(type.equals("tradeBoat"))
 		{
 			graph = Game.getTradeBoatGraph();
-			System.out.println(graph);
 		}else if(type.equals("proxenus"))
 		{
 			graph = Game.getProxenusGraph();
-			System.out.println(graph);
 		}
-		
-		System.out.println(graph);
 		
 		Set<Vertex<? extends Position>> searchInGraph = graph.getGraph().keySet();
 		
@@ -52,6 +46,7 @@ public class GraphNavigatorManager {
 		
 		for(Vertex<? extends Position> vertex: initialPositionAdjacents)
 		{
+			//peta en possibleCandidates pasandole el grafo raro, que ahora hay que comprobar de verdad el vertice
 			List<Vertex<? extends Position>> possibleCandidates = possibleCandidates(Game.getHopliteGraph().getGraph().get(vertex.getVertexReference().getSysName()), player);
 			
 			exists = (exists || findCandidate(possibleCandidates, p2));  
