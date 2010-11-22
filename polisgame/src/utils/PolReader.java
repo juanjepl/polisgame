@@ -1,6 +1,7 @@
 package utils;
 
 import cfg.GameConfigurations;
+import game.Graph;
 import game.Position;
 import game.Sea;
 import game.TradeDock;
@@ -267,10 +268,10 @@ public class PolReader{ // Reads .pol files
 	}
 	
 	/** This method reads all graphs files and return a map with map type and map values */
-	public Map<String,Map<Vertex<? extends Position>, List<Vertex<? extends Position>>>> readGraphs(Map<String,Polis> polisMap,Map<String,Territory> territoriesMap,Map<String,Sea> seasMap, Map<String,Market> marketsMap, Map<String, TradeDock> tradesMap){
+	public List<Graph> readGraphs(Map<String,Polis> polisMap,Map<String,Territory> territoriesMap,Map<String,Sea> seasMap, Map<String,Market> marketsMap, Map<String, TradeDock> tradesMap){
 		String pathOfGraphs = GameConfigurations.getPathOfGraphs();
 		Map<Vertex<? extends Position>, List<Vertex<? extends Position>>> graphVertexMap = new HashMap<Vertex<? extends Position>, List<Vertex<? extends Position>>>();
-		Map<String, Map<Vertex<? extends Position>, List<Vertex<? extends Position>>>> graphsMap = new HashMap<String, Map<Vertex<? extends Position>, List<Vertex<? extends Position>>>>();
+		List<Graph> graphsList = new ArrayList<Graph>();
 		Map<String,List<String>> gameGraphTexts = GenericDirectoryReader.getDirectoryFilesMap(pathOfGraphs);
 		
 		for(String filename: gameGraphTexts.keySet()){
@@ -319,11 +320,13 @@ public class PolReader{ // Reads .pol files
 					
 				}
 			}
-			graphsMap.put(filename, graphVertexMap);
 			
+			Graph graph = new Graph(graphVertexMap);
+			graphsList.add(graph);
 		}
 		
-		return graphsMap;
+		System.out.println(graphsList);
+		return graphsList;
 		
 	}
 
