@@ -111,6 +111,7 @@ public class TextModeUi implements IUserInterface{ //TODO rescue language texts 
 		return availableActions;
 	}
 	
+	/** This method request player's choice for paying something */
 	public static String requestPaidMethod(String paidReference){ // -> Paid reference: hoplite,trirreme, etc.
 		String paid = "";
 		String resource = "";

@@ -1,5 +1,8 @@
 package game;
 
+import java.util.List;
+import java.util.ArrayList;
+
 /** This class contains the methods for execute military actions in the game */
 public class MilitaryAction extends Action{
 
@@ -10,9 +13,38 @@ public class MilitaryAction extends Action{
 	
 	
 	/** To move an Hoplite or Hoplites group, to other position */
-	public Boolean moveHoplite(Player player, Position initialPosition, Position finalPosition, Integer numberOfUnits, Boolean multiMovement){
+	public Boolean moveHoplite(Player player, Round round,Territory initialPosition, Territory finalPosition, Integer numberOfUnits, Boolean multiMovement){
 		Boolean success = false;
-		//TODO
+		success = AvailableActionsManager.checkMoveHopliteAction(player, round, initialPosition, finalPosition, numberOfUnits);
+		if(success){
+			List<Unit> unitsToMove = new ArrayList<Unit>();
+			Integer unitsCount = 0;
+			
+			for(Unit u: initialPosition.getUnits()){
+				if(u.getOwner().equals(player)){
+					if(unitsCount < numberOfUnits){
+						unitsToMove.add(u);
+						unitsCount += 1;
+					}else{
+						break;
+					}	
+				}
+			}
+			initialPosition.removeGroupOfUnits(unitsToMove);
+			finalPosition.addGroupOfUnits(unitsToMove);
+				
+			if(multiMovement){
+				
+				//TODO
+				
+			}else{
+				//Do nothing, action finished.
+			}
+				
+		}else{
+			// Do nothing
+		}
+
 		return success;
 	}
 	
