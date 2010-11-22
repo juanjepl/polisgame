@@ -34,7 +34,7 @@ public class Main{
 
 					// CreatorAction ac1 = new CreatorAction();//FIXME
 					// polis_game.setWhoHasTheTurn(polis_game.getSpartaPlayer());				
-					// ac1.createTirreme(polis_game.getSpartaPlayer(), polis_game.getGamePolis().get("pylos"), polis_game.getRound());
+					// ac1.createTrirreme(polis_game.getSpartaPlayer(), polis_game.getGamePolis().get("pylos"), polis_game.getRound());
 					//TODO: game.whoHasTheTurn(), after the other one.
 					
 					//TODO-> create first action

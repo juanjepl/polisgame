@@ -44,7 +44,7 @@ public class CreatorAction extends Action{
 	}
 	
 	/** Creates a Trirreme unit in polis's sea */
-	public Boolean createTirreme(Player owner, Polis polis, Round round){
+	public Boolean createTrirreme(Player owner, Polis polis, Round round){
 		Boolean success = false;
 		success = AvailableActionsManager.checkCreateTrirremeAction(owner, polis, round);
 		
