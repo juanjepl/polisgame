@@ -116,12 +116,35 @@ public class AvailableActionsManager {
 	}
 	
 	
-	/*
-	public static Boolean checkMoveHopliteAction(Game g,Player p){
+	
+	public static Boolean checkMoveHopliteAction(Player player, Round round, Territory start, Territory destiny, Integer troops){
 		Boolean available = false;
-		//TODO
+
+		Boolean condicion_havePrestige = player.getPrestige() >= 1;
+		Boolean condition_NumberOfTroops = (troops <= round.getMaximumPositionSlotsForThisRound()) && (troops != 0);
+		Boolean condition_TroopsInStart = false;
+		if(!(start.getUnits().isEmpty())){
+			Integer realTroops = 0;
+			for(Unit u: start.getUnits()){
+				if(u.getOwner().equals(player)){
+					realTroops += 1;
+				}else{
+					// Do nothing
+				}
+			}
+			condition_TroopsInStart = realTroops == troops;
+		}else{
+			// Do nothing -> Already: condition_TroopsInStart = false 
+		}
+		Boolean condition_DestinyWithSlots = destiny.getNumberOfFreeSlotsForAPlayer(player, round) >= troops;
+		Boolean condition_WayStartToFinish = GraphNavigatorManager.existsWay(start,destiny,player,"hoplite");
+		
+		available = condicion_havePrestige && condition_NumberOfTroops && condition_TroopsInStart && condition_DestinyWithSlots && condition_WayStartToFinish;
+		
 		return available;
 	}
+	
+	/*
 	public static Boolean checkMoveTrirremeAction(Game g,Player p){
 		Boolean available = false;
 		//TODO
