@@ -21,6 +21,9 @@ public class StandardStartInitializer {
 		// TradeDock assignation
 		theGame.getSpartaPlayer().setPlayerTradeDock(theGame.getGameTradeDocks().get("spartaTradeDock"));
 		
+		// Capital assignation
+		theGame.getSpartaPlayer().setCapital(theGame.getGamePolis().get("sparta"));
+		
 		// Polis assignation and polis initial population.
 		theGame.getSpartaPlayer().addPolis(theGame.getGamePolis().get("sparta"));
 		theGame.getSpartaPlayer().addPolis(theGame.getGamePolis().get("gythion"));
@@ -66,15 +69,18 @@ public class StandardStartInitializer {
 		theGame.getAthensPlayer().setOil(4);
 		theGame.getAthensPlayer().setSilver(0);
 		theGame.getAthensPlayer().setWheat(4);
-		
+
 		// TradeDock assignation
 		theGame.getAthensPlayer().setPlayerTradeDock(theGame.getGameTradeDocks().get("athensTradeDock"));
+		
+		// Capital assignation
+		theGame.getAthensPlayer().setCapital(theGame.getGamePolis().get("athens"));
 		
 		// Polis assignation and polis initial population.
 		theGame.getAthensPlayer().addPolis(theGame.getGamePolis().get("athens"));
 		theGame.getAthensPlayer().addPolis(theGame.getGamePolis().get("chalcis"));
 		theGame.getAthensPlayer().addPolis(theGame.getGamePolis().get("chios"));
-		
+
 		for(Polis p : theGame.getAthensPlayer().getPlayerPolis()){
 			if(p.getSysName().equals("athens")){
 				p.setActualPopulation(5);

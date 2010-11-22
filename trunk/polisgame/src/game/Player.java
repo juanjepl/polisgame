@@ -17,7 +17,7 @@ public class Player {
 	private Integer wheat;
 	private Integer silver;
 	private Boolean hasPassedTurn; // If this player has passed the turn for actual round
-	
+	private Polis capital;
 	
 	public Player(String name){
 		this.name = name;
@@ -118,6 +118,14 @@ public class Player {
 		this.playerTradeDock = playerTradeDock;
 	}
 
+	public Polis getCapital() {
+		return capital;
+	}
+
+	public void setCapital(Polis capital) {
+		this.capital = capital;
+	}
+	
 	/** Method to add a polis to our owns */
 	public void addPolis(Polis polis){
 		//TODO
@@ -128,7 +136,7 @@ public class Player {
 		}
 		
 	}
-	
+
 	/** Method to remove polis from our owns */
 	public void removePolis(Polis polis){
 		//TODO
