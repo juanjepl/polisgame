@@ -19,12 +19,12 @@ public class EndGameManager {
 	}
 	
 	/** This method checks if any player has lost all prestige points */
-	public Boolean checkNoPrestige(){
-		Boolean playerWithNoPrestige = false;
+	public Boolean checkNoPrestige(Player playerGamer){
+		
 		
 		//TODO this method checks no one player has lost all his prestige (game over)
 		
-		return playerWithNoPrestige;
+		return playerGamer.getPrestige() == 0;
 	}
 	
 	/** This method checks the final "score" to decide a winner (following the game rules) */
