@@ -1,8 +1,8 @@
 package tests;
 
-import java.io.BufferedReader;
-import java.io.File;
-import java.io.FileReader;
+//import java.io.BufferedReader;
+//import java.io.File;
+//import java.io.FileReader;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -10,7 +10,7 @@ import utils.GenericReader;
 
 import org.junit.Test;
 import org.junit.Before;
-import org.junit.After;
+//import org.junit.After;
 
 public class TestGenericReader {
 
