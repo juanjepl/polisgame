@@ -4,6 +4,7 @@ import java.util.List;
 import java.util.Map;
 
 import cfg.GameConfigurations;
+import utils.PolReader;
 
 /** The most important class in the game, It contains players, rounds, and any all elements of the game */
 public class Game { //TODO add Graphs
@@ -23,13 +24,13 @@ public class Game { //TODO add Graphs
 	private List<GameEvent> gameEventsRound5b;
 	private MarketChart marketChart;
 	private Round round;
-	private Graph hopliteGraph;
-	private Graph trirremeGraph;
-	private Graph proxenusGraph;
-	private Graph tradeBoatGraph;
+	private static Graph hopliteGraph;
+	private static Graph trirremeGraph;
+	private static Graph proxenusGraph;
+	private static Graph tradeBoatGraph;
 	
 	/** Game constructor */
-	public Game(Player sparta, Player athens, Map<String,Territory> territoriesMap, Map<String,Sea> seasMap, Map<String,TradeDock> tradeDocksMap, Map<String,Market> marketsMap, Map<String,Polis> polisMap, List<Project> gameProjects, List<List<GameEvent>> gameEventsList, Round theRound, MarketChart theMarketChart, Graph hopliteGraph, Graph trirremeGraph, Graph proxenusGraph,Graph tradeBoatGraph){
+	public Game(Player sparta, Player athens, Map<String,Territory> territoriesMap, Map<String,Sea> seasMap, Map<String,TradeDock> tradeDocksMap, Map<String,Market> marketsMap, Map<String,Polis> polisMap, List<Project> gameProjects, List<List<GameEvent>> gameEventsList, Round theRound, MarketChart theMarketChart){
 
 		spartaPlayer = sparta;
 		athensPlayer = athens;
@@ -51,10 +52,11 @@ public class Game { //TODO add Graphs
 		round = theRound;
 		marketChart = theMarketChart;
 		
-		this.hopliteGraph = hopliteGraph;
-		this.trirremeGraph = trirremeGraph;
-		this.proxenusGraph = proxenusGraph;
-		this.tradeBoatGraph = tradeBoatGraph;
+		PolReader graphFilesReader = new PolReader();
+		hopliteGraph = new Graph(graphFilesReader.readGraphs(polisMap, territoriesMap, seasMap, marketsMap, tradeDocksMap).get("hopliteGraph"));;
+		trirremeGraph = new Graph(graphFilesReader.readGraphs(polisMap, territoriesMap, seasMap, marketsMap, tradeDocksMap).get("trirremeGraph"));
+		proxenusGraph = new Graph(graphFilesReader.readGraphs(polisMap, territoriesMap, seasMap, marketsMap, tradeDocksMap).get("proxenusGraph"));
+		tradeBoatGraph = new Graph(graphFilesReader.readGraphs(polisMap, territoriesMap, seasMap, marketsMap, tradeDocksMap).get("tradeBoatGraph"));
 	}
 
 	
@@ -125,19 +127,19 @@ public class Game { //TODO add Graphs
 		this.whoHasTheTurn = whoHasTheTurn;
 	}
 	
-	public Graph getHopliteGraph() {
+	public static Graph getHopliteGraph() {
 		return hopliteGraph;
 	}
 
-	public Graph getTrirremeGraph() {
+	public static Graph getTrirremeGraph() {
 		return trirremeGraph;
 	}
 
-	public Graph getProxenusGraph() {
+	public static Graph getProxenusGraph() {
 		return proxenusGraph;
 	}
 
-	public Graph getTradeBoatGraph() {
+	public static Graph getTradeBoatGraph() {
 		return tradeBoatGraph;
 	}
 

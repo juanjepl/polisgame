@@ -26,6 +26,7 @@ public class Polis extends Position{
 		this.polisSeas = polisSeas; 
 		this.hasTradeDock = hasTradeDock;
 		projects = new LinkedList<Project>();
+		actualPopulation = basePopulation;
 	}
 
 	/** Getters and setters */
