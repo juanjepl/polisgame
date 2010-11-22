@@ -53,10 +53,11 @@ public class Game { //TODO add Graphs
 		marketChart = theMarketChart;
 		
 		PolReader graphFilesReader = new PolReader();
-		hopliteGraph = new Graph(graphFilesReader.readGraphs(polisMap, territoriesMap, seasMap, marketsMap, tradeDocksMap).get("hopliteGraph"));;
-		trirremeGraph = new Graph(graphFilesReader.readGraphs(polisMap, territoriesMap, seasMap, marketsMap, tradeDocksMap).get("trirremeGraph"));
-		proxenusGraph = new Graph(graphFilesReader.readGraphs(polisMap, territoriesMap, seasMap, marketsMap, tradeDocksMap).get("proxenusGraph"));
-		tradeBoatGraph = new Graph(graphFilesReader.readGraphs(polisMap, territoriesMap, seasMap, marketsMap, tradeDocksMap).get("tradeBoatGraph"));
+		hopliteGraph = graphFilesReader.readGraphs(polisMap, territoriesMap, seasMap, marketsMap, tradeDocksMap).get(0);
+		trirremeGraph = graphFilesReader.readGraphs(polisMap, territoriesMap, seasMap, marketsMap, tradeDocksMap).get(1);
+		proxenusGraph = graphFilesReader.readGraphs(polisMap, territoriesMap, seasMap, marketsMap, tradeDocksMap).get(2);
+		tradeBoatGraph = graphFilesReader.readGraphs(polisMap, territoriesMap, seasMap, marketsMap, tradeDocksMap).get(3);
+		
 	}
 
 	

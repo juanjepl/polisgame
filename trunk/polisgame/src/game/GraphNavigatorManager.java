@@ -2,6 +2,7 @@ package game;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Set;
 
 public class GraphNavigatorManager {
 
@@ -10,25 +11,43 @@ public class GraphNavigatorManager {
 		
 	}
 	
-	public static Boolean existsWay ( Position p1, Position p2, Player player, String type){
+	public static Boolean existsWay ( Territory p1, Territory p2, Player player, String type){
 		
 		Graph graph = null;
 		
 		if(type.equals("hoplite"))
 		{
 			graph = Game.getHopliteGraph();
+			System.out.println(graph.getGraph());
 		}else if(type.equals("trirreme"))
 		{
 			graph = Game.getTrirremeGraph();
+			System.out.println(graph);
 		}else if(type.equals("tradeBoat"))
 		{
 			graph = Game.getTradeBoatGraph();
+			System.out.println(graph);
 		}else if(type.equals("proxenus"))
 		{
 			graph = Game.getProxenusGraph();
+			System.out.println(graph);
 		}
 		
-		List<Vertex<? extends Position>> initialPositionAdjacents = graph.getGraph().get(p1.getSysName());
+		System.out.println(graph);
+		
+		Set<Vertex<? extends Position>> searchInGraph = graph.getGraph().keySet();
+		
+		Vertex<? extends Position> v = null;
+		for(Vertex<? extends Position> vertex: searchInGraph)
+		{
+
+			if(vertex.getVertexReference().getSysName().equals(p1.getSysName()))
+			{
+				v = vertex;
+			}
+		}
+		
+		List<Vertex<? extends Position>> initialPositionAdjacents = graph.getGraph().get(v);
 		Boolean exists = false;
 		
 		for(Vertex<? extends Position> vertex: initialPositionAdjacents)
