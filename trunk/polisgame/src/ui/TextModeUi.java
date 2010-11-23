@@ -4,12 +4,12 @@ import java.io.BufferedReader;
 import java.io.InputStreamReader;
 import java.util.List;
 import java.util.ArrayList;
-import java.util.LinkedList;
 
 import game.Game;
 import game.Turn;
 import game.Player;
 import game.Sea;
+import game.AvailableActionsManager;
 
 /** Text-mode user interface class */
 public class TextModeUi implements IUserInterface{ //TODO rescue language texts from data.gameTexts
@@ -94,10 +94,82 @@ public class TextModeUi implements IUserInterface{ //TODO rescue language texts 
 	}
 	
 	/** This method shows the possibles actions that a player can do */
-	public List<String> showAvailableActions(Game g, Player p){
-		List<String> availableActions = new LinkedList<String>();
+	public static void showAvailableActions(Game g, Player p){
+
+		String optionsMessage = "0 - Options";
+		String creatorActionMessage = "1 - Creator Action";
+		String militaryActionMessage = "2 - Military Action";
+		String politicActionMessage = "3 - Politic Action";
+		String passTurnMessage = "4 - Pass Turn";
+		String unavailable = " -Not Available-";
+
+		System.out.println("Please choose action to execute: "); //FIXME rescue this text from GameText 
 		
-		//TODO also the texts in data.gameTexts
+		if(!(p.getHasPassedTurn())){
+		
+			System.out.println(optionsMessage);
+			if(AvailableActionsManager.checkCreatorAction(g,p)){
+				System.out.println(creatorActionMessage);
+			//TODO -> inhibir la operación.
+			}else{
+				System.out.println(creatorActionMessage + unavailable);
+			}
+		
+		
+			if(AvailableActionsManager.checkMilitaryAction(g,p)){
+				System.out.println(militaryActionMessage);
+				//TODO -> inhibir la operación.
+			}else{
+				System.out.println(militaryActionMessage + unavailable);
+			}
+		
+		
+			if(AvailableActionsManager.checkPoliticAction(g,p)){
+				System.out.println(politicActionMessage);
+				//TODO -> inhibir la operación.
+			}else{
+				System.out.println(politicActionMessage + unavailable);
+			}
+		
+			System.out.println(passTurnMessage);
+			
+			String chosenOption = "";
+			
+			BufferedReader br_choose = new BufferedReader(new InputStreamReader(System.in));
+			try {
+				chosenOption = br_choose.readLine();
+			} catch (Exception e) {	
+				//TODO
+			}
+			while(!(chosenOption.equals("0") || chosenOption.equals("1") || chosenOption.equals("2") || chosenOption.equals("3") || chosenOption.equals("4"))){
+				System.out.print("Please, insert a correct value: ");//TODO -> from gameTexts
+				BufferedReader br_choose_tries = new BufferedReader(new InputStreamReader(System.in));
+				try {
+					chosenOption = br_choose_tries.readLine();
+				} catch (Exception e) {	
+					//TODO
+				}
+			}
+			
+			if(chosenOption.equals("0")){
+				//TODO -> options menu
+			}else if(chosenOption.equals("1")){
+				//TODO -> creator menu
+			}else if(chosenOption.equals("2")){
+				//TODO -> military menu
+			}else if(chosenOption.equals("3")){
+				//TODO -> politic menu
+			}else if(chosenOption.equals("4")){
+				p.setHasPassedTurn(true);
+			}else{
+				// Game wouldn't take this case.
+			}
+
+		}else{
+			// Do nothing
+		}
+		
+
 		/*
 		Integer index = 1;
 		for(String possibleAction : availableActions){
@@ -108,7 +180,30 @@ public class TextModeUi implements IUserInterface{ //TODO rescue language texts 
 		
 		//TODO -> from "system" strings rescued, use gametexts "names"
 		
-		return availableActions;
+		/*
+		String backMessage = "0 - Back";
+		
+		String optionChangeNicknameMessage = "1 - Change the Nickname";
+		String optionSaveGameMessage = "2 - Save Game";
+		String optionLoadGameMessage = "3 - Load Game";		
+		
+		String createHopliteMessage = "1 - Create Hoplite";
+		String createTrirremeMessage = "2 - Create Trirreme";
+		String createTradeBoatMessage = "3 - Create Trade Boat";
+		String createProxenusMessage = "4 - Create Proxenus";
+		
+		String moveHopliteMessage = "1 - Move Hoplite";
+		String moveTrirremeMessage = "2 - Move Trirreme";
+		String siegePolisMessage = "3 - Siege Polis";
+		String plunderTerritoryMessage = "4 - Plunder Territory";
+		
+		String startAProjectMessage = "1 - Start a Project";
+		String tradeMessage = "2 - Trade";
+		String moveProxenusMessage = "3 - Move the Proxenus";
+		String civilWarMessage = "4 - Do a Civil War";
+		*/
+		
+		
 	}
 	
 	/** This method request player's choice for paying something */
@@ -122,12 +217,7 @@ public class TextModeUi implements IUserInterface{ //TODO rescue language texts 
 		if(paidReference.equals("hoplite")){
 			System.out.println("1 - Metal"); //TODO -> from gameTexts
 			System.out.println("2 - Silver");//TODO -> from gameTexts
-			BufferedReader br_paid = new BufferedReader(new InputStreamReader(System.in));
-			try {
-				paid = br_paid.readLine();
-			} catch (Exception e) {	
-				//TODO
-			}
+			
 			while(!(paid.equals("1")||paid.equals("2"))){
 				System.out.print("Please, insert a correct value (1 or 2): ");//TODO -> from gameTexts
 				BufferedReader br_paid_tries = new BufferedReader(new InputStreamReader(System.in));
@@ -205,7 +295,7 @@ public class TextModeUi implements IUserInterface{ //TODO rescue language texts 
 		}else{
 			toReturnSea = seas.get(1);
 		}
-		
 		return toReturnSea;
 	}
+	
 }

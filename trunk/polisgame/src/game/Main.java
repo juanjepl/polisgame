@@ -13,7 +13,6 @@ public class Main{
 		
 		StandardStartInitializer.standardStart(polis_game); // Initializes the game standard start position
 
-		
 		Boolean theEndOfTheGame = false;
 		polis_game.getRound().startRound(polis_game); // Starts initial round
 		
@@ -22,17 +21,18 @@ public class Main{
 			TextModeUi.showNewRound(polis_game);
 			Boolean theEndOfTheRound = false;
 			while(!theEndOfTheRound){
-				
-				
+								
 				Turn actualTurn = new Turn();
 				TextModeUi.showPlayerTurn(polis_game);
 				
 				Boolean theEndOfTheTurn = false;
 				while(!theEndOfTheTurn){
+
+					// Boolean FUNCA = GraphNavigatorManager.existsWay(polis_game.getGameTerritories().get("macedonia"), polis_game.getGameTerritories().get("laconia"), polis_game.getSpartaPlayer(), "hoplite") ; 
+                    // System.out.println(FUNCA);
+                    
+                    TextModeUi.showAvailableActions(polis_game, polis_game.getWhoHasTheTurn());
 					
-					
-					Boolean FUNCA = GraphNavigatorManager.existsWay(polis_game.getGameTerritories().get("macedonia"), polis_game.getGameTerritories().get("laconia"), polis_game.getSpartaPlayer(), "hoplite") ; 
-                    System.out.println(FUNCA);
 					// polis_game.getSpartaPlayer().getPlayerPolis().add(polis_game.getGamePolis().get("corinth"));
 					// CreatorAction ac1 = new CreatorAction();//FIXME
 					// polis_game.setWhoHasTheTurn(polis_game.getSpartaPlayer());				
