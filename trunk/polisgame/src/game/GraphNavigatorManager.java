@@ -46,9 +46,8 @@ public class GraphNavigatorManager {
 		
 		for(Vertex<? extends Position> vertex: initialPositionAdjacents)
 		{
-			//peta en possibleCandidates pasandole el grafo raro, que ahora hay que comprobar de verdad el vertice
-			List<Vertex<? extends Position>> pv = graph.getGraph().get(vertex);
-			List<Vertex<? extends Position>> possibleCandidates = possibleCandidates(graph.getGraph().get(pv), player);
+
+			List<Vertex<? extends Position>> possibleCandidates = possibleCandidates(graph.getGraph().get(vertex), player);
 		
 			
 			exists = (exists || findCandidate(possibleCandidates, p2));  

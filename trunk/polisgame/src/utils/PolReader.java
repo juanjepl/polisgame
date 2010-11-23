@@ -273,6 +273,7 @@ public class PolReader{ // Reads .pol files
 		Map<Vertex<? extends Position>, List<Vertex<? extends Position>>> graphVertexMap = new HashMap<Vertex<? extends Position>, List<Vertex<? extends Position>>>();
 		List<Graph> graphsList = new ArrayList<Graph>();
 		Map<String,List<String>> gameGraphTexts = GenericDirectoryReader.getDirectoryFilesMap(pathOfGraphs);
+		Map<String,Vertex<? extends Position>> verticesMap = new HashMap<String, Vertex<? extends Position>>();
 		
 		for(String filename: gameGraphTexts.keySet()){
 		
@@ -289,28 +290,61 @@ public class PolReader{ // Reads .pol files
 					if(territoriesMap.containsKey(vertices.get(j)))
 					{
 						Territory position = territoriesMap.get(vertices.get(j));
-						Vertex<Territory> vertex = new Vertex<Territory>(position);
-						adjacents.add(vertex);
+						System.out.println(position.getSysName());
+						if(verticesMap.containsKey(position.getSysName()))
+						{
+							adjacents.add(verticesMap.get(position.getSysName()));
+						}else{
+							Vertex<Territory> vertex = new Vertex<Territory>(position);
+							verticesMap.put(position.getSysName(), vertex);
+							adjacents.add(vertex);
+						}
+						
+						
 					}else if(seasMap.containsKey(vertices.get(j)))
 					{
 						Sea position = seasMap.get(vertices.get(j));
-						Vertex<Sea> vertex = new Vertex<Sea>(position);
-						adjacents.add(vertex);
+						if(verticesMap.containsKey(position.getSysName()))
+						{
+							adjacents.add(verticesMap.get(position.getSysName()));
+						}else{
+							Vertex<Sea> vertex = new Vertex<Sea>(position);
+							verticesMap.put(position.getSysName(), vertex);
+							adjacents.add(vertex);
+						}
 					}else if(marketsMap.containsKey(vertices.get(j)))
 					{
 						Market position = marketsMap.get(vertices.get(j));
-						Vertex<Market> vertex = new Vertex<Market>(position);
-						adjacents.add(vertex);
+						if(verticesMap.containsKey(position.getSysName()))
+						{
+							adjacents.add(verticesMap.get(position.getSysName()));
+						}else{
+							Vertex<Market> vertex = new Vertex<Market>(position);
+							verticesMap.put(position.getSysName(), vertex);
+							adjacents.add(vertex);
+						}
 					}else if(tradesMap.containsKey(vertices.get(j)))
 					{
 						TradeDock position = tradesMap.get(vertices.get(j));
-						Vertex<TradeDock> vertex = new Vertex<TradeDock>(position);
-						adjacents.add(vertex);
+						if(verticesMap.containsKey(position.getSysName()))
+						{
+							adjacents.add(verticesMap.get(position.getSysName()));
+						}else{
+							Vertex<TradeDock> vertex = new Vertex<TradeDock>(position);
+							verticesMap.put(position.getSysName(), vertex);
+							adjacents.add(vertex);
+						}
 					}else if(polisMap.containsKey(vertices.get(j)))
 					{
 						Polis position = polisMap.get(vertices.get(j));
-						Vertex<Polis> vertex = new Vertex<Polis>(position);
-						adjacents.add(vertex);
+						if(verticesMap.containsKey(position.getSysName()))
+						{
+							adjacents.add(verticesMap.get(position.getSysName()));
+						}else{
+							Vertex<Polis> vertex = new Vertex<Polis>(position);
+							verticesMap.put(position.getSysName(), vertex);
+							adjacents.add(vertex);
+						}
 					}
 					
 					
