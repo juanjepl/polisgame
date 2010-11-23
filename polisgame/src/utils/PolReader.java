@@ -290,7 +290,7 @@ public class PolReader{ // Reads .pol files
 					if(territoriesMap.containsKey(vertices.get(j)))
 					{
 						Territory position = territoriesMap.get(vertices.get(j));
-						System.out.println(position.getSysName());
+
 						if(verticesMap.containsKey(position.getSysName()))
 						{
 							adjacents.add(verticesMap.get(position.getSysName()));
