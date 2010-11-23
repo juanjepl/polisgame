@@ -38,7 +38,7 @@ public class AvailableActionsManager {
 	
 	public static Boolean checkMilitaryAction(Game g,Player p){
 		//TODO
-		return true;
+		return false;//FIXME
 	}
 	
 	public static Boolean checkPoliticAction(Game g,Player p){
