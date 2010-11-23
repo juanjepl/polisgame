@@ -31,7 +31,7 @@ public class Main{
 				while(!theEndOfTheTurn){
 					
 					
-					Boolean FUNCA = GraphNavigatorManager.existsWay(polis_game.getGameTerritories().get("messinia"), polis_game.getGameTerritories().get("macedonia"), polis_game.getSpartaPlayer(), "hoplite") ; 
+					Boolean FUNCA = GraphNavigatorManager.existsWay(polis_game.getGameTerritories().get("macedonia"), polis_game.getGameTerritories().get("laconia"), polis_game.getSpartaPlayer(), "hoplite") ; 
                     System.out.println(FUNCA);
 					// polis_game.getSpartaPlayer().getPlayerPolis().add(polis_game.getGamePolis().get("corinth"));
 					// CreatorAction ac1 = new CreatorAction();//FIXME
