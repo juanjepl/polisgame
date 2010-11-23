@@ -35,14 +35,16 @@ public class AvailableActionsManager {
 		return available;
 	}
 	
-	/*
+	
 	public static Boolean checkMilitaryAction(Game g,Player p){
-		return checkMoveHopliteAction(g,p)||checkMoveTrirremeAction(g,p)||checkSiegePolisAction(g,p)||checkPlunderTerritoryAction(g,p);
+		//TODO
+		return true;
 	}
+	
 	public static Boolean checkPoliticAction(Game g,Player p){
-		return checkStartProjectAction(g,p)||checkTradeAction(g,p)||checkMoveProxenusAction(g,p)||checkCivilWarAction(g,p);
+		//TODO
+		return true;
 	}
-	*/
 	
 	/** Sub methods */
 
@@ -54,8 +56,12 @@ public class AvailableActionsManager {
 		Boolean condition_enoughPopulation = polis.getActualPopulation() > 1;
 		Boolean condition_hasParentTerritory = polis.getPolisParentTerritory() != null;
 		Boolean condition_notSieged = !polis.getSieged();
-		Boolean condition_TerritoryWithSlot = polis.getPolisParentTerritory().getNumberOfFreeSlotsForAPlayer(player, round)>= 1;
-
+		Boolean condition_TerritoryWithSlot = false;
+		if(condition_hasParentTerritory){
+			condition_TerritoryWithSlot = polis.getPolisParentTerritory().getNumberOfFreeSlotsForAPlayer(player, round)>= 1;
+		}else{
+			condition_TerritoryWithSlot = false;
+		}
 		available = condition_imTheOwnerOfThePolis && condition_haveResources && condition_enoughPopulation && condition_hasParentTerritory && condition_notSieged && condition_TerritoryWithSlot;
 		return available;
 	}
@@ -144,7 +150,7 @@ public class AvailableActionsManager {
 		return available;
 	}
 	
-	/*
+	
 	public static Boolean checkMoveTrirremeAction(Game g,Player p){
 		Boolean available = false;
 		//TODO
@@ -181,5 +187,5 @@ public class AvailableActionsManager {
 		//TODO
 		return available;
 	}
-	*/
+	
 }
