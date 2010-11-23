@@ -91,15 +91,6 @@ public class GraphNavigatorManager {
 				exists = true;
 			}
 		}
-		/*for(Vertex<? extends Position> vertex: initialPositionAdjacents)
-		{
-
-			List<Vertex<? extends Position>> possibleCandidates = possibleCandidates(graph.getGraph().get(vertex), player);
-		
-			
-			exists = (exists || findCandidate(possibleCandidates, p2));  
-			
-		}*/
 	
 		return exists;
 	}
