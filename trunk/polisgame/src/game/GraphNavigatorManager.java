@@ -11,7 +11,7 @@ public class GraphNavigatorManager {
 		
 	}
 	
-	public static Boolean existsWay ( Territory p1, Territory p2, Player player, String type){
+	public static Boolean existsWay ( Position p1, Position p2, Player player, String type){
 		
 		Graph graph = null;
 		
