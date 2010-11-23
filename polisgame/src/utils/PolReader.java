@@ -325,7 +325,6 @@ public class PolReader{ // Reads .pol files
 			graphsList.add(graph);
 		}
 		
-		System.out.println(graphsList);
 		return graphsList;
 		
 	}
