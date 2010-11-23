@@ -103,36 +103,38 @@ public class TextModeUi implements IUserInterface{ //TODO rescue language texts 
 		String passTurnMessage = "4 - Pass Turn";
 		String unavailable = " -Not Available-";
 
+		List<String> unavailableOptions = new ArrayList<String>();
+		
 		System.out.println("Please choose action to execute: "); //FIXME rescue this text from GameText 
 		
 		if(!(p.getHasPassedTurn())){
 		
+			// Display options to choose.
 			System.out.println(optionsMessage);
 			if(AvailableActionsManager.checkCreatorAction(g,p)){
 				System.out.println(creatorActionMessage);
-			//TODO -> inhibir la operación.
 			}else{
 				System.out.println(creatorActionMessage + unavailable);
+				unavailableOptions.add("1");
 			}
-		
 		
 			if(AvailableActionsManager.checkMilitaryAction(g,p)){
 				System.out.println(militaryActionMessage);
-				//TODO -> inhibir la operación.
 			}else{
 				System.out.println(militaryActionMessage + unavailable);
+				unavailableOptions.add("2");
 			}
-		
-		
+
 			if(AvailableActionsManager.checkPoliticAction(g,p)){
 				System.out.println(politicActionMessage);
-				//TODO -> inhibir la operación.
 			}else{
 				System.out.println(politicActionMessage + unavailable);
+				unavailableOptions.add("3");
 			}
 		
 			System.out.println(passTurnMessage);
 			
+			// chosen option
 			String chosenOption = "";
 			
 			BufferedReader br_choose = new BufferedReader(new InputStreamReader(System.in));
@@ -141,8 +143,13 @@ public class TextModeUi implements IUserInterface{ //TODO rescue language texts 
 			} catch (Exception e) {	
 				//TODO
 			}
-			while(!(chosenOption.equals("0") || chosenOption.equals("1") || chosenOption.equals("2") || chosenOption.equals("3") || chosenOption.equals("4"))){
-				System.out.print("Please, insert a correct value: ");//TODO -> from gameTexts
+			while((unavailableOptions.contains(chosenOption))||(!(chosenOption.equals("0") || chosenOption.equals("1") || chosenOption.equals("2") || chosenOption.equals("3") || chosenOption.equals("4")))){
+				if(unavailableOptions.contains(chosenOption)){
+					System.out.println("Action not available, please, choose another one:");
+				}else{
+					System.out.print("Please, insert a correct value: ");//TODO -> from gameTexts
+				}
+				
 				BufferedReader br_choose_tries = new BufferedReader(new InputStreamReader(System.in));
 				try {
 					chosenOption = br_choose_tries.readLine();
@@ -150,6 +157,7 @@ public class TextModeUi implements IUserInterface{ //TODO rescue language texts 
 					//TODO
 				}
 			}
+			
 			
 			if(chosenOption.equals("0")){
 				//TODO -> options menu
@@ -187,11 +195,6 @@ public class TextModeUi implements IUserInterface{ //TODO rescue language texts 
 		String optionSaveGameMessage = "2 - Save Game";
 		String optionLoadGameMessage = "3 - Load Game";		
 		
-		String createHopliteMessage = "1 - Create Hoplite";
-		String createTrirremeMessage = "2 - Create Trirreme";
-		String createTradeBoatMessage = "3 - Create Trade Boat";
-		String createProxenusMessage = "4 - Create Proxenus";
-		
 		String moveHopliteMessage = "1 - Move Hoplite";
 		String moveTrirremeMessage = "2 - Move Trirreme";
 		String siegePolisMessage = "3 - Siege Polis";
@@ -204,6 +207,25 @@ public class TextModeUi implements IUserInterface{ //TODO rescue language texts 
 		*/
 		
 		
+	}
+
+	public static void showAvailableCreatorActions(Game g,Player p){
+		String unavailable = " -Not Available-";
+		String backMessage = "0 - Back";
+		String createHopliteMessage = "1 - Create Hoplite";
+		String createTrirremeMessage = "2 - Create Trirreme";
+		String createTradeBoatMessage = "3 - Create Trade Boat";
+		String createProxenusMessage = "4 - Create Proxenus";
+		
+		System.out.println("Please choose creator action to execute: "); //FIXME rescue this text from GameText 
+		
+		
+		
+		
+		
+		
+		
+		//TODO
 	}
 	
 	/** This method request player's choice for paying something */
