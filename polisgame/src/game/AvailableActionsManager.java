@@ -26,7 +26,7 @@ public class AvailableActionsManager {
 				break;
 			}
 			
-			if(checkCreateProxenusAction(player,p,game.getRound())){ 
+			if(checkCreateProxenusAction(player,p)){ 
 				available = true;
 				break;
 			}
@@ -92,7 +92,7 @@ public class AvailableActionsManager {
 		available = condition_imTheOwnerOfThePolis && condition_haveResources && condition_enoughPopulation && condition_hasTradeDock && condition_notSieged && condition_TradeDockWithSlot;
 		return available;
 	}
-	public static Boolean checkCreateProxenusAction(Player player, Polis polis, Round round){
+	public static Boolean checkCreateProxenusAction(Player player, Polis polis){
 		Boolean available = false;
 		
 		Boolean condition_imTheOwnerOfThePolis = player.getPlayerPolis().contains(polis);
