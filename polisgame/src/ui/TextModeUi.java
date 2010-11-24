@@ -95,7 +95,7 @@ public class TextModeUi implements IUserInterface{ //TODO rescue language texts 
 	
 	/** This method shows the possibles actions that a player can do */
 	public static void showAvailableActions(Game g, Player p){
-
+    
 		String optionsMessage = "0 - Options";
 		String creatorActionMessage = "1 - Creator Action";
 		String militaryActionMessage = "2 - Military Action";
@@ -107,7 +107,7 @@ public class TextModeUi implements IUserInterface{ //TODO rescue language texts 
 		
 		System.out.println("Please choose action to execute: "); //FIXME rescue this text from GameText 
 		
-		if(!(p.getHasPassedTurn())){
+		if(!(p.getHasPassedTurn())){ //FIXME necessary?
 		
 			// Display options to choose.
 			System.out.println(optionsMessage);
@@ -157,39 +157,28 @@ public class TextModeUi implements IUserInterface{ //TODO rescue language texts 
 					//TODO
 				}
 			}
-			
-			
+
 			if(chosenOption.equals("0")){
-				//TODO -> options menu
+				showAvailableOptions();
 			}else if(chosenOption.equals("1")){
-				//TODO -> creator menu
+				showAvailableCreatorActions(g,p);
 			}else if(chosenOption.equals("2")){
-				//TODO -> military menu
+				showAvailableMilitaryActions(g,p);
 			}else if(chosenOption.equals("3")){
-				//TODO -> politic menu
+				showAvailablePoliticActions(g,p);
 			}else if(chosenOption.equals("4")){
 				p.setHasPassedTurn(true);
 			}else{
-				// Game wouldn't take this case.
+				// Game wouldn't never take this case.
 			}
 
 		}else{
 			// Do nothing
 		}
-		
 
-		/*
-		Integer index = 1;
-		for(String possibleAction : availableActions){
-			
-			System.out.println(index + " - " + possibleAction);
-			index += 1;
-		}*/
-		
 		//TODO -> from "system" strings rescued, use gametexts "names"
 		
 		/*
-		String backMessage = "0 - Back";
 		
 		String optionChangeNicknameMessage = "1 - Change the Nickname";
 		String optionSaveGameMessage = "2 - Save Game";
@@ -206,25 +195,47 @@ public class TextModeUi implements IUserInterface{ //TODO rescue language texts 
 		String civilWarMessage = "4 - Do a Civil War";
 		*/
 		
-		
+
 	}
 
+	public static void showAvailableOptions(){
+		//TODO
+	}
+	
 	public static void showAvailableCreatorActions(Game g,Player p){
-		String unavailable = " -Not Available-";
+		/*String unavailable = " -Not Available-";
 		String backMessage = "0 - Back";
 		String createHopliteMessage = "1 - Create Hoplite";
 		String createTrirremeMessage = "2 - Create Trirreme";
 		String createTradeBoatMessage = "3 - Create Trade Boat";
 		String createProxenusMessage = "4 - Create Proxenus";
 		
+		List<String> unavailableOptions = new ArrayList<String>();
+		
+		// Display options to choose.
+		System.out.println(backMessage);
+
+		//TODO
+		
+		// chosen option
+		String chosenOption = "";
+		
+		
+		
+		
 		System.out.println("Please choose creator action to execute: "); //FIXME rescue this text from GameText 
+
 		
 		
 		
-		
-		
-		
-		
+		//TODO
+		 
+		 */
+	}
+	public static void showAvailableMilitaryActions(Game g,Player p){
+		//TODO
+	}
+	public static void showAvailablePoliticActions(Game g, Player p){
 		//TODO
 	}
 	
