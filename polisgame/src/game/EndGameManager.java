@@ -30,17 +30,20 @@ public class EndGameManager {
 	}
 
 	/**
-	 * This method checks the final "score" to decide a winner (following the
-	 * game rules)
+	 * Checks the final score to decide a winner
+	 * @param player1 Player 1 of game
+	 * @param player2 Player 2 of game
+	 * @return winner player
 	 */
 	public Player checkStandardEndGame(Player player1, Player player2) {
 
-		// TODO this method tell us the winner of the game (is called standard
-		// because in the future, can be more types of endings)
+		if (player1 == null) throw new NullPointerException("'player1' can not be null");
+		if (player2 == null) throw new NullPointerException("'player2' can not be null");
+		
 		Player winner = player1;
 		
-		int player1Score = getPlayerScore(player1);
-		int player2Score = getPlayerScore(player2);
+		int player1Score = getPlayerTotalPrestige(player1);
+		int player2Score = getPlayerTotalPrestige(player2);
 		
 		if (player1Score < player2Score)
 		{
@@ -57,8 +60,15 @@ public class EndGameManager {
 		return winner;
 	}
 	
-	private int getPlayerScore(Player player)
+	/**
+	 * Gets the total prestige of a player
+	 * @param player
+	 * @return 'player' total prestige
+	 */
+	private int getPlayerTotalPrestige(Player player)
 	{
+		if (player == null) throw new NullPointerException("'player' can not be null");
+		
 		int totalPopulation = 0;
 		for(Polis polis: player.getPlayerPolis()) totalPopulation += polis.getActualPopulation();
 		
@@ -76,8 +86,15 @@ public class EndGameManager {
 		return (totalPopulation + playerPrestige + totalProjectPosterityPrestige);
 	}
 	
+	/**
+	 * Gets the sum of all the resources of a player
+	 * @param player
+	 * @return sum of 'player' resources
+	 */
 	private int getPlayerResourceCount(Player player)
 	{
+		if (player == null) throw new NullPointerException("'player' can not be null");
+		
 		return (player.getMetal() + player.getWood() + player.getWine() + player.getOil() + player.getSilver() + player.getWheat());
 	}
 
