@@ -61,4 +61,17 @@ public abstract class Project {
 		this.used = used;
 	}
 	
+	@Override
+	public boolean equals(Object project) {
+		boolean equals = false;
+		
+		if (project != null) {
+			if (!(project instanceof Project)) throw new IllegalArgumentException("'project' must be a 'Project' class object");
+			
+			Project other = (Project)project;
+			equals = this.sysName.equals(other.sysName);
+		}
+		
+		return equals;
+	}
 }
