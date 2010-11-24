@@ -63,43 +63,123 @@ public class AvailableActionsManager {
 
 	public static Boolean checkMoveHopliteAnyAction(Game g,Player p){
 		Boolean available = false;
-		//TODO
+		for(Territory terrInic : g.getGameTerritories().values()){
+			for(Territory terrDest : g.getGameTerritories().values()){
+				if(checkMoveHopliteAction(p,g.getRound(),terrInic,terrDest,1)){
+					available = true;
+					break;
+				}
+			}
+			if(available){
+				break;
+			}
+		}
 		return available;
 	}
 	public static Boolean checkMoveTrirremeAnyAction(Game g,Player p){
 		Boolean available = false;
-		//TODO
+		for(Sea seaInic : g.getGameSeas().values()){
+			for(Sea seaDest : g.getGameSeas().values()){
+				if(checkMoveTrirremeAction(p, g.getRound(),seaInic, seaDest,1)){
+					available = true;
+					break;
+				}
+			}
+			if(available){
+				break;
+			}	
+		}
 		return available;
 	}
 	public static Boolean checkSiegePolisAnyAction(Game g,Player p){
 		Boolean available = false;
-		//TODO
+		for(Polis po : g.getGamePolis().values()){
+			if(checkSiegePolisAction(p,po)){
+				available = true;
+				break;
+			}
+		}
 		return available;
 	}
 	public static Boolean checkPlunderTerritoryAnyAction(Game g,Player p){
 		Boolean available = false;
-		//TODO
+		for(Territory terr: g.getGameTerritories().values()){
+			if(checkPlunderTerritoryAction(p,terr,g.getRound(),1)){
+				available = true;
+				break;
+			}
+		}
 		return available;
 	}
 
 	public static Boolean checkStartProjectAnyAction(Game g,Player p){
 		Boolean available = false;
-		//TODO
+		for(Project proj : g.getRound().getProjectsInThisRound()){
+			for(Polis po : p.getPlayerPolis()){
+				if(checkStartProjectAction(p,po,proj)){
+					available = true;
+					break;
+				}
+			}
+			if(available){
+				break;
+			}
+		}
 		return available;
 	}
 	public static Boolean checkTradeAnyAction(Game g,Player p){
 		Boolean available = false;
-		//TODO
+		for(Market mar : g.getGameMarkets().values()){
+			if(checkTradeAction(p,mar,g.getRound())){
+				available = true;
+				break;
+			}
+		}
 		return available;
 	}
 	public static Boolean checkMoveProxenusAnyAction(Game g,Player p){
 		Boolean available = false;
-		//TODO
+		Boolean existsProxenus = false;
+		Polis proxenusLocation = null;
+		for(Polis po: g.getGamePolis().values()){
+			for(Unit u: po.getUnits()){
+				if(u instanceof Proxenus && u.getOwner().equals(p)){
+					proxenusLocation = po;
+					existsProxenus = true;
+				}
+			}
+		}
+		
+		if(existsProxenus){
+			for(Polis po: g.getGamePolis().values()){
+				if(checkMoveProxenusAction(p,proxenusLocation,po)){
+					available = true;
+					break;
+				}
+			}
+		}
 		return available;
 	}
 	public static Boolean checkCivilWarAnyAction(Game g,Player p){
 		Boolean available = false;
-		//TODO
+		Boolean existsProxenus = false;
+		
+		for(Polis po: g.getGamePolis().values()){
+			for(Unit u: po.getUnits()){
+				if(u instanceof Proxenus && u.getOwner().equals(p)){
+					existsProxenus = true;
+				}
+			}
+		}
+		
+		if(existsProxenus){
+			for(Polis po: g.getGamePolis().values()){
+				if(checkCivilWarAction(p,po)){
+					available = true;
+					break;
+				}
+			}
+		}
 		return available;
 	}
 	
@@ -214,7 +294,7 @@ public class AvailableActionsManager {
 		//TODO
 		return available;
 	}
-	public static Boolean checkPlunderTerritoryAction(Player player, Territory terr, Integer troops){
+	public static Boolean checkPlunderTerritoryAction(Player player, Territory terr, Round round, Integer troops){
 		Boolean available = false;
 		//TODO
 		return available;
@@ -230,7 +310,7 @@ public class AvailableActionsManager {
 		//TODO
 		return available;
 	}
-	public static Boolean checkMoveProxenusAction(Player player, Polis destiny){
+	public static Boolean checkMoveProxenusAction(Player player,Polis start, Polis destiny){
 		Boolean available = false;
 		//TODO
 		return available;
