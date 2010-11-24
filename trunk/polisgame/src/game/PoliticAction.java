@@ -1,5 +1,7 @@
 package game;
 
+import java.util.List;
+
 /** This class contains the methods for execute politic actions in the game */
 public class PoliticAction extends Action{
 
@@ -10,7 +12,21 @@ public class PoliticAction extends Action{
 	/** Method to manage when a player starts a project into a polis */
 	public Boolean startProject(Player player, Project project, Polis polis){
 		Boolean success = false;
-		//TODO
+		
+		if (player != null && project != null && polis != null)
+		{
+			List<Polis> playerPolis = player.getPlayerPolis();
+			List<Project> polisPossibleProjects = polis.getPossiblesProjects();
+			List<Project> polisProjects = polis.getProjects();
+			
+			if (playerPolis.contains(polis) && polisPossibleProjects.contains(polis) && !polisProjects.contains(project))
+			{
+				project.setUsed(true);
+				polisProjects.add(project);
+				success = true;
+			}
+		}
+		
 		return success;
 	}
 	

@@ -104,4 +104,19 @@ public abstract class Position {
 		}
 		return locked;
 	}
+	
+	@Override
+	public boolean equals(Object position)
+	{
+		boolean equals = false;
+		
+		if (position != null) {
+			if (!(position instanceof Position)) throw new IllegalArgumentException("'position' must be a 'Position' class object");
+			
+			Position other = (Position)position;
+			equals = this.sysName.equals(other.sysName);
+		}
+		
+		return equals;
+	}
 }
