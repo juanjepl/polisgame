@@ -4,50 +4,107 @@ package game;
 public class AvailableActionsManager {
 
 	public AvailableActionsManager(){}
-		
+	
+	// 1ST LEVEL METHODS
+	
 	/** This method returns if is possible to do a creator action for player */
 	public static Boolean checkCreatorAction(Game game,Player player){
-		Boolean available = false;
+		return checkCreateHopliteAnyAction(game,player) || checkCreateTrirremeAnyAction(game,player) || checkCreateTradeBoatAnyAction(game,player) || checkCreateProxenusAnyAction(game,player);
+	}
+	public static Boolean checkMilitaryAction(Game game,Player player){
+		return checkMoveHopliteAnyAction(game,player) || checkMoveTrirremeAnyAction(game,player) || checkSiegePolisAnyAction(game,player) || checkPlunderTerritoryAnyAction(game,player);
+	}	
+	public static Boolean checkPoliticAction(Game game,Player player){
+		return checkStartProjectAnyAction(game,player) || checkTradeAnyAction(game,player) || checkMoveProxenusAnyAction(game,player) || checkCivilWarAnyAction(game,player);
+	}
 
-		// checks if in one of all creator actions is affirmative.
-		for(Polis p : game.getGamePolis().values()){ 
-			if(checkCreateHopliteAction(player,p,game.getRound())){
-				available = true;
-				break;
-			}
-			
-			if(checkCreateTrirremeAction(player,p,game.getRound())){ // if, not else if.
-				available = true;
-				break;
-			}
-			
-			if(checkCreateTradeBoatAction(player,p,game.getRound())){ 
-				available = true;
-				break;
-			}
-			
-			if(checkCreateProxenusAction(player,p)){ 
+	// 2ND LEVEL METHODS
+	
+	public static Boolean checkCreateHopliteAnyAction(Game g, Player p){
+		Boolean available = false;
+		for(Polis po : g.getGamePolis().values()){ 
+			if(checkCreateHopliteAction(p,po,g.getRound())){
 				available = true;
 				break;
 			}
 		}
-			
+		return available;
+	}
+	public static Boolean checkCreateTrirremeAnyAction(Game g,Player p){
+		Boolean available = false;
+		for(Polis po : g.getGamePolis().values()){ 
+			if(checkCreateTrirremeAction(p,po,g.getRound())){
+				available = true;
+				break;
+			}
+		}
+		return available;
+	}
+	public static Boolean checkCreateTradeBoatAnyAction(Game g,Player p){
+		Boolean available = false;
+		for(Polis po : g.getGamePolis().values()){ 
+			if(checkCreateTradeBoatAction(p,po,g.getRound())){ 
+				available = true;
+				break;
+			}
+		}
+		return available;
+	}
+	public static Boolean checkCreateProxenusAnyAction(Game g,Player p){
+		Boolean available = false;
+		for(Polis po : g.getGamePolis().values()){ 
+			if(checkCreateProxenusAction(p,po)){ 
+				available = true;
+				break;
+			}
+		}
+		return available;
+	}
+
+	public static Boolean checkMoveHopliteAnyAction(Game g,Player p){
+		Boolean available = false;
+		//TODO
+		return available;
+	}
+	public static Boolean checkMoveTrirremeAnyAction(Game g,Player p){
+		Boolean available = false;
+		//TODO
+		return available;
+	}
+	public static Boolean checkSiegePolisAnyAction(Game g,Player p){
+		Boolean available = false;
+		//TODO
+		return available;
+	}
+	public static Boolean checkPlunderTerritoryAnyAction(Game g,Player p){
+		Boolean available = false;
+		//TODO
+		return available;
+	}
+
+	public static Boolean checkStartProjectAnyAction(Game g,Player p){
+		Boolean available = false;
+		//TODO
+		return available;
+	}
+	public static Boolean checkTradeAnyAction(Game g,Player p){
+		Boolean available = false;
+		//TODO
+		return available;
+	}
+	public static Boolean checkMoveProxenusAnyAction(Game g,Player p){
+		Boolean available = false;
+		//TODO
+		return available;
+	}
+	public static Boolean checkCivilWarAnyAction(Game g,Player p){
+		Boolean available = false;
+		//TODO
 		return available;
 	}
 	
+	// 3RD LEVEL METHODS
 	
-	public static Boolean checkMilitaryAction(Game g,Player p){
-		//TODO
-		return false;//FIXME
-	}
-	
-	public static Boolean checkPoliticAction(Game g,Player p){
-		//TODO
-		return true;
-	}
-	
-	/** Sub methods */
-
 	public static Boolean checkCreateHopliteAction(Player player, Polis polis, Round round){
 		Boolean available = false;
 		
@@ -120,9 +177,7 @@ public class AvailableActionsManager {
 		available = condition_imTheOwnerOfThePolis && condition_haveResources && condition_enoughPopulation && condition_notSieged && condition_notExistsAnotherProxenus;
 		return available;
 	}
-	
-	
-	
+
 	public static Boolean checkMoveHopliteAction(Player player, Round round, Territory start, Territory destiny, Integer troops){
 		Boolean available = false;
 
@@ -149,40 +204,38 @@ public class AvailableActionsManager {
 		
 		return available;
 	}
-	
-	
-	public static Boolean checkMoveTrirremeAction(Game g,Player p){
+	public static Boolean checkMoveTrirremeAction(Player player, Round round, Sea start, Sea destiny, Integer troops){
 		Boolean available = false;
 		//TODO
 		return available;
 	}
-	public static Boolean checkSiegePolisAction(Game g,Player p){
+	public static Boolean checkSiegePolisAction(Player player, Polis polis){
 		Boolean available = false;
 		//TODO
 		return available;
 	}
-	public static Boolean checkPlunderTerritoryAction(Game g,Player p){
+	public static Boolean checkPlunderTerritoryAction(Player player, Territory terr, Integer troops){
 		Boolean available = false;
 		//TODO
 		return available;
 	}
 
-	public static Boolean checkStartProjectAction(Game g,Player p){
+	public static Boolean checkStartProjectAction(Player player,Polis polis,Project project){
 		Boolean available = false;
 		//TODO
 		return available;
 	}
-	public static Boolean checkTradeAction(Game g,Player p){
+	public static Boolean checkTradeAction(Player player, Market market, Round round){
 		Boolean available = false;
 		//TODO
 		return available;
 	}
-	public static Boolean checkMoveProxenusAction(Game g,Player p){
+	public static Boolean checkMoveProxenusAction(Player player, Polis destiny){
 		Boolean available = false;
 		//TODO
 		return available;
 	}
-	public static Boolean checkCivilWarAction(Game g,Player p){
+	public static Boolean checkCivilWarAction(Player player,Polis polis){
 		Boolean available = false;
 		//TODO
 		return available;
