@@ -9,9 +9,14 @@ public class EndRoundManager {
 	}
 
 	/** This method checks for any sieged polis, if siege completes or not */
-	public void checkSieges() {
+	public void checkSieges(Polis polisToCheck,Player player) {
 
 		// TODO
+		if(polisToCheck.getSieged()){
+			polisToCheck.setSieged(false);
+			player.addPolis(polisToCheck);
+		}
+		
 
 	}
 
