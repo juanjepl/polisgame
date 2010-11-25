@@ -1,5 +1,7 @@
 package game;
 
+import java.util.Iterator;
+import java.util.LinkedList;
 import java.util.List;
 import java.util.ArrayList;
 
@@ -14,7 +16,7 @@ public class MilitaryAction extends Action{
 	
 	/** To move an Hoplite or Hoplites group, to other position */
 	public Boolean moveHoplite(Player player, Round round,Territory initialPosition, Territory finalPosition, Integer numberOfUnits, Boolean multiMovement){
-		Boolean success = false;
+		Boolean success = false; // This line is not necessary
 		success = AvailableActionsManager.checkMoveHopliteAction(player, round, initialPosition, finalPosition, numberOfUnits);
 		if(success){
 			List<Unit> unitsToMove = new ArrayList<Unit>();
@@ -39,19 +41,60 @@ public class MilitaryAction extends Action{
 				
 			}else{
 				//Do nothing, action finished.
+				// This block is not necessary
 			}
 				
 		}else{
 			// Do nothing
+			// This block is not necessary
 		}
 
 		return success;
 	}
 	
 	/** To move a Trirreme or Trirremes group, to other sea */
-	public Boolean moveTrirreme(Player player, Sea initialSea, Sea finalSea, Integer numberOfUnits, Boolean multiMovement){
-		Boolean success = false;
-		//TODO
+	public Boolean moveTrirreme(Round round, Player player, Sea initialSea, Sea finalSea, Integer numberOfUnits, Boolean multiMovement) {
+		if (round == null) throw new NullPointerException("'round' can not be null");
+		if (player == null) throw new NullPointerException("'player' can not be null");
+		if (initialSea == null) throw new NullPointerException("'initialSea' can not be null");
+		if (finalSea == null) throw new NullPointerException("'finalSea' can not be null");
+		if (numberOfUnits == null) throw new NullPointerException("'numberOfUnits' can not be null");
+		
+		Boolean success = AvailableActionsManager.checkMoveTrirremeAction(player, round, initialSea, finalSea, 1);
+		
+		if (success)
+		{
+			List<Unit> unitsToMove = new LinkedList<Unit>();
+			List<Unit> startSeaUnits = initialSea.getUnits();
+			int startSeaUnitsSize = startSeaUnits.size();		
+			int unitMovedCount = 0;		
+			Iterator<Unit> it = startSeaUnits.iterator();
+			
+			while(it.hasNext() && unitMovedCount < numberOfUnits)
+			{
+				Unit unit = it.next();
+				
+				if (unit.getOwner() == player)
+				{
+					initialSea.removeUnit(unit);
+					finalSea.addUnit(unit);
+					unitMovedCount++;
+				}
+			}
+			
+			// This is because of game rules
+			player.setPrestige(player.getPrestige() - 1);
+			
+			if (multiMovement)
+			{
+				// ToDo
+			}
+			else
+			{
+				// ToDo
+			}
+		}
+		
 		return success;
 	}
 	
@@ -59,7 +102,7 @@ public class MilitaryAction extends Action{
 	public Boolean siegePolis(Player player,Position initialPosition, Polis siegedPolis ){
 		Boolean success = false;
 		//TODO
-		// not needs numberOfUnits (u CAN or CANNOT siegue a polis)
+		// not needs numberOfUnits (you CAN or CANNOT siegue a polis)
 		return success;
 	}
 	
