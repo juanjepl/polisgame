@@ -14,14 +14,16 @@ public class EndRoundManager {
 		
 		//TODO
 		
+		
+		
 	}
 		
 	/** This method checks for any started project, who player obtains its prestige */
-	public void checkProjects(Player cityToCheck){
+	public void checkProjects(Player player){
 		
 		//TODO
 		List <Polis> listPolis;
-		listPolis =cityToCheck.getPlayerPolis();
+		listPolis =player.getPlayerPolis();
 		List <Project> listOfProjects;
 		Polis polisToChech;
 		Project projectToCheck;
@@ -31,9 +33,9 @@ public class EndRoundManager {
 			for(int j = 0 ; j < listOfProjects.size(); j ++ ){
 				projectToCheck = listOfProjects.get(j);
 				if(projectToCheck.getUsed()&&projectToCheck.getFinished()){
-					Integer prestige = cityToCheck.getPrestige();
+					Integer prestige = player.getPrestige();
 					prestige = prestige + projectToCheck.getPrestige();
-					cityToCheck.setPrestige(prestige);
+					player.setPrestige(prestige);
 					
 				}
 				
