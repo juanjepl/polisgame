@@ -11,7 +11,7 @@ public class EndRoundManager {
 	/** This method checks for any sieged polis, if siege completes or not */
 	public void checkSieges(Game game, Player player) {
 
-		// TODO 
+		// TODO
 		List<Polis> ListOfpolisToCheck;
 		ListOfpolisToCheck = (List<Polis>) game.getGamePolis().values();
 
@@ -19,8 +19,8 @@ public class EndRoundManager {
 		List<Polis> listOfPolisPlayer;
 		List<Polis> listOfPolisEnemyPlayer;
 		listOfPolisPlayer = player.getPlayerPolis();
-		
-		//CHECK ENEMY
+
+		// CHECK ENEMY
 		if (player.equals(game.getAthensPlayer())) {
 			listOfPolisEnemyPlayer = game.getSpartaPlayer().getPlayerPolis();
 		} else {
@@ -33,6 +33,8 @@ public class EndRoundManager {
 				if (((!(listOfPolisPlayer.contains(polisToCheck) && (!listOfPolisEnemyPlayer
 						.contains(polisToCheck)))))) {
 					player.addPolis(polisToCheck);
+					// FIXME We haves to check the poblation afer siege
+					//We needs to have contact with UserInterface
 				} else {
 					if ((!(listOfPolisPlayer.contains(polisToCheck) && (listOfPolisEnemyPlayer
 							.contains(polisToCheck))))) {
