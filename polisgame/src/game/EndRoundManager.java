@@ -9,14 +9,42 @@ public class EndRoundManager {
 	}
 
 	/** This method checks for any sieged polis, if siege completes or not */
-	public void checkSieges(Polis polisToCheck,Player player) {
+	public void checkSieges(Game game, Player player) {
 
-		// TODO
-		if(polisToCheck.getSieged()){
-			polisToCheck.setSieged(false);
-			player.addPolis(polisToCheck);
-		}
+		// TODO 
+		List<Polis> ListOfpolisToCheck;
+		ListOfpolisToCheck = (List<Polis>) game.getGamePolis().values();
+
+		Polis polisToCheck;
+		List<Polis> listOfPolisPlayer;
+		List<Polis> listOfPolisEnemyPlayer;
+		listOfPolisPlayer = player.getPlayerPolis();
 		
+		//CHECK ENEMY
+		if (player.equals(game.getAthensPlayer())) {
+			listOfPolisEnemyPlayer = game.getSpartaPlayer().getPlayerPolis();
+		} else {
+			listOfPolisEnemyPlayer = game.getAthensPlayer().getPlayerPolis();
+		}
+
+		for (int i = 0; i < ListOfpolisToCheck.size(); i++) {
+			polisToCheck = ListOfpolisToCheck.get(i);
+			if (polisToCheck.getSieged()) {
+				if (((!(listOfPolisPlayer.contains(polisToCheck) && (!listOfPolisEnemyPlayer
+						.contains(polisToCheck)))))) {
+					player.addPolis(polisToCheck);
+				} else {
+					if ((!(listOfPolisPlayer.contains(polisToCheck) && (listOfPolisEnemyPlayer
+							.contains(polisToCheck))))) {
+						// FIXME needs a method that cheks locks for this enemy
+						// siege
+
+					}
+				}
+
+			}
+
+		}
 
 	}
 
