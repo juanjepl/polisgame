@@ -1,5 +1,7 @@
 package game;
 
+import java.util.List;
+
 /** This class, contains methods to manage the end of game rounds */
 public class EndRoundManager {
 
@@ -15,9 +17,29 @@ public class EndRoundManager {
 	}
 		
 	/** This method checks for any started project, who player obtains its prestige */
-	public void checkProjects(){
+	public void checkProjects(Player cityToCheck){
 		
 		//TODO
+		List <Polis> listPolis;
+		listPolis =cityToCheck.getPlayerPolis();
+		List <Project> listOfProjects;
+		Polis polisToChech;
+		Project projectToCheck;
+		for( int i = 0 ; i <listPolis.size(); i++){
+			polisToChech = listPolis.get(i);
+			listOfProjects = polisToChech.getProjects();
+			for(int j = 0 ; j < listOfProjects.size(); j ++ ){
+				projectToCheck = listOfProjects.get(j);
+				if(projectToCheck.getUsed()&&projectToCheck.getFinished()){
+					Integer prestige = cityToCheck.getPrestige();
+					prestige = prestige + projectToCheck.getPrestige();
+					cityToCheck.setPrestige(prestige);
+					
+				}
+				
+			}
+			
+		}
 		
 	}
 	
