@@ -1,7 +1,6 @@
 package utils;
 
 import java.io.BufferedReader;
-import java.io.File;
 import java.io.FileReader;
 import java.util.ArrayList;
 import java.util.List;
@@ -17,14 +16,13 @@ public class GenericReader {
 	{
 		List<String> fileContents = new ArrayList<String>();
 		
-		File file = null;
 	    FileReader fr = null;
 	    BufferedReader br = null;
 
 	    try {
 			
-			file = new File(filename);
-			fr = new FileReader(file);
+			
+			fr = new FileReader(filename);
 			br = new BufferedReader(fr);
 
 			String line;
