@@ -64,9 +64,7 @@ public class MilitaryAction extends Action{
 		
 		if (success)
 		{
-			List<Unit> unitsToMove = new LinkedList<Unit>();
-			List<Unit> startSeaUnits = initialSea.getUnits();
-			int startSeaUnitsSize = startSeaUnits.size();		
+			List<Unit> startSeaUnits = initialSea.getUnits();	
 			int unitMovedCount = 0;		
 			Iterator<Unit> it = startSeaUnits.iterator();
 			
@@ -87,11 +85,11 @@ public class MilitaryAction extends Action{
 			
 			if (multiMovement)
 			{
-				// ToDo
+				//TODO
 			}
 			else
 			{
-				// ToDo
+				//TODO
 			}
 		}
 		
