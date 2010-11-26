@@ -6,8 +6,7 @@ public class AvailableActionsManager {
 	public AvailableActionsManager(){}
 	
 	// 1ST LEVEL METHODS
-	
-	/** This method returns if is possible to do a creator action for player */
+
 	public static Boolean checkCreatorAction(Game game,Player player){
 		return checkCreateHopliteAnyAction(game,player) || checkCreateTrirremeAnyAction(game,player) || checkCreateTradeBoatAnyAction(game,player) || checkCreateProxenusAnyAction(game,player);
 	}
@@ -261,7 +260,8 @@ public class AvailableActionsManager {
 	public static Boolean checkMoveHopliteAction(Player player, Round round, Territory start, Territory destiny, Integer troops){
 		Boolean available = false;
 
-		Boolean condicion_havePrestige = player.getPrestige() >= 1;
+		Boolean condition_notSame = start.equals(destiny);
+		Boolean condition_havePrestige = player.getPrestige() >= 1;
 		Boolean condition_NumberOfTroops = (troops <= round.getMaximumPositionSlotsForThisRound()) && (troops != 0);
 		Boolean condition_TroopsInStart = false;
 		if(!(start.getUnits().isEmpty())){
@@ -280,13 +280,35 @@ public class AvailableActionsManager {
 		Boolean condition_DestinyWithSlots = destiny.getNumberOfFreeSlotsForAPlayer(player, round) >= troops;
 		Boolean condition_WayStartToFinish = GraphNavigatorManager.existsWay(start,destiny,player,"hoplite");
 		
-		available = condicion_havePrestige && condition_NumberOfTroops && condition_TroopsInStart && condition_DestinyWithSlots && condition_WayStartToFinish;
+		available = condition_notSame && condition_havePrestige && condition_NumberOfTroops && condition_TroopsInStart && condition_DestinyWithSlots && condition_WayStartToFinish;
 		
 		return available;
 	}
 	public static Boolean checkMoveTrirremeAction(Player player, Round round, Sea start, Sea destiny, Integer troops){
 		Boolean available = false;
-		//TODO
+		
+		Boolean condition_notSame = start.equals(destiny);
+		Boolean condition_havePrestige = player.getPrestige() >= 1;
+		Boolean condition_NumberOfTroops = (troops <= round.getMaximumPositionSlotsForThisRound()) && (troops != 0);
+		Boolean condition_TroopsInStart = false;
+		if(!(start.getUnits().isEmpty())){
+			Integer realTroops = 0;
+			for(Unit u: start.getUnits()){
+				if(u.getOwner().equals(player)){
+					realTroops += 1;
+				}else{
+					// Do nothing
+				}
+			}
+			condition_TroopsInStart = realTroops == troops;
+		}else{
+			// Do nothing -> Already: condition_TroopsInStart = false 
+		}
+		Boolean condition_DestinyWithSlots = destiny.getNumberOfFreeSlotsForAPlayer(player, round) >= troops;
+		Boolean condition_WayStartToFinish = GraphNavigatorManager.existsWay(start,destiny,player,"trirreme");
+		
+		available = condition_notSame && condition_havePrestige && condition_NumberOfTroops && condition_TroopsInStart && condition_DestinyWithSlots && condition_WayStartToFinish;
+		
 		return available;
 	}
 	public static Boolean checkSiegePolisAction(Player player, Polis polis){
@@ -302,6 +324,8 @@ public class AvailableActionsManager {
 
 	public static Boolean checkStartProjectAction(Player player,Polis polis,Project project){
 		Boolean available = false;
+		
+		
 		//TODO
 		return available;
 	}

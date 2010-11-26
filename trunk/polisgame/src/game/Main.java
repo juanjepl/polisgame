@@ -30,8 +30,8 @@ public class Main{
 
 					// Boolean FUNCA = GraphNavigatorManager.existsWay(polis_game.getGameTerritories().get("macedonia"), polis_game.getGameTerritories().get("laconia"), polis_game.getSpartaPlayer(), "hoplite") ; 
                     // System.out.println(FUNCA);
-                    
-                    TextModeUi.showAvailableActions(polis_game, polis_game.getWhoHasTheTurn());
+					
+					TextModeUi.showAvailableActions(polis_game, polis_game.getWhoHasTheTurn());
 					
 					// polis_game.getSpartaPlayer().getPlayerPolis().add(polis_game.getGamePolis().get("corinth"));
 					// CreatorAction ac1 = new CreatorAction();//FIXME

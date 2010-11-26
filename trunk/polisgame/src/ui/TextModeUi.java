@@ -25,7 +25,7 @@ public class TextModeUi implements IUserInterface{ //TODO rescue language texts 
 		System.out.println("*                                                              *");
 		System.out.println("****************************************************************");
 		System.out.println("*                                                              *");
-		System.out.println("*  Status: Pre-Alpha non-functional                            *");
+		System.out.println("*  Status: Pre-Alpha  non-functional                           *");
 		System.out.println("*  Developer Team:    Samuel Navas Portillo                    *");
 		System.out.println("*                     Juan Jesús Pérez Luna                    *");
 		System.out.println("*                     Ángel Martínez Olivares                  *");
@@ -89,101 +89,79 @@ public class TextModeUi implements IUserInterface{ //TODO rescue language texts 
 	
 	/** This method shows a change-of-round advice */
 	public static void showNewRound(Game game){
-		String message = "New Round: "+game.getRound().getName();
+		String message = "New Round: "+game.getRound().getName(); //TODO from gametexts...
 		System.out.println(message);
 	}
 	
 	/** This method shows the possibles actions that a player can do */
-	public static void showAvailableActions(Game g, Player p){
-    
-		String optionsMessage = "0 - Options";
-		String creatorActionMessage = "1 - Creator Action";
-		String militaryActionMessage = "2 - Military Action";
-		String politicActionMessage = "3 - Politic Action";
-		String passTurnMessage = "4 - Pass Turn";
+	public static void showAvailableActions(Game g, Player p){//TODO the type of previous action...(condition)
+		
+		String optionsMessage = "Options";
+		String creatorActionMessage = "Creator Action";
+		String militaryActionMessage = "Military Action";
+		String politicActionMessage = "Politic Action";
+		String passTurnMessage = "Pass Turn";
 		String unavailable = " -Not Available-";
-
-		List<String> unavailableOptions = new ArrayList<String>();
 		
-		System.out.println("Please choose action to execute: "); //FIXME rescue this text from GameText 
+		List<String> grantedOptions = new ArrayList<String>();
+		List<String> optionsToChoose = new ArrayList<String>();
+		List<String> availableOptions = new ArrayList<String>();
 		
-		if(!(p.getHasPassedTurn())){ //FIXME necessary?
-		
-			// Display options to choose.
-			System.out.println(optionsMessage);
-			if(AvailableActionsManager.checkCreatorAction(g,p)){
-				System.out.println(creatorActionMessage);
-			}else{
-				System.out.println(creatorActionMessage + unavailable);
-				unavailableOptions.add("1");
-			}
-		
-			if(AvailableActionsManager.checkMilitaryAction(g,p)){
-				System.out.println(militaryActionMessage);
-			}else{
-				System.out.println(militaryActionMessage + unavailable);
-				unavailableOptions.add("2");
-			}
-
-			if(AvailableActionsManager.checkPoliticAction(g,p)){
-				System.out.println(politicActionMessage);
-			}else{
-				System.out.println(politicActionMessage + unavailable);
-				unavailableOptions.add("3");
-			}
-		
-			System.out.println(passTurnMessage);
-			
-			// chosen option
-			String chosenOption = "";
-			
-			BufferedReader br_choose = new BufferedReader(new InputStreamReader(System.in));
-			try {
-				chosenOption = br_choose.readLine();
-			} catch (Exception e) {	
-				//TODO
-			}
-			while((unavailableOptions.contains(chosenOption))||(!(chosenOption.equals("0") || chosenOption.equals("1") || chosenOption.equals("2") || chosenOption.equals("3") || chosenOption.equals("4")))){
-				if(unavailableOptions.contains(chosenOption)){
-					System.out.println("Action not available, please, choose another one:");
-				}else{
-					System.out.print("Please, insert a correct value: ");//TODO -> from gameTexts
-				}
-				
-				BufferedReader br_choose_tries = new BufferedReader(new InputStreamReader(System.in));
-				try {
-					chosenOption = br_choose_tries.readLine();
-				} catch (Exception e) {	
-					//TODO
-				}
-			}
-
-			if(chosenOption.equals("0")){
-				showAvailableOptions();
-			}else if(chosenOption.equals("1")){
-				showAvailableCreatorActions(g,p);
-			}else if(chosenOption.equals("2")){
-				showAvailableMilitaryActions(g,p);
-			}else if(chosenOption.equals("3")){
-				showAvailablePoliticActions(g,p);
-			}else if(chosenOption.equals("4")){
-				p.setHasPassedTurn(true);
-			}else{
-				// Game wouldn't never take this case.
-			}
-
+		//1st
+		optionsToChoose.add(optionsMessage);
+		availableOptions.add("0");
+		grantedOptions.add("0");
+	
+		//2nd
+		if(AvailableActionsManager.checkCreatorAction(g,p)){
+			optionsToChoose.add(creatorActionMessage);
+			availableOptions.add("1");
 		}else{
-			// Do nothing
+			optionsToChoose.add(creatorActionMessage + unavailable);
 		}
+		grantedOptions.add("1");
+	
+		//3rd
+		if(false/*AvailableActionsManager.checkMilitaryAction(g,p)*/){ //FIXME not call this method for the moment.
+			optionsToChoose.add(militaryActionMessage);
+			availableOptions.add("2");
+		}else{
+			optionsToChoose.add(militaryActionMessage + unavailable);
+		}
+		grantedOptions.add("2");
+	
+		//4th
+		if(AvailableActionsManager.checkPoliticAction(g,p)){
+			optionsToChoose.add(politicActionMessage);
+			availableOptions.add("3");
+		}else{
+			optionsToChoose.add(politicActionMessage + unavailable);
+		}
+		grantedOptions.add("3");
+		
+		//5th
+		optionsToChoose.add(passTurnMessage);
+		availableOptions.add("4");
+		grantedOptions.add("4");
+	
+		ShowPlayerChoices("Please choose action to execute: ",optionsToChoose); //FIXME rescue this text from GameText 
+		String chosenOption = RequestPlayerChoices(grantedOptions, availableOptions);
 
-		//TODO -> from "system" strings rescued, use gametexts "names"
+		if(chosenOption.equals("0")){
+			showAvailableOptions();
+		}else if(chosenOption.equals("1")){
+			showAvailableCreatorActions(g,p);
+		}else if(chosenOption.equals("2")){
+			showAvailableMilitaryActions(g,p);
+		}else if(chosenOption.equals("3")){
+			showAvailablePoliticActions(g,p);
+		}else if(chosenOption.equals("4")){
+			p.setHasPassedTurn(true);
+		}else{
+				//TODO -> possible exception
+		}
 		
 		/*
-		
-		String optionChangeNicknameMessage = "1 - Change the Nickname";
-		String optionSaveGameMessage = "2 - Save Game";
-		String optionLoadGameMessage = "3 - Load Game";		
-		
 		String moveHopliteMessage = "1 - Move Hoplite";
 		String moveTrirremeMessage = "2 - Move Trirreme";
 		String siegePolisMessage = "3 - Siege Polis";
@@ -194,11 +172,11 @@ public class TextModeUi implements IUserInterface{ //TODO rescue language texts 
 		String moveProxenusMessage = "3 - Move the Proxenus";
 		String civilWarMessage = "4 - Do a Civil War";
 		*/
-		
-
 	}
 
 	public static void showAvailableOptions(){
+		String optionBack = "Back";
+		String optionChangeNicknameMessage = "Change the Nickname";	
 		//TODO
 	}
 	
@@ -219,18 +197,11 @@ public class TextModeUi implements IUserInterface{ //TODO rescue language texts 
 		
 		// chosen option
 		String chosenOption = "";
-		
-		
-		
-		
-		System.out.println("Please choose creator action to execute: "); //FIXME rescue this text from GameText 
+		*/
 
+		System.out.println("Please choose creator action to execute: "); //FIXME rescue this text from GameText
 		
-		
-		
-		//TODO
-		 
-		 */
+		//TODO 
 	}
 	public static void showAvailableMilitaryActions(Game g,Player p){
 		//TODO
@@ -331,4 +302,38 @@ public class TextModeUi implements IUserInterface{ //TODO rescue language texts 
 		return toReturnSea;
 	}
 	
+	/** This method shows a message and options to choose for the player */
+	public static void ShowPlayerChoices(String messageOfTheRequest,List<String> optionsToChoose){
+		System.out.println(messageOfTheRequest);
+		for(String s: optionsToChoose){
+			System.out.println(optionsToChoose.indexOf(s)+" - "+s);
+		}
+	}
+	
+	/** This method requests an election from the player */
+	public static String RequestPlayerChoices(List<String> grantedValues, List<String> availableValues){
+		String chosenOption = "";
+		Boolean correctChoose = false;
+
+		while(!correctChoose){
+			BufferedReader br_choose = new BufferedReader(new InputStreamReader(System.in));
+			try {
+				chosenOption = br_choose.readLine();
+			} catch (Exception e) {	
+				//TODO
+			}
+			if(grantedValues.contains(chosenOption)){
+				if(availableValues.contains(chosenOption)){
+					break; // out of loop and returns player's choice
+				}else{ // when is a correct value, but isn't available
+					System.out.print("Choice not available, please, choose another one:"); //FIXME rescue this text from gametexts
+				}	
+			}else{
+				System.out.print("Please, insert a correct value: "); //FIXME rescue this text from gametexts
+			}
+
+		}
+		return chosenOption;
+	}
+
 }
