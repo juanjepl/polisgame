@@ -104,51 +104,51 @@ public class TextModeUi implements IUserInterface{ //TODO rescue language texts 
 		String unavailable = " -Not Available-";
 		
 		List<String> grantedOptions = new ArrayList<String>();
-		List<String> optionsToChoose = new ArrayList<String>();
+		List<String> optionsToChooseText = new ArrayList<String>();
 		List<String> availableOptions = new ArrayList<String>();
 		
 		//1st
-		optionsToChoose.add(optionsMessage);
+		optionsToChooseText.add(optionsMessage);
 		availableOptions.add("0");
 		grantedOptions.add("0");
 	
 		//2nd
 		if(AvailableActionsManager.checkCreatorAction(g,p)){
-			optionsToChoose.add(creatorActionMessage);
+			optionsToChooseText.add(creatorActionMessage);
 			availableOptions.add("1");
 		}else{
-			optionsToChoose.add(creatorActionMessage + unavailable);
+			optionsToChooseText.add(creatorActionMessage + unavailable);
 		}
 		grantedOptions.add("1");
 	
 		//3rd
 		if(false/*AvailableActionsManager.checkMilitaryAction(g,p)*/){ //FIXME not call this method for the moment.
-			optionsToChoose.add(militaryActionMessage);
+			optionsToChooseText.add(militaryActionMessage);
 			availableOptions.add("2");
 		}else{
-			optionsToChoose.add(militaryActionMessage + unavailable);
+			optionsToChooseText.add(militaryActionMessage + unavailable);
 		}
 		grantedOptions.add("2");
 	
 		//4th
 		if(AvailableActionsManager.checkPoliticAction(g,p)){
-			optionsToChoose.add(politicActionMessage);
+			optionsToChooseText.add(politicActionMessage);
 			availableOptions.add("3");
 		}else{
-			optionsToChoose.add(politicActionMessage + unavailable);
+			optionsToChooseText.add(politicActionMessage + unavailable);
 		}
 		grantedOptions.add("3");
 		
 		//5th
-		optionsToChoose.add(passTurnMessage);
+		optionsToChooseText.add(passTurnMessage);
 		availableOptions.add("4");
 		grantedOptions.add("4");
 	
-		ShowPlayerChoices("Please choose action to execute: ",optionsToChoose); //FIXME rescue this text from GameText 
+		ShowPlayerChoices("Please choose action to execute: ",optionsToChooseText); //FIXME rescue this text from GameText 
 		String chosenOption = RequestPlayerChoices(grantedOptions, availableOptions);
 
 		if(chosenOption.equals("0")){
-			showAvailableOptions();
+			showAvailableOptions(g,p);
 		}else if(chosenOption.equals("1")){
 			showAvailableCreatorActions(g,p);
 		}else if(chosenOption.equals("2")){
@@ -174,10 +174,35 @@ public class TextModeUi implements IUserInterface{ //TODO rescue language texts 
 		*/
 	}
 
-	public static void showAvailableOptions(){
+	public static void showAvailableOptions(Game g,Player p){
 		String optionBack = "Back";
-		String optionChangeNicknameMessage = "Change the Nickname";	
-		//TODO
+		String optionChangeNicknameMessage = "Change the Nickname";
+		
+		List<String> grantedOptions = new ArrayList<String>();
+		List<String> optionsToChooseText = new ArrayList<String>();
+		List<String> availableOptions = new ArrayList<String>();
+		
+		// 1st
+		optionsToChooseText.add(optionBack);
+		availableOptions.add("0");
+		grantedOptions.add("0");
+		
+		// 2st
+		optionsToChooseText.add(optionChangeNicknameMessage);
+		availableOptions.add("1");
+		grantedOptions.add("1");
+		
+		ShowPlayerChoices("Please choose option: ",optionsToChooseText); //FIXME rescue this text from GameText 
+		String chosenOption = RequestPlayerChoices(grantedOptions, availableOptions);
+		
+		if(chosenOption.equals("0")){
+			showAvailableActions(g,p); //TODO not very efficient...
+		}else if(chosenOption.equals("1")){
+			renameAPlayer(g,p);
+		
+		}else{
+				//TODO -> possible exception
+		}
 	}
 	
 	public static void showAvailableCreatorActions(Game g,Player p){
@@ -336,4 +361,33 @@ public class TextModeUi implements IUserInterface{ //TODO rescue language texts 
 		return chosenOption;
 	}
 
+	public static void renameAPlayer(Game g, Player p){
+		String newName = "";
+		Boolean grantedName = false;
+		//TODO
+		
+		System.out.print("Type new nickname: ");
+
+		while(!grantedName){
+			BufferedReader br_new_name = new BufferedReader(new InputStreamReader(System.in)); // request athens's player's name
+			try {
+				newName = br_new_name.readLine();
+			} catch (Exception e) {	
+				//TODO
+			}
+			
+			if(p.equals(g.getAthensPlayer())){
+				if(!(newName.equals(g.getSpartaPlayer().getName()))){
+					g.getAthensPlayer().setName(newName);
+					break;
+				}
+			}else{
+				if(!(newName.equals(g.getAthensPlayer().getName()))){
+					g.getSpartaPlayer().setName(newName);
+					break;
+				}
+			}
+			System.out.print("Name in use, please choose another one: "); //FIXME from gametexts...
+		}	
+	}
 }
