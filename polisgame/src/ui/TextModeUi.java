@@ -17,7 +17,7 @@ public class TextModeUi implements IUserInterface{ //TODO rescue language texts 
 	public TextModeUi(){}
 	
 	/** Welcome message */
-	public static void creditsMessage(){
+	public static void creditsMessage(){ //FIXME -> from gametexts
 		
 		System.out.println("****************************************************************");
 		System.out.println("*                                                              *");
@@ -174,6 +174,7 @@ public class TextModeUi implements IUserInterface{ //TODO rescue language texts 
 		*/
 	}
 
+	/** This method shows possibles game options that player can do */
 	public static void showAvailableOptions(Game g,Player p){
 		String optionBack = "Back";
 		String optionChangeNicknameMessage = "Change the Nickname";
@@ -205,6 +206,7 @@ public class TextModeUi implements IUserInterface{ //TODO rescue language texts 
 		}
 	}
 	
+	/** This method shows the possibles creator actions that a player can do */
 	public static void showAvailableCreatorActions(Game g,Player p){
 		/*String unavailable = " -Not Available-";
 		String backMessage = "0 - Back";
@@ -228,12 +230,66 @@ public class TextModeUi implements IUserInterface{ //TODO rescue language texts 
 		
 		//TODO 
 	}
+	
+	/** This method shows the possibles military actions that a player can do */
 	public static void showAvailableMilitaryActions(Game g,Player p){
 		//TODO
 	}
+	
+	/** This method shows the possibles politic actions that a player can do */
 	public static void showAvailablePoliticActions(Game g, Player p){
 		//TODO
 	}
+	
+	public static void requestCreateHoplite(){
+		//TODO
+	}
+	
+	public static void requestCreateTrirreme(){
+		//TODO
+	}
+	
+	public static void requestCreateProxenus(){
+		//TODO
+	}
+	
+	public static void requestCreateTradeBoat(){
+		//TODO
+	}
+	
+	public static void requestMoveHoplite(){
+		//TODO
+	}
+	
+	public static void requestMoveTrirreme(){
+		//TODO
+	}
+	
+	public static void requestSiegePolis(){
+		//TODO
+	}
+	
+	public static void requestPlunderTerritory(){
+		//TODO
+	}
+	
+	public static void requestStartAProject(){
+		//TODO
+	}
+	
+	public static void requestTrade(){
+		//TODO
+	}
+	
+	public static void requestMoveProxenus(){
+		//TODO
+	}
+	
+	public static void requestCivilWar(){
+		//TODO
+	}
+	
+	
 	
 	/** This method request player's choice for paying something */
 	public static String requestPaidMethod(String paidReference){ // -> Paid reference: hoplite,trirreme, etc.
@@ -292,8 +348,8 @@ public class TextModeUi implements IUserInterface{ //TODO rescue language texts 
 
 		return resource;
 	}
-	//TODO more and more methods required.
-	
+
+	/** This method request player's choice for creation sea for trirremes */
 	public static Sea requestSeaForCreation(List<Sea> seas){
 		
 		Sea toReturnSea;
@@ -361,6 +417,7 @@ public class TextModeUi implements IUserInterface{ //TODO rescue language texts 
 		return chosenOption;
 	}
 
+	/** This method request a new name for a player */
 	public static void renameAPlayer(Game g, Player p){
 		String newName = "";
 		Boolean grantedName = false;
