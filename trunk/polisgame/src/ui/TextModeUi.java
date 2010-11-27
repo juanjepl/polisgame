@@ -160,18 +160,6 @@ public class TextModeUi implements IUserInterface{ //TODO rescue language texts 
 		}else{
 				//TODO -> possible exception
 		}
-		
-		/*
-		String moveHopliteMessage = "1 - Move Hoplite";
-		String moveTrirremeMessage = "2 - Move Trirreme";
-		String siegePolisMessage = "3 - Siege Polis";
-		String plunderTerritoryMessage = "4 - Plunder Territory";
-		
-		String startAProjectMessage = "1 - Start a Project";
-		String tradeMessage = "2 - Trade";
-		String moveProxenusMessage = "3 - Move the Proxenus";
-		String civilWarMessage = "4 - Do a Civil War";
-		*/
 	}
 
 	/** This method shows possibles game options that player can do */
@@ -208,36 +196,96 @@ public class TextModeUi implements IUserInterface{ //TODO rescue language texts 
 	
 	/** This method shows the possibles creator actions that a player can do */
 	public static void showAvailableCreatorActions(Game g,Player p){
-		/*String unavailable = " -Not Available-";
-		String backMessage = "0 - Back";
-		String createHopliteMessage = "1 - Create Hoplite";
-		String createTrirremeMessage = "2 - Create Trirreme";
-		String createTradeBoatMessage = "3 - Create Trade Boat";
-		String createProxenusMessage = "4 - Create Proxenus";
+		String unavailable = " -Not Available-";
+		String backMessage = "Back";
+		String createHopliteMessage = "Create Hoplite";
+		String createTrirremeMessage = "Create Trirreme";
+		String createTradeBoatMessage = "Create Trade Boat";
+		String createProxenusMessage = "Create Proxenus";
 		
-		List<String> unavailableOptions = new ArrayList<String>();
+		List<String> grantedOptions = new ArrayList<String>();
+		List<String> optionsToChooseText = new ArrayList<String>();
+		List<String> availableOptions = new ArrayList<String>();
 		
-		// Display options to choose.
-		System.out.println(backMessage);
-
-		//TODO
+		// 1st
+		optionsToChooseText.add(backMessage);
+		availableOptions.add("0");
+		grantedOptions.add("0");
 		
-		// chosen option
-		String chosenOption = "";
-		*/
-
-		System.out.println("Please choose creator action to execute: "); //FIXME rescue this text from GameText
+		// 2nd
+		if(AvailableActionsManager.checkCreateHopliteAnyAction(g,p)){
+			optionsToChooseText.add(createHopliteMessage);
+			availableOptions.add("1");
+		}else{
+			optionsToChooseText.add(createHopliteMessage + unavailable);
+		}
+		grantedOptions.add("1");
 		
-		//TODO 
+		// 3rd
+		if(AvailableActionsManager.checkCreateTrirremeAnyAction(g,p)){
+			optionsToChooseText.add(createTrirremeMessage);
+			availableOptions.add("2");
+		}else{
+			optionsToChooseText.add(createTrirremeMessage + unavailable);
+		}
+		grantedOptions.add("2");
+		
+		// 4th
+		if(AvailableActionsManager.checkCreateTradeBoatAnyAction(g,p)){
+			optionsToChooseText.add(createTradeBoatMessage);
+			availableOptions.add("3");
+		}else{
+			optionsToChooseText.add(createTradeBoatMessage + unavailable);
+		}
+		grantedOptions.add("3");
+		
+		// 5th
+		
+		if(AvailableActionsManager.checkCreateProxenusAnyAction(g,p)){
+			optionsToChooseText.add(createProxenusMessage);
+			availableOptions.add("4");
+		}else{
+			optionsToChooseText.add(createProxenusMessage + unavailable);
+		}
+		grantedOptions.add("4");
+		
+		ShowPlayerChoices("Please choose creator action: ",optionsToChooseText); //FIXME rescue this text from GameText 
+		String chosenOption = RequestPlayerChoices(grantedOptions, availableOptions);
+		
+		if(chosenOption.equals("0")){
+			showAvailableActions(g,p); //TODO not very efficient...
+		}else if(chosenOption.equals("1")){
+			requestCreateHoplite();
+		}else if(chosenOption.equals("2")){
+			requestCreateTrirreme();
+		}else if(chosenOption.equals("3")){	
+			requestCreateTradeBoat();
+		}else if(chosenOption.equals("4")){	
+			requestCreateProxenus();
+		}else{
+				//TODO -> possible exception
+		}
 	}
 	
 	/** This method shows the possibles military actions that a player can do */
 	public static void showAvailableMilitaryActions(Game g,Player p){
+		/*
+		String moveHopliteMessage = "1 - Move Hoplite";
+		String moveTrirremeMessage = "2 - Move Trirreme";
+		String siegePolisMessage = "3 - Siege Polis";
+		String plunderTerritoryMessage = "4 - Plunder Territory";
+		 */
 		//TODO
 	}
 	
 	/** This method shows the possibles politic actions that a player can do */
 	public static void showAvailablePoliticActions(Game g, Player p){
+		/*
+		String startAProjectMessage = "1 - Start a Project";
+		String tradeMessage = "2 - Trade";
+		String moveProxenusMessage = "3 - Move the Proxenus";
+		String civilWarMessage = "4 - Do a Civil War";
+		*/
 		//TODO
 	}
 	
