@@ -269,24 +269,148 @@ public class TextModeUi implements IUserInterface{ //TODO rescue language texts 
 	
 	/** This method shows the possibles military actions that a player can do */
 	public static void showAvailableMilitaryActions(Game g,Player p){
-		/*
-		String moveHopliteMessage = "1 - Move Hoplite";
-		String moveTrirremeMessage = "2 - Move Trirreme";
-		String siegePolisMessage = "3 - Siege Polis";
-		String plunderTerritoryMessage = "4 - Plunder Territory";
-		 */
-		//TODO
+		String unavailable = " -Not Available-";
+		String backMessage = "Back";
+		String moveHopliteMessage = "Move Hoplite";
+		String moveTrirremeMessage = "Move Trirreme";
+		String siegePolisMessage = "Siege Polis";
+		String plunderTerritoryMessage = "Plunder Territory";
+		
+		List<String> grantedOptions = new ArrayList<String>();
+		List<String> optionsToChooseText = new ArrayList<String>();
+		List<String> availableOptions = new ArrayList<String>();
+		
+		// 1st
+		optionsToChooseText.add(backMessage);
+		availableOptions.add("0");
+		grantedOptions.add("0");
+		
+		// 2nd
+		if(AvailableActionsManager.checkMoveHopliteAnyAction(g,p)){
+			optionsToChooseText.add(moveHopliteMessage);
+			availableOptions.add("1");
+		}else{
+			optionsToChooseText.add(moveHopliteMessage + unavailable);
+		}
+		grantedOptions.add("1");
+		
+		// 3rd
+		if(AvailableActionsManager.checkMoveTrirremeAnyAction(g,p)){
+			optionsToChooseText.add(moveTrirremeMessage);
+			availableOptions.add("2");
+		}else{
+			optionsToChooseText.add(moveTrirremeMessage + unavailable);
+		}
+		grantedOptions.add("2");
+		
+		// 4th
+		if(AvailableActionsManager.checkSiegePolisAnyAction(g,p)){
+			optionsToChooseText.add(siegePolisMessage);
+			availableOptions.add("3");
+		}else{
+			optionsToChooseText.add(siegePolisMessage + unavailable);
+		}
+		grantedOptions.add("3");
+		
+		// 5th
+		
+		if(AvailableActionsManager.checkPlunderTerritoryAnyAction(g,p)){
+			optionsToChooseText.add(plunderTerritoryMessage);
+			availableOptions.add("4");
+		}else{
+			optionsToChooseText.add(plunderTerritoryMessage + unavailable);
+		}
+		grantedOptions.add("4");
+		
+		ShowPlayerChoices("Please choose military action: ",optionsToChooseText); //FIXME rescue this text from GameText 
+		String chosenOption = RequestPlayerChoices(grantedOptions, availableOptions);
+		
+		if(chosenOption.equals("0")){
+			showAvailableActions(g,p); //TODO not very efficient...
+		}else if(chosenOption.equals("1")){
+			requestMoveHoplite();
+		}else if(chosenOption.equals("2")){
+			requestMoveTrirreme();
+		}else if(chosenOption.equals("3")){	
+			requestSiegePolis();
+		}else if(chosenOption.equals("4")){	
+			requestPlunderTerritory();
+		}else{
+				//TODO -> possible exception
+		}
 	}
 	
 	/** This method shows the possibles politic actions that a player can do */
 	public static void showAvailablePoliticActions(Game g, Player p){
-		/*
-		String startAProjectMessage = "1 - Start a Project";
-		String tradeMessage = "2 - Trade";
-		String moveProxenusMessage = "3 - Move the Proxenus";
-		String civilWarMessage = "4 - Do a Civil War";
-		*/
-		//TODO
+		String unavailable = " -Not Available-";
+		String backMessage = "Back";
+		String startAProjectMessage = "Start a Project";
+		String tradeMessage = "Trade";
+		String moveProxenusMessage = "Move the Proxenus";
+		String civilWarMessage = "Do a Civil War";
+		
+		List<String> grantedOptions = new ArrayList<String>();
+		List<String> optionsToChooseText = new ArrayList<String>();
+		List<String> availableOptions = new ArrayList<String>();
+		
+		// 1st
+		optionsToChooseText.add(backMessage);
+		availableOptions.add("0");
+		grantedOptions.add("0");
+		
+		// 2nd
+		if(AvailableActionsManager.checkStartProjectAnyAction(g,p)){
+			optionsToChooseText.add(startAProjectMessage);
+			availableOptions.add("1");
+		}else{
+			optionsToChooseText.add(startAProjectMessage + unavailable);
+		}
+		grantedOptions.add("1");
+		
+		// 3rd
+		if(AvailableActionsManager.checkTradeAnyAction(g,p)){
+			optionsToChooseText.add(tradeMessage);
+			availableOptions.add("2");
+		}else{
+			optionsToChooseText.add(tradeMessage + unavailable);
+		}
+		grantedOptions.add("2");
+		
+		// 4th
+		if(AvailableActionsManager.checkMoveProxenusAnyAction(g,p)){
+			optionsToChooseText.add(moveProxenusMessage);
+			availableOptions.add("3");
+		}else{
+			optionsToChooseText.add(moveProxenusMessage + unavailable);
+		}
+		grantedOptions.add("3");
+		
+		// 5th
+		
+		if(AvailableActionsManager.checkCivilWarAnyAction(g,p)){
+			optionsToChooseText.add(civilWarMessage);
+			availableOptions.add("4");
+		}else{
+			optionsToChooseText.add(civilWarMessage + unavailable);
+		}
+		grantedOptions.add("4");
+		
+		ShowPlayerChoices("Please choose politic action: ",optionsToChooseText); //FIXME rescue this text from GameText 
+		String chosenOption = RequestPlayerChoices(grantedOptions, availableOptions);
+		
+		if(chosenOption.equals("0")){
+			showAvailableActions(g,p); //TODO not very efficient...
+		}else if(chosenOption.equals("1")){
+			requestStartAProject();
+		}else if(chosenOption.equals("2")){
+			requestTrade();
+		}else if(chosenOption.equals("3")){	
+			requestMoveProxenus();
+		}else if(chosenOption.equals("4")){	
+			requestCivilWar();
+		}else{
+				//TODO -> possible exception
+		}
 	}
 	
 	public static void requestCreateHoplite(){
