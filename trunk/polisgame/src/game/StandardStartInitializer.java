@@ -57,8 +57,10 @@ public class StandardStartInitializer {
 		theGame.getGameTerritories().get("laconia").addUnit(new Hoplite(theGame.getSpartaPlayer()));
 		theGame.getGameSeas().get("ionianSea").addUnit(new Trirreme(theGame.getSpartaPlayer())); // A trirreme at ionian sea
 		theGame.getGameSeas().get("myrtoanSea").addUnit(new Trirreme(theGame.getSpartaPlayer())); // A trirreme at myrtoan sea
-		theGame.getGameTradeDocks().get("spartaTradeDock").addUnit(new TradeBoat(theGame.getSpartaPlayer())); // A trade boat at sparta's dock 
-		theGame.getGamePolis().get("sparta").addUnit(new Proxenus(theGame.getSpartaPlayer())); // The proxenus in Sparta
+		theGame.getGameTradeDocks().get("spartaTradeDock").addUnit(new TradeBoat(theGame.getSpartaPlayer())); // A trade boat at sparta's dock
+		Proxenus spartaProxenus = new Proxenus(theGame.getSpartaPlayer());
+		theGame.getGamePolis().get("sparta").addUnit(spartaProxenus); // The proxenus in Sparta
+		theGame.getSpartaPlayer().setPlayerProxenus(spartaProxenus);
 		
 //// For Athens	
 		// Put start resources	
@@ -111,7 +113,9 @@ public class StandardStartInitializer {
 		theGame.getGameSeas().get("cycladesIslands").addUnit(new Trirreme(theGame.getAthensPlayer()));
 		theGame.getGameSeas().get("sporadesIslands").addUnit(new Trirreme(theGame.getAthensPlayer()));
 		theGame.getGameTradeDocks().get("athensTradeDock").addUnit(new TradeBoat(theGame.getAthensPlayer()));
-		theGame.getGamePolis().get("athens").addUnit(new Proxenus(theGame.getAthensPlayer()));
+		Proxenus athensProxenus = new Proxenus(theGame.getAthensPlayer());
+		theGame.getGamePolis().get("athens").addUnit(athensProxenus);
+		theGame.getAthensPlayer().setPlayerProxenus(athensProxenus);
 		
 	}
 }

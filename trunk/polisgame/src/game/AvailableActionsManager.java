@@ -241,18 +241,8 @@ public class AvailableActionsManager {
 		Boolean condition_haveResources = player.getSilver()>= 5;
 		Boolean condition_enoughPopulation = polis.getActualPopulation() > 1;
 		Boolean condition_notSieged = !polis.getSieged();
-		Boolean condition_notExistsAnotherProxenus = true;
-		for(Polis p: player.getPlayerPolis()){
-			for(Unit u: p.getUnits()){
-				if(u instanceof Proxenus){ //FIXME test it...
-					condition_notExistsAnotherProxenus = false;
-					break;
-				}
-			}
-			if(!condition_notExistsAnotherProxenus){
-				break; //FIXME test it...
-			}
-		}
+		Boolean condition_notExistsAnotherProxenus = player.getPlayerProxenus() == null;
+
 		available = condition_imTheOwnerOfThePolis && condition_haveResources && condition_enoughPopulation && condition_notSieged && condition_notExistsAnotherProxenus;
 		return available;
 	}
