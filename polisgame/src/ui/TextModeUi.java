@@ -619,4 +619,24 @@ public class TextModeUi implements IUserInterface{ //TODO rescue language texts 
 			System.out.print("Name in use, please choose another one: "); //FIXME from gametexts...
 		}	
 	}
+	
+	/** This method take the higher value from n roll dice  */
+	public static Integer showRollTheDice(Integer numRolls){
+		Integer diceValue = 0;
+		//TODO
+		
+		for(int i = 0; i < numRolls; i++){
+			System.out.println(" ");
+			System.out.print("Please, roll the dice (writte anything)"); //FIXME rescue text from gametexts
+			Integer thisRoll = Player.rollTheDice();
+			System.out.println("Result: "+thisRoll); //FIXME rescue text from gametexts
+			if(thisRoll > diceValue){
+				diceValue = thisRoll;
+			}	
+		}
+		if(numRolls > 1){
+			System.out.println("Maximum dice roll value: "+diceValue); //FIXME rescue text from gametexts
+		}
+		return diceValue;
+	}
 }
