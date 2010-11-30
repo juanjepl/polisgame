@@ -31,8 +31,93 @@ public class PoliticAction extends Action{
 	}
 	
 	/** Method to manage when a tradeboat swaps resources into a market */
-	public Boolean trade(Player player, TradeBoat tradeboat, Market market){
+	public Boolean trade(Player player,Round round, MarketChart marketChart, Market market, String resource1, String resource2){
 		Boolean success = false;
+		
+		//check if player uses silver to trade
+		if(resource1.equals("silver")){
+			
+			//player trade without market fluctuation in resource1
+			Integer amountResource2 = market.tradeResources(resource1, resource2);
+			
+			//player pays the amount of resource1 equivalent to amount of resource2
+			Integer amountPaid = player.getSilver();
+			amountPaid -= amountResource2;
+			player.setSilver(amountPaid);
+			
+			//player obtains amount of resource2 demanded
+			Integer amountObtained = player.getWheat();
+			amountObtained += amountResource2;
+			player.setWheat(amountObtained);
+			
+			//associated resource to resource2 must be revaluated
+			
+			String associatedResource = market.getAssociatedResource(resource2, amountResource2);
+			//player rolls the dice twice
+			Integer dice1 = Player.rollTheDice();
+			Integer dice2 = Player.rollTheDice();
+			
+			Integer positions = -(dice1 + dice2);
+			
+			//market add value to resource associated to resource2
+			marketChart.moveResourcePrice(round.getName(), associatedResource, positions);
+			
+			success = true;
+			
+		}else if(resource1.equals("wheat")){
+			
+			//player trade without market fluctuation in resource1
+			Integer amountResource2 = market.tradeResources(resource1, resource2);
+			
+			//player pays the amount of resource1 equivalent to amount of resource2
+			Integer amountPaid = player.getWheat();
+			amountPaid -= amountResource2;
+			player.setWheat(amountPaid);
+			
+			//player obtains amount of resource2 demanded
+			Integer amountObtained = player.getSilver();
+			amountObtained += amountResource2;
+			player.setSilver(amountObtained);
+			
+			//associated resource to resource2 must be revaluated
+			
+			String associatedResource = market.getAssociatedResource(resource2, amountResource2); //TODO implement getAssociatedResource
+			//player rolls the dice twice
+			Integer dice1 = Player.rollTheDice();
+			Integer dice2 = Player.rollTheDice();
+			
+			Integer positions = -(dice1 + dice2);
+			
+			//market add value to resource associated to resource2
+			marketChart.moveResourcePrice(round.getName(), associatedResource, positions);
+			
+			success = true;
+			
+		}else
+		{
+			//player pays the amount of resource1 contained in Market Chart
+			Integer amountResource2 = market.tradeResources(resource1, resource2);
+			Integer amountResource1 = marketChart.getPrice(resource1); //TODO implement getPrice
+			
+			Integer amountPaid = player.getResource(resource1); //TODO implement player.getResource()
+			amountPaid -= amountResource1;
+			player.setResource(resource1, amountPaid); //TODO implement player.setResource()
+			
+			Integer amountObtained = player.getResource(resource2);
+			amountObtained += amountResource2;
+			player.setResource(resource2, amountObtained);
+			
+			//market devaluates resource1
+			
+			//player rolls the dice once
+			Integer dice = Player.rollTheDice();
+			Integer positions = dice;
+			marketChart.moveResourcePrice(round.getName(), resource1, positions);
+			
+			success = true;
+			
+			
+		}
 		//TODO needs also a parameter who says what transaction to do
 		return success;
 	}

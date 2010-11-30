@@ -6,3 +6,6 @@ Imperio Persa
 Wine:Wheat:3
 Oil:Wheat:4
 Wine:Silver:5
+Silver:Wheat:3
+Silver:Wheat:4
+Wheat:Silver:5
