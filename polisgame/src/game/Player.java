@@ -18,6 +18,7 @@ public class Player {
 	private Integer silver;
 	private Boolean hasPassedTurn; // If this player has passed the turn for actual round
 	private Polis capital;
+	private Proxenus playerProxenus = null;
 	
 	public Player(String name){
 		this.name = name;
@@ -125,7 +126,15 @@ public class Player {
 	public void setCapital(Polis capital) {
 		this.capital = capital;
 	}
-	
+
+	public Proxenus getPlayerProxenus() {
+		return playerProxenus;
+	}
+
+	public void setPlayerProxenus(Proxenus playerProxenus) {
+		this.playerProxenus = playerProxenus;
+	}
+
 	/** Method to add a polis to our owns */
 	public void addPolis(Polis polis){
 		//TODO

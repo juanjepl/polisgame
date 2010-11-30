@@ -124,7 +124,10 @@ public class CreatorAction extends Action{
 		
 		owner.setSilver ( owner.getSilver() - 4);
 		polis.setActualPopulation ( polis.getActualPopulation() - 1);
-		polis.getUnits().add(new Proxenus(owner));
+		Proxenus prox = new Proxenus(owner);
+		polis.getUnits().add(prox);
+		owner.setPlayerProxenus(prox);
+		
 		}else{
 			//do nothing->return success=false
 		}
