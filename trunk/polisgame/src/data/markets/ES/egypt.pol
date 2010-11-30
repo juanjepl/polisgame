@@ -6,3 +6,6 @@ Egipto
 Oil:Wheat:3
 Wine:Wheat:4
 Oil:Silver:5
+Silver:Wheat:3
+Silver:Wheat:4
+Wheat:Silver:5
