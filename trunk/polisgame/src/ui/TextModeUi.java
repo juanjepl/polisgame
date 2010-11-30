@@ -628,6 +628,9 @@ public class TextModeUi implements IUserInterface{ //TODO rescue language texts 
 		for(int i = 0; i < numRolls; i++){
 			System.out.println(" ");
 			System.out.print("Please, roll the dice (writte anything)"); //FIXME rescue text from gametexts
+			
+			new BufferedReader(new InputStreamReader(System.in));
+			
 			Integer thisRoll = Player.rollTheDice();
 			System.out.println("Result: "+thisRoll); //FIXME rescue text from gametexts
 			if(thisRoll > diceValue){
