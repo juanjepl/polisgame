@@ -98,6 +98,60 @@ public class Player {
 	public void setSilver(Integer silver) {
 		this.silver = silver;
 	}
+	
+	public Integer getResource(String resource)
+	{
+		Integer value = 0;
+		
+		if(resource.equals("silver"))
+		{
+			value = silver;
+		}else if(resource.equals("wheat"))
+		{
+			value = wheat;
+		}
+		else if(resource.equals("oil"))
+		{
+			value = oil;
+		}else if(resource.equals("wine"))
+		{
+			value = wine;
+		}else if(resource.equals("metal"))
+		{
+			value = metal;
+		}else if(resource.equals("wood"))
+		{
+			value = wood;
+		}
+		
+		return value;
+	}
+	
+	public void setResource(String resource,Integer value)
+	{
+		
+		if(resource.equals("silver"))
+		{
+			this.silver = value;
+		}else if(resource.equals("wheat"))
+		{
+			this.wheat = value;
+		}
+		else if(resource.equals("oil"))
+		{
+			this.oil = value;
+		}else if(resource.equals("wine"))
+		{
+			this.wine = value;
+		}else if(resource.equals("metal"))
+		{
+			this.metal = value;
+		}else if(resource.equals("wood"))
+		{
+			this.wood = value;
+		}
+		
+	}
 
 	public Boolean getHasPassedTurn() {
 		return hasPassedTurn;
