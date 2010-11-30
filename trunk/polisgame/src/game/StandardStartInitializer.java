@@ -52,15 +52,33 @@ public class StandardStartInitializer {
 		
 		
 		// Units assignation
-		theGame.getGameTerritories().get("laconia").addUnit(new Hoplite(theGame.getSpartaPlayer())); // 3x Hoplites at Laconia
-		theGame.getGameTerritories().get("laconia").addUnit(new Hoplite(theGame.getSpartaPlayer()));
-		theGame.getGameTerritories().get("laconia").addUnit(new Hoplite(theGame.getSpartaPlayer()));
-		theGame.getGameSeas().get("ionianSea").addUnit(new Trirreme(theGame.getSpartaPlayer())); // A trirreme at ionian sea
-		theGame.getGameSeas().get("myrtoanSea").addUnit(new Trirreme(theGame.getSpartaPlayer())); // A trirreme at myrtoan sea
-		theGame.getGameTradeDocks().get("spartaTradeDock").addUnit(new TradeBoat(theGame.getSpartaPlayer())); // A trade boat at sparta's dock
-		Proxenus spartaProxenus = new Proxenus(theGame.getSpartaPlayer());
+		Hoplite sparta_hop1 = new Hoplite(theGame.getSpartaPlayer(),theGame.getGameTerritories().get("laconia"));
+		theGame.getGameTerritories().get("laconia").addUnit(sparta_hop1);
+		theGame.getSpartaPlayer().addUnit(sparta_hop1);
+		
+		Hoplite sparta_hop2 = new Hoplite(theGame.getSpartaPlayer(),theGame.getGameTerritories().get("laconia"));
+		theGame.getGameTerritories().get("laconia").addUnit(sparta_hop2);
+		theGame.getSpartaPlayer().addUnit(sparta_hop2);
+		
+		Hoplite sparta_hop3 = new Hoplite(theGame.getSpartaPlayer(),theGame.getGameTerritories().get("laconia"));
+		theGame.getGameTerritories().get("laconia").addUnit(sparta_hop3);
+		theGame.getSpartaPlayer().addUnit(sparta_hop3);
+
+		Trirreme sparta_tri1 = new Trirreme(theGame.getSpartaPlayer(),theGame.getGameSeas().get("ionianSea"));
+		theGame.getGameSeas().get("ionianSea").addUnit(sparta_tri1);
+		theGame.getSpartaPlayer().addUnit(sparta_tri1);
+		
+		Trirreme sparta_tri2 = new Trirreme(theGame.getSpartaPlayer(),theGame.getGameSeas().get("myrtoanSea"));
+		theGame.getGameSeas().get("myrtoanSea").addUnit(sparta_tri2);
+		theGame.getSpartaPlayer().addUnit(sparta_tri2);
+		
+		TradeBoat sparta_tra1 = new TradeBoat(theGame.getSpartaPlayer(),theGame.getGameTradeDocks().get("spartaTradeDock"));
+		theGame.getGameTradeDocks().get("spartaTradeDock").addUnit(sparta_tra1);
+		theGame.getSpartaPlayer().addUnit(sparta_tra1);
+		
+		Proxenus spartaProxenus = new Proxenus(theGame.getSpartaPlayer(),theGame.getGamePolis().get("sparta"));
 		theGame.getGamePolis().get("sparta").addUnit(spartaProxenus); // The proxenus in Sparta
-		theGame.getSpartaPlayer().setPlayerProxenus(spartaProxenus);
+		theGame.getSpartaPlayer().setPlayerProxenus(spartaProxenus); // in this atribute, not in units list.
 		
 //// For Athens	
 		// Put start resources	
@@ -104,18 +122,45 @@ public class StandardStartInitializer {
 		}
 	
 		// Units assignation
-		theGame.getGameTerritories().get("attica").addUnit(new Hoplite(theGame.getAthensPlayer())); // 3x Hoplites at Attica (assignation mode like Sparta)
-		theGame.getGameTerritories().get("attica").addUnit(new Hoplite(theGame.getAthensPlayer()));
-		theGame.getGameTerritories().get("attica").addUnit(new Hoplite(theGame.getAthensPlayer()));
-		theGame.getGameTerritories().get("ionia").addUnit(new Hoplite(theGame.getAthensPlayer()));
-		theGame.getGameTerritories().get("ionia").addUnit(new Hoplite(theGame.getAthensPlayer()));
-		theGame.getGameSeas().get("cycladesIslands").addUnit(new Trirreme(theGame.getAthensPlayer()));
-		theGame.getGameSeas().get("cycladesIslands").addUnit(new Trirreme(theGame.getAthensPlayer()));
-		theGame.getGameSeas().get("sporadesIslands").addUnit(new Trirreme(theGame.getAthensPlayer()));
-		theGame.getGameTradeDocks().get("athensTradeDock").addUnit(new TradeBoat(theGame.getAthensPlayer()));
-		Proxenus athensProxenus = new Proxenus(theGame.getAthensPlayer());
+		Hoplite ath_hop1 = new Hoplite(theGame.getAthensPlayer(),theGame.getGameTerritories().get("attica"));
+		theGame.getGameTerritories().get("attica").addUnit(ath_hop1);
+		theGame.getAthensPlayer().addUnit(ath_hop1);
+		
+		Hoplite ath_hop2 = new Hoplite(theGame.getAthensPlayer(),theGame.getGameTerritories().get("attica"));
+		theGame.getGameTerritories().get("attica").addUnit(ath_hop2);
+		theGame.getAthensPlayer().addUnit(ath_hop2);
+		
+		Hoplite ath_hop3 = new Hoplite(theGame.getAthensPlayer(),theGame.getGameTerritories().get("attica"));
+		theGame.getGameTerritories().get("attica").addUnit(ath_hop3);
+		theGame.getAthensPlayer().addUnit(ath_hop3);
+		
+		Hoplite ath_hop4 = new Hoplite(theGame.getAthensPlayer(),theGame.getGameTerritories().get("ionia"));
+		theGame.getGameTerritories().get("ionia").addUnit(ath_hop4);
+		theGame.getAthensPlayer().addUnit(ath_hop4);
+		
+		Hoplite ath_hop5 = new Hoplite(theGame.getAthensPlayer(),theGame.getGameTerritories().get("ionia"));
+		theGame.getGameTerritories().get("ionia").addUnit(ath_hop5);
+		theGame.getAthensPlayer().addUnit(ath_hop5);
+
+		Trirreme ath_tri1 = new Trirreme(theGame.getAthensPlayer(),theGame.getGameSeas().get("cycladesIslands"));
+		theGame.getGameSeas().get("cycladesIslands").addUnit(ath_tri1);
+		theGame.getAthensPlayer().addUnit(ath_tri1);
+		
+		Trirreme ath_tri2 = new Trirreme(theGame.getAthensPlayer(),theGame.getGameSeas().get("cycladesIslands"));
+		theGame.getGameSeas().get("cycladesIslands").addUnit(ath_tri2);
+		theGame.getAthensPlayer().addUnit(ath_tri2);
+		
+		Trirreme ath_tri3 = new Trirreme(theGame.getAthensPlayer(),theGame.getGameSeas().get("sporadesIslands"));
+		theGame.getGameSeas().get("sporadesIslands").addUnit(ath_tri3);
+		theGame.getAthensPlayer().addUnit(ath_tri3);
+		
+		TradeBoat ath_tra1 = new TradeBoat(theGame.getAthensPlayer(),theGame.getGameTradeDocks().get("athensTradeDock"));
+		theGame.getGameTradeDocks().get("athensTradeDock").addUnit(ath_tra1);
+		theGame.getAthensPlayer().addUnit(ath_tra1);
+		
+		Proxenus athensProxenus = new Proxenus(theGame.getAthensPlayer(),theGame.getGamePolis().get("athens"));
 		theGame.getGamePolis().get("athens").addUnit(athensProxenus);
-		theGame.getAthensPlayer().setPlayerProxenus(athensProxenus);
+		theGame.getAthensPlayer().setPlayerProxenus(athensProxenus);// not in player units list
 		
 	}
 }

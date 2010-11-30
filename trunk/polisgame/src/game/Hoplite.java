@@ -3,8 +3,8 @@ package game;
 /** Hoplite unit class */
 public class Hoplite extends Unit{
 	
-	public Hoplite(Player p){ // uses Unit constructor
-		super(p);
+	public Hoplite(Player pl,Position po){ // uses Unit constructor
+		super(pl,po);
 	}
 
 }

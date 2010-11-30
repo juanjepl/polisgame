@@ -33,6 +33,10 @@ public class MilitaryAction extends Action{
 			}
 			initialPosition.removeGroupOfUnits(unitsToMove);
 			finalPosition.addGroupOfUnits(unitsToMove);
+			
+			for(Unit u: unitsToMove){
+				u.setPosition(finalPosition);
+			}
 				
 			if(multiMovement){
 				

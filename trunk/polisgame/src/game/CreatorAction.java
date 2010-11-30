@@ -35,7 +35,9 @@ public class CreatorAction extends Action{
 			}
 			
 			polis.setActualPopulation(polis.getActualPopulation() - 1);
-			polis.getPolisParentTerritory().addUnit(new Hoplite(owner));
+			Hoplite hop = new Hoplite(owner,polis.getPolisParentTerritory());
+			polis.getPolisParentTerritory().addUnit(hop);
+			owner.addUnit(hop);
 			
 		}else{
 			// Do nothing -> success returns false
@@ -71,15 +73,28 @@ public class CreatorAction extends Action{
 			// the trirreme is created in the free sea if 2. if both are free, player chooses.
 			if(polis.getPolisSeas().size() == 2){ //TODO re-view this if
 				if((polis.getPolisSeas().get(0).getNumberOfFreeSlotsForAPlayer(owner, round)>= 1) && (polis.getPolisSeas().get(1).getNumberOfFreeSlotsForAPlayer(owner, round) < 1)){
-					polis.getPolisSeas().get(0).addUnit(new Trirreme(owner));
+					
+					Trirreme tri1 = new Trirreme(owner,polis.getPolisSeas().get(0));
+					polis.getPolisSeas().get(0).addUnit(tri1);
+					owner.addUnit(tri1);
+					
 				}else if((polis.getPolisSeas().get(0).getNumberOfFreeSlotsForAPlayer(owner, round) < 1) && (polis.getPolisSeas().get(1).getNumberOfFreeSlotsForAPlayer(owner, round) >= 1)){
-					polis.getPolisSeas().get(1).addUnit(new Trirreme(owner));
+					
+					Trirreme tri2 = new Trirreme(owner,polis.getPolisSeas().get(1));
+					polis.getPolisSeas().get(1).addUnit(tri2);
+					owner.addUnit(tri2);
+					
 				}else{
-					TextModeUi.requestSeaForCreation(polis.getPolisSeas()).addUnit(new Trirreme(owner)); // Adds the trirreme to the Sea chosen by the player
+					Sea theSea = TextModeUi.requestSeaForCreation(polis.getPolisSeas());
+					Trirreme tri3 = new Trirreme(owner,theSea);
+					theSea.addUnit(tri3); // Adds the trirreme to the Sea chosen by the player
+					owner.addUnit(tri3);
 				}
 
 			}else{
-				polis.getPolisSeas().get(0).addUnit(new Trirreme(owner));
+				Trirreme tri4 = new Trirreme(owner,polis.getPolisSeas().get(0));
+				polis.getPolisSeas().get(0).addUnit(tri4);
+				owner.addUnit(tri4);
 			}
 		}
 		return success;
@@ -88,6 +103,9 @@ public class CreatorAction extends Action{
 	/** Creates a Trade Boat unit in polis's trade dock */
 	public Boolean createTradeBoat(Player owner, Polis polis, Round round){
 		Boolean success = false;
+		
+		success = AvailableActionsManager.checkCreateTrirremeAction(owner,polis,round);
+		
 		if(success){
 
 			if(owner.getWood()>=1 && owner.getSilver()<1){
@@ -106,8 +124,11 @@ public class CreatorAction extends Action{
 					success = false;
 				}
 			}
-			polis.setActualPopulation(polis.getActualPopulation() - 1);	
-			owner.getPlayerTradeDock().addUnit(new TradeBoat(owner));
+			polis.setActualPopulation(polis.getActualPopulation() - 1);
+			
+			TradeBoat tb = new TradeBoat(owner,owner.getPlayerTradeDock());
+			owner.getPlayerTradeDock().addUnit(tb);
+			owner.addUnit(tb);
 			
 			}else{
 				//Do nothing,success=false;
@@ -124,7 +145,7 @@ public class CreatorAction extends Action{
 		
 		owner.setSilver ( owner.getSilver() - 4);
 		polis.setActualPopulation ( polis.getActualPopulation() - 1);
-		Proxenus prox = new Proxenus(owner);
+		Proxenus prox = new Proxenus(owner,polis);
 		polis.getUnits().add(prox);
 		owner.setPlayerProxenus(prox);
 		
