@@ -5,6 +5,7 @@ import java.io.InputStreamReader;
 import java.util.List;
 import java.util.ArrayList;
 
+import game.CreatorAction;
 import game.Game;
 import game.Polis;
 import game.Round;
@@ -444,11 +445,12 @@ public class TextModeUi implements IUserInterface{ //TODO rescue language texts 
 		ShowPlayerChoices(message,optionsToChooseText);
 		chosenOption = RequestPlayerChoices(grantedOptions,availableOptions);
 		
-		for(Integer i = 0 ; i<=count ; i++){
+		/*for(Integer i = 0 ; i<=count ; i++){
 			if(chosenOption == i.toString()){
-				//TODO creates the hoplite. ¿here? ¿or call to other no-ui-method?
+				CreatorAction ac1 = new CreatorAction();
+				ac1.createHoplite(p, creationPoints.get(i), r); //FIXME TEST IT!!
 			}
-		}
+		}*/ //FIXME to do this part
 	}
 	
 	public static void requestCreateTrirreme(){
@@ -680,4 +682,28 @@ public class TextModeUi implements IUserInterface{ //TODO rescue language texts 
 		}
 		return diceValue;
 	}
+	public static void showMessage(String s){
+		System.out.println(s);
+	}
+
+	public static void requestSiegeRepopulation(){
+		//TODO
+	}
+	
+	public static void requestFeeding(){
+		//TODO
+	}
+	
+	public static void requestGrowth(){
+		//TODO
+	}
+	
+	public static void requestPhoros(){
+		//TODO
+	}
+	
+	public static void requestBattle(){
+		//TODO
+	}
+	
 }
