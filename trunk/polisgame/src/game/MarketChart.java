@@ -184,4 +184,24 @@ public class MarketChart {
 		return oilPrice;
 	}
 	
+	public Integer getPrice(String resource)
+	{
+		Integer value = 0;
+		if(resource.equals("metal"))
+		{
+			value = metalPrice;
+		}else if(resource.equals("wood"))
+		{
+			value = woodPrice;
+		}else if(resource.equals("wine"))
+		{
+			value = winePrice;
+		}else if(resource.equals("oil"))
+		{
+			value = oilPrice;
+		}
+		
+		return value;
+	}
+	
 }

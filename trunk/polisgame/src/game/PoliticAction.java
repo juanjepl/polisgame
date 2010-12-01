@@ -2,6 +2,8 @@ package game;
 
 import java.util.List;
 
+import ui.TextModeUi;
+
 /** This class contains the methods for execute politic actions in the game */
 public class PoliticAction extends GameAction{
 
@@ -54,10 +56,7 @@ public class PoliticAction extends GameAction{
 			
 			String associatedResource = market.getAssociatedResource(resource2, amountResource2);
 			//player rolls the dice twice
-			Integer dice1 = Player.rollTheDice();
-			Integer dice2 = Player.rollTheDice();
-			
-			Integer positions = -(dice1 + dice2);
+			 Integer positions = -(TextModeUi.showRollTheDice(2));
 			
 			//market add value to resource associated to resource2
 			marketChart.moveResourcePrice(round.getName(), associatedResource, positions);
@@ -83,10 +82,7 @@ public class PoliticAction extends GameAction{
 			
 			String associatedResource = market.getAssociatedResource(resource2, amountResource2); //TODO implement getAssociatedResource
 			//player rolls the dice twice
-			Integer dice1 = Player.rollTheDice();
-			Integer dice2 = Player.rollTheDice();
-			
-			Integer positions = -(dice1 + dice2);
+			 Integer positions = -(TextModeUi.showRollTheDice(2));
 			
 			//market add value to resource associated to resource2
 			marketChart.moveResourcePrice(round.getName(), associatedResource, positions);
@@ -110,8 +106,7 @@ public class PoliticAction extends GameAction{
 			//market devaluates resource1
 			
 			//player rolls the dice once
-			Integer dice = Player.rollTheDice();
-			Integer positions = dice;
+			Integer positions = -(TextModeUi.showRollTheDice(1));
 			marketChart.moveResourcePrice(round.getName(), resource1, positions);
 			
 			success = true;
