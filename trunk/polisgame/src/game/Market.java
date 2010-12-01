@@ -24,6 +24,16 @@ public class Market extends Sea{
 	
 	public String getAssociatedResource(String resource, Integer amountResource)
 	{
-		return "null";
+		String associated = "";
+		for(String resource1: resources.keySet())
+		{
+			Map<String, Integer> resource2List = resources.get(resource1);
+			if(resource2List.containsKey(resource) && resource2List.containsValue(amountResource))
+			{
+				associated = resource1;
+				break;
+			}
+		}
+		return associated;
 	}
 }
