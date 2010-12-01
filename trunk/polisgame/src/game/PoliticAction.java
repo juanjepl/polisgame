@@ -3,7 +3,7 @@ package game;
 import java.util.List;
 
 /** This class contains the methods for execute politic actions in the game */
-public class PoliticAction extends Action{
+public class PoliticAction extends GameAction{
 
 	private final String actionType = "politicAction"; // A constant to check action's type
 

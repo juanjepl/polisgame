@@ -25,6 +25,7 @@ public class Player {
 		this.name = name;
 		hasPassedTurn = false;
 		playerPolis = new ArrayList<Polis>();
+		playerUnits = new ArrayList<Unit>();
 		prestige = 0;
 		wood = 0;
 		metal = 0;
