@@ -33,8 +33,8 @@ public class EndRoundManager {
 				if (((!(listOfPolisPlayer.contains(polisToCheck) && (!listOfPolisEnemyPlayer
 						.contains(polisToCheck)))))) {
 					player.addPolis(polisToCheck);
-					// FIXME We haves to check the poblation afer siege
-					//We needs to have contact with UserInterface
+					// FIXME We haves to check the population afer siege
+					//We need to have contact with UserInterface
 				} else {
 					if ((!(listOfPolisPlayer.contains(polisToCheck) && (listOfPolisEnemyPlayer
 							.contains(polisToCheck))))) {
@@ -70,19 +70,19 @@ public class EndRoundManager {
 				if (projectToCheck.getUsed() && projectToCheck.getFinished()) {
 
 					if ((projectToCheck.getName().equals("fidiasArtist"))) {
-						Integer poblation;
+						Integer population;
 						Integer prestige;
-						poblation = polisToCheck.getActualPopulation();
+						population = polisToCheck.getActualPopulation();
 
-						if (poblation % 2 == 0) {
-							poblation = poblation / 2;
+						if (population % 2 == 0) {
+							population = population / 2;
 							prestige = player.getPrestige();
-							prestige = prestige + poblation;
+							prestige = prestige + population;
 							player.setPrestige(prestige);
 						} else {
-							poblation = poblation / 2;
+							population = population / 2;
 							prestige = player.getPrestige();
-							prestige = prestige + poblation + 1;
+							prestige = prestige + population + 1;
 							player.setPrestige(prestige);
 
 						}
