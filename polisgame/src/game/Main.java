@@ -27,29 +27,23 @@ public class Main{
 				
 				Boolean theEndOfTheTurn = false;
 				while(!theEndOfTheTurn){
-
-					// Boolean FUNCA = GraphNavigatorManager.existsWay(polis_game.getGameTerritories().get("macedonia"), polis_game.getGameTerritories().get("laconia"), polis_game.getSpartaPlayer(), "hoplite") ; 
-                    // System.out.println(FUNCA);
 					
-					TextModeUi.showAvailableActions(polis_game, polis_game.getWhoHasTheTurn());
+					if(!(polis_game.getWhoHasTheTurn().getHasPassedTurn())){
+						// First GameAction
+						TextModeUi.showAvailableActions(polis_game, polis_game.getWhoHasTheTurn());
+						
+						GameAction a1 = null; //FIXME
+						actualTurn.addAction(a1);
+					}
 					
-					// polis_game.getSpartaPlayer().getPlayerPolis().add(polis_game.getGamePolis().get("corinth"));
-					// CreatorAction ac1 = new CreatorAction();//FIXME
-					// polis_game.setWhoHasTheTurn(polis_game.getSpartaPlayer());				
-					// ac1.createTrirreme(polis_game.getSpartaPlayer(), polis_game.getGamePolis().get("corinth"), polis_game.getRound());
-					//TODO: game.whoHasTheTurn(), after the other one.
-					
-					//TODO-> create first action
-					//TODO-> call to User interface "select action" method, this checks available methods and manages player decision.
-					//TODO-> add action to the current turn
-					
-					//TODO-> create second action
-					//TODO-> 2nd action (the same with the conditions...)
-					//TODO-> add action to the current turn (2th)
-
-					//TODO-> theEndOfTheTurn = true;	
-					
-					break; //FIXME !!!!!!!!!!!!!!!!!!!!!!!! REMOVE IT! only for testing.
+					if(!(polis_game.getWhoHasTheTurn().getHasPassedTurn())){
+						// Second GameAction
+						TextModeUi.showAvailableActions(polis_game, polis_game.getWhoHasTheTurn());
+						
+						GameAction a2 = null; //FIXME
+						actualTurn.addAction(a2);
+					}
+					theEndOfTheTurn = true;	
 				}
 				
 				// Changes the player in turn
@@ -59,13 +53,14 @@ public class Main{
 				else{
 					polis_game.setWhoHasTheTurn(polis_game.getSpartaPlayer());
 				}
-				
+
 				// Checks if exists battles in the end of this turn
 				EndTurnManager.checkBattles(polis_game);
 				polis_game.getRound().addTurn(actualTurn);
-				break; //FIXME --> ONLY FOR TESTING
 			}
 			//TODO-> EndRoundManager methods...
+			polis_game.getAthensPlayer().setHasPassedTurn(false);
+			polis_game.getSpartaPlayer().setHasPassedTurn(false);
 		}
 		//TODO-> EndGameManager methods...
 		

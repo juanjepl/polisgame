@@ -5,7 +5,7 @@ import java.util.List;
 import java.util.ArrayList;
 
 /** This class contains the methods for execute military actions in the game */
-public class MilitaryAction extends Action{
+public class MilitaryAction extends GameAction{
 
 	private final String actionType = "militaryAction"; // A constant to check action's type
 	

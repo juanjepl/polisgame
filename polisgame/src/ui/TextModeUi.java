@@ -6,10 +6,14 @@ import java.util.List;
 import java.util.ArrayList;
 
 import game.Game;
+import game.Polis;
+import game.Round;
 import game.Turn;
 import game.Player;
 import game.Sea;
 import game.AvailableActionsManager;
+
+
 
 /** Text-mode user interface class */
 public class TextModeUi implements IUserInterface{ //TODO rescue language texts from data.gameTexts
@@ -160,6 +164,7 @@ public class TextModeUi implements IUserInterface{ //TODO rescue language texts 
 		}else{
 				//TODO -> possible exception
 		}
+
 	}
 
 	/** This method shows possibles game options that player can do */
@@ -255,7 +260,7 @@ public class TextModeUi implements IUserInterface{ //TODO rescue language texts 
 		if(chosenOption.equals("0")){
 			showAvailableActions(g,p); //TODO not very efficient...
 		}else if(chosenOption.equals("1")){
-			requestCreateHoplite();
+			requestCreateHoplite(p,g.getRound());
 		}else if(chosenOption.equals("2")){
 			requestCreateTrirreme();
 		}else if(chosenOption.equals("3")){	
@@ -413,8 +418,37 @@ public class TextModeUi implements IUserInterface{ //TODO rescue language texts 
 		}
 	}
 	
-	public static void requestCreateHoplite(){
-		//TODO
+	public static void requestCreateHoplite(Player p,Round r){
+
+		String message = ("Please, choose Territory's Polis to create the Hoplite: "); //FIXME rescue from gameTexts...
+		
+		List<Polis> creationPoints = new ArrayList<Polis>();
+		
+		List<String> grantedOptions = new ArrayList<String>();
+		List<String> optionsToChooseText = new ArrayList<String>();
+		List<String> availableOptions = new ArrayList<String>();
+		
+		String chosenOption = "";
+		
+		Integer count = 0;
+		for(Polis po : p.getPlayerPolis()){
+			if(AvailableActionsManager.checkCreateHopliteAction(p, po, r)){
+				optionsToChooseText.add(po.getName());
+				grantedOptions.add(count.toString()); // FIXME works?
+				availableOptions.add(count.toString()); // same here.
+				creationPoints.add(po);
+				count += 1;
+			}
+		}
+		
+		ShowPlayerChoices(message,optionsToChooseText);
+		chosenOption = RequestPlayerChoices(grantedOptions,availableOptions);
+		
+		for(Integer i = 0 ; i<=count ; i++){
+			if(chosenOption == i.toString()){
+				//TODO creates the hoplite. ¿here? ¿or call to other no-ui-method?
+			}
+		}
 	}
 	
 	public static void requestCreateTrirreme(){
@@ -468,6 +502,7 @@ public class TextModeUi implements IUserInterface{ //TODO rescue language texts 
 		String paid = "";
 		String resource = "";
 		
+		System.out.println(" ");
 		System.out.println("Please, choose the paid method: "); //TODO -> rescue text from data.gameTexts
 		
 		// For pay an hoplite
@@ -526,6 +561,7 @@ public class TextModeUi implements IUserInterface{ //TODO rescue language texts 
 		
 		Sea toReturnSea;
 		
+		System.out.println(" ");
 		System.out.println("Please, choose the sea to create trirreme: "); //TODO -> rescue text from data.gameTexts
 		System.out.println("1 - "+seas.get(0).getName());
 		System.out.println("2 - "+seas.get(1).getName());
@@ -557,6 +593,7 @@ public class TextModeUi implements IUserInterface{ //TODO rescue language texts 
 	
 	/** This method shows a message and options to choose for the player */
 	public static void ShowPlayerChoices(String messageOfTheRequest,List<String> optionsToChoose){
+		System.out.println(" ");
 		System.out.println(messageOfTheRequest);
 		for(String s: optionsToChoose){
 			System.out.println(optionsToChoose.indexOf(s)+" - "+s);
@@ -595,6 +632,7 @@ public class TextModeUi implements IUserInterface{ //TODO rescue language texts 
 		Boolean grantedName = false;
 		//TODO
 		
+		System.out.println(" ");
 		System.out.print("Type new nickname: ");
 
 		while(!grantedName){

@@ -3,7 +3,7 @@ package game;
 import ui.TextModeUi;
 
 /** This class contains the methods for execute creation actions in the game */
-public class CreatorAction extends Action{
+public class CreatorAction extends GameAction{
 	
 	private final String actionType = "creatorAction"; // A constant to check action's type
 	

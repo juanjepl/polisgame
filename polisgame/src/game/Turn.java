@@ -2,8 +2,8 @@ package game;
 
 /** Class that manage game turns */
 public class Turn {
-	private Action firstAction = null;
-	private Action secondAction = null;
+	private GameAction firstAction = null;
+	private GameAction secondAction = null;
 	private static Integer turnCount = 0;
 	
 	public Turn(){
@@ -11,12 +11,12 @@ public class Turn {
 	}
 
 	/** This method adds an action to the turn */
-	public void addAction(Action action) {
-		if (firstAction.equals(null)){
+	public void addAction(GameAction action) {
+		if (firstAction == null){
 			firstAction = action;
 		}
 		else{
-			if(secondAction.equals(null)){
+			if(secondAction == null){
 				secondAction = action;
 			}
 			else{
@@ -29,11 +29,11 @@ public class Turn {
 	
 	/** Getters */
 
-	public Action getFirstAction() {
+	public GameAction getFirstAction() {
 		return firstAction;
 	}
 
-	public Action getSecondAction() {
+	public GameAction getSecondAction() {
 		return secondAction;
 	}
 
