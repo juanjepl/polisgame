@@ -21,4 +21,9 @@ public class Market extends Sea{
 			return -1;
 		}
 	}
+	
+	public String getAssociatedResource(String resource, Integer amountResource)
+	{
+		return "null";
+	}
 }
