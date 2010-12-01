@@ -39,9 +39,12 @@ public class CreatorAction extends GameAction{
 			polis.getPolisParentTerritory().addUnit(hop);
 			owner.addUnit(hop);
 			
+			TextModeUi.showMessage("Hoplite created at "+polis.getPolisParentTerritory());
+			
 		}else{
 			// Do nothing -> success returns false
 		}
+
 		return success; // returns an "advice" to know if the action has been done or not.
 	}
 	
