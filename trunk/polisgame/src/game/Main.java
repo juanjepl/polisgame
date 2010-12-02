@@ -56,6 +56,7 @@ public class Main{
 
 				// Checks if exists battles in the end of this turn
 				EndTurnManager.checkBattles(polis_game);
+				EndTurnManager.removePlundersUnitsFromTerritory();
 				polis_game.getRound().addTurn(actualTurn);
 			}
 			//TODO-> EndRoundManager methods...

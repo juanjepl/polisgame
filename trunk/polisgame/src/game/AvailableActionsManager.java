@@ -328,7 +328,35 @@ public class AvailableActionsManager {
 	
 	public static Boolean checkPlunderTerritoryAction(Player player, Territory terr, Round round, Integer troops){
 		Boolean available = false;
-		//TODO
+
+		Boolean condition_havePrestige = player.getPrestige() >= 1;
+		Boolean condition_isPlundered = terr.getPlundered();
+		Integer numHoplites = 0;
+		
+		for(Unit u: player.getPlayerUnits())
+		{
+			if(u instanceof Hoplite)
+			{
+				numHoplites += 1;
+			}
+		}
+		
+		Boolean condition_haveHoplites = numHoplites >= 1;
+		
+		Integer numPolisOwnedInTerritory = 0;
+		
+		for(Polis p: player.getPlayerPolis())
+		{
+			if(p.getPolisParentTerritory().getSysName().equals(terr.getSysName()))
+			{
+				numPolisOwnedInTerritory += 1;
+			}
+		}
+		
+		Boolean condition_haveMinPolis = numPolisOwnedInTerritory >= 1;
+		
+		available = condition_havePrestige && condition_haveHoplites && condition_haveMinPolis && condition_isPlundered;
+		
 		return available;
 	}
 

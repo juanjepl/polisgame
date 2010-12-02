@@ -1,5 +1,7 @@
 package game;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Map;
 import java.util.Vector;
 
@@ -7,12 +9,14 @@ import java.util.Vector;
 public class Territory extends Position{
 
 	private Map<String,Vector<Integer>> resources;
+	private List<Unit> plundersUnits;
 	private Boolean plundered;
 	
 	public Territory(String sysName,String name, Map<String,Vector<Integer>> resources){ 
 		super(sysName,name); // for this 2 attributes calls the position constructor
 		this.resources = resources;
 		this.plundered = false; // by default, territory's resources aren't plundered
+		this.plundersUnits = new ArrayList<Unit>();
 	}
 	
 	/** Getters and setters */
@@ -27,6 +31,16 @@ public class Territory extends Position{
 
 	public Map<String, Vector<Integer>> getResources() {
 		return resources;
+	}
+	
+	public List<Unit> getPlundersUnits()
+	{
+		return plundersUnits;
+	}
+	
+	public void setPlundersUnits(Unit u)
+	{
+		plundersUnits.add(u);
 	}
 	
 }
