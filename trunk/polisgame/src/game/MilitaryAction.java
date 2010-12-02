@@ -67,7 +67,7 @@ public class MilitaryAction extends GameAction{
 		if (finalSea == null) throw new NullPointerException("'finalSea' can not be null");
 		if (numberOfUnits == null) throw new NullPointerException("'numberOfUnits' can not be null");
 		
-		Boolean success = AvailableActionsManager.checkMoveTrirremeAction(player, round, initialSea, finalSea, 1);
+		Boolean success = AvailableActionsManager.checkMoveTrirremeAction(player, round, initialSea, finalSea, numberOfUnits);
 		
 		if (success)
 		{
