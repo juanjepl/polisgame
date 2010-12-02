@@ -28,4 +28,9 @@ public class EndTurnManager {
 			}
 		}
 	}
+	
+	public static void removePlundersUnitsFromTerritory()
+	{
+		//TODO
+	}
 }

@@ -2,8 +2,10 @@ package ui;
 
 import java.io.BufferedReader;
 import java.io.InputStreamReader;
+import java.util.HashMap;
 import java.util.List;
 import java.util.ArrayList;
+import java.util.Map;
 
 import game.CreatorAction;
 import game.Game;
@@ -477,8 +479,11 @@ public class TextModeUi implements IUserInterface{ //TODO rescue language texts 
 		//TODO
 	}
 	
-	public static void requestPlunderTerritory(){
+	public static Map<String,Integer> requestPlunderTerritory(){
+		//return map with String resource and Integer numHoplites to paid
+		Map<String, Integer> a = new HashMap<String, Integer>();
 		//TODO
+		return a;
 	}
 	
 	public static void requestStartAProject(){

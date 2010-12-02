@@ -3,6 +3,10 @@ package game;
 import java.util.Iterator;
 import java.util.List;
 import java.util.ArrayList;
+import java.util.Map;
+import java.util.Vector;
+
+import ui.TextModeUi;
 
 /** This class contains the methods for execute military actions in the game */
 public class MilitaryAction extends GameAction{
@@ -126,13 +130,56 @@ public class MilitaryAction extends GameAction{
 			}
 		}
 		
+		player.setPrestige(player.getPrestige() - 1);
+		
 		return success;
 	}
 	
 	/** Method to manage takings in the territories */
-	public Boolean plunderTerritory(Player player){
-		Boolean success = false;
-		//TODO
+	public Boolean plunderTerritory(Player player, Round round, Territory territory){
+		
+		if (player == null) throw new NullPointerException("'player' can not be null");
+		if (territory == null) throw new NullPointerException("'territory' can not be null");
+		
+		Map<String, Integer> hoplites = TextModeUi.requestPlunderTerritory();
+		
+		Integer troops = 0;
+		for(Integer numHoplites: hoplites.values())
+		{
+			troops += numHoplites;
+			
+			//move hoplite to territory plundersUnits
+			for(int i = 0; i < numHoplites; i++)
+			{
+				Unit u = territory.getUnits().remove(i);
+				territory.setPlundersUnits(u);
+				//remove from player's units because aren't disponible for a while
+				player.getPlayerUnits().remove(u);
+				
+			}
+		}
+		
+		Boolean success = AvailableActionsManager.checkPlunderTerritoryAction(player, territory, round, troops);
+		
+		Map<String, Vector<Integer>> resources = territory.getResources();
+		
+		for(String resource:hoplites.keySet())
+		{
+			Integer amount = hoplites.get(resource);
+			
+			Integer amountObtainedOfResource = resources.get(resource).get(amount);
+			
+			Integer amountOfResource = player.getResource(resource);
+			amountOfResource += amountObtainedOfResource;
+			player.setResource(resource, amountOfResource);
+		}
+		
+		territory.setPlundered(true);
+		//if is natal territory don't paid prestige 
+		player.setPrestige(player.getPrestige() - 1);
+		
+		//FIXME cuando termina turno hay que devolver las unidades de nuevo a donde corresponden, eso se hace cuando se inicia turno!!
+		
 		return success;
 	}
 
