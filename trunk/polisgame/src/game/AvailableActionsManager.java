@@ -303,9 +303,29 @@ public class AvailableActionsManager {
 	}
 	public static Boolean checkSiegePolisAction(Player player, Polis polis){
 		Boolean available = false;
-		//TODO
+	
+		Boolean condition_havePrestige = player.getPrestige() >= 1;
+		
+		Integer realTroops = 0;
+		if(!(polis.getPolisParentTerritory().getUnits().isEmpty())){
+			
+			for(Unit u: polis.getPolisParentTerritory().getUnits()){
+				if(u.getOwner().equals(player)){
+					realTroops += 1;
+				}else{
+					// Do nothing
+				}
+			}
+		}
+		
+		Boolean condition_minNumberOfUnits = realTroops >= polis.getBasePopulation();
+		Boolean condition_siegedPolis = polis.getSieged();
+		
+		available = condition_havePrestige && condition_minNumberOfUnits && condition_siegedPolis;
+		
 		return available;
 	}
+	
 	public static Boolean checkPlunderTerritoryAction(Player player, Territory terr, Round round, Integer troops){
 		Boolean available = false;
 		//TODO

@@ -13,10 +13,4 @@ public class EmptyAction extends GameAction{
 		return actionType;
 	}
 	
-	/** This method execute pass turn action, ending your moves for actual Round */
-	public void passTurn(){
-		//TODO
-	}
-	
-	
 }

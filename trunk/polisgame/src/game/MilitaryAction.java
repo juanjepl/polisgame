@@ -101,9 +101,31 @@ public class MilitaryAction extends GameAction{
 	
 	/** Method to manage polis's siegues */
 	public Boolean siegePolis(Player player,Position initialPosition, Polis siegedPolis ){
-		Boolean success = false;
-		//TODO
-		// not needs numberOfUnits (you CAN or CANNOT siegue a polis)
+		
+		if (player == null) throw new NullPointerException("'player' can not be null");
+		if (initialPosition == null) throw new NullPointerException("'initialPosition' can not be null");
+		if (siegedPolis == null) throw new NullPointerException("'siegedPolis' can not be null");
+		
+		Boolean success = AvailableActionsManager.checkSiegePolisAction(player, siegedPolis);
+
+		if(success)
+		{
+			if(!siegedPolis.getSieged())
+			{
+				for(int i=0;i<siegedPolis.getBasePopulation();i++)
+				{
+					Unit u = initialPosition.getUnits().get(i);
+					initialPosition.removeUnit(u);
+					u.setPosition(siegedPolis);
+					siegedPolis.addUnit(u);
+				}
+				siegedPolis.setSieged(true);
+			}else
+			{
+				success = false;
+			}
+		}
+		
 		return success;
 	}
 	
