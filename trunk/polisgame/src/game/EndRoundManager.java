@@ -121,9 +121,15 @@ public class EndRoundManager {
 	 * This method checks in any polis from a player, if has more population
 	 * than its base (and puts prestige like rules say)
 	 */
-	public void checkMegalopolis() {
+	public void checkMegalopolis(Player player) {
 
-		// TODO
+		for(Polis p: player.getPlayerPolis())
+		{
+			if(p.getActualPopulation() > p.getBasePopulation())
+			{
+				player.setPrestige(player.getPrestige() + 1);
+			}
+		}
 
 	}
 
@@ -131,9 +137,11 @@ public class EndRoundManager {
 	 * This method manages the by-two divison of perishables surplus (rounded
 	 * up)
 	 */
-	public void checkGoodsAdjust() {
+	public void checkGoodsAdjust(Player player) {
 
-		// TODO
+		player.setOil(Math.round((player.getOil() / 2)));
+		player.setWine(Math.round((player.getWine() / 2)));
+		player.setWheat(Math.round((player.getWheat() / 2)));
 
 	}
 
