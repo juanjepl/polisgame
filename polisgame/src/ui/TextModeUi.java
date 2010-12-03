@@ -265,7 +265,7 @@ public class TextModeUi implements IUserInterface{ //TODO rescue language texts 
 		}else if(chosenOption.equals("1")){
 			requestCreateHoplite(p,g.getRound());
 		}else if(chosenOption.equals("2")){
-			requestCreateTrirreme();
+			requestCreateTrirreme(p,g.getRound());
 		}else if(chosenOption.equals("3")){	
 			requestCreateTradeBoat();
 		}else if(chosenOption.equals("4")){	
@@ -448,14 +448,38 @@ public class TextModeUi implements IUserInterface{ //TODO rescue language texts 
 		chosenOption = RequestPlayerChoices(grantedOptions,availableOptions);
 		
 		CreatorAction ac1 = new CreatorAction();
+		ac1.createHoplite(p, creationPoints.get(Integer.parseInt(chosenOption)), r);
 		
-		ac1.createHoplite(p, creationPoints.get(Integer.parseInt(chosenOption)), r); //FIXME TEST IT!!
-			
-
 	}
 	
-	public static void requestCreateTrirreme(){
-		//TODO
+	public static void requestCreateTrirreme(Player p,Round r){
+		String message = ("Please, choose Sea's Polis to create the Trirreme: "); //FIXME rescue from gameTexts...
+		
+		List<Polis> creationPoints = new ArrayList<Polis>();
+		
+		List<String> grantedOptions = new ArrayList<String>();
+		List<String> optionsToChooseText = new ArrayList<String>();
+		List<String> availableOptions = new ArrayList<String>();
+		
+		String chosenOption = "";
+		
+		Integer count = 0;
+		for(Polis po : p.getPlayerPolis()){
+			if(AvailableActionsManager.checkCreateTrirremeAction(p, po, r)){
+				optionsToChooseText.add(po.getName());
+				grantedOptions.add(count.toString()); // FIXME works?
+				availableOptions.add(count.toString()); // same here.
+				creationPoints.add(po);
+				count += 1;
+			}
+		}
+		
+		ShowPlayerChoices(message,optionsToChooseText);
+		chosenOption = RequestPlayerChoices(grantedOptions,availableOptions);
+		
+		CreatorAction ac1 = new CreatorAction();
+		ac1.createTrirreme(p, creationPoints.get(Integer.parseInt(chosenOption)), r);
+
 	}
 	
 	public static void requestCreateProxenus(){
@@ -687,6 +711,7 @@ public class TextModeUi implements IUserInterface{ //TODO rescue language texts 
 		return diceValue;
 	}
 	public static void showMessage(String s){
+		System.out.println(" ");
 		System.out.println(s);
 	}
 

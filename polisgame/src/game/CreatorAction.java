@@ -81,23 +81,31 @@ public class CreatorAction extends GameAction{
 					polis.getPolisSeas().get(0).addUnit(tri1);
 					owner.addUnit(tri1);
 					
+					TextModeUi.showMessage("Trirreme created at "+polis.getPolisSeas().get(0).getName()); //FIXME from gameTexts
+					
 				}else if((polis.getPolisSeas().get(0).getNumberOfFreeSlotsForAPlayer(owner, round) < 1) && (polis.getPolisSeas().get(1).getNumberOfFreeSlotsForAPlayer(owner, round) >= 1)){
 					
 					Trirreme tri2 = new Trirreme(owner,polis.getPolisSeas().get(1));
 					polis.getPolisSeas().get(1).addUnit(tri2);
 					owner.addUnit(tri2);
 					
+					TextModeUi.showMessage("Trirreme created at "+polis.getPolisSeas().get(1).getName()); //FIXME from gameTexts
+					
 				}else{
 					Sea theSea = TextModeUi.requestSeaForCreation(polis.getPolisSeas());
 					Trirreme tri3 = new Trirreme(owner,theSea);
 					theSea.addUnit(tri3); // Adds the trirreme to the Sea chosen by the player
 					owner.addUnit(tri3);
+					
+					TextModeUi.showMessage("Trirreme created at "+theSea.getName()); //FIXME from gameTexts
 				}
 
 			}else{
 				Trirreme tri4 = new Trirreme(owner,polis.getPolisSeas().get(0));
 				polis.getPolisSeas().get(0).addUnit(tri4);
 				owner.addUnit(tri4);
+				
+				TextModeUi.showMessage("Trirreme created at "+polis.getPolisSeas().get(0).getName()); //FIXME from gameTexts
 			}
 		}
 		return success;
