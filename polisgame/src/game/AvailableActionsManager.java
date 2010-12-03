@@ -329,6 +329,7 @@ public class AvailableActionsManager {
 	public static Boolean checkPlunderTerritoryAction(Player player, Territory terr, Round round, Integer troops){
 		Boolean available = false;
 
+		Boolean condition_maxTroops = troops <= round.getMaximumPositionSlotsForThisRound();
 		Boolean condition_havePrestige = player.getPrestige() >= 1;
 		Boolean condition_isPlundered = terr.getPlundered();
 		Integer numHoplites = 0;
@@ -355,7 +356,10 @@ public class AvailableActionsManager {
 		
 		Boolean condition_haveMinPolis = numPolisOwnedInTerritory >= 1;
 		
-		available = condition_havePrestige && condition_haveHoplites && condition_haveMinPolis && condition_isPlundered;
+		
+		//comprobar si se usa round pa el numero de tropas
+		
+		available = condition_maxTroops && condition_havePrestige && condition_haveHoplites && condition_haveMinPolis && condition_isPlundered;
 		
 		return available;
 	}
@@ -369,7 +373,23 @@ public class AvailableActionsManager {
 	}
 	public static Boolean checkTradeAction(Player player, Market market, Round round){
 		Boolean available = false;
-		//TODO
+		
+		Boolean condition_existWay = GraphNavigatorManager.existsWay(player.getPlayerTradeDock(),market,player,"tradeBoat");
+		
+		Boolean condition_disponible = market.getUnits().size() == 0;
+		
+		Boolean condition_spartaHasOnePolis = false;
+		for(Polis p:player.getPlayerPolis())
+		{
+			if(p.getSysName().equals("gition") || p.getSysName().equals("pilos"))
+			{
+				condition_spartaHasOnePolis = true;
+				break;
+			}
+		}
+		
+		available = condition_existWay && condition_disponible && condition_spartaHasOnePolis;
+		
 		return available;
 	}
 	public static Boolean checkMoveProxenusAction(Player player,Polis start, Polis destiny){
