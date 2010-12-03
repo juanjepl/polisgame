@@ -83,6 +83,7 @@ public class MilitaryAction extends GameAction{
 				{
 					initialSea.removeUnit(unit);
 					finalSea.addUnit(unit);
+					unit.setPosition(finalSea);
 					unitMovedCount++;
 				}
 			}
