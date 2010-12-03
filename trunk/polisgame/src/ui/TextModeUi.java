@@ -269,7 +269,7 @@ public class TextModeUi implements IUserInterface{ //TODO rescue language texts 
 		}else if(chosenOption.equals("3")){	
 			requestCreateTradeBoat();
 		}else if(chosenOption.equals("4")){	
-			requestCreateProxenus();
+			requestCreateProxenus(p);
 		}else{
 				//TODO -> possible exception
 		}
@@ -482,8 +482,33 @@ public class TextModeUi implements IUserInterface{ //TODO rescue language texts 
 
 	}
 	
-	public static void requestCreateProxenus(){
-		//TODO
+	public static void requestCreateProxenus(Player p){
+String message = ("Please, choose Polis to create the Proxenus: "); //FIXME rescue from gameTexts...
+		
+		List<Polis> creationPoints = new ArrayList<Polis>();
+		
+		List<String> grantedOptions = new ArrayList<String>();
+		List<String> optionsToChooseText = new ArrayList<String>();
+		List<String> availableOptions = new ArrayList<String>();
+		
+		String chosenOption = "";
+		
+		Integer count = 0;
+		for(Polis po : p.getPlayerPolis()){
+			if(AvailableActionsManager.checkCreateProxenusAction(p, po)){
+				optionsToChooseText.add(po.getName());
+				grantedOptions.add(count.toString());
+				availableOptions.add(count.toString());
+				creationPoints.add(po);
+				count += 1;
+			}
+		}
+		
+		ShowPlayerChoices(message,optionsToChooseText);
+		chosenOption = RequestPlayerChoices(grantedOptions,availableOptions);
+		
+		CreatorAction ac1 = new CreatorAction();
+		ac1.createProxenus(p, creationPoints.get(Integer.parseInt(chosenOption)));
 	}
 	
 	public static void requestCreateTradeBoat(){

@@ -160,6 +160,8 @@ public class CreatorAction extends GameAction{
 		polis.getUnits().add(prox);
 		owner.setPlayerProxenus(prox);
 		
+		TextModeUi.showMessage("Proxenus created at "+polis.getName()); //FIXME from gameTexts
+		
 		}else{
 			//do nothing->return success=false
 		}
