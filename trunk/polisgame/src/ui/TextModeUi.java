@@ -447,12 +447,11 @@ public class TextModeUi implements IUserInterface{ //TODO rescue language texts 
 		ShowPlayerChoices(message,optionsToChooseText);
 		chosenOption = RequestPlayerChoices(grantedOptions,availableOptions);
 		
-		/*for(Integer i = 0 ; i<=count ; i++){
-			if(chosenOption == i.toString()){
-				CreatorAction ac1 = new CreatorAction();
-				ac1.createHoplite(p, creationPoints.get(i), r); //FIXME TEST IT!!
-			}
-		}*/ //FIXME to do this part
+		CreatorAction ac1 = new CreatorAction();
+		
+		ac1.createHoplite(p, creationPoints.get(Integer.parseInt(chosenOption)), r); //FIXME TEST IT!!
+			
+
 	}
 	
 	public static void requestCreateTrirreme(){
