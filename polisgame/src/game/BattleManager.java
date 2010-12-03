@@ -1,6 +1,7 @@
 package game;
 
 import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.List;
 
 import utils.RandomCollections;
@@ -166,11 +167,13 @@ public class BattleManager
 	{
 		List<Unit> positionUnits = position.getUnits();
 		List<Unit> playerUnits = player.getPlayerUnits();
+		
+		Iterator<Unit> it = positionUnits.iterator();
 		int removedUnitCount = 0;
 		
-		for(int i = 0; i < positionUnits.size() && removedUnitCount <= count; i++)
+		while(it.hasNext() && removedUnitCount <= count)
 		{
-			Unit unit = positionUnits.get(i);
+			Unit unit = it.next();
 			
 			if (playerUnits.contains(unit))
 			{
