@@ -141,6 +141,8 @@ public class CreatorAction extends GameAction{
 			owner.getPlayerTradeDock().addUnit(tb);
 			owner.addUnit(tb);
 			
+			TextModeUi.showMessage("TradeBoat created at "+owner.getPlayerTradeDock().getName()); //FIXME from gameTexts
+			
 			}else{
 				//Do nothing,success=false;
 			}
