@@ -111,7 +111,7 @@ public class MilitaryAction extends GameAction{
 		if (initialPosition == null) throw new NullPointerException("'initialPosition' can not be null");
 		if (siegedPolis == null) throw new NullPointerException("'siegedPolis' can not be null");
 		
-		Boolean success = AvailableActionsManager.checkSiegePolisAction(player, siegedPolis);
+		Boolean success = true;
 
 		if(success)
 		{
@@ -125,13 +125,14 @@ public class MilitaryAction extends GameAction{
 					siegedPolis.addUnit(u);
 				}
 				siegedPolis.setSieged(true);
+				player.setPrestige(player.getPrestige() - 1);
 			}else
 			{
 				success = false;
 			}
 		}
 		
-		player.setPrestige(player.getPrestige() - 1);
+		
 		
 		return success;
 	}
@@ -160,7 +161,7 @@ public class MilitaryAction extends GameAction{
 			}
 		}
 		
-		Boolean success = AvailableActionsManager.checkPlunderTerritoryAction(player, territory, round, troops);
+		Boolean success = false;
 		
 		Map<String, Vector<Integer>> resources = territory.getResources();
 		
@@ -178,7 +179,7 @@ public class MilitaryAction extends GameAction{
 		territory.setPlundered(true);
 		//if is natal territory don't paid prestige 
 		player.setPrestige(player.getPrestige() - 1);
-		
+		success = true;
 		//FIXME cuando termina turno hay que devolver las unidades de nuevo a donde corresponden, eso se hace cuando se inicia turno!!
 		
 		return success;

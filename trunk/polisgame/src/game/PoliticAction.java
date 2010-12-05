@@ -34,7 +34,7 @@ public class PoliticAction extends GameAction{
 	
 	/** Method to manage when a tradeboat swaps resources into a market */
 	public Boolean trade(Player player,Round round, MarketChart marketChart, Market market, String resource1, String resource2){
-		Boolean success = AvailableActionsManager.checkTradeAction(player, market, round);
+		Boolean success = false;
 		
 		//check if player uses silver to trade
 		if(resource1.equals("silver")){
