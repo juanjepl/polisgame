@@ -374,7 +374,7 @@ public class AvailableActionsManager {
 	public static Boolean checkTradeAction(Player player, Market market, Round round){
 		Boolean available = false;
 		
-		Boolean condition_existWay = GraphNavigatorManager.existsWay(player.getPlayerTradeDock(),market,player,"tradeBoat");
+		/*Boolean condition_existWay = GraphNavigatorManager.existsWay(player.getPlayerTradeDock(),market,player,"tradeBoat");*/
 		
 		Boolean condition_disponible = market.getUnits().size() == 0;
 		
@@ -388,7 +388,7 @@ public class AvailableActionsManager {
 			}
 		}
 		
-		available = condition_existWay && condition_disponible && condition_spartaHasOnePolis;
+		available = condition_disponible && condition_spartaHasOnePolis;
 		
 		return available;
 	}
