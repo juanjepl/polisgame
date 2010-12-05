@@ -25,22 +25,27 @@ public class TextModeUi implements IUserInterface{ //TODO rescue language texts 
 	
 	/** Welcome message */
 	public static void creditsMessage(){ //FIXME -> from gametexts
-		
-		System.out.println("****************************************************************");
-		System.out.println("*                                                              *");
-		System.out.println("*           P O L I S  :          T H E    G A M E             *");
-		System.out.println("*                                                              *");
-		System.out.println("****************************************************************");
-		System.out.println("*                                                              *");
-		System.out.println("*  Status: Pre-Alpha  non-functional                           *");
-		System.out.println("*  Developer Team:    Samuel Navas Portillo                    *");
-		System.out.println("*                     Juan Jesús Pérez Luna                    *");
-		System.out.println("*                     Ángel Martínez Olivares                  *");
-		System.out.println("*                     María José Sancha Maya                   *");
-		System.out.println("*                     José Antonio Jiménez Carmona             *");
-		System.out.println("*                     Manuel de los Santos Campos              *");
-		System.out.println("*                                                              *");
-		System.out.println("****************************************************************");
+		System.out.println(" ");
+		System.out.println(" ");
+		System.out.println(" ");
+		System.out.println("        XXXXXXXXXX             XXXX   XXX");
+		System.out.println("         XXX   XXXXX            XXX");
+		System.out.println("         XXX   XXXXX  XXXXXXX   XXX  XXXX   XXXXXXX");
+		System.out.println("         XXXXXXXXXX  XXX   XXX  XXX   XXX  XXX");
+		System.out.println("         XXX         XXX   XXX  XXX   XXX   XXXXXX");
+		System.out.println("         XXX         XXX   XXX  XXX   XXX       XXX");
+		System.out.println("        XXXXX         XXXXXXX  XXXXX XXXXX XXXXXXX");
+		System.out.println("");
+		System.out.println("**************************************************************");
+		System.out.println("*                                                            *");
+		System.out.println("*  Developer Team:    Samuel Navas Portillo                  *");
+		System.out.println("*                     Juan Jesús Pérez Luna                  *");
+		System.out.println("*                     Ángel Martínez Olivares                *");
+		System.out.println("*                     María José Sancha Maya                 *");
+		System.out.println("*                     José Antonio Jiménez Carmona           *");
+		System.out.println("*                     Manuel de los Santos Campos            *");
+		System.out.println("*                                                            *");
+		System.out.println("**************************************************************");
 		System.out.println("");
 		
 	}
@@ -90,13 +95,13 @@ public class TextModeUi implements IUserInterface{ //TODO rescue language texts 
 	
 	/** This method shows the actual player-round-turn */
 	public static void showPlayerTurn(Game game){
-		String message = "Turn: "+Turn.getTurnCount()+" "+"Player: "+game.getWhoHasTheTurn().getName();		
+		String message = "Turn: "+Turn.getTurnCount()+" "+"Player: "+game.getWhoHasTheTurn().getName();	//FIXME from gametexts...
 		System.out.println(message);
 	}
 	
 	/** This method shows a change-of-round advice */
 	public static void showNewRound(Game game){
-		String message = "New Round: "+game.getRound().getName(); //TODO from gametexts...
+		String message = "New Round: "+game.getRound().getName(); //FIXME from gametexts...
 		System.out.println(message);
 	}
 	
@@ -193,7 +198,7 @@ public class TextModeUi implements IUserInterface{ //TODO rescue language texts 
 		String chosenOption = RequestPlayerChoices(grantedOptions, availableOptions);
 		
 		if(chosenOption.equals("0")){
-			showAvailableActions(g,p); //TODO not very efficient...
+			showAvailableActions(g,p);
 		}else if(chosenOption.equals("1")){
 			renameAPlayer(g,p);
 		
@@ -261,13 +266,13 @@ public class TextModeUi implements IUserInterface{ //TODO rescue language texts 
 		String chosenOption = RequestPlayerChoices(grantedOptions, availableOptions);
 		
 		if(chosenOption.equals("0")){
-			showAvailableActions(g,p); //TODO not very efficient...
+			showAvailableActions(g,p);
 		}else if(chosenOption.equals("1")){
 			requestCreateHoplite(p,g.getRound());
 		}else if(chosenOption.equals("2")){
 			requestCreateTrirreme(p,g.getRound());
 		}else if(chosenOption.equals("3")){	
-			requestCreateTradeBoat();
+			requestCreateTradeBoat(p,g.getRound());
 		}else if(chosenOption.equals("4")){	
 			requestCreateProxenus(p);
 		}else{
@@ -334,7 +339,7 @@ public class TextModeUi implements IUserInterface{ //TODO rescue language texts 
 		String chosenOption = RequestPlayerChoices(grantedOptions, availableOptions);
 		
 		if(chosenOption.equals("0")){
-			showAvailableActions(g,p); //TODO not very efficient...
+			showAvailableActions(g,p);
 		}else if(chosenOption.equals("1")){
 			requestMoveHoplite();
 		}else if(chosenOption.equals("2")){
@@ -407,7 +412,7 @@ public class TextModeUi implements IUserInterface{ //TODO rescue language texts 
 		String chosenOption = RequestPlayerChoices(grantedOptions, availableOptions);
 		
 		if(chosenOption.equals("0")){
-			showAvailableActions(g,p); //TODO not very efficient...
+			showAvailableActions(g,p);
 		}else if(chosenOption.equals("1")){
 			requestStartAProject();
 		}else if(chosenOption.equals("2")){
@@ -456,7 +461,6 @@ public class TextModeUi implements IUserInterface{ //TODO rescue language texts 
 		String message = ("Please, choose Sea's Polis to create the Trirreme: "); //FIXME rescue from gameTexts...
 		
 		List<Polis> creationPoints = new ArrayList<Polis>();
-		
 		List<String> grantedOptions = new ArrayList<String>();
 		List<String> optionsToChooseText = new ArrayList<String>();
 		List<String> availableOptions = new ArrayList<String>();
@@ -486,7 +490,6 @@ public class TextModeUi implements IUserInterface{ //TODO rescue language texts 
 String message = ("Please, choose Polis to create the Proxenus: "); //FIXME rescue from gameTexts...
 		
 		List<Polis> creationPoints = new ArrayList<Polis>();
-		
 		List<String> grantedOptions = new ArrayList<String>();
 		List<String> optionsToChooseText = new ArrayList<String>();
 		List<String> availableOptions = new ArrayList<String>();
@@ -495,7 +498,7 @@ String message = ("Please, choose Polis to create the Proxenus: "); //FIXME resc
 		
 		Integer count = 0;
 		for(Polis po : p.getPlayerPolis()){
-			if(AvailableActionsManager.checkCreateProxenusAction(p, po)){
+			if(AvailableActionsManager.checkCreateProxenusAction(p,po)){
 				optionsToChooseText.add(po.getName());
 				grantedOptions.add(count.toString());
 				availableOptions.add(count.toString());
@@ -511,8 +514,33 @@ String message = ("Please, choose Polis to create the Proxenus: "); //FIXME resc
 		ac1.createProxenus(p, creationPoints.get(Integer.parseInt(chosenOption)));
 	}
 	
-	public static void requestCreateTradeBoat(){
+	public static void requestCreateTradeBoat(Player p,Round r){
 		//TODO
+		
+		String message = ("Please, choose Polis to create the TradeBoat: "); //FIXME rescue from gameTexts...
+		
+		List<Polis> creationPoints = new ArrayList<Polis>();
+		List<String> grantedOptions = new ArrayList<String>();
+		List<String> optionsToChooseText = new ArrayList<String>();
+		List<String> availableOptions = new ArrayList<String>();
+		
+		String chosenOption = "";
+		
+		Integer count = 0;
+		for(Polis po : p.getPlayerPolis()){
+			if(AvailableActionsManager.checkCreateTradeBoatAction(p,po,r)){
+				optionsToChooseText.add(po.getName());
+				grantedOptions.add(count.toString());
+				availableOptions.add(count.toString());
+				creationPoints.add(po);
+				count += 1;
+			}
+		}
+		
+		ShowPlayerChoices(message,optionsToChooseText);
+		chosenOption = RequestPlayerChoices(grantedOptions,availableOptions);
+		CreatorAction ac1 = new CreatorAction();
+		ac1.createTradeBoat(p, creationPoints.get(Integer.parseInt(chosenOption)),r);
 	}
 	
 	public static void requestMoveHoplite(){
