@@ -247,10 +247,23 @@ public class AvailableActionsManager {
 		return available;
 	}
 
+	
+	// 2nd ~ 3rd lvl method
+	public static Boolean checkMoveHopliteActionFromX(Game game,Player player,Territory start, Integer troops){
+		Boolean available = false;
+		for(Territory terr: game.getGameTerritories().values()){
+			if(checkMoveHopliteAction(player,game.getRound(),start,terr,troops)){
+				available = true;
+			}
+		}
+		return available;
+	}
+	
+
 	public static Boolean checkMoveHopliteAction(Player player, Round round, Territory start, Territory destiny, Integer troops){
 		Boolean available = false;
 
-		Boolean condition_notSame = start.equals(destiny);
+		Boolean condition_notSame = !(start.equals(destiny));
 		Boolean condition_havePrestige = player.getPrestige() >= 1;
 		Boolean condition_NumberOfTroops = (troops <= round.getMaximumPositionSlotsForThisRound()) && (troops != 0);
 		Boolean condition_TroopsInStart = false;
@@ -274,10 +287,22 @@ public class AvailableActionsManager {
 		
 		return available;
 	}
+	
+	// 2nd ~ 3rd lvl method
+	public static Boolean checkMoveTrirremeActionFromX(Game game, Player player, Sea start, Integer troops){
+		Boolean available = false;
+		for(Sea terr: game.getGameSeas().values()){
+			if(checkMoveTrirremeAction(player,game.getRound(),start,terr,troops)){
+				available = true;
+			}
+		}
+		return available;
+	}
+	
 	public static Boolean checkMoveTrirremeAction(Player player, Round round, Sea start, Sea destiny, Integer troops){
 		Boolean available = false;
 		
-		Boolean condition_notSame = start.equals(destiny);
+		Boolean condition_notSame = !(start.equals(destiny));
 		Boolean condition_havePrestige = player.getPrestige() >= 1;
 		Boolean condition_NumberOfTroops = (troops <= round.getMaximumPositionSlotsForThisRound()) && (troops != 0);
 		Boolean condition_TroopsInStart = false;
