@@ -44,16 +44,16 @@ public class MilitaryAction extends GameAction{
 				
 			if(multiMovement){
 				
+				//TextModeUi.requestMoveHoplite(); //FIXME complete this if.
+				
 				//TODO
 				
 			}else{
 				//Do nothing, action finished.
-				// This block is not necessary
 			}
 				
 		}else{
 			// Do nothing
-			// This block is not necessary
 		}
 
 		return success;

@@ -11,10 +11,14 @@ import game.CreatorAction;
 import game.Game;
 import game.Polis;
 import game.Round;
+import game.Territory;
 import game.Turn;
 import game.Player;
 import game.Sea;
 import game.AvailableActionsManager;
+import game.Unit;
+import game.Hoplite;
+import game.Trirreme;
 
 
 
@@ -341,7 +345,7 @@ public class TextModeUi implements IUserInterface{ //TODO rescue language texts 
 		if(chosenOption.equals("0")){
 			showAvailableActions(g,p);
 		}else if(chosenOption.equals("1")){
-			requestMoveHoplite();
+			requestMoveHoplite(g,p);
 		}else if(chosenOption.equals("2")){
 			requestMoveTrirreme();
 		}else if(chosenOption.equals("3")){	
@@ -543,7 +547,50 @@ String message = ("Please, choose Polis to create the Proxenus: "); //FIXME resc
 		ac1.createTradeBoat(p, creationPoints.get(Integer.parseInt(chosenOption)),r);
 	}
 	
-	public static void requestMoveHoplite(){
+	public static void requestMoveHoplite(Game g,Player p){
+		
+		String message = ("Please, choose Polis where you have hoplites and you can do moves: "); //FIXME rescue from gameTexts...
+		
+		List<Territory> startMovePoints = new ArrayList<Territory>();
+		List<String> grantedOptions = new ArrayList<String>();
+		List<String> optionsToChooseText = new ArrayList<String>();
+		List<String> availableOptions = new ArrayList<String>();
+		
+		String chosenOption = "";
+		
+		Map<String,Integer> startTerritories = new HashMap<String,Integer>();
+		
+		for(Unit u: p.getPlayerUnits()){
+			if(startTerritories.containsKey(u.getPosition().getName())){
+				Integer mapValue = startTerritories.get(u.getPosition().getName());
+				mapValue += 1;
+				startTerritories.put((u.getPosition().getName()), mapValue); // can overwrite the value? //TODO -> test it
+			}
+			
+			else if((u instanceof Hoplite) && (AvailableActionsManager.checkMoveHopliteActionFromX(g, p, (Territory)u.getPosition(), 1))){
+				startTerritories.put(u.getPosition().getName(),1);
+				startMovePoints.add((Territory)u.getPosition());
+			}else{
+				// Do nothing, next iteration.
+			}
+		}
+		
+		Integer count = 0;
+		for(Territory terr: startMovePoints){
+			optionsToChooseText.add(terr.getName()+" "+startTerritories.get(terr.getName()).toString()+"x");
+			grantedOptions.add(count.toString());
+			availableOptions.add(count.toString());
+			count += 1;
+		}
+		
+		ShowPlayerChoices(message,optionsToChooseText);
+		chosenOption = RequestPlayerChoices(grantedOptions,availableOptions);
+		
+		//TODO number of units, destiny and multimovement.
+		
+		
+		//TODO
+		//TODO
 		//TODO
 	}
 	
