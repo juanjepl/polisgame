@@ -138,7 +138,7 @@ public class TextModeUi implements IUserInterface{ //TODO rescue language texts 
 		grantedOptions.add("1");
 	
 		//3rd
-		if(false/*AvailableActionsManager.checkMilitaryAction(g,p)*/){ //FIXME not call this method for the moment.
+		if(AvailableActionsManager.checkMilitaryAction(g,p)){
 			optionsToChooseText.add(militaryActionMessage);
 			availableOptions.add("2");
 		}else{
