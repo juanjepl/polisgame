@@ -10,42 +10,54 @@ public class EndRoundManager {
 
 	/** This method checks for any sieged polis, if siege completes or not */
 	public void checkSieges(Game game, Player player) {
-
+		if (game == null) {
+			throw new NullPointerException("Game in CheckSieges can´t be Null");
+		}
+		if (player == null) {
+			throw new NullPointerException(
+					"Player in CheckSieges can´t be Null");
+		}
 		// TODO
 		List<Polis> ListOfpolisToCheck;
 		ListOfpolisToCheck = (List<Polis>) game.getGamePolis().values();
 
-		Polis polisToCheck;
-		List<Polis> listOfPolisPlayer;
-		List<Polis> listOfPolisEnemyPlayer;
-		listOfPolisPlayer = player.getPlayerPolis();
+		if (ListOfpolisToCheck.size() != 0) {
+			Polis polisToCheck;
+			List<Polis> listOfPolisPlayer;
+			List<Polis> listOfPolisEnemyPlayer;
+			listOfPolisPlayer = player.getPlayerPolis();
 
-		// CHECK ENEMY
-		if (player.equals(game.getAthensPlayer())) {
-			listOfPolisEnemyPlayer = game.getSpartaPlayer().getPlayerPolis();
-		} else {
-			listOfPolisEnemyPlayer = game.getAthensPlayer().getPlayerPolis();
-		}
-
-		for (int i = 0; i < ListOfpolisToCheck.size(); i++) {
-			polisToCheck = ListOfpolisToCheck.get(i);
-			if (polisToCheck.getSieged()) {
-				if (((!(listOfPolisPlayer.contains(polisToCheck) && (!listOfPolisEnemyPlayer
-						.contains(polisToCheck)))))) {
-					player.addPolis(polisToCheck);
-					// FIXME We haves to check the population afer siege
-					//We need to have contact with UserInterface
-				} else {
-					if ((!(listOfPolisPlayer.contains(polisToCheck) && (listOfPolisEnemyPlayer
-							.contains(polisToCheck))))) {
-						// FIXME needs a method that cheks locks for this enemy
-						// siege
-
-					}
-				}
-
+			// CHECK ENEMY
+			if (player.equals(game.getAthensPlayer())) {
+				listOfPolisEnemyPlayer = game.getSpartaPlayer()
+						.getPlayerPolis();
+			} else {
+				listOfPolisEnemyPlayer = game.getAthensPlayer()
+						.getPlayerPolis();
 			}
 
+			for (int i = 0; i < ListOfpolisToCheck.size(); i++) {
+				polisToCheck = ListOfpolisToCheck.get(i);
+				if (polisToCheck.getSieged()) {
+					if (((!(listOfPolisPlayer.contains(polisToCheck) && (!listOfPolisEnemyPlayer
+							.contains(polisToCheck)))))) {
+						player.addPolis(polisToCheck);
+						// FIXME We have to check the population afer siege
+						// We need to have contact with UserInterface
+					} else {
+						if ((!(listOfPolisPlayer.contains(polisToCheck) && (listOfPolisEnemyPlayer
+								.contains(polisToCheck))))) {
+							// FIXME needs a method that check locks for this
+							// enemy
+							// siege
+
+						}
+					}
+
+				}
+			}
+		} else {
+			// Do Nothing
 		}
 
 	}
@@ -55,13 +67,16 @@ public class EndRoundManager {
 	 * prestige
 	 */
 	public void checkProjects(Player player) {
-
+		if (player ==  null ){
+			throw new NullPointerException("Player in checkProjects can´t be Null");
+		}
 		// TODO
 		List<Polis> listPolis;
 		listPolis = player.getPlayerPolis();
 		List<Project> listOfProjects;
 		Polis polisToCheck;
 		Project projectToCheck;
+		
 		for (int i = 0; i < listPolis.size(); i++) {
 			polisToCheck = listPolis.get(i);
 			listOfProjects = polisToCheck.getProjects();
@@ -123,10 +138,8 @@ public class EndRoundManager {
 	 */
 	public void checkMegalopolis(Player player) {
 
-		for(Polis p: player.getPlayerPolis())
-		{
-			if(p.getActualPopulation() > p.getBasePopulation())
-			{
+		for (Polis p : player.getPlayerPolis()) {
+			if (p.getActualPopulation() > p.getBasePopulation()) {
 				player.setPrestige(player.getPrestige() + 1);
 			}
 		}
