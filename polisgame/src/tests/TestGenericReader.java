@@ -1,5 +1,7 @@
 package tests;
 
+import static org.junit.Assert.assertEquals;
+
 import java.io.FileNotFoundException;
 import java.util.ArrayList;
 import java.util.List;
@@ -12,41 +14,51 @@ import org.junit.Before;
 //import org.junit.After;
 
 public class TestGenericReader {
-
-	List<String> list = new ArrayList<String>();
+	
+	List<String> list;
 
 	@Before
 	public void setup() {
-
+		list = new ArrayList<String>();
 	}
 
 	@Test//(expected=FileNotFoundException.class)
-	public void testgetFileContentsNotString(){
-		list = GenericReader.getFileContents("string.txt");
-		TestUtiles.printList(list);
+	public void testgetFileContentsFailDirectory(){
+		list = GenericReader.getFileContents("string");
+		//TestUtiles.printList(list);
 	}
 	@Test
 	public void testgetFileContents() {
-		list = GenericReader.getFileContents("src/tests/TestFiles/TestList.txt");
-		TestUtiles.printList(list);
+		list = GenericReader.getFileContents("src/tests/TestFiles/TestList.pol");
+		assertEquals(list.get(0),"Hola");
+		assertEquals(list.get(1),"Mundo");
+		assertEquals(list.get(2),"Ingenieria");
+		assertEquals(list.get(3),"Del");
+		assertEquals(list.get(4),"Software");
+		//TestUtiles.printList(list);
 	}
 
 	@Test
-	public void testgetFileContentsNull() {
-		list = GenericReader.getFileContents("src/tests/TestFIles/TestListNull.txt");
-		TestUtiles.printList(list);
+	public void testgetFileContentsNull(){
+		list = GenericReader.getFileContents("src/tests/TestFIles/TestListNull.pol");
+		assertEquals(list.get(0),"Hola");
+		assertEquals(list.get(1),"Mundo");
+		assertEquals(list.get(2),"Ingenieria");
+		assertEquals(list.get(3),"");
+		assertEquals(list.get(4),"Del");
+		assertEquals(list.get(5),"Software");
+		//TestUtiles.printList(list);
 	}
 	
 	@Test
-	public void testgetFileContentsSharp() {
-		list = GenericReader.getFileContents("src/tests/TestFIles/TestListSharp.txt");
-		TestUtiles.printList(list);
+	public void testgetFileContentsSharp(){
+		list = GenericReader.getFileContents("src/tests/TestFIles/TestListSharp.pol");
+		assertEquals(list.get(0),"Hola");
+		assertEquals(list.get(1),"Mundo");
+		assertEquals(list.get(2),"Ingenieria");
+		assertEquals(list.get(3),"Del");
+		assertEquals(list.get(4),"Software");
+		//TestUtiles.printList(list);
 	}
-	
-//	public void printList(List<String> list){
-//		for(String s: list){
-//			System.out.println(s);
-//		}
-//	}
 
 }
