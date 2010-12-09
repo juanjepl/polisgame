@@ -14,7 +14,7 @@ public class EndGameManager {
 
 	/** This method checks if any player has lost his capital */
 	public Boolean checkCapitals(Player polisGamer) {
-
+		if (polisGamer == null){throw new NullPointerException("Player in checkCapitals can´t be Null");}
 		// TODO this method checks no one player has lost his capital (game
 		// over)
 		return !polisGamer.getPlayerPolis().contains(polisGamer.getCapital());
@@ -25,7 +25,7 @@ public class EndGameManager {
 
 		// TODO this method checks no one player has lost all his prestige (game
 		// over)
-
+		if ( playerGamer == null){throw new NullPointerException("Player in CheckNoPrestige can´t be Null");}
 		return playerGamer.getPrestige() == 0;
 	}
 
