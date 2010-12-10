@@ -585,6 +585,32 @@ String message = ("Please, choose Polis to create the Proxenus: "); //FIXME resc
 		
 		ShowPlayerChoices(message,optionsToChooseText);
 		chosenOption = RequestPlayerChoices(grantedOptions,availableOptions);
+
+		// to choose destiny
+		List<Territory> endMovePoints = new ArrayList<Territory>();
+		List<String> optionsToChooseText2 = new ArrayList<String>();
+		List<String> grantedOptions2 = new ArrayList<String>();
+		List<String> availableOptions2 = new ArrayList<String>();
+
+		String message2 = "Please, choose destination from hoplite(s): ";//FIXME rescue from gametexts...
+		
+		String chosenOption2 = "";
+		
+		Integer Count2 = 0;
+		for(Territory terr : g.getGameTerritories().values()){
+			if(AvailableActionsManager.checkMoveHopliteAction(p, g.getRound(), startMovePoints.get(Integer.parseInt(chosenOption)+1), terr, 1)){  //FIXME careful with the +1 is correct?
+				endMovePoints.add(terr);
+				optionsToChooseText2.add(terr.getName());
+				grantedOptions2.add(Count2.toString());
+				availableOptions2.add(Count2.toString());
+				Count2++;
+			}
+		}
+		
+		ShowPlayerChoices(message2,optionsToChooseText2);
+		chosenOption2 = RequestPlayerChoices(grantedOptions2,availableOptions2);
+		
+		
 		
 		//TODO number of units, destiny and multimovement.
 		//TODO
