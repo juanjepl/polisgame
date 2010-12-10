@@ -1,7 +1,6 @@
 package tests;
 
 import game.Sea;
-
 import java.util.List;
 import java.util.Map;
 

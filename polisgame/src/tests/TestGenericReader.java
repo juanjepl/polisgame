@@ -2,7 +2,6 @@ package tests;
 
 import static org.junit.Assert.assertEquals;
 
-import java.io.FileNotFoundException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -40,7 +39,7 @@ public class TestGenericReader {
 
 	@Test
 	public void testgetFileContentsNull(){
-		list = GenericReader.getFileContents("src/tests/TestFIles/TestListNull.pol");
+		list = GenericReader.getFileContents("src/tests/TestFiles/TestListNull.pol");
 		assertEquals(list.get(0),"Hola");
 		assertEquals(list.get(1),"Mundo");
 		assertEquals(list.get(2),"Ingenieria");
@@ -52,7 +51,7 @@ public class TestGenericReader {
 	
 	@Test
 	public void testgetFileContentsSharp(){
-		list = GenericReader.getFileContents("src/tests/TestFIles/TestListSharp.pol");
+		list = GenericReader.getFileContents("src/tests/TestFiles/TestListSharp.pol");
 		assertEquals(list.get(0),"Hola");
 		assertEquals(list.get(1),"Mundo");
 		assertEquals(list.get(2),"Ingenieria");
