@@ -41,6 +41,16 @@ public class MilitaryAction extends GameAction{
 			for(Unit u: unitsToMove){
 				u.setPosition(finalPosition);
 			}
+			
+			
+			if(numberOfUnits>1){
+				TextModeUi.showMessage("Hoplite moved from "+initialPosition.getName()+" to "+finalPosition.getName());
+			}else{
+				TextModeUi.showMessage(numberOfUnits.toString()+" "+"Hoplites moved from "+initialPosition.getName()+" to "+finalPosition.getName());
+			}
+			
+			
+			
 				
 			if(multiMovement){
 				
