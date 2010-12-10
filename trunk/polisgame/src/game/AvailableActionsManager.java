@@ -223,7 +223,6 @@ public class AvailableActionsManager {
 	}
 	public static Boolean checkCreateTradeBoatAction(Player player, Polis polis, Round round){
 		Boolean available = false;
-		//TODO
 		Boolean condition_imTheOwnerOfThePolis = player.getPlayerPolis().contains(polis);
 		Boolean condition_haveResources = player.getWood()>= 1 || player.getSilver()>= 1;
 		Boolean condition_enoughPopulation = polis.getActualPopulation() > 1;
@@ -395,10 +394,39 @@ public class AvailableActionsManager {
 	public static Boolean checkStartProjectAction(Player player,Polis polis,Project project){
 		Boolean available = false;
 		
+		Boolean condition_haveResourcesRequired = true;
 		
-		//TODO
+		//check if player have amount needed of required resources
+		for(String resourceName: project.getResourcesRequired().keySet())
+		{
+			Integer resource = project.getResourcesRequired().get(resourceName);
+			if(player.getResource(resourceName) < resource)
+			{
+				condition_haveResourcesRequired = false;
+			}
+		}
+		
+		//check if project exist in polis
+		Boolean condition_existProject = polis.getPossiblesProjects().contains(project);
+		//check if polis is sieged
+		Boolean condition_notSiegedPolis = !polis.getSieged();
+		//check if some project is started
+		Boolean condition_notStartedProject = true;
+		
+		for(Project p: polis.getProjects())
+		{
+			if(!p.getFinished())
+			{
+				condition_notStartedProject = false;
+			}
+		}
+		
+		
+		available = condition_haveResourcesRequired && condition_existProject && condition_notSiegedPolis && condition_notStartedProject ;
+
 		return available;
 	}
+	
 	public static Boolean checkTradeAction(Player player, Market market, Round round){
 		Boolean available = false;
 		
