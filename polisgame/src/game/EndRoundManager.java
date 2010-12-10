@@ -1,7 +1,7 @@
 package game;
 
 import java.util.List;
-import java.util.Random;
+
 
 import ui.TextModeUi;
 
@@ -13,6 +13,7 @@ public class EndRoundManager {
 
 	/** This method checks for any sieged polis, if siege completes or not */
 	public void checkSieges(Game game, Player player) {
+
 		if (game == null) {
 			throw new NullPointerException("Game in CheckSieges can´t be Null");
 		}
@@ -25,7 +26,7 @@ public class EndRoundManager {
 		ListOfpolisToCheck = (List<Polis>) game.getGamePolis().values();
 		ListOfpolisToCheck.addAll(game.getGamePolis().values());
 		Player enemyPlayer;
-		Polis polisToCheck;
+
 		if (!ListOfpolisToCheck.isEmpty()) {
 
 			// CHECK ENEMY
@@ -46,7 +47,9 @@ public class EndRoundManager {
 
 					player.getPlayerPolis().get(i).setSieged(false);
 
-					Integer rollDice = (int) ((Math.random() * 4 + 1));
+					Integer rollDice = TextModeUi.showRollTheDice(1);
+					;
+
 					Integer newPopulation = player.getPlayerPolis().get(i)
 							.getBasePopulation();
 					newPopulation = newPopulation - rollDice;
@@ -54,15 +57,63 @@ public class EndRoundManager {
 						newPopulation = 1;
 					}
 					// We have to repopulate the polis with hoplites
-					// Necesary UI
+					// Necesary UI FIXME
+					// AddPrestige
+					Integer Prestige = player.getPlayerPolis().get(i)
+							.getActualPopulation();
+					Prestige = Prestige + player.getPrestige();
+					player.setPrestige(Prestige);
+				}
+				// Check if sieged Polis is enemy
+				if ((player.getPlayerPolis().get(i).getSieged())
+						&& (enemyPlayer.getPlayerPolis().contains(player
+								.getPlayerPolis().get(i)))) {
+					if (!enemyPlayer.getPlayerPolis().get(i).getLockForAPlayer(
+							player)) {
 
+						// Remove Units
+						for (int a = 0; a < enemyPlayer.getPlayerPolis().get(i)
+								.getUnits().size(); a++) {
+							enemyPlayer.removeUnit(enemyPlayer.getPlayerPolis()
+									.get(i).getUnits().get(a));
+						}
+
+					} else {
+						// Enemy Units must go
+					}
+					// Remove Enemy Proxenus
+
+					if ((enemyPlayer.getPlayerProxenus() != null)
+							&& (enemyPlayer.getPlayerProxenus().getPosition()
+									.equals(player.getPlayerPolis().get(i)))) {
+						enemyPlayer.removeUnit(enemyPlayer.getPlayerProxenus());
+
+					}
+					// AddPolis
+					player.getPlayerPolis().get(i).setSieged(false);
+					Integer rollDice = TextModeUi.showRollTheDice(1);
+					;
+
+					Integer newPopulation = player.getPlayerPolis().get(i)
+							.getBasePopulation();
+					newPopulation = newPopulation - rollDice;
+					if (newPopulation <= 0) {
+						newPopulation = 1;
+					}
+					// We have to repopulate the polis with hoplites
+					// Necesary UI FIXME
+					// Remove polis
+					// AddPrestige
+					enemyPlayer.getPlayerPolis().remove(
+							enemyPlayer.getPlayerPolis().get(i));
+					Integer Prestige = player.getPlayerPolis().get(i)
+							.getActualPopulation();
+					Prestige = Prestige + player.getPrestige();
+					player.setPrestige(Prestige);
 				}
 
 			}
-
 		}
-		// First Chase Neutral Polis
-
 	}
 
 	/**
@@ -121,57 +172,53 @@ public class EndRoundManager {
 
 	/** This method manages Player's population feeding */
 	public void checkFeeding(Player player) {
-		//check if player can feed with wheat
+		// check if player can feed with wheat
 		Integer amountOfWheatNeeded = 0;
-		for(Polis p: player.getPlayerPolis())
-		{
+		for (Polis p : player.getPlayerPolis()) {
 			amountOfWheatNeeded += p.getActualPopulation();
 		}
-		
-		if(player.getWheat() >= amountOfWheatNeeded)
-		{
-			//player can feed with wheat
+
+		if (player.getWheat() >= amountOfWheatNeeded) {
+			// player can feed with wheat
 			player.setWheat(player.getWheat() - amountOfWheatNeeded);
-		}
-		else
-		{
-			//player pays all disponible wheat
+		} else {
+			// player pays all disponible wheat
 			Integer feededPopulation = player.getWheat();
-			Integer pendingFeedingPopulation = amountOfWheatNeeded - player.getWheat();
+			Integer pendingFeedingPopulation = amountOfWheatNeeded
+					- player.getWheat();
 			player.setWheat(0);
-			//player can't feed with wheat so he needs to paid with prestige or loose some polis
+			// player can't feed with wheat so he needs to paid with prestige or
+			// loose some polis
 			TextModeUi.showMessage("");
-			TextModeUi.showMessage("Se han podido alimentar " + feededPopulation + " ciudadanos");
-			
-			
-			while(pendingFeedingPopulation > 0)
-			{
+			TextModeUi.showMessage("Se han podido alimentar "
+					+ feededPopulation + " ciudadanos");
+
+			while (pendingFeedingPopulation > 0) {
 				TextModeUi.showMessage("");
-				TextModeUi.showMessage("Quedan " +pendingFeedingPopulation + " ciudadanos por alimentar.");
-				
-				//ask to player what method he want to use
+				TextModeUi.showMessage("Quedan " + pendingFeedingPopulation
+						+ " ciudadanos por alimentar.");
+
+				// ask to player what method he want to use
 				String method = TextModeUi.requestPaidMethod("feeding");
-				
-				
-				
-				if(method.equals("prestige"))
-				{
+
+				if (method.equals("prestige")) {
 					pendingFeedingPopulation -= 1;
 					player.setPrestige(player.getPrestige() - 1);
-					
-				}else if(method.equals("polis")){
-					
-					String p = TextModeUi.requestLoosePolis(); //FIXME create method in TextModeUi
+
+				} else if (method.equals("polis")) {
+
+					String p = TextModeUi.requestLoosePolis(); // FIXME create
+																// method in
+																// TextModeUi
 					Integer polisId = Integer.parseInt(p);
 					Polis polis = player.getPlayerPolis().get(polisId);
-					
+
 					pendingFeedingPopulation -= polis.getActualPopulation();
-					if(pendingFeedingPopulation < 0) {
+					if (pendingFeedingPopulation < 0) {
 						pendingFeedingPopulation = 0;
 					}
 					player.getPlayerPolis().remove(polis);
-					
-					
+
 				}
 			}
 		}
