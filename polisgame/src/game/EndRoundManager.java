@@ -3,6 +3,8 @@ package game;
 import java.util.List;
 import java.util.Random;
 
+import ui.TextModeUi;
+
 /** This class, contains methods to manage the end of game rounds */
 public class EndRoundManager {
 
@@ -72,7 +74,7 @@ public class EndRoundManager {
 			throw new NullPointerException(
 					"Player in checkProjects can´t be Null");
 		}
-		// TODO
+
 		List<Polis> listPolis;
 		listPolis = player.getPlayerPolis();
 		List<Project> listOfProjects;
@@ -118,9 +120,61 @@ public class EndRoundManager {
 	}
 
 	/** This method manages Player's population feeding */
-	public void checkFeeding() {
-
-		// TODO
+	public void checkFeeding(Player player) {
+		//check if player can feed with wheat
+		Integer amountOfWheatNeeded = 0;
+		for(Polis p: player.getPlayerPolis())
+		{
+			amountOfWheatNeeded += p.getActualPopulation();
+		}
+		
+		if(player.getWheat() >= amountOfWheatNeeded)
+		{
+			//player can feed with wheat
+			player.setWheat(player.getWheat() - amountOfWheatNeeded);
+		}
+		else
+		{
+			//player pays all disponible wheat
+			Integer feededPopulation = player.getWheat();
+			Integer pendingFeedingPopulation = amountOfWheatNeeded - player.getWheat();
+			player.setWheat(0);
+			//player can't feed with wheat so he needs to paid with prestige or loose some polis
+			TextModeUi.showMessage("");
+			TextModeUi.showMessage("Se han podido alimentar " + feededPopulation + " ciudadanos");
+			
+			
+			while(pendingFeedingPopulation > 0)
+			{
+				TextModeUi.showMessage("");
+				TextModeUi.showMessage("Quedan " +pendingFeedingPopulation + " ciudadanos por alimentar.");
+				
+				//ask to player what method he want to use
+				String method = TextModeUi.requestPaidMethod("feeding");
+				
+				
+				
+				if(method.equals("prestige"))
+				{
+					pendingFeedingPopulation -= 1;
+					player.setPrestige(player.getPrestige() - 1);
+					
+				}else if(method.equals("polis")){
+					
+					String p = TextModeUi.requestLoosePolis(); //FIXME create method in TextModeUi
+					Integer polisId = Integer.parseInt(p);
+					Polis polis = player.getPlayerPolis().get(polisId);
+					
+					pendingFeedingPopulation -= polis.getActualPopulation();
+					if(pendingFeedingPopulation < 0) {
+						pendingFeedingPopulation = 0;
+					}
+					player.getPlayerPolis().remove(polis);
+					
+					
+				}
+			}
+		}
 
 	}
 
