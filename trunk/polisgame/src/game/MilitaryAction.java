@@ -18,7 +18,7 @@ public class MilitaryAction extends GameAction{
 	
 	
 	/** To move an Hoplite or Hoplites group, to other position */
-	public Boolean moveHoplite(Player player, Round round,Territory initialPosition, Territory finalPosition, Integer numberOfUnits, Boolean multiMovement){
+	public Boolean moveHoplite(Player player, Round round,Territory initialPosition, Territory finalPosition, Integer numberOfUnits){
 		Boolean success = false; // This line is not necessary
 		success = AvailableActionsManager.checkMoveHopliteAction(player, round, initialPosition, finalPosition, numberOfUnits);
 		if(success){
@@ -42,24 +42,12 @@ public class MilitaryAction extends GameAction{
 				u.setPosition(finalPosition);
 			}
 			
+			player.setPrestige(player.getPrestige()-1);
 			
-			if(numberOfUnits>1){
+			if(!(numberOfUnits>1)){
 				TextModeUi.showMessage("Hoplite moved from "+initialPosition.getName()+" to "+finalPosition.getName());
 			}else{
 				TextModeUi.showMessage(numberOfUnits.toString()+" "+"Hoplites moved from "+initialPosition.getName()+" to "+finalPosition.getName());
-			}
-			
-			
-			
-				
-			if(multiMovement){
-				
-				//TextModeUi.requestMoveHoplite(); //FIXME complete this if.
-				
-				//TODO
-				
-			}else{
-				//Do nothing, action finished.
 			}
 				
 		}else{
@@ -70,7 +58,7 @@ public class MilitaryAction extends GameAction{
 	}
 	
 	/** To move a Trirreme or Trirremes group, to other sea */
-	public Boolean moveTrirreme(Round round, Player player, Sea initialSea, Sea finalSea, Integer numberOfUnits, Boolean multiMovement) {
+	public Boolean moveTrirreme(Round round, Player player, Sea initialSea, Sea finalSea, Integer numberOfUnits) {
 		if (round == null) throw new NullPointerException("'round' can not be null");
 		if (player == null) throw new NullPointerException("'player' can not be null");
 		if (initialSea == null) throw new NullPointerException("'initialSea' can not be null");
@@ -100,15 +88,7 @@ public class MilitaryAction extends GameAction{
 			
 			// This is because of game rules
 			player.setPrestige(player.getPrestige() - 1);
-			
-			if (multiMovement)
-			{
-				//TODO
-			}
-			else
-			{
-				//TODO
-			}
+
 		}
 		
 		return success;
