@@ -275,7 +275,7 @@ public class AvailableActionsManager {
 					// Do nothing
 				}
 			}
-			condition_TroopsInStart = realTroops == troops;
+			condition_TroopsInStart = realTroops >= troops;
 		}else{
 			// Do nothing -> Already: condition_TroopsInStart = false 
 		}
