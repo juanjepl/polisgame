@@ -1,6 +1,7 @@
 package game;
 
 import java.util.List;
+import java.util.Random;
 
 /** This class, contains methods to manage the end of game rounds */
 public class EndRoundManager {
@@ -20,45 +21,45 @@ public class EndRoundManager {
 		// TODO
 		List<Polis> ListOfpolisToCheck;
 		ListOfpolisToCheck = (List<Polis>) game.getGamePolis().values();
-
-		if (ListOfpolisToCheck.size() != 0) {
-			Polis polisToCheck;
-			List<Polis> listOfPolisPlayer;
-			List<Polis> listOfPolisEnemyPlayer;
-			listOfPolisPlayer = player.getPlayerPolis();
+		ListOfpolisToCheck.addAll(game.getGamePolis().values());
+		Player enemyPlayer;
+		Polis polisToCheck;
+		if (!ListOfpolisToCheck.isEmpty()) {
 
 			// CHECK ENEMY
 			if (player.equals(game.getAthensPlayer())) {
-				listOfPolisEnemyPlayer = game.getSpartaPlayer()
-						.getPlayerPolis();
+
+				enemyPlayer = game.getSpartaPlayer();
 			} else {
-				listOfPolisEnemyPlayer = game.getAthensPlayer()
-						.getPlayerPolis();
+
+				enemyPlayer = game.getAthensPlayer();
 			}
+			for (int i = 0; i < player.getPlayerPolis().size(); i++) {
+				// Check if Sieged Polis is Nuetral
+				if ((player.getPlayerPolis().get(i).getSieged())
+						&& (!enemyPlayer.getPlayerPolis().contains(
+								player.getPlayerPolis().get(i)))) {
+					// Polis is added to Player
+					// Siege False and population is recalculate
 
-			for (int i = 0; i < ListOfpolisToCheck.size(); i++) {
-				polisToCheck = ListOfpolisToCheck.get(i);
-				if (polisToCheck.getSieged()) {
-					if (((!(listOfPolisPlayer.contains(polisToCheck) && (!listOfPolisEnemyPlayer
-							.contains(polisToCheck)))))) {
-						player.addPolis(polisToCheck);
-						// FIXME We have to check the population afer siege
-						// We need to have contact with UserInterface
-					} else {
-						if ((!(listOfPolisPlayer.contains(polisToCheck) && (listOfPolisEnemyPlayer
-								.contains(polisToCheck))))) {
-							// FIXME needs a method that check locks for this
-							// enemy
-							// siege
+					player.getPlayerPolis().get(i).setSieged(false);
 
-						}
+					Integer rollDice = (int) ((Math.random() * 4 + 1));
+					Integer newPopulation = player.getPlayerPolis().get(i)
+							.getBasePopulation();
+					newPopulation = newPopulation - rollDice;
+					if (newPopulation <= 0) {
+						newPopulation = 1;
 					}
+					// We have to repopulate the polis with hoplites
+					// Necesary UI
 
 				}
+
 			}
-		} else {
-			// Do Nothing
+
 		}
+		// First Chase Neutral Polis
 
 	}
 
@@ -67,8 +68,9 @@ public class EndRoundManager {
 	 * prestige
 	 */
 	public void checkProjects(Player player) {
-		if (player ==  null ){
-			throw new NullPointerException("Player in checkProjects can´t be Null");
+		if (player == null) {
+			throw new NullPointerException(
+					"Player in checkProjects can´t be Null");
 		}
 		// TODO
 		List<Polis> listPolis;
@@ -76,7 +78,7 @@ public class EndRoundManager {
 		List<Project> listOfProjects;
 		Polis polisToCheck;
 		Project projectToCheck;
-		
+
 		for (int i = 0; i < listPolis.size(); i++) {
 			polisToCheck = listPolis.get(i);
 			listOfProjects = polisToCheck.getProjects();
