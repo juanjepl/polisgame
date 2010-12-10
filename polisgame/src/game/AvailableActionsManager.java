@@ -173,7 +173,7 @@ public class AvailableActionsManager {
 		
 		if(existsProxenus){
 			for(Polis po: g.getGamePolis().values()){
-				if(checkCivilWarAction(p,po)){
+				if(checkCivilWarAction(g,p,po)){
 					available = true;
 					break;
 				}
@@ -275,7 +275,7 @@ public class AvailableActionsManager {
 					// Do nothing
 				}
 			}
-			condition_TroopsInStart = realTroops >= troops;
+			condition_TroopsInStart = realTroops == troops;
 		}else{
 			// Do nothing -> Already: condition_TroopsInStart = false 
 		}
@@ -453,9 +453,38 @@ public class AvailableActionsManager {
 		//TODO
 		return available;
 	}
-	public static Boolean checkCivilWarAction(Player player,Polis polis){
+	public static Boolean checkCivilWarAction(Game game, Player player,Polis polis){
 		Boolean available = false;
-		//TODO
+
+		Player oponent;
+		if(game.getAthensPlayer().equals(player))
+		{
+			oponent = game.getSpartaPlayer();
+		}else
+		{
+			oponent = game.getAthensPlayer();
+		}
+		
+		Boolean condition_isNeutralOrOponent = true;
+
+		//check if player has minimum amount of silver 
+		if(!player.getPlayerPolis().contains(polis) && !oponent.getPlayerPolis().contains(polis))
+		{
+			//is neutral
+			condition_isNeutralOrOponent = player.getSilver() >= (2 * polis.getBasePopulation());
+			
+		}else if(!player.getPlayerPolis().contains(polis) && oponent.getPlayerPolis().contains(polis))
+		{
+			//oponent is owner
+			condition_isNeutralOrOponent = player.getSilver() >= (3 * polis.getActualPopulation());
+		}
+		
+		Boolean condition_isSieged = !polis.getSieged();
+	
+		Boolean condition_notOponentCapital = !oponent.getCapital().equals(polis);
+
+		available = condition_isNeutralOrOponent && condition_isSieged && condition_notOponentCapital;
+		
 		return available;
 	}
 	
