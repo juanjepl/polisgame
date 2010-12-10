@@ -14,6 +14,12 @@ public class GraphNavigatorManager {
 	public static Boolean existsWay ( Position p1, Position p2, Player player, String type){
 		
 		Graph graph = null;
+		if(p1.getSysName().equals(p2.getSysName())){
+			return false;
+		}
+		else
+		{
+			
 		
 		if(type.equals("hoplite"))
 		{
@@ -73,6 +79,7 @@ public class GraphNavigatorManager {
 			Vertex<? extends Position> element = queue.remove(0);
 			//get adjacents of element and check if exists in visited
 			List<Vertex<? extends Position>> adjacents = graph.getGraph().get(element);
+			visited.add(element);
 			
 			for(Vertex<? extends Position> vertex: adjacents)
 			{
@@ -91,8 +98,9 @@ public class GraphNavigatorManager {
 				exists = true;
 			}
 		}
-	
+		
 		return exists;
+		}
 	}
 
 }
