@@ -69,7 +69,7 @@ public class BattleManager
 	 */
 	public Boolean assaultAvailable()
 	{
-		return (GameConfigurations.getMinNumberToBattle() >= 8);
+		return (position.getUnits().size() >= GameConfigurations.getMinNumberToBattle());
 	}
 	
 	/**
