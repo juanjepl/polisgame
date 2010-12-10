@@ -1,10 +1,10 @@
 #System name
-proxenusGraph
+tradeBoatGraph
 #territory
 illyria:ionianSea
 ionianSea:illyria:spartaTradeDock
 spartaTradeDock:ionianSea:myrtoanSea
-myrtoanSea:spartaTradeDock:athensDock:sporadesIslands
+myrtoanSea:spartaTradeDock:athensTradeDock:sporadesIslands
 sporadesIslands:egypt:persianEmpire:athensTradeDock:thraceSea
 athensTradeDock:myrtoanSea:sporadesIslands:thraceSea
 thraceSea:thrace:euxinePontos:athensTradeDock:sporadesIslands
