@@ -598,7 +598,7 @@ String message = ("Please, choose Polis to create the Proxenus: "); //FIXME resc
 		
 		Integer Count2 = 0;
 		for(Territory terr : g.getGameTerritories().values()){
-			if(AvailableActionsManager.checkMoveHopliteAction(p, g.getRound(), startMovePoints.get(Integer.parseInt(chosenOption)+1), terr, 1)){  //FIXME careful with the +1 is correct?
+			if(AvailableActionsManager.checkMoveHopliteAction(p, g.getRound(), startMovePoints.get(Integer.parseInt(chosenOption)), terr, 1)){  //FIXME careful with the +1 is correct?
 				endMovePoints.add(terr);
 				optionsToChooseText2.add(terr.getName());
 				grantedOptions2.add(Count2.toString());
@@ -610,7 +610,28 @@ String message = ("Please, choose Polis to create the Proxenus: "); //FIXME resc
 		ShowPlayerChoices(message2,optionsToChooseText2);
 		chosenOption2 = RequestPlayerChoices(grantedOptions2,availableOptions2);
 		
+		//to request number of units to move
+
+		String message3 = "Please, choose number of Hoplites to move: "; //FIXME rescue from gametexts...
+		String chosenOption3 = "";
 		
+		List<String> optionsToChooseText3 = new ArrayList<String>();
+		List<String> grantedOptions3 = new ArrayList<String>();
+		List<String> availableOptions3 = new ArrayList<String>();
+		
+		Integer Count3 = 0;
+		for(Integer i=1 ; i<g.getRound().getMaximumPositionSlotsForThisRound() ; i++){
+			if(AvailableActionsManager.checkMoveHopliteAction(p, g.getRound(),startMovePoints.get(Integer.parseInt(chosenOption)), endMovePoints.get(Integer.parseInt(chosenOption2)+1), i)){
+				optionsToChooseText3.add(i.toString()+" Hoplite(s)"); //FIXME from gametexts...
+				grantedOptions3.add(Count3.toString());
+				availableOptions3.add(Count3.toString());
+				Count3++;
+			}
+		}
+		
+		ShowPlayerChoices(message3,optionsToChooseText3);
+		chosenOption3 = RequestPlayerChoices(grantedOptions3,availableOptions3);	
+
 		
 		//TODO number of units, destiny and multimovement.
 		//TODO
@@ -844,6 +865,10 @@ String message = ("Please, choose Polis to create the Proxenus: "); //FIXME resc
 	}
 	
 	public static void requestFeeding(){
+		//TODO
+	}
+	
+	public static void requestLoosePolis(){
 		//TODO
 	}
 	
