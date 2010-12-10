@@ -4,6 +4,8 @@ import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 
+import cfg.GameConfigurations;
+
 import utils.RandomCollections;
 
 /**
@@ -67,7 +69,7 @@ public class BattleManager
 	 */
 	public Boolean assaultAvailable()
 	{
-		return (position.getUnits().size() >= 8);
+		return (GameConfigurations.getMinNumberToBattle() >= 8);
 	}
 	
 	/**
