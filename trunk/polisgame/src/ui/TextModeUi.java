@@ -868,8 +868,10 @@ String message = ("Please, choose Polis to create the Proxenus: "); //FIXME resc
 		//TODO
 	}
 	
-	public static void requestLoosePolis(){
+	public static String requestLoosePolis(){
 		//TODO
+		String a = "";
+		return a;
 	}
 	
 	public static void requestGrowth(){
