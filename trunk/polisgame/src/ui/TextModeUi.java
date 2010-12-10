@@ -587,8 +587,6 @@ String message = ("Please, choose Polis to create the Proxenus: "); //FIXME resc
 		chosenOption = RequestPlayerChoices(grantedOptions,availableOptions);
 		
 		//TODO number of units, destiny and multimovement.
-		
-		
 		//TODO
 		//TODO
 		//TODO
