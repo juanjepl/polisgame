@@ -1,32 +1,38 @@
 package game;
 
-import cfg.GameConfigurations;
+import java.util.LinkedList;
+import java.util.List;
 
 /** This class manages, the operations to do, when a turn finishes */
-public class EndTurnManager {
-
-	public EndTurnManager(){}
-	
-	/** This method checks for any battles ( */
-	public static void checkBattles(Game game){
+public class EndTurnManager 
+{	
+	/**
+	 * Gets pending battles.
+	 * Call this method as many times as necessary until no more pending battles. For each returned BattleManager object, call its 'makeAssault' method
+	 * with both players unit bets
+	 * @return list of pending battles
+	 */
+	public static List<BattleManager> checkBattles(Game game)
+	{
+		if (game == null) throw new NullPointerException("'game' can not be null");
 		
-		for(Territory terr : game.getGameTerritories().values()){
-			if (terr.getUnits().size()>= GameConfigurations.getMinNumberToBattle()){ // 8 by default
-				//TODO call to BattleManager
-			}
-			else{
-				// Do nothing
-			}
+		LinkedList<BattleManager> battlePending = new LinkedList<BattleManager>();
+		Player sparta = game.getSpartaPlayer();
+		Player athens = game.getAthensPlayer();
+		
+		for(Territory terr : game.getGameTerritories().values())
+		{
+			BattleManager batman = new BattleManager(sparta, athens, terr);
+			if (batman.assaultAvailable()) battlePending.add(batman);
 		}
 		
-		for(Sea sea : game.getGameSeas().values()){
-			if(sea.getUnits().size() >= GameConfigurations.getMinNumberToBattle()){
-				//TODO call to BattleManager
-			}
-			else{
-				// Do nothing
-			}
+		for(Sea sea : game.getGameSeas().values())
+		{
+			BattleManager batman = new BattleManager(sparta, athens, sea);
+			if (batman.assaultAvailable()) battlePending.add(batman);
 		}
+		
+		return battlePending;
 	}
 	
 	public static void removePlundersUnitsFromTerritory()
