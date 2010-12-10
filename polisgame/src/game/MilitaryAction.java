@@ -19,7 +19,7 @@ public class MilitaryAction extends GameAction{
 	
 	/** To move an Hoplite or Hoplites group, to other position */
 	public Boolean moveHoplite(Player player, Round round,Territory initialPosition, Territory finalPosition, Integer numberOfUnits){
-		Boolean success = false; // This line is not necessary
+		Boolean success = false;
 		success = AvailableActionsManager.checkMoveHopliteAction(player, round, initialPosition, finalPosition, numberOfUnits);
 		if(success){
 			List<Unit> unitsToMove = new ArrayList<Unit>();

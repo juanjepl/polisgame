@@ -646,10 +646,32 @@ String message = ("Please, choose Polis to create the Proxenus: "); //FIXME resc
 		mA.moveHoplite(p , g.getRound(), iniTerr, endTerr, chosenNumberOfTroops);
 		
 		
-		//TODO multimovements.
-		//TODO
-		//TODO
+		// Multimovement zone
 		
+		Boolean canBeMultimovement = false;
+		for(Territory terri : startMovePoints){
+			if(AvailableActionsManager.checkMoveHopliteAction(p, g.getRound(), terri, endTerr, 1)){
+				canBeMultimovement = true;
+				break;
+			}
+		}
+		
+		if(canBeMultimovement){
+			String messageMultimovement = "Do you want move more hoplites to "+endTerr.getName()+" ?"; //FIXME from gametexts...
+			
+			if(requestYesOrNot(messageMultimovement)){
+				
+				//TODO choose start territory
+				//TODO choose number of units
+				
+				
+			}else{
+				// Do nothing, player don't want more hoplite movements
+			}
+			
+		}else{
+			// Do nothing, finished.
+		}
 	}
 	
 	public static void requestMoveTrirreme(){
@@ -871,6 +893,33 @@ String message = ("Please, choose Polis to create the Proxenus: "); //FIXME resc
 	public static void showMessage(String s){
 		System.out.println(" ");
 		System.out.println(s);
+	}
+	
+	public static Boolean requestYesOrNot(String message){
+		Boolean reply = false;
+		//TODO
+		List<String> textOptions = new ArrayList<String>();
+		List<String> grantedOptions = new ArrayList<String>();
+		List<String> availableOptions = new ArrayList<String>();
+		
+		textOptions.add("No"); //FIXME from gametexts...
+		textOptions.add("Yes"); //FIXME from gametexts...
+		
+		grantedOptions.add("0");
+		grantedOptions.add("1");
+		
+		availableOptions.add("0");
+		availableOptions.add("1");
+		
+		ShowPlayerChoices(message,textOptions);
+		
+		if(RequestPlayerChoices(grantedOptions,availableOptions) == "1"){
+			reply = true;
+		}else{
+			// Do nothing ( reply = false by default )
+		}
+		
+		return reply;
 	}
 
 	public static void requestSiegeRepopulation(){
