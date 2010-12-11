@@ -550,7 +550,7 @@ String message = ("Please, choose Polis to create the Proxenus: "); //FIXME resc
 	
 	public static void requestMoveHoplite(Game g,Player p){
 		
-		String message = ("Please, choose Polis where you have hoplites and you can do moves: "); //FIXME rescue from gameTexts...
+		String message = ("Please, choose Territory where you have hoplites and you can do moves: "); //FIXME rescue from gameTexts...
 		
 		List<Territory> startMovePoints = new ArrayList<Territory>();
 		List<String> grantedOptions = new ArrayList<String>();
@@ -593,6 +593,12 @@ String message = ("Please, choose Polis to create the Proxenus: "); //FIXME resc
 
 		iniTerr = startMovePoints.get(Integer.parseInt(chosenOption));
 		
+		
+		
+		
+		
+		
+		
 		// to choose destiny
 		List<Territory> endMovePoints = new ArrayList<Territory>();
 		List<String> optionsToChooseText2 = new ArrayList<String>();
@@ -619,6 +625,13 @@ String message = ("Please, choose Polis to create the Proxenus: "); //FIXME resc
 		
 		endTerr = endMovePoints.get(Integer.parseInt(chosenOption2));
 		
+		
+		
+		
+		
+		
+		
+		
 		//to request number of units to move
 
 		String message3 = "Please, choose number of Hoplites to move: "; //FIXME rescue from gametexts...
@@ -643,16 +656,36 @@ String message = ("Please, choose Polis to create the Proxenus: "); //FIXME resc
 
 		chosenNumberOfTroops = Integer.parseInt(grantedOptions3.get(Integer.parseInt(chosenOption3))) + 1; //+1 because starts with 0 (option), but first it's 1 hoplite 
 		MilitaryAction mA = new MilitaryAction();
-		mA.moveHoplite(p , g.getRound(), iniTerr, endTerr, chosenNumberOfTroops);
+		mA.moveHoplite(p , g.getRound(), iniTerr, endTerr, chosenNumberOfTroops, false);
+		
+		
+		
+		
+		
+		
 		
 		
 		// Multimovement zone
 		
+
 		Boolean canBeMultimovement = false;
+		
+		List<Territory> multimovementStartPoints = new ArrayList<Territory>();
+		List<String> multimovementAvailables = new ArrayList<String>();
+		List<String> multimovementGranted = new ArrayList<String>();
+		List<String> multimovementTexts = new ArrayList<String>();
+		
+		Territory multimovementStartTerritory;
+		
+		Integer multimovementCount = 0;
 		for(Territory terri : startMovePoints){
 			if(AvailableActionsManager.checkMoveHopliteAction(p, g.getRound(), terri, endTerr, 1)){
+				multimovementStartPoints.add(terri);
+				multimovementTexts.add(terri.getName()+" "+startTerritories.get(terri.getName()).toString()+"x");
+				multimovementGranted.add(multimovementCount.toString());
+				multimovementAvailables.add(multimovementCount.toString());
 				canBeMultimovement = true;
-				break;
+				multimovementCount += 1;
 			}
 		}
 		
@@ -661,7 +694,12 @@ String message = ("Please, choose Polis to create the Proxenus: "); //FIXME resc
 			
 			if(requestYesOrNot(messageMultimovement)){
 				
-				//TODO choose start territory
+				String multimovementChosenOption = "";
+				
+				ShowPlayerChoices(message, multimovementTexts);
+				multimovementChosenOption = RequestPlayerChoices(multimovementGranted,multimovementAvailables);
+				multimovementStartTerritory =  multimovementStartPoints.get(Integer.parseInt(multimovementChosenOption));
+				
 				//TODO choose number of units
 				
 				
@@ -673,6 +711,10 @@ String message = ("Please, choose Polis to create the Proxenus: "); //FIXME resc
 			// Do nothing, finished.
 		}
 	}
+	
+	
+	
+	
 	
 	public static void requestMoveTrirreme(){
 		//TODO
@@ -897,7 +939,7 @@ String message = ("Please, choose Polis to create the Proxenus: "); //FIXME resc
 	
 	public static Boolean requestYesOrNot(String message){
 		Boolean reply = false;
-		//TODO
+
 		List<String> textOptions = new ArrayList<String>();
 		List<String> grantedOptions = new ArrayList<String>();
 		List<String> availableOptions = new ArrayList<String>();
@@ -913,7 +955,7 @@ String message = ("Please, choose Polis to create the Proxenus: "); //FIXME resc
 		
 		ShowPlayerChoices(message,textOptions);
 		
-		if(RequestPlayerChoices(grantedOptions,availableOptions) == "1"){
+		if(RequestPlayerChoices(grantedOptions,availableOptions).equals("1")){
 			reply = true;
 		}else{
 			// Do nothing ( reply = false by default )

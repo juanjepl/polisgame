@@ -18,7 +18,7 @@ public class MilitaryAction extends GameAction{
 	
 	
 	/** To move an Hoplite or Hoplites group, to other position */
-	public Boolean moveHoplite(Player player, Round round,Territory initialPosition, Territory finalPosition, Integer numberOfUnits){
+	public Boolean moveHoplite(Player player, Round round,Territory initialPosition, Territory finalPosition, Integer numberOfUnits, Boolean multiMovement){
 		Boolean success = false;
 		success = AvailableActionsManager.checkMoveHopliteAction(player, round, initialPosition, finalPosition, numberOfUnits);
 		if(success){
@@ -42,7 +42,10 @@ public class MilitaryAction extends GameAction{
 				u.setPosition(finalPosition);
 			}
 			
-			player.setPrestige(player.getPrestige()-1);
+			// Do not waste prestige if is 2nd movement of a multimovement for example
+			if(!multiMovement){
+				player.setPrestige(player.getPrestige()-1);
+			}
 			
 			if(!(numberOfUnits>1)){
 				TextModeUi.showMessage("Hoplite moved from "+initialPosition.getName()+" to "+finalPosition.getName());
@@ -58,7 +61,7 @@ public class MilitaryAction extends GameAction{
 	}
 	
 	/** To move a Trirreme or Trirremes group, to other sea */
-	public Boolean moveTrirreme(Round round, Player player, Sea initialSea, Sea finalSea, Integer numberOfUnits) {
+	public Boolean moveTrirreme(Round round, Player player, Sea initialSea, Sea finalSea, Integer numberOfUnits,Boolean multiMovement) {
 		if (round == null) throw new NullPointerException("'round' can not be null");
 		if (player == null) throw new NullPointerException("'player' can not be null");
 		if (initialSea == null) throw new NullPointerException("'initialSea' can not be null");
@@ -86,9 +89,10 @@ public class MilitaryAction extends GameAction{
 				}
 			}
 			
-			// This is because of game rules
-			player.setPrestige(player.getPrestige() - 1);
-
+			// Do not waste prestige if is 2nd movement of a multimovement for example
+			if(!multiMovement){
+				player.setPrestige(player.getPrestige() - 1);
+			}
 		}
 		
 		return success;
