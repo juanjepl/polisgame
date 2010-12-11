@@ -593,12 +593,7 @@ String message = ("Please, choose Polis to create the Proxenus: "); //FIXME resc
 
 		iniTerr = startMovePoints.get(Integer.parseInt(chosenOption));
 		
-		
-		
-		
-		
-		
-		
+
 		// to choose destiny
 		List<Territory> endMovePoints = new ArrayList<Territory>();
 		List<String> optionsToChooseText2 = new ArrayList<String>();
@@ -625,13 +620,7 @@ String message = ("Please, choose Polis to create the Proxenus: "); //FIXME resc
 		
 		endTerr = endMovePoints.get(Integer.parseInt(chosenOption2));
 		
-		
-		
-		
-		
-		
-		
-		
+
 		//to request number of units to move
 
 		String message3 = "Please, choose number of Hoplites to move: "; //FIXME rescue from gametexts...
@@ -659,60 +648,82 @@ String message = ("Please, choose Polis to create the Proxenus: "); //FIXME resc
 		mA.moveHoplite(p , g.getRound(), iniTerr, endTerr, chosenNumberOfTroops, false);
 		
 		
-		
-		
-		
-		
-		
-		
 		// Multimovement zone
-		
 
-		Boolean canBeMultimovement = false;
+		Boolean canBeMultimovement = true; // only for entering to the loop (the true)
 		
-		List<Territory> multimovementStartPoints = new ArrayList<Territory>();
-		List<String> multimovementAvailables = new ArrayList<String>();
-		List<String> multimovementGranted = new ArrayList<String>();
-		List<String> multimovementTexts = new ArrayList<String>();
-		
-		Territory multimovementStartTerritory;
-		
-		Integer multimovementCount = 0;
-		for(Territory terri : startMovePoints){
-			if(AvailableActionsManager.checkMoveHopliteAction(p, g.getRound(), terri, endTerr, 1)){
-				multimovementStartPoints.add(terri);
-				multimovementTexts.add(terri.getName()+" "+startTerritories.get(terri.getName()).toString()+"x");
-				multimovementGranted.add(multimovementCount.toString());
-				multimovementAvailables.add(multimovementCount.toString());
-				canBeMultimovement = true;
-				multimovementCount += 1;
-			}
-		}
-		
-		if(canBeMultimovement){
-			String messageMultimovement = "Do you want move more hoplites to "+endTerr.getName()+" ?"; //FIXME from gametexts...
+		while(canBeMultimovement){
 			
-			if(requestYesOrNot(messageMultimovement)){
+			canBeMultimovement = false;
+		
+			List<Territory> multimovementStartPoints = new ArrayList<Territory>();
+			List<String> multimovementAvailables = new ArrayList<String>();
+			List<String> multimovementGranted = new ArrayList<String>();
+			List<String> multimovementTexts = new ArrayList<String>();
+		
+			Territory multimovementStartTerritory;
+		
+			Integer multimovementCount = 0;
+			for(Territory terri : startMovePoints){
+				if(AvailableActionsManager.checkMoveHopliteAction(p, g.getRound(), terri, endTerr, 1)){
+					multimovementStartPoints.add(terri);
+					multimovementTexts.add(terri.getName()+" "+startTerritories.get(terri.getName()).toString()+"x");
+					multimovementGranted.add(multimovementCount.toString());
+					multimovementAvailables.add(multimovementCount.toString());
+					canBeMultimovement = true;
+					multimovementCount += 1;
+				}
+			}
+		
+			if(canBeMultimovement){
+				String messageMultimovement = "Do you want move more hoplites to "+endTerr.getName()+" ?"; //FIXME from gametexts...
+			
+				if(requestYesOrNot(messageMultimovement)){
 				
-				String multimovementChosenOption = "";
+					String multimovementChosenOption = "";
 				
-				ShowPlayerChoices(message, multimovementTexts);
-				multimovementChosenOption = RequestPlayerChoices(multimovementGranted,multimovementAvailables);
-				multimovementStartTerritory =  multimovementStartPoints.get(Integer.parseInt(multimovementChosenOption));
+					ShowPlayerChoices(message, multimovementTexts);
+					multimovementChosenOption = RequestPlayerChoices(multimovementGranted,multimovementAvailables);
+					multimovementStartTerritory =  multimovementStartPoints.get(Integer.parseInt(multimovementChosenOption));
 				
-				//TODO choose number of units
+
+					//to request number of units to move
+
+					String numberUnitsChosen = "";
 				
+					List<String> optionsUnitsToChooseText = new ArrayList<String>();
+					List<String> grantedOptionsMultiMovement = new ArrayList<String>();
+					List<String> availableOptionsMultiMovement = new ArrayList<String>();
 				
+					Integer MultimovementCount = 0;
+					for(Integer i=1 ; i <= g.getRound().getMaximumPositionSlotsForThisRound() ; i++){
+						if(AvailableActionsManager.checkMoveHopliteAction(p, g.getRound(),multimovementStartTerritory, endTerr, i)){
+							optionsUnitsToChooseText.add(i.toString()+" Hoplite(s)"); //FIXME from gametexts...
+							grantedOptionsMultiMovement.add(MultimovementCount.toString());
+							availableOptionsMultiMovement.add(MultimovementCount.toString());
+							MultimovementCount++;
+						}
+					}
+					
+					ShowPlayerChoices(message3,optionsUnitsToChooseText);
+					numberUnitsChosen = RequestPlayerChoices(grantedOptions3,availableOptionsMultiMovement);
+					
+					Integer chosenNumberOfTroopsMulti;
+					chosenNumberOfTroopsMulti = Integer.parseInt(grantedOptionsMultiMovement.get(Integer.parseInt(numberUnitsChosen))) + 1; //+1 because starts with 0 (option), but first it's 1 hoplite 
+					
+					mA.moveHoplite(p , g.getRound(), multimovementStartTerritory, endTerr, chosenNumberOfTroopsMulti, true); // true to sign as multimovement
+				
+
+				}else{
+					canBeMultimovement = false; // to exit from the loop
+				}
+			
 			}else{
-				// Do nothing, player don't want more hoplite movements
+				// Do nothing, finished. (canBeMultimovement = false by default)
 			}
-			
-		}else{
-			// Do nothing, finished.
 		}
+	
 	}
-	
-	
 	
 	
 	
