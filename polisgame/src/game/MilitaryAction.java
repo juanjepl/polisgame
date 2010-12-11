@@ -18,7 +18,7 @@ public class MilitaryAction extends GameAction{
 	
 	
 	/** To move an Hoplite or Hoplites group, to other position */
-	public Boolean moveHoplite(Player player, Round round,Territory initialPosition, Territory finalPosition, Integer numberOfUnits, Boolean multiMovement){
+	public Boolean moveHoplite(Player player, Round round, Territory initialPosition, Territory finalPosition, Integer numberOfUnits, Boolean multiMovement){
 		Boolean success = false;
 		success = AvailableActionsManager.checkMoveHopliteAction(player, round, initialPosition, finalPosition, numberOfUnits);
 		if(success){
@@ -61,7 +61,7 @@ public class MilitaryAction extends GameAction{
 	}
 	
 	/** To move a Trirreme or Trirremes group, to other sea */
-	public Boolean moveTrirreme(Round round, Player player, Sea initialSea, Sea finalSea, Integer numberOfUnits,Boolean multiMovement) {
+	public Boolean moveTrirreme(Player player, Round round, Sea initialSea, Sea finalSea, Integer numberOfUnits,Boolean multiMovement) {
 		if (round == null) throw new NullPointerException("'round' can not be null");
 		if (player == null) throw new NullPointerException("'player' can not be null");
 		if (initialSea == null) throw new NullPointerException("'initialSea' can not be null");

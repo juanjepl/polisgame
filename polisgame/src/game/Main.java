@@ -30,6 +30,7 @@ public class Main{
 					
 					if(!(polis_game.getWhoHasTheTurn().getHasPassedTurn())){
 						// First GameAction
+						TextModeUi.showMessage("-- First Action from this turn --"); //FIXME rescue this from gametexts.
 						TextModeUi.showAvailableActions(polis_game, polis_game.getWhoHasTheTurn());
 						
 						GameAction a1 = null; //FIXME
@@ -38,6 +39,7 @@ public class Main{
 					
 					if(!(polis_game.getWhoHasTheTurn().getHasPassedTurn())){
 						// Second GameAction
+						TextModeUi.showMessage("-- Second Action from this turn --"); //FIXME rescue this from gametexts.
 						TextModeUi.showAvailableActions(polis_game, polis_game.getWhoHasTheTurn());
 						
 						GameAction a2 = null; //FIXME

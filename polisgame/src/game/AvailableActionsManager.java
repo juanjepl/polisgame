@@ -290,8 +290,8 @@ public class AvailableActionsManager {
 	// 2nd ~ 3rd lvl method
 	public static Boolean checkMoveTrirremeActionFromX(Game game, Player player, Sea start, Integer troops){
 		Boolean available = false;
-		for(Sea terr: game.getGameSeas().values()){
-			if(checkMoveTrirremeAction(player,game.getRound(),start,terr,troops)){
+		for(Sea se: game.getGameSeas().values()){
+			if(checkMoveTrirremeAction(player,game.getRound(),start,se,troops)){
 				available = true;
 			}
 		}
