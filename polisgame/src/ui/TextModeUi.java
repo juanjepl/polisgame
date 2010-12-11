@@ -1167,8 +1167,10 @@ String message = ("Please, choose Polis to create the Proxenus: "); //FIXME resc
 		return map;
 	}
 	
-	public static void requestPhoros(){
+	public static Integer requestPhoros(){
+		Integer a = 0;
 		//TODO
+		return a;
 	}
 	
 	public static void requestBattle(){
