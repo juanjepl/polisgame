@@ -288,9 +288,45 @@ public class EndRoundManager {
 	}
 
 	/** This method prepares the next round elements */
-	public void initializeNextRound() {
+	public void initializeNextRound(Game game) {
+		
+		// All plundered territories reborns like not plundered
+		for(Territory terr : game.getGameTerritories().values()){
+			if(terr.getPlundered() == true){
+				terr.setPlundered(false);
+			}
+		}
+		
+		// Trade boats returns to its trade docks
+		for(Market mark : game.getGameMarkets().values()){
+			for(Unit u: mark.getUnits()){
+				if(u instanceof TradeBoat){
+					mark.removeUnit(u);
+					u.getOwner().getPlayerTradeDock().addUnit(u);
+					u.setPosition(u.getOwner().getPlayerTradeDock());
+				}
+			}
+		}
 
-		// TODO
-
+		// Sign projects from previous round like used.
+		for(Project proj : game.getRound().getProjectsInThisRound()){
+			proj.setUsed(true);
+		}
+		
+		// Change name of round and positions allowed for it, get 3 new projects and the new game event
+		game.getRound().startRound(game);
+		
+		// Player with less prestige, starts the round
+		
+		Integer prestigeAth = game.getAthensPlayer().getPrestige();
+		Integer prestigeSpa = game.getSpartaPlayer().getPrestige();
+		
+		if(prestigeAth > prestigeSpa){
+			game.setWhoHasTheTurn(game.getSpartaPlayer());
+		}else if(prestigeAth < prestigeSpa){
+			game.setWhoHasTheTurn(game.getAthensPlayer());
+		}else{ // prestigeAth == prestigeSpa
+			// Do nothing (the turn is ordered by previous round ending)
+		}
 	}
 }
