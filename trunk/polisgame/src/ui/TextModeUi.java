@@ -348,7 +348,7 @@ public class TextModeUi implements IUserInterface{ //TODO rescue language texts 
 		}else if(chosenOption.equals("1")){
 			requestMoveHoplite(g,p);
 		}else if(chosenOption.equals("2")){
-			requestMoveTrirreme();
+			requestMoveTrirreme(g,p);
 		}else if(chosenOption.equals("3")){	
 			requestSiegePolis();
 		}else if(chosenOption.equals("4")){	
@@ -724,11 +724,182 @@ String message = ("Please, choose Polis to create the Proxenus: "); //FIXME resc
 		}
 	
 	}
+
+	public static void requestMoveTrirreme(Game g,Player p){
+		
+		String message = ("Please, choose Sea where you have trirremes and you can do moves: "); //FIXME rescue from gameTexts...
+		
+		List<Sea> startMovePoints = new ArrayList<Sea>();
+		List<String> grantedOptions = new ArrayList<String>();
+		List<String> optionsToChooseText = new ArrayList<String>();
+		List<String> availableOptions = new ArrayList<String>();
+		
+		Sea iniSea;
+		Sea endSea;
+		Integer chosenNumberOfTroops;
+		
+		String chosenOption = "";
+		
+		Map<String,Integer> startSeas = new HashMap<String,Integer>();
+		
+		for(Unit u: p.getPlayerUnits()){
+			if(startSeas.containsKey(u.getPosition().getName())){
+				Integer mapValue = startSeas.get(u.getPosition().getName());
+				mapValue += 1;
+				startSeas.put((u.getPosition().getName()), mapValue); // can overwrite the value? //TODO -> test it
+			}
+			
+			else if((u instanceof Trirreme) && (AvailableActionsManager.checkMoveTrirremeActionFromX(g, p, (Sea)u.getPosition(), 1))){
+				startSeas.put(u.getPosition().getName(),1);
+				startMovePoints.add((Sea)u.getPosition());
+			}else{
+				// Do nothing, next iteration.
+			}
+		}
+		
+		Integer count = 0;
+		for(Sea se: startMovePoints){
+			optionsToChooseText.add(se.getName()+" "+startSeas.get(se.getName()).toString()+"x");
+			grantedOptions.add(count.toString());
+			availableOptions.add(count.toString());
+			count += 1;
+		}
+		
+		ShowPlayerChoices(message,optionsToChooseText);
+		chosenOption = RequestPlayerChoices(grantedOptions,availableOptions);
+
+		iniSea = startMovePoints.get(Integer.parseInt(chosenOption));
+		
+
+		// to choose destiny
+		List<Sea> endMovePoints = new ArrayList<Sea>();
+		List<String> optionsToChooseText2 = new ArrayList<String>();
+		List<String> grantedOptions2 = new ArrayList<String>();
+		List<String> availableOptions2 = new ArrayList<String>();
+
+		String message2 = "Please, choose destination from trirreme(s): ";//FIXME rescue from gametexts...
+		
+		String chosenOption2 = "";
+		
+		Integer Count2 = 0;
+		for(Sea se2 : g.getGameSeas().values()){
+			if(AvailableActionsManager.checkMoveTrirremeAction(p, g.getRound(), iniSea, se2, 1)){  //FIXME careful with the +1 is correct?
+				endMovePoints.add(se2);
+				optionsToChooseText2.add(se2.getName());
+				grantedOptions2.add(Count2.toString());
+				availableOptions2.add(Count2.toString());
+				Count2++;
+			}
+		}
+		
+		ShowPlayerChoices(message2,optionsToChooseText2);
+		chosenOption2 = RequestPlayerChoices(grantedOptions2,availableOptions2);
+		
+		endSea = endMovePoints.get(Integer.parseInt(chosenOption2));
+		
+
+		//to request number of units to move
+
+		String message3 = "Please, choose number of Trirremes to move: "; //FIXME rescue from gametexts...
+		String chosenOption3 = "";
+		
+		List<String> optionsToChooseText3 = new ArrayList<String>();
+		List<String> grantedOptions3 = new ArrayList<String>();
+		List<String> availableOptions3 = new ArrayList<String>();
+		
+		Integer Count3 = 0;
+		for(Integer i=1 ; i <= g.getRound().getMaximumPositionSlotsForThisRound() ; i++){
+			if(AvailableActionsManager.checkMoveTrirremeAction(p, g.getRound(),iniSea, endSea, i)){
+				optionsToChooseText3.add(i.toString()+" Trirreme(s)"); //FIXME from gametexts...
+				grantedOptions3.add(Count3.toString());
+				availableOptions3.add(Count3.toString());
+				Count3++;
+			}
+		}
+		
+		ShowPlayerChoices(message3,optionsToChooseText3);
+		chosenOption3 = RequestPlayerChoices(grantedOptions3,availableOptions3);	
+
+		chosenNumberOfTroops = Integer.parseInt(grantedOptions3.get(Integer.parseInt(chosenOption3))) + 1; //+1 because starts with 0 (option), but first it's 1 hoplite 
+		MilitaryAction mA = new MilitaryAction();
+		mA.moveTrirreme(p , g.getRound(), iniSea, endSea, chosenNumberOfTroops, false);
+		
+		
+		// Multimovement zone
+
+		Boolean canBeMultimovement = true; // only for entering to the loop (the true)
+		
+		while(canBeMultimovement){
+			
+			canBeMultimovement = false;
+		
+			List<Sea> multimovementStartPoints = new ArrayList<Sea>();
+			List<String> multimovementAvailables = new ArrayList<String>();
+			List<String> multimovementGranted = new ArrayList<String>();
+			List<String> multimovementTexts = new ArrayList<String>();
+		
+			Sea multimovementStartSea;
+		
+			Integer multimovementCount = 0;
+			for(Sea se : startMovePoints){
+				if(AvailableActionsManager.checkMoveTrirremeAction(p, g.getRound(), se, endSea, 1)){
+					multimovementStartPoints.add(se);
+					multimovementTexts.add(se.getName()+" "+startSeas.get(se.getName()).toString()+"x");
+					multimovementGranted.add(multimovementCount.toString());
+					multimovementAvailables.add(multimovementCount.toString());
+					canBeMultimovement = true;
+					multimovementCount += 1;
+				}
+			}
+		
+			if(canBeMultimovement){
+				String messageMultimovement = "Do you want move more trirremes to "+endSea.getName()+" ?"; //FIXME from gametexts...
+			
+				if(requestYesOrNot(messageMultimovement)){
+				
+					String multimovementChosenOption = "";
+				
+					ShowPlayerChoices(message, multimovementTexts);
+					multimovementChosenOption = RequestPlayerChoices(multimovementGranted,multimovementAvailables);
+					multimovementStartSea =  multimovementStartPoints.get(Integer.parseInt(multimovementChosenOption));
+				
+
+					//to request number of units to move
+
+					String numberUnitsChosen = "";
+				
+					List<String> optionsUnitsToChooseText = new ArrayList<String>();
+					List<String> grantedOptionsMultiMovement = new ArrayList<String>();
+					List<String> availableOptionsMultiMovement = new ArrayList<String>();
+				
+					Integer MultimovementCount = 0;
+					for(Integer i=1 ; i <= g.getRound().getMaximumPositionSlotsForThisRound() ; i++){
+						if(AvailableActionsManager.checkMoveTrirremeAction(p, g.getRound(),multimovementStartSea, endSea, i)){
+							optionsUnitsToChooseText.add(i.toString()+" Trirreme(s)"); //FIXME from gametexts...
+							grantedOptionsMultiMovement.add(MultimovementCount.toString());
+							availableOptionsMultiMovement.add(MultimovementCount.toString());
+							MultimovementCount++;
+						}
+					}
+					
+					ShowPlayerChoices(message3,optionsUnitsToChooseText);
+					numberUnitsChosen = RequestPlayerChoices(grantedOptions3,availableOptionsMultiMovement);
+					
+					Integer chosenNumberOfTroopsMulti;
+					chosenNumberOfTroopsMulti = Integer.parseInt(grantedOptionsMultiMovement.get(Integer.parseInt(numberUnitsChosen))) + 1; //+1 because starts with 0 (option), but first it's 1 hoplite 
+					
+					mA.moveTrirreme(p , g.getRound(), multimovementStartSea, endSea, chosenNumberOfTroopsMulti, true); // true to sign as multimovement
+				
+
+				}else{
+					canBeMultimovement = false; // to exit from the loop
+				}
+			
+			}else{
+				// Do nothing, finished. (canBeMultimovement = false by default)
+			}
+		}
 	
-	
-	
-	public static void requestMoveTrirreme(){
-		//TODO
 	}
 	
 	public static void requestSiegePolis(){
