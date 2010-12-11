@@ -1,6 +1,7 @@
 package game;
 
 import java.util.List;
+import java.util.Map;
 
 
 import ui.TextModeUi;
@@ -245,9 +246,55 @@ public class EndRoundManager {
 	 * This method manages if Players wanna to increase his population using his
 	 * wheat surplus
 	 */
-	public void checkGrowth() {
-
-		// TODO
+	public void checkGrowth(Player player, Round round) {
+		
+		Map<String, Integer> option;
+		Boolean completed = false;
+		if(player.getWheat() > 0)
+		{
+			while(!completed)
+			{
+				option = TextModeUi.requestGrowth();
+				String optionName = "";
+				for(String name: option.keySet())
+				{
+					optionName = name;
+				}
+				Integer optionValue = option.get(optionName);
+				
+				
+				if(optionName.equals("finalize") || player.getWheat() == 0)
+				{
+					//player don't create more population
+					completed = true;
+				}
+				else
+				{
+					//player select one polis for create population
+					
+					
+					Polis polis = null;
+					
+					//Find polis to add population
+					for(Polis p: player.getPlayerPolis())
+					{
+						if(p.getSysName().equals(optionName))
+						{
+							polis = p;
+						}
+					}
+					
+					//add optionValue to ActualPopulation
+					polis.setActualPopulation(polis.getActualPopulation() + optionValue);
+					//player loose optionValue units of Wheat
+					player.setWheat(player.getWheat() - optionValue);
+					
+					
+					
+				}
+			}
+			
+		}
 
 	}
 

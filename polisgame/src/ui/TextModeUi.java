@@ -1160,8 +1160,11 @@ String message = ("Please, choose Polis to create the Proxenus: "); //FIXME resc
 		return a;
 	}
 	
-	public static void requestGrowth(){
+	public static Map<String, Integer> requestGrowth(){
+		Map<String, Integer> map = new HashMap<String, Integer>();
+		//show num of units requested by user that is less than MaxGrowth and less than MaxPopulation for each polis
 		//TODO
+		return map;
 	}
 	
 	public static void requestPhoros(){
