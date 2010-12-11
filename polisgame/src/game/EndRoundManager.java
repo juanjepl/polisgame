@@ -37,81 +37,97 @@ public class EndRoundManager {
 
 				enemyPlayer = game.getAthensPlayer();
 			}
-			for (int i = 0; i < player.getPlayerPolis().size(); i++) {
-				// Check if Sieged Polis is Nuetral
-				if ((player.getPlayerPolis().get(i).getSieged())
-						&& (!enemyPlayer.getPlayerPolis().contains(
-								player.getPlayerPolis().get(i)))) {
-					// Polis is added to Player
-					// Siege False and population is recalculate
 
-					player.getPlayerPolis().get(i).setSieged(false);
+			for (int i = 0; i < ListOfpolisToCheck.size(); i++) {
+				// lock for sieged polis
+				if (ListOfpolisToCheck.get(i).getSieged()) {
 
-					Integer rollDice = TextModeUi.showRollTheDice(1);
-					;
+					if (ListOfpolisToCheck.get(i).getUnits().get(1).getOwner()
+							.equals(player)) {
 
-					Integer newPopulation = player.getPlayerPolis().get(i)
-							.getBasePopulation();
-					newPopulation = newPopulation - rollDice;
-					if (newPopulation <= 0) {
-						newPopulation = 1;
-					}
-					// We have to repopulate the polis with hoplites
-					// Necesary UI FIXME
-					// AddPrestige
-					Integer Prestige = player.getPlayerPolis().get(i)
-							.getActualPopulation();
-					Prestige = Prestige + player.getPrestige();
-					player.setPrestige(Prestige);
-				}
-				// Check if sieged Polis is enemy
-				if ((player.getPlayerPolis().get(i).getSieged())
-						&& (enemyPlayer.getPlayerPolis().contains(player
-								.getPlayerPolis().get(i)))) {
-					if (!enemyPlayer.getPlayerPolis().get(i).getLockForAPlayer(
-							player)) {
+						// Neutral Polis
+						if (!enemyPlayer.getPlayerPolis().contains(
+								ListOfpolisToCheck.get(i))) {
 
-						// Remove Units
-						for (int a = 0; a < enemyPlayer.getPlayerPolis().get(i)
-								.getUnits().size(); a++) {
-							enemyPlayer.removeUnit(enemyPlayer.getPlayerPolis()
-									.get(i).getUnits().get(a));
+							Integer rollDice = TextModeUi.showRollTheDice(1);
+
+							Integer newPopulation = ListOfpolisToCheck.get(i)
+									.getBasePopulation();
+							newPopulation = newPopulation - rollDice;
+
+							if (newPopulation <= 0) {
+								newPopulation = 1;
+							}
+							// Now UI Repoblate the polis with his hoplites
+							// FIXME
+							ListOfpolisToCheck.get(i).setSieged(false);
+							player.getPlayerPolis().add(
+									ListOfpolisToCheck.get(i));
+							Integer prestige = ListOfpolisToCheck.get(i)
+									.getActualPopulation();
+							prestige = prestige + player.getPrestige();
+							player.setPrestige(prestige);
+
+						} else {
+							// First kill proxenus
+							if ((enemyPlayer.getPlayerProxenus() != null)
+									&& (enemyPlayer.getPlayerProxenus()
+											.getPosition()
+											.equals(ListOfpolisToCheck.get(i)))) {
+								enemyPlayer.setPlayerProxenus(null);
+							}
+
+							Polis enemyPolis = null;
+							for (Polis pol : enemyPlayer.getPlayerPolis()) {
+								if (pol.equals(ListOfpolisToCheck.get(i))) {
+
+									enemyPolis = pol;
+									break;
+								}
+							}
+							// Integer indexEnemyPolis = enemyPlayer
+							// .getPlayerPolis().indexOf(enemyPolis);
+							// Lock for A player
+							if (!ListOfpolisToCheck.get(i).getLockForAPlayer(
+									player)) {
+								// Remove Enemy Units
+								// Easily remove enemyPolis with all their units
+								enemyPlayer.getPlayerPolis().remove(enemyPolis);
+
+							} else {
+
+								// Enemy Units Must GO FIXME
+								// Then remove Polis
+								enemyPlayer.getPlayerPolis().remove(enemyPolis);
+							}
+							// Add polis
+							// Recalculate population with UI FIXME
+							// Add prestige
+
+							Integer rollDice = TextModeUi.showRollTheDice(1);
+
+							Integer newPopulation = ListOfpolisToCheck.get(i)
+									.getBasePopulation();
+							newPopulation = newPopulation - rollDice;
+
+							if (newPopulation <= 0) {
+								newPopulation = 1;
+							}
+							// Now UI Repoblate the polis with his hoplites
+							// FIXME
+							ListOfpolisToCheck.get(i).setSieged(false);
+							player.getPlayerPolis().add(
+									ListOfpolisToCheck.get(i));
+							Integer prestige = ListOfpolisToCheck.get(i)
+									.getActualPopulation();
+							prestige = prestige + player.getPrestige();
+							player.setPrestige(prestige);
+
 						}
 
-					} else {
-						// Enemy Units must go
 					}
-					// Remove Enemy Proxenus
 
-					if ((enemyPlayer.getPlayerProxenus() != null)
-							&& (enemyPlayer.getPlayerProxenus().getPosition()
-									.equals(player.getPlayerPolis().get(i)))) {
-						enemyPlayer.removeUnit(enemyPlayer.getPlayerProxenus());
-
-					}
-					// AddPolis
-					player.getPlayerPolis().get(i).setSieged(false);
-					Integer rollDice = TextModeUi.showRollTheDice(1);
-					;
-
-					Integer newPopulation = player.getPlayerPolis().get(i)
-							.getBasePopulation();
-					newPopulation = newPopulation - rollDice;
-					if (newPopulation <= 0) {
-						newPopulation = 1;
-					}
-					// We have to repopulate the polis with hoplites
-					// Necesary UI FIXME
-					// Remove polis
-					// AddPrestige
-					enemyPlayer.getPlayerPolis().remove(
-							enemyPlayer.getPlayerPolis().get(i));
-					Integer Prestige = player.getPlayerPolis().get(i)
-							.getActualPopulation();
-					Prestige = Prestige + player.getPrestige();
-					player.setPrestige(Prestige);
 				}
-
 			}
 		}
 	}
