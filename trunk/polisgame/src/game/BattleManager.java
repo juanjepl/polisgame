@@ -1,12 +1,8 @@
 package game;
 
-import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
-
 import cfg.GameConfigurations;
-
-import utils.RandomCollections;
 
 /**
  * @see Polis Playbook, page 15
@@ -77,84 +73,80 @@ public class BattleManager
 	 * Throws an 'UnsupportedOperationException' if assault is not available.
 	 * @return assault winner player
 	 */
-	public Player makeAssault(Integer spartaUnitCountBet, Integer athensUnitCountBet)
+	public Player makeAssault(Integer spartaAttackUnitCount, Integer athensAttackUnitCount, Integer spartaTotalUnitCountBet, Integer athensTotalUnitCountBet)
 	{
-		if (spartaUnitCountBet == null) throw new NullPointerException("'spartaUnitCountBet' can not be null");
-		if (spartaUnitCountBet < 0) throw new IllegalArgumentException("'spartaUnitCountBet' must be greater than or equal to 0");
-		if (athensUnitCountBet == null) throw new NullPointerException("'athensUnitCountBet' can not be null");
-		if (athensUnitCountBet < 0) throw new IllegalArgumentException("'athensUnitCountBet' must be greater than or equal to 0");
+		if (spartaAttackUnitCount == null) throw new NullPointerException("'spartaAttackUnitCount' can not be null");
+		if (spartaAttackUnitCount < 0) throw new IllegalArgumentException("'spartaAttackUnitCount' must be greater than or equal to 0");
+		if (athensAttackUnitCount == null) throw new NullPointerException("'athensAttackUnitCount' can not be null");
+		if (athensAttackUnitCount < 0) throw new IllegalArgumentException("'athensAttackUnitCount' must be greater than or equal to 0");
+		if (spartaTotalUnitCountBet == null) throw new NullPointerException("'spartaTotalUnitCountBet' can not be null");
+		if (spartaTotalUnitCountBet < 0) throw new IllegalArgumentException("'spartaTotalUnitCountBet' must be greater than or equal to 0");
+		if (athensTotalUnitCountBet == null) throw new NullPointerException("'athensTotalUnitCountBet' can not be null");
+		if (athensTotalUnitCountBet < 0) throw new IllegalArgumentException("'athensTotalUnitCountBet' must be greater than or equal to 0");
 		if (!assaultAvailable()) throw new UnsupportedOperationException("Assault is not available");
 		
 		Player winner = null;
 		Player loser = null;
 		
-		/* Reglas: Sobre la mesa situaran boca abajo la carta elegida por ellos con la cantidad
+		/* Reglas: 
+		En cada uno de ellos, ambos jugadores cogen sus 11 cartas y todos sus hoplitas o trirremes que
+		tienen en la region donde se produce la batalla y eligen secretamente con cuantos atacan al
+		enemigo (pueden elegir 0) escondiendolos en su mano cerrada.
+		
+		Sobre la mesa situaran boca abajo la carta elegida por ellos con la cantidad
 		total (suma de ambos jugadores) de hoplitas o trirremes que creen que van a atacar en este asalto.
-		El mazo de cartas de cada jugador va del 0 al 10. */
+		El mazo de cartas de cada jugador va del 0 al 10.
 		
-		// Reutilizamos RandomCollections para generar un numero al azar
-		ArrayList<Integer> cards = new ArrayList<Integer>(11);
-		for(int i = 0; i<11; i++) cards.add(i);
-		int unitTotal = new RandomCollections<Integer>().getRandomSublist(cards, 1).get(0);
-		
-		/* Reglas: Se revelan los cubos de las manos y luego las cartas. El que mas se acerca con su carta al total
+		Se revelan los cubos de las manos y luego las cartas. El que mas se acerca con su carta al total
 		de atacantes, infringe tantas bajas como la diferencia (da igual si fue a favor o en contra) entre los cubos elegidos 
-		en este asalto, y recibe tanto Prestigio como dichas bajas. */
+		en este asalto, y recibe tanto Prestigio como dichas bajas. 
 		
-		int spartaDistance = Math.abs(unitTotal - spartaUnitCountBet);
-		int athensDistance = Math.abs(unitTotal - athensUnitCountBet);
-		int distanceDifference = Math.abs(spartaDistance - athensDistance);
+		En caso de empate de cercania al total con las cartas, 
+		si la batalla es terrestre gana Esparta y si es naval gana Atenas.
 		
-		if (spartaDistance != athensDistance)
+		Si el jugador que gana el asalto eligio los mismos cubos que el oponente, es decir, la
+		diferencia fue 0, causa 1 baja al enemigo y recibe 1 Prestigio.
+		
+		Si el jugador que gana el asalto eligio menos cubos que el oponente, infringe tantas bajas 
+		como la diferencia y recibe ese Prestigio pero el tambien recibe 1 baja (pero que no aporta Prestigio al oponente). */
+		
+		int assaultUnitCount = spartaAttackUnitCount + athensAttackUnitCount;
+		
+		int spartaDistance = Math.abs(assaultUnitCount - spartaTotalUnitCountBet);
+		int athensDistance = Math.abs(assaultUnitCount - athensTotalUnitCountBet);
+		
+		int attackUnitCountDiff = Math.abs(spartaAttackUnitCount - athensAttackUnitCount);
+		
+		int winnerAttackUnitCount, loserAttackUnitCount;
+			
+		if (spartaDistance < athensDistance || (spartaDistance == athensDistance && position instanceof Territory))
 		{
-			int winnerUnitCountBet, loserUnitCountBet;
-			
-			if (spartaDistance < athensDistance)
-			{
-				winner = sparta;
-				winnerUnitCountBet = spartaUnitCountBet;
+			winner = sparta;
+			winnerAttackUnitCount = spartaAttackUnitCount;
 				
-				loser = athens;
-				loserUnitCountBet = athensUnitCountBet;
-			}
-			else // Equivalent to 'else if (spartaDistance > athensDistance)'
-			{
-				winner = athens;
-				winnerUnitCountBet = athensUnitCountBet;
-				
-				loser = sparta;
-				loserUnitCountBet = spartaUnitCountBet;
-			}
-			
-			produceLower(loser, distanceDifference);
-			incrementPrestige(winner, distanceDifference);
-			
-			/* Reglas: Si el jugador que gana el asalto eligio menos cubos que el oponente infringe tantas bajas 
-			como la diferencia y recibe ese Prestigio pero el tambien recibe 1 baja (pero que no aporta Prestigio al oponente). */
-
-			if (winnerUnitCountBet < loserUnitCountBet) produceLower(winner, 1);
+			loser = athens;
+			loserAttackUnitCount = athensAttackUnitCount;
 		}
 		else
 		{
-			/* Reglas: En caso de empate de cercania al total con las cartas, 
-			si la batalla es terrestre gana Esparta y si es naval gana Atenas. */
+			winner = athens;
+			winnerAttackUnitCount = athensAttackUnitCount;
 			
-			if (position instanceof Territory)
-			{
-				winner = sparta;
-				loser = athens;
-			}
-			else
-			{
-				winner = athens;
-				loser = sparta;
-			}
-			
-			/* Reglas: Si el jugador que gana el asalto eligio los mismos cubos que el oponente, es decir, la
-			diferencia fue 0, causa 1 baja al enemigo y recibe 1 Prestigio. */
-
+			loser = sparta;
+			loserAttackUnitCount = spartaAttackUnitCount;
+		}
+		
+		if (winnerAttackUnitCount == loserAttackUnitCount)
+		{
 			produceLower(loser, 1);
 			incrementPrestige(winner, 1);
+		}
+		else
+		{
+			produceLower(loser, attackUnitCountDiff);
+			incrementPrestige(winner, attackUnitCountDiff);
+			
+			if (winnerAttackUnitCount < loserAttackUnitCount) produceLower(winner, 1);
 		}
 		
 		return winner;
