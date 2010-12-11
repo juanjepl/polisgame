@@ -328,10 +328,20 @@ public class EndRoundManager {
 	 * This method checks Phoros rule. (player can trade prestige to silver 1 to
 	 * 1)
 	 */
-	public void checkPhoros() {
+	public void checkPhoros(Player player) {
 
-		// TODO
-
+		//ask to user how many prestige want to spend
+		if(player.getPrestige() > 0)
+		{
+			
+			Integer prestigeToSpend = TextModeUi.requestPhoros();
+			
+			//player obtains prestigeToSpend units of Silver
+			player.setSilver(player.getSilver() + prestigeToSpend);
+			//player spend prestigeToSpend units of Prestige
+			player.setPrestige(player.getPrestige() - prestigeToSpend);
+			
+		}
 	}
 
 	/** This method prepares the next round elements */
