@@ -1,5 +1,6 @@
 package game;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.LinkedList;
 
@@ -92,9 +93,16 @@ public class Round {
 	/** This method initializes the round (can be used by EndRoundManager.initializeNextRound() */
 	public void startRound(Game game){
 		
-		// Takes from the game projects list, 3 random projects
+		// Takes from the game projects list, 3 random projects not used
+		List<Project> availableProjects = new ArrayList<Project>();
+		for(Project proj:game.getProjectList()){
+			if(!(proj.getUsed())){
+				availableProjects.add(proj);
+			}
+		}
+		
 		RandomCollections<Project> randomListOfProjects = new RandomCollections<Project>();
-		projectsInThisRound = randomListOfProjects.getRandomSublist(game.getProjectList(),3);
+		projectsInThisRound = randomListOfProjects.getRandomSublist(availableProjects,3);
 		
 		
 		// Takes one random GameEvent from actual round
