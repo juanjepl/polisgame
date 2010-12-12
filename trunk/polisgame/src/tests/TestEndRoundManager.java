@@ -1,10 +1,14 @@
 package tests;
 
 import static org.junit.Assert.assertTrue;
+
+import java.util.List;
+
 import game.ElementsInitializer;
 import game.EndRoundManager;
 import game.Game;
 import game.Player;
+import game.Polis;
 import game.Project;
 import game.StandardStartInitializer;
 
@@ -15,7 +19,7 @@ import org.junit.Test;
 public class TestEndRoundManager {
 	ElementsInitializer gameElements;
 	Game polis_game;
-	EndRoundManager round;
+	EndRoundManager endRound;
 
 	@Before
 	public void setup() {
@@ -23,7 +27,7 @@ public class TestEndRoundManager {
 		Game polis_game = gameElements.InitializeGameElements(); // Initializes
 		// all game
 		// elements
-
+		
 		StandardStartInitializer.standardStart(polis_game); // Initializes the
 		// game standard
 		// start position
@@ -43,7 +47,7 @@ public class TestEndRoundManager {
 
 		// EndRoundManager round = new EndRoundManager();
 
-		round.checkProjects(null);
+		endRound.checkProjects(null);
 	}
 
 	@Test
@@ -61,7 +65,7 @@ public class TestEndRoundManager {
 			}
 		}
 		player.getCapital().addProject(project);
-		round.checkProjects(player);
+		endRound.checkProjects(player);
 		assertTrue(player.getPrestige() == 3);
 	}
 
@@ -80,14 +84,14 @@ public class TestEndRoundManager {
 			}
 		}
 		player.getCapital().addProject(project);
-		round.checkProjects(player);
+		endRound.checkProjects(player);
 		assertTrue(player.getPrestige() == 2);
 	}
 
 	@Test(expected = NullPointerException.class)
 	public void checkMegalopolisNulls() {
 
-		round.checkMegalopolis(null);
+		endRound.checkMegalopolis(null);
 
 	}
 
@@ -95,14 +99,14 @@ public class TestEndRoundManager {
 
 		polis_game.getAthensPlayer().getCapital().setActualPopulation(10);
 		polis_game.getAthensPlayer().setPrestige(0);
-		round.checkMegalopolis(polis_game.getAthensPlayer());
+		endRound.checkMegalopolis(polis_game.getAthensPlayer());
 		assertTrue(polis_game.getAthensPlayer().getPrestige() == 1);
 	}
 
 	@Test(expected = NullPointerException.class)
 	public void checkGoodsAdjustNull() {
 
-		round.checkGoodsAdjust(null);
+		endRound.checkGoodsAdjust(null);
 	}
 
 	@Test
@@ -114,7 +118,7 @@ public class TestEndRoundManager {
 		polis_game.getAthensPlayer().setOil(50);
 		polis_game.getAthensPlayer().setWood(60);
 		// Must be 15 Wheat, 20 wine, 25 oil
-		round.checkGoodsAdjust(polis_game.getAthensPlayer());
+		endRound.checkGoodsAdjust(polis_game.getAthensPlayer());
 		boolean logic;
 		logic = (polis_game.getAthensPlayer().getWheat() == 15)
 				&& (polis_game.getAthensPlayer().getWine() == 20)
@@ -122,5 +126,32 @@ public class TestEndRoundManager {
 
 		assertTrue(logic);
 
+	}
+	
+	@Test(expected = NullPointerException.class)
+	public void checkPhorosNull(){
+		endRound.checkPhoros(null);
+	}
+	@Test 
+	public void checkPhorosNotNull(){
+		List<Polis> ListOfpolisToCheck;
+		ListOfpolisToCheck = (List<Polis>) polis_game.getGamePolis().values();
+		ListOfpolisToCheck.addAll(polis_game.getGamePolis().values());
+		
+		Polis thebesPolis = null;
+		for (Polis pol : ListOfpolisToCheck) {
+			if (pol.getSysName() == "thebes") {
+
+				thebesPolis = pol;
+				break;
+			}
+		}
+		polis_game.getAthensPlayer().getPlayerPolis().add(thebesPolis);
+		polis_game.getAthensPlayer().setPrestige(10);
+		polis_game.getAthensPlayer().setSilver(0);
+		endRound.checkPhoros(polis_game.getAthensPlayer());
+		assertTrue(polis_game.getAthensPlayer().getSilver() > 0);
+		
+		
 	}
 }
