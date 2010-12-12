@@ -109,13 +109,25 @@ public class MilitaryAction extends GameAction{
 
 		if(success)
 		{
-			for(int i=0;i<siegedPolis.getBasePopulation();i++)
-			{
-				Unit u = initialPosition.getUnits().get(i);
-				initialPosition.removeUnit(u);
-				u.setPosition(siegedPolis);
-				siegedPolis.addUnit(u);
+			
+			Integer count = siegedPolis.getBasePopulation();
+			List<Unit> unitsToRemove = new ArrayList<Unit>();
+			for(Unit u: initialPosition.getUnits()){
+				if(count > 0){
+					if(u instanceof Hoplite && u.getOwner().equals(player)){
+						unitsToRemove.add(u);
+						siegedPolis.addUnit(u);
+						u.setPosition(siegedPolis);
+						count -= 1;
+					}
+					
+				}else{
+					break;
+				}
 			}
+			
+			initialPosition.removeGroupOfUnits(unitsToRemove); //removes nothing if empty (i cant remove a unit in initialposition while im looping in it (for)
+			
 			siegedPolis.setSieged(true);
 			player.setPrestige(player.getPrestige() - 1);
 			

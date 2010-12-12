@@ -101,6 +101,7 @@ public class TextModeUi implements IUserInterface{ //TODO rescue language texts 
 	/** This method shows the actual player-round-turn */
 	public static void showPlayerTurn(Game game){
 		String message = "Turn: "+Turn.getTurnCount()+" "+"Player: "+game.getWhoHasTheTurn().getName();	//FIXME from gametexts...
+		System.out.println(" ");
 		System.out.println(message);
 	}
 	
