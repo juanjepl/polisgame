@@ -345,9 +345,10 @@ public class AvailableActionsManager {
 			}
 			
 			Boolean condition_minNumberOfUnits = realTroops >= polis.getBasePopulation();
-			Boolean condition_siegedPolis = polis.getSieged();
+			Boolean condition_siegedPolis = !(polis.getSieged());
+			Boolean condition_isNotMine = !(player.getPlayerPolis().contains(polis));
 			
-			available = condition_havePrestige && condition_minNumberOfUnits && condition_siegedPolis;
+			available = condition_havePrestige && condition_minNumberOfUnits && condition_siegedPolis && condition_isNotMine;
 		}
 		
 		return available;

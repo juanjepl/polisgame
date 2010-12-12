@@ -350,7 +350,7 @@ public class TextModeUi implements IUserInterface{ //TODO rescue language texts 
 		}else if(chosenOption.equals("2")){
 			requestMoveTrirreme(g,p);
 		}else if(chosenOption.equals("3")){	
-			requestSiegePolis();
+			requestSiegePolis(g,p);
 		}else if(chosenOption.equals("4")){	
 			requestPlunderTerritory();
 		}else{
@@ -902,8 +902,36 @@ String message = ("Please, choose Polis to create the Proxenus: "); //FIXME resc
 	
 	}
 	
-	public static void requestSiegePolis(){
-		//TODO
+	public static void requestSiegePolis(Game g, Player p){
+		
+		List<Polis> toSiegePolisOptions = new ArrayList<Polis>();
+		List<String> grantedOptions = new ArrayList<String>();
+		List<String> availableOptions = new ArrayList<String>();
+		List<String> toShowTextOptions = new ArrayList<String>();
+		
+		String message = "Please, choose Polis to siege: "; //FIXME from gametexts...
+		
+		String chosenOption = "";
+		
+		Integer Count = 0;
+		for(Polis po: g.getGamePolis().values()){
+			if(AvailableActionsManager.checkSiegePolisAction(p, po)){
+				toSiegePolisOptions.add(po);
+				toShowTextOptions.add(po.getName());
+				grantedOptions.add(Count.toString());
+				availableOptions.add(Count.toString());
+				Count++;
+			}
+		}
+		
+		ShowPlayerChoices(message,toShowTextOptions);
+		chosenOption = RequestPlayerChoices(grantedOptions,availableOptions);
+		
+		Polis selectedPolis = toSiegePolisOptions.get(Integer.parseInt(chosenOption));
+		
+		MilitaryAction mA = new MilitaryAction();
+		mA.siegePolis(p, selectedPolis.getPolisParentTerritory(), selectedPolis);
+
 	}
 	
 	public static Map<String,Integer> requestPlunderTerritory(){
