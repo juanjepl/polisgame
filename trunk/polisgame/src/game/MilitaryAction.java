@@ -109,25 +109,21 @@ public class MilitaryAction extends GameAction{
 
 		if(success)
 		{
-			if(!siegedPolis.getSieged())
+			for(int i=0;i<siegedPolis.getBasePopulation();i++)
 			{
-				for(int i=0;i<siegedPolis.getBasePopulation();i++)
-				{
-					Unit u = initialPosition.getUnits().get(i);
-					initialPosition.removeUnit(u);
-					u.setPosition(siegedPolis);
-					siegedPolis.addUnit(u);
-				}
-				siegedPolis.setSieged(true);
-				player.setPrestige(player.getPrestige() - 1);
-			}else
-			{
-				success = false;
+				Unit u = initialPosition.getUnits().get(i);
+				initialPosition.removeUnit(u);
+				u.setPosition(siegedPolis);
+				siegedPolis.addUnit(u);
 			}
+			siegedPolis.setSieged(true);
+			player.setPrestige(player.getPrestige() - 1);
+			
+			TextModeUi.showMessage(siegedPolis.getName()+" has been sieged by "+player.getName()); //FIXME from gametexts...
+			
+			success = false;
 		}
-		
-		
-		
+			
 		return success;
 	}
 	
