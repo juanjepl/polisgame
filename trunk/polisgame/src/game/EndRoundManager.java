@@ -1,8 +1,8 @@
 package game;
 
+import java.util.LinkedList;
 import java.util.List;
 import java.util.Map;
-
 
 import ui.TextModeUi;
 
@@ -23,9 +23,8 @@ public class EndRoundManager {
 					"Player in CheckSieges can´t be Null");
 		}
 		// TODO
-		List<Polis> ListOfpolisToCheck;
-		ListOfpolisToCheck = (List<Polis>) game.getGamePolis().values();
-		ListOfpolisToCheck.addAll(game.getGamePolis().values());
+		List<Polis> ListOfpolisToCheck = new LinkedList<Polis>(game
+				.getGamePolis().values());
 		Player enemyPlayer;
 
 		if (!ListOfpolisToCheck.isEmpty()) {
@@ -156,7 +155,7 @@ public class EndRoundManager {
 				projectToCheck = listOfProjects.get(j);
 				if (projectToCheck.getUsed() && projectToCheck.getFinished()) {
 
-					if ((projectToCheck.getName().equals("fidiasArtist"))) {
+					if ((projectToCheck.getSysName().equalsIgnoreCase("phidiasArtist"))) {
 						Integer population;
 						Integer prestige;
 						population = polisToCheck.getActualPopulation();
@@ -225,8 +224,8 @@ public class EndRoundManager {
 				} else if (method.equals("polis")) {
 
 					String p = TextModeUi.requestLoosePolis(); // FIXME create
-																// method in
-																// TextModeUi
+					// method in
+					// TextModeUi
 					Integer polisId = Integer.parseInt(p);
 					Polis polis = player.getPlayerPolis().get(polisId);
 
@@ -247,53 +246,42 @@ public class EndRoundManager {
 	 * wheat surplus
 	 */
 	public void checkGrowth(Player player, Round round) {
-		
+
 		Map<String, Integer> option;
 		Boolean completed = false;
-		if(player.getWheat() > 0)
-		{
-			while(!completed)
-			{
+		if (player.getWheat() > 0) {
+			while (!completed) {
 				option = TextModeUi.requestGrowth();
 				String optionName = "";
-				for(String name: option.keySet())
-				{
+				for (String name : option.keySet()) {
 					optionName = name;
 				}
 				Integer optionValue = option.get(optionName);
-				
-				
-				if(optionName.equals("finalize") || player.getWheat() == 0)
-				{
-					//player don't create more population
+
+				if (optionName.equals("finalize") || player.getWheat() == 0) {
+					// player don't create more population
 					completed = true;
-				}
-				else
-				{
-					//player select one polis for create population
-					
-					
+				} else {
+					// player select one polis for create population
+
 					Polis polis = null;
-					
-					//Find polis to add population
-					for(Polis p: player.getPlayerPolis())
-					{
-						if(p.getSysName().equals(optionName))
-						{
+
+					// Find polis to add population
+					for (Polis p : player.getPlayerPolis()) {
+						if (p.getSysName().equals(optionName)) {
 							polis = p;
 						}
 					}
-					
-					//add optionValue to ActualPopulation
-					polis.setActualPopulation(polis.getActualPopulation() + optionValue);
-					//player loose optionValue units of Wheat
+
+					// add optionValue to ActualPopulation
+					polis.setActualPopulation(polis.getActualPopulation()
+							+ optionValue);
+					// player loose optionValue units of Wheat
 					player.setWheat(player.getWheat() - optionValue);
-					
-					
-					
+
 				}
 			}
-			
+
 		}
 
 	}
@@ -330,34 +318,33 @@ public class EndRoundManager {
 	 */
 	public void checkPhoros(Player player) {
 
-		//ask to user how many prestige want to spend
-		if(player.getPrestige() > 0)
-		{
-			
+		// ask to user how many prestige want to spend
+		if (player.getPrestige() > 0) {
+
 			Integer prestigeToSpend = TextModeUi.requestPhoros();
-			
-			//player obtains prestigeToSpend units of Silver
+
+			// player obtains prestigeToSpend units of Silver
 			player.setSilver(player.getSilver() + prestigeToSpend);
-			//player spend prestigeToSpend units of Prestige
+			// player spend prestigeToSpend units of Prestige
 			player.setPrestige(player.getPrestige() - prestigeToSpend);
-			
+
 		}
 	}
 
 	/** This method prepares the next round elements */
 	public void initializeNextRound(Game game) {
-		
+
 		// All plundered territories reborns like not plundered
-		for(Territory terr : game.getGameTerritories().values()){
-			if(terr.getPlundered() == true){
+		for (Territory terr : game.getGameTerritories().values()) {
+			if (terr.getPlundered() == true) {
 				terr.setPlundered(false);
 			}
 		}
-		
+
 		// Trade boats returns to its trade docks
-		for(Market mark : game.getGameMarkets().values()){
-			for(Unit u: mark.getUnits()){
-				if(u instanceof TradeBoat){
+		for (Market mark : game.getGameMarkets().values()) {
+			for (Unit u : mark.getUnits()) {
+				if (u instanceof TradeBoat) {
 					mark.removeUnit(u);
 					u.getOwner().getPlayerTradeDock().addUnit(u);
 					u.setPosition(u.getOwner().getPlayerTradeDock());
@@ -366,23 +353,24 @@ public class EndRoundManager {
 		}
 
 		// Sign projects from previous round like used.
-		for(Project proj : game.getRound().getProjectsInThisRound()){
+		for (Project proj : game.getRound().getProjectsInThisRound()) {
 			proj.setUsed(true);
 		}
-		
-		// Change name of round and positions allowed for it, get 3 new projects and the new game event
+
+		// Change name of round and positions allowed for it, get 3 new projects
+		// and the new game event
 		game.getRound().startRound(game);
-		
+
 		// Player with less prestige, starts the round
-		
+
 		Integer prestigeAth = game.getAthensPlayer().getPrestige();
 		Integer prestigeSpa = game.getSpartaPlayer().getPrestige();
-		
-		if(prestigeAth > prestigeSpa){
+
+		if (prestigeAth > prestigeSpa) {
 			game.setWhoHasTheTurn(game.getSpartaPlayer());
-		}else if(prestigeAth < prestigeSpa){
+		} else if (prestigeAth < prestigeSpa) {
 			game.setWhoHasTheTurn(game.getAthensPlayer());
-		}else{ // prestigeAth == prestigeSpa
+		} else { // prestigeAth == prestigeSpa
 			// Do nothing (the turn is ordered by previous round ending)
 		}
 	}

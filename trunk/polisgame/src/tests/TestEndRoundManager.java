@@ -2,6 +2,7 @@ package tests;
 
 import static org.junit.Assert.assertTrue;
 
+import java.util.LinkedList;
 import java.util.List;
 
 import game.ElementsInitializer;
@@ -22,20 +23,19 @@ public class TestEndRoundManager {
 	EndRoundManager endRound;
 
 	@Before
-	public void setup() {
-		ElementsInitializer gameElements = new ElementsInitializer();
-		Game polis_game = gameElements.InitializeGameElements(); // Initializes
+	public void setUp() {
+		gameElements = new ElementsInitializer();
+		polis_game = gameElements.InitializeGameElements(); // Initializes
 		// all game
 		// elements
-		
+
 		StandardStartInitializer.standardStart(polis_game); // Initializes the
 		// game standard
 		// start position
 
 		polis_game.getRound().startRound(polis_game); // Starts initial round
 
-		@SuppressWarnings("unused")
-		EndRoundManager round = new EndRoundManager();
+		endRound = new EndRoundManager();
 	}
 
 	@After
@@ -44,8 +44,6 @@ public class TestEndRoundManager {
 
 	@Test(expected = NullPointerException.class)
 	public void checkProjectsNulls() {
-
-		// EndRoundManager round = new EndRoundManager();
 
 		endRound.checkProjects(null);
 	}
@@ -58,15 +56,22 @@ public class TestEndRoundManager {
 		Player player = polis_game.getAthensPlayer();
 
 		for (Project proj : polis_game.getProjectList()) {
-			if (proj.getSysName() == "phidiasArtist") {
+			if (proj.getSysName().equalsIgnoreCase("phidiasArtist")) {
 
 				project = proj;
 				break;
 			}
 		}
+		if (project == null) {
+			System.out.println("ESTA NULO EL PROYECTO DE FIDIAS");
+		}
+		project.setFinished(true);
+		project.setUsed(true);
 		player.getCapital().addProject(project);
 		endRound.checkProjects(player);
-		assertTrue(player.getPrestige() == 3);
+		player.setPrestige(0);
+		player.getCapital().setActualPopulation(10);
+		assertTrue(player.getPrestige() > 0);
 	}
 
 	@Test
@@ -77,13 +82,16 @@ public class TestEndRoundManager {
 		Player player = polis_game.getAthensPlayer();
 
 		for (Project proj : polis_game.getProjectList()) {
-			if (proj.getSysName() == "normalTheatre") {
+			if (proj.getSysName().equalsIgnoreCase("normalTheatre")) {
 
 				project = proj;
 				break;
 			}
 		}
+		project.setFinished(true);
+		project.setUsed(true);
 		player.getCapital().addProject(project);
+		player.setPrestige(0);
 		endRound.checkProjects(player);
 		assertTrue(player.getPrestige() == 2);
 	}
@@ -95,6 +103,7 @@ public class TestEndRoundManager {
 
 	}
 
+	@Test
 	public void checkMegalopolisNotNulls() {
 
 		polis_game.getAthensPlayer().getCapital().setActualPopulation(10);
@@ -127,20 +136,20 @@ public class TestEndRoundManager {
 		assertTrue(logic);
 
 	}
-	
+
 	@Test(expected = NullPointerException.class)
-	public void checkPhorosNull(){
+	public void checkPhorosNull() {
 		endRound.checkPhoros(null);
 	}
-	@Test 
-	public void checkPhorosNotNull(){
-		List<Polis> ListOfpolisToCheck;
-		ListOfpolisToCheck = (List<Polis>) polis_game.getGamePolis().values();
-		ListOfpolisToCheck.addAll(polis_game.getGamePolis().values());
-		
+
+	@Test
+	public void checkPhorosNotNull() {
+		List<Polis> ListOfpolisToCheck = new LinkedList<Polis>(polis_game
+				.getGamePolis().values());
+
 		Polis thebesPolis = null;
 		for (Polis pol : ListOfpolisToCheck) {
-			if (pol.getSysName() == "thebes") {
+			if (pol.getSysName().equalsIgnoreCase("thebes")) {
 
 				thebesPolis = pol;
 				break;
@@ -151,7 +160,47 @@ public class TestEndRoundManager {
 		polis_game.getAthensPlayer().setSilver(0);
 		endRound.checkPhoros(polis_game.getAthensPlayer());
 		assertTrue(polis_game.getAthensPlayer().getSilver() > 0);
-		
-		
+
+	}
+
+	@Test(expected = NullPointerException.class)
+	public void checkGrowthNull() {
+		endRound.checkGrowth(null, null);
+	}
+
+	@Test
+	public void checkGrowthNotNullNotPrestige() {
+		Integer wheatComparator;
+		polis_game.getSpartaPlayer().setWheat(333);
+		polis_game.getSpartaPlayer().setPrestige(0);
+		wheatComparator = polis_game.getSpartaPlayer().getWheat();
+		endRound.checkGrowth(polis_game.getSpartaPlayer(), polis_game
+				.getRound());
+		assertTrue(polis_game.getSpartaPlayer().getWheat() < wheatComparator);
+	}
+
+	@Test
+	public void checkGrowthNotNullNotWheat() {
+		Integer prestigeComparator;
+		polis_game.getSpartaPlayer().setWheat(0);
+		polis_game.getSpartaPlayer().setPrestige(333);
+		prestigeComparator = polis_game.getSpartaPlayer().getPrestige();
+		endRound.checkGrowth(polis_game.getSpartaPlayer(), polis_game
+				.getRound());
+		assertTrue(polis_game.getSpartaPlayer().getWheat() < prestigeComparator);
+	}
+
+	@Test
+	public void checkGrowthNotNull() {
+		Integer wheatComparator;
+		Integer prestigeComparator;
+		polis_game.getSpartaPlayer().setWheat(333);
+		polis_game.getSpartaPlayer().setPrestige(333);
+		wheatComparator = polis_game.getSpartaPlayer().getWheat();
+		prestigeComparator = polis_game.getSpartaPlayer().getPrestige();
+		endRound.checkGrowth(polis_game.getSpartaPlayer(), polis_game
+				.getRound());
+		assertTrue((polis_game.getSpartaPlayer().getWheat() < wheatComparator)
+				|| (polis_game.getSpartaPlayer().getPrestige() < prestigeComparator));
 	}
 }
