@@ -1,6 +1,7 @@
 package tests;
 
-import static org.junit.Assert.assertTrue;
+import static org.junit.Assert.*;
+
 
 import java.util.LinkedList;
 import java.util.List;
@@ -11,6 +12,7 @@ import game.Game;
 import game.Player;
 import game.Polis;
 import game.Project;
+
 import game.StandardStartInitializer;
 
 import org.junit.After;
@@ -168,39 +170,114 @@ public class TestEndRoundManager {
 		endRound.checkGrowth(null, null);
 	}
 
-	@Test
-	public void checkGrowthNotNullNotPrestige() {
-		Integer wheatComparator;
-		polis_game.getSpartaPlayer().setWheat(333);
-		polis_game.getSpartaPlayer().setPrestige(0);
-		wheatComparator = polis_game.getSpartaPlayer().getWheat();
-		endRound.checkGrowth(polis_game.getSpartaPlayer(), polis_game
-				.getRound());
-		assertTrue(polis_game.getSpartaPlayer().getWheat() < wheatComparator);
-	}
 
 	@Test
 	public void checkGrowthNotNullNotWheat() {
-		Integer prestigeComparator;
+		Integer initialPopulation = 0;
+		Integer finalPopulation = 0;
 		polis_game.getSpartaPlayer().setWheat(0);
-		polis_game.getSpartaPlayer().setPrestige(333);
-		prestigeComparator = polis_game.getSpartaPlayer().getPrestige();
+
+		initialPopulation = polis_game.getSpartaPlayer().getPrestige();
+		for (Polis pol : polis_game.getSpartaPlayer().getPlayerPolis()) {
+			initialPopulation += pol.getActualPopulation();
+
+		}
 		endRound.checkGrowth(polis_game.getSpartaPlayer(), polis_game
 				.getRound());
-		assertTrue(polis_game.getSpartaPlayer().getWheat() < prestigeComparator);
+
+		for (Polis pol : polis_game.getSpartaPlayer().getPlayerPolis()) {
+			finalPopulation += pol.getActualPopulation();
+
+		}
+		assertTrue(finalPopulation == initialPopulation);
 	}
 
 	@Test
 	public void checkGrowthNotNull() {
-		Integer wheatComparator;
-		Integer prestigeComparator;
-		polis_game.getSpartaPlayer().setWheat(333);
-		polis_game.getSpartaPlayer().setPrestige(333);
-		wheatComparator = polis_game.getSpartaPlayer().getWheat();
-		prestigeComparator = polis_game.getSpartaPlayer().getPrestige();
+		Integer initialWheat;
+		Integer finalWheat;
+		Integer initialPopulation = 0;
+		Integer finalPopulation = 0;
+
+		polis_game.getSpartaPlayer().setWheat(100000);
+
+		initialWheat = polis_game.getSpartaPlayer().getWheat();
+		for (Polis pol : polis_game.getSpartaPlayer().getPlayerPolis()) {
+			initialPopulation += pol.getActualPopulation();
+
+		}
 		endRound.checkGrowth(polis_game.getSpartaPlayer(), polis_game
 				.getRound());
-		assertTrue((polis_game.getSpartaPlayer().getWheat() < wheatComparator)
-				|| (polis_game.getSpartaPlayer().getPrestige() < prestigeComparator));
+
+		for (Polis pol : polis_game.getSpartaPlayer().getPlayerPolis()) {
+			finalPopulation += pol.getActualPopulation();
+
+		}
+
+		finalWheat = polis_game.getSpartaPlayer().getWheat();
+
+		assertTrue((initialPopulation < finalPopulation)
+				&& (finalWheat < initialWheat));
 	}
+
+	@Test(expected = NullPointerException.class)
+	public void checkInitializeNextRoundNull() {
+		endRound.initializeNextRound(null);
+	}
+
+	@Test
+	public void checkInitilizeNextRoundNotNull() {
+		polis_game.getAthensPlayer().setPrestige(0);
+		polis_game.getSpartaPlayer().setPrestige(100);
+		// the player with less prestige starts the next ROUND
+		String nameRound = polis_game.getRound().getName();
+
+		endRound.initializeNextRound(polis_game);
+
+		boolean conditions;
+		conditions = (!nameRound.equals(polis_game.getRound().getName()) && (polis_game
+				.getWhoHasTheTurn().equals(polis_game.getAthensPlayer())));
+		assertTrue(conditions);
+	}
+
+	
+
+	@Test(expected = NullPointerException.class)
+	public void checkFeedingNull() {
+		endRound.checkGrowth(null, null);
+	}
+
+	@Test
+	public void checkFeedingNotNullNotPrestige() {
+
+		Integer wheatComparator;
+		polis_game.getSpartaPlayer().setWheat(1000);
+		polis_game.getSpartaPlayer().setPrestige(0);
+		wheatComparator = polis_game.getSpartaPlayer().getWheat();
+		endRound.checkFeeding(polis_game.getSpartaPlayer());
+		assertTrue(polis_game.getSpartaPlayer().getWheat() < wheatComparator);
+	}
+	
+	@Test
+	public void checkFeedingNotNullNotWheat() {
+
+		Integer prestigeComparator;
+		polis_game.getSpartaPlayer().setWheat(0);
+		polis_game.getSpartaPlayer().setPrestige(1000);
+		prestigeComparator = polis_game.getSpartaPlayer().getWheat();
+		endRound.checkFeeding(polis_game.getSpartaPlayer());
+		assertTrue(polis_game.getSpartaPlayer().getPrestige() < prestigeComparator);
+	}
+	
+	@Test
+	public void checkFeedingNotNullNotWheatNotPrestigeEqualsLooseCapital() {
+
+		
+		polis_game.getSpartaPlayer().setWheat(0);
+		polis_game.getSpartaPlayer().setPrestige(0);
+		Polis capitalPolis = polis_game.getSpartaPlayer().getCapital();
+		endRound.checkFeeding(polis_game.getSpartaPlayer());
+		assertFalse(polis_game.getSpartaPlayer().getCapital().equals(capitalPolis));
+	}
+	
 }
