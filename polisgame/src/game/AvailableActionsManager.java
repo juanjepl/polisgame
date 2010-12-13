@@ -359,7 +359,7 @@ public class AvailableActionsManager {
 
 		Boolean condition_maxTroops = troops <= round.getMaximumPositionSlotsForThisRound();
 		Boolean condition_havePrestige = player.getPrestige() >= 1;
-		Boolean condition_isPlundered = terr.getPlundered();
+		Boolean condition_isPlundered = !(terr.getPlundered());
 		Integer numHoplites = 0;
 		
 		for(Unit u: player.getPlayerUnits())
@@ -384,10 +384,18 @@ public class AvailableActionsManager {
 		
 		Boolean condition_haveMinPolis = numPolisOwnedInTerritory >= 1;
 		
+		Boolean condition_haveAtLeastOneTroopInTerritory = false;
+		for(Unit u: terr.getUnits()){
+			if(u instanceof Hoplite && u.getOwner().equals(player)){
+				condition_haveAtLeastOneTroopInTerritory = true;
+				break;
+			}
+		}
+		
 		
 		//comprobar si se usa round pa el numero de tropas
 		
-		available = condition_maxTroops && condition_havePrestige && condition_haveHoplites && condition_haveMinPolis && condition_isPlundered;
+		available = condition_maxTroops && condition_havePrestige && condition_haveHoplites && condition_haveAtLeastOneTroopInTerritory && condition_haveMinPolis && condition_isPlundered;
 		
 		return available;
 	}
