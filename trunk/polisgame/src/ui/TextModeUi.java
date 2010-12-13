@@ -6,6 +6,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.ArrayList;
 import java.util.Map;
+import java.util.Vector;
 
 import game.CreatorAction;
 import game.Game;
@@ -353,7 +354,7 @@ public class TextModeUi implements IUserInterface{ //TODO rescue language texts 
 		}else if(chosenOption.equals("3")){	
 			requestSiegePolis(g,p);
 		}else if(chosenOption.equals("4")){	
-			requestPlunderTerritory();
+			requestPlunderTerritory(g,p);
 		}else{
 				//TODO -> possible exception
 		}
@@ -935,11 +936,158 @@ String message = ("Please, choose Polis to create the Proxenus: "); //FIXME resc
 
 	}
 	
-	public static Map<String,Integer> requestPlunderTerritory(){
-		//return map with String resource and Integer numHoplites to paid
-		Map<String, Integer> a = new HashMap<String, Integer>();
+	public static void requestPlunderTerritory(Game g, Player p){
+		
+		Map<String, Integer> valuesToPlunder = new HashMap<String, Integer>();
 		//TODO
-		return a;
+
+		List<Territory> toPlunderTerritoryOptions = new ArrayList<Territory>();
+		List<String> grantedOptions = new ArrayList<String>();
+		List<String> availableOptions = new ArrayList<String>();
+		List<String> toShowTextOptions = new ArrayList<String>();
+		
+		String message = "Please, choose Territory to plunder: "; //FIXME from gametexts...
+		
+		String chosenOption = "";
+		
+		Integer Count = 0;
+		for(Territory terr: g.getGameTerritories().values()){
+			if(AvailableActionsManager.checkPlunderTerritoryAction(p, terr , g.getRound() , 1 )){
+				toPlunderTerritoryOptions.add(terr);
+				toShowTextOptions.add(terr.getName());
+				grantedOptions.add(Count.toString());
+				availableOptions.add(Count.toString());
+				Count++;
+			}
+		}
+		
+		ShowPlayerChoices(message,toShowTextOptions);
+		chosenOption = RequestPlayerChoices(grantedOptions,availableOptions);
+		
+		Territory selectedTerritory = toPlunderTerritoryOptions.get(Integer.parseInt(chosenOption));
+		
+		Map<String,Vector<Integer>> territoryResources = selectedTerritory.getResources();
+		
+		
+		List<Hoplite> playerHoplitesInTerritory = new ArrayList<Hoplite>();
+		
+		for(Unit u: p.getPlayerUnits()){
+			if(u instanceof Hoplite && u.getPosition().equals(selectedTerritory)){
+				playerHoplitesInTerritory.add((Hoplite)u);
+			}
+		}
+		
+		
+		Boolean playerNotPass = true;
+		
+		// to select resource 
+		List<String> usedResources = new ArrayList<String>();
+		
+		while((playerHoplitesInTerritory.size() > 0) && (playerNotPass)){
+			
+			List<String> textOptionsForResources = new ArrayList<String>();
+			List<String> grantedOptionsForResources = new ArrayList<String>();
+			List<String> availableOptionsForResources = new ArrayList<String>();
+			
+			String chosenResource = "";
+			String messageResource = "Please, choose resource to plunder: "; //FIXME from gametexts...
+			
+			
+			List<String> resourcesNames = new ArrayList<String>();
+			resourcesNames.addAll(territoryResources.keySet());
+			
+			Integer CountResource = 0;
+			for(String resourcename: resourcesNames){
+				if(!usedResources.contains(resourcename)){ //TODO queden slots de ese recurso
+
+					grantedOptionsForResources.add(CountResource.toString());
+					availableOptionsForResources.add(CountResource.toString());
+					
+					if(resourcename.equals("Metal")){
+						textOptionsForResources.add("Metal"); //FIXME this metal from gametexts...
+					}else if(resourcename.equals("Wood")){
+						textOptionsForResources.add("Madera"); //FIXME this metal from gametexts...
+					}else if(resourcename.equals("Oil")){
+						textOptionsForResources.add("Aceite"); //FIXME this metal from gametexts...
+					}else if(resourcename.equals("Silver")){
+						textOptionsForResources.add("Plata"); //FIXME this metal from gametexts...
+					}else if(resourcename.equals("Wine")){
+						textOptionsForResources.add("Vino"); //FIXME this metal from gametexts...
+					}else if(resourcename.equals("Wheat")){
+						textOptionsForResources.add("Trigo"); //FIXME this metal from gametexts...
+					}else{
+						throw new IllegalArgumentException("Territory with wrong value for resource");
+					}
+					
+					CountResource++;
+				}	
+			}
+			
+			showMessage("Hoplites remaning: "+new Integer(playerHoplitesInTerritory.size()).toString());//FIXME Integer because size is a int (raw type) //FIXME from gametexts... // manual "autoboxing"
+			
+			ShowPlayerChoices(messageResource,textOptionsForResources);
+			chosenResource = RequestPlayerChoices(grantedOptionsForResources,availableOptionsForResources);
+			
+			String chosenResourceName = resourcesNames.get(Integer.parseInt(chosenResource));
+			
+			usedResources.add(chosenResourceName); // to avoid re-plunder same resource
+			
+			
+			// for number plunder troops in selected resource
+			
+			String messageNumberOfPlunderTroops = "Please choose number of troops to plunder selected resource: "; //FIXME from gametexts...
+			
+			List<String> textOptionsForPlunderTroops = new ArrayList<String>();
+			List<String> grantedOptionsPlunderTroops = new ArrayList<String>();
+			List<String> availableOptionsPlunderTroops = new ArrayList<String>();
+			
+			String chosenNumberTroops = "";
+			
+			Integer CountTroops = 0;
+			for(Integer i: territoryResources.get(chosenResourceName)){ // values of this key
+				if(territoryResources.get(chosenResourceName).indexOf(i) <= playerHoplitesInTerritory.size() - 1 ){ // values availables for this round //FIXME test it.
+					Integer hopliteNumberToShow = CountTroops + 1 ;
+					textOptionsForPlunderTroops.add(hopliteNumberToShow.toString() + " Hoplite(s) " + "(" + i.toString() + " units of selected resource)"); //FIXME from gametexts...
+					grantedOptionsPlunderTroops.add(CountTroops.toString());
+					availableOptionsPlunderTroops.add(CountTroops.toString());
+					CountTroops++;
+				}
+			}
+			
+			showMessage("Hoplites remaning: " + new Integer(playerHoplitesInTerritory.size()).toString());//FIXME Integer because size is a int (raw type) //FIXME from gametexts... // manual "autoboxing"
+			
+			ShowPlayerChoices(messageNumberOfPlunderTroops,textOptionsForPlunderTroops);
+			chosenNumberTroops = RequestPlayerChoices(grantedOptionsPlunderTroops,availableOptionsPlunderTroops);
+			
+			Integer troopsNumber = (Integer.parseInt(chosenNumberTroops)) + 1; // options start with 0
+			
+			valuesToPlunder.put(chosenResourceName, troopsNumber);
+			
+			// to update actual number of hoplite remaning
+			
+			for(int x = 0; x < troopsNumber; x++){
+				playerHoplitesInTerritory.remove(playerHoplitesInTerritory.size() - 1);
+			}
+			
+			// if player wants spent more hoplites in plundering another resource
+			
+			
+			if(playerHoplitesInTerritory.size() > 0){
+				
+				showMessage("Hoplites remaning: "+new Integer(playerHoplitesInTerritory.size()).toString());//FIXME Integer because size is a int (raw type) //FIXME from gametexts... // manual "autoboxing"
+				
+				String messageAnother = "Do you want plunder another resource? "; //FIXME from gametexts...
+				Boolean anotherResource = requestYesOrNot(messageAnother);
+				if(anotherResource == false){
+					playerNotPass = false;
+				}
+			}
+		}
+		
+		// Do the action
+		MilitaryAction mA = new MilitaryAction();
+		mA.plunderTerritory(p, g.getRound(), selectedTerritory, valuesToPlunder);
+		
 	}
 	
 	public static void requestStartAProject(){

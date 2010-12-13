@@ -140,12 +140,12 @@ public class MilitaryAction extends GameAction{
 	}
 	
 	/** Method to manage takings in the territories */
-	public Boolean plunderTerritory(Player player, Round round, Territory territory){
+	public Boolean plunderTerritory(Player player, Round round, Territory territory, Map<String, Integer> exactlyPlunder){
 		
 		if (player == null) throw new NullPointerException("'player' can not be null");
 		if (territory == null) throw new NullPointerException("'territory' can not be null");
 		
-		Map<String, Integer> hoplites = TextModeUi.requestPlunderTerritory();
+		Map<String, Integer> hoplites = exactlyPlunder;
 		
 		Integer troops = 0;
 		for(Integer numHoplites: hoplites.values())
@@ -183,6 +183,31 @@ public class MilitaryAction extends GameAction{
 		player.setPrestige(player.getPrestige() - 1);
 		success = true;
 		//FIXME cuando termina turno hay que devolver las unidades de nuevo a donde corresponden, eso se hace cuando se inicia turno!!
+		
+		//message
+		for(String st : exactlyPlunder.keySet()){
+			
+			String toShow = "";
+			
+			if(st.equals("Metal")){
+				toShow = "Metal"; //FIXME this metal from gametexts...
+			}else if(st.equals("Wood")){
+				toShow = "Madera"; //FIXME this metal from gametexts...
+			}else if(st.equals("Oil")){
+				toShow = "Aceite"; //FIXME this metal from gametexts...
+			}else if(st.equals("Silver")){
+				toShow = "Plata"; //FIXME this metal from gametexts...
+			}else if(st.equals("Wine")){
+				toShow = "Vino"; //FIXME this metal from gametexts...
+			}else if(st.equals("Wheat")){
+				toShow = "Trigo"; //FIXME this metal from gametexts...
+			}else{
+				throw new IllegalArgumentException("Territory with wrong value for resource");
+			}
+			
+			TextModeUi.showMessage(toShow+": Obtained " + territory.getResources().get(st).get(exactlyPlunder.get(st)-1) +" unit(s)"); //FIXME from gametexts // -1 because 2 hoplites are position "1" (starts in 0)
+		}
+		
 		
 		return success;
 	}
