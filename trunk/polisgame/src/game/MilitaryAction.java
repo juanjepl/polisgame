@@ -155,7 +155,12 @@ public class MilitaryAction extends GameAction{
 			//move hoplite to territory plundersUnits
 			for(int i = 0; i < numHoplites; i++)
 			{
-				Unit u = territory.getUnits().remove(i);
+				Unit u = null;
+				List<Unit> unidadesDebug = territory.getUnits();
+				if(territory.getUnits().get(0) instanceof Hoplite && territory.getUnits().get(0).getOwner().equals(player))
+				{
+					u = territory.getUnits().remove(0);
+				}
 				territory.setPlundersUnits(u);
 				//remove from player's units because aren't disponible for a while
 				player.getPlayerUnits().remove(u);
@@ -169,8 +174,7 @@ public class MilitaryAction extends GameAction{
 		
 		for(String resource:hoplites.keySet())
 		{
-			Integer amount = hoplites.get(resource);
-			
+			Integer amount = hoplites.get(resource) - 1;
 			Integer amountObtainedOfResource = resources.get(resource).get(amount);
 			
 			Integer amountOfResource = player.getResource(resource);
