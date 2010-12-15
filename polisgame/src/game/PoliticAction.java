@@ -26,6 +26,9 @@ public class PoliticAction extends GameAction{
 				project.setUsed(true);
 				polisProjects.add(project);
 				success = true;
+				
+				TextModeUi.showMessage("Project "+project.getName()+" started at "+polis.getName()); //FIXME from gametexts...
+				
 			}
 		}
 		
