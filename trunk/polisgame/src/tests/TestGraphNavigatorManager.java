@@ -15,6 +15,7 @@ import game.GraphNavigatorManager;
 import game.Hoplite;
 import game.Market;
 import game.Polis;
+import game.Proxenus;
 import game.Sea;
 import game.StandardStartInitializer;
 import game.Territory;
@@ -270,7 +271,7 @@ public class TestGraphNavigatorManager {
 			}
 
 		}
-		
+
 		Sea myrtonSea = null;
 
 		for (Sea Io : seasOfGame) {
@@ -280,11 +281,12 @@ public class TestGraphNavigatorManager {
 			}
 
 		}
-	//	Trirreme spartanTrirreme, 
+		// Trirreme spartanTrirreme,
 		Trirreme athensTrirreme;
 		Trirreme athensTrirreme2;
-//		spartanTrirreme = new Trirreme(polis_game.getSpartaPlayer(), ionianSea);
-//		polis_game.getSpartaPlayer().addUnit(spartanTrirreme);
+		// spartanTrirreme = new Trirreme(polis_game.getSpartaPlayer(),
+		// ionianSea);
+		// polis_game.getSpartaPlayer().addUnit(spartanTrirreme);
 		athensTrirreme = new Trirreme(polis_game.getAthensPlayer(), ionianSea);
 		polis_game.getAthensPlayer().addUnit(athensTrirreme);
 		athensTrirreme2 = new Trirreme(polis_game.getAthensPlayer(), myrtonSea);
@@ -335,5 +337,49 @@ public class TestGraphNavigatorManager {
 				polis_game.getAthensPlayer(), "trirreme"));
 
 	}
-	
+
+	@Test(expected = NullPointerException.class)
+	public void existWayProxenusNull() {
+
+		GraphNavigatorManager.existsWayForProxenus(null, null, null, null);
+	}
+
+	@Test
+	public void existProxenusToTerritory() {
+		List<Territory> listOfTerritory = new LinkedList<Territory>(polis_game
+				.getGameTerritories().values());
+
+		Territory laconiaTerritory = null;
+		for (Territory terr : listOfTerritory) {
+			if (terr.getSysName().equalsIgnoreCase("laconia")) {
+				laconiaTerritory = terr;
+				break;
+			}
+		}
+		Proxenus atheansProxenus = new Proxenus(polis_game.getAthensPlayer(),
+				polis_game.getAthensPlayer().getCapital());
+		polis_game.getAthensPlayer().getCapital().addUnit(atheansProxenus);
+		
+		
+		
+		assertTrue(GraphNavigatorManager.existsWayForProxenus(polis_game.getAthensPlayer().getCapital(), laconiaTerritory, polis_game.getAthensPlayer(), "proxenus")> 1);
+		
+		
+
+	}
+	@Test
+	public void existProxenus2EqualsTerritory(){
+		Proxenus atheansProxenus = new Proxenus(polis_game.getAthensPlayer(),
+				polis_game.getAthensPlayer().getCapital());
+		polis_game.getAthensPlayer().getCapital().addUnit(atheansProxenus);
+		
+		
+		
+		assertTrue(GraphNavigatorManager.existsWayForProxenus(polis_game.getAthensPlayer().getCapital(), polis_game.getAthensPlayer().getCapital(), polis_game.getAthensPlayer(), "proxenus") == -1);
+		
+		
+		
+		
+	}
+
 }
