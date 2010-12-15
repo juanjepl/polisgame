@@ -939,7 +939,6 @@ String message = ("Please, choose Polis to create the Proxenus: "); //FIXME resc
 	public static void requestPlunderTerritory(Game g, Player p){
 		
 		Map<String, Integer> valuesToPlunder = new HashMap<String, Integer>();
-		//TODO
 
 		List<Territory> toPlunderTerritoryOptions = new ArrayList<Territory>();
 		List<String> grantedOptions = new ArrayList<String>();
@@ -983,6 +982,13 @@ String message = ("Please, choose Polis to create the Proxenus: "); //FIXME resc
 		// to select resource 
 		List<String> usedResources = new ArrayList<String>();
 		
+		List<String> resourcesNames = new ArrayList<String>();
+		resourcesNames.addAll(territoryResources.keySet());
+		
+		List<String> resourcesNamesWithNoChosenResources = new ArrayList<String>(); // same but in a for-each i cannot modify the inner structure
+		resourcesNamesWithNoChosenResources.addAll(territoryResources.keySet());
+		
+		
 		while((playerHoplitesInTerritory.size() > 0) && (playerNotPass)){
 			
 			List<String> textOptionsForResources = new ArrayList<String>();
@@ -991,11 +997,7 @@ String message = ("Please, choose Polis to create the Proxenus: "); //FIXME resc
 			
 			String chosenResource = "";
 			String messageResource = "Please, choose resource to plunder: "; //FIXME from gametexts...
-			
-			
-			List<String> resourcesNames = new ArrayList<String>();
-			resourcesNames.addAll(territoryResources.keySet());
-			
+
 			Integer CountResource = 0;
 			for(String resourcename: resourcesNames){
 				if(!usedResources.contains(resourcename)){ //TODO queden slots de ese recurso
@@ -1020,7 +1022,11 @@ String message = ("Please, choose Polis to create the Proxenus: "); //FIXME resc
 					}
 					
 					CountResource++;
-				}	
+				}else{
+					
+					resourcesNamesWithNoChosenResources.remove(resourcename);
+					
+				}
 			}
 			
 			showMessage("Hoplites remaning: "+new Integer(playerHoplitesInTerritory.size()).toString());//FIXME Integer because size is a int (raw type) //FIXME from gametexts... // manual "autoboxing"
@@ -1028,7 +1034,7 @@ String message = ("Please, choose Polis to create the Proxenus: "); //FIXME resc
 			ShowPlayerChoices(messageResource,textOptionsForResources);
 			chosenResource = RequestPlayerChoices(grantedOptionsForResources,availableOptionsForResources);
 			
-			String chosenResourceName = resourcesNames.get(Integer.parseInt(chosenResource));
+			String chosenResourceName = resourcesNamesWithNoChosenResources.get(Integer.parseInt(chosenResource));
 			
 			usedResources.add(chosenResourceName); // to avoid re-plunder same resource
 			
