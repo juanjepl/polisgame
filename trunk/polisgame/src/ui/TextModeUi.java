@@ -12,6 +12,7 @@ import game.CreatorAction;
 import game.Game;
 import game.MilitaryAction;
 import game.Polis;
+import game.PoliticAction;
 import game.Round;
 import game.Territory;
 import game.Turn;
@@ -21,6 +22,7 @@ import game.AvailableActionsManager;
 import game.Unit;
 import game.Hoplite;
 import game.Trirreme;
+import game.Project;
 
 
 
@@ -421,7 +423,7 @@ public class TextModeUi implements IUserInterface{ //TODO rescue language texts 
 		if(chosenOption.equals("0")){
 			showAvailableActions(g,p);
 		}else if(chosenOption.equals("1")){
-			requestStartAProject();
+			requestStartAProject(g,p);
 		}else if(chosenOption.equals("2")){
 			requestTrade();
 		}else if(chosenOption.equals("3")){	
@@ -1096,8 +1098,64 @@ String message = ("Please, choose Polis to create the Proxenus: "); //FIXME resc
 		
 	}
 	
-	public static void requestStartAProject(){
-		//TODO
+	public static void requestStartAProject(Game g, Player p){
+		
+		List<Project> possibleProjects = new ArrayList<Project>();
+		List<String> grantedOptions = new ArrayList<String>();
+		List<String> availableOptions = new ArrayList<String>();
+		List<String> projectTextOptions = new ArrayList<String>();
+		
+		String chosenOption = "";
+		
+		String messageProject = "Please choose a project from available projects in this round: "; //FIXME from gametexts...
+		
+		Integer countOptions = 0;
+		for(Polis po : p.getPlayerPolis()){
+			for(Project proj: g.getRound().getProjectsInThisRound()){
+				if(AvailableActionsManager.checkStartProjectAction(p, po, proj)){
+					possibleProjects.add(proj);
+					grantedOptions.add(countOptions.toString());
+					availableOptions.add(countOptions.toString());
+					projectTextOptions.add(proj.getName());
+					countOptions++;
+				}
+			}
+		}
+		
+		ShowPlayerChoices(messageProject,projectTextOptions);
+		chosenOption = RequestPlayerChoices(grantedOptions,availableOptions);
+		
+		Project chosenProject = possibleProjects.get(Integer.parseInt(chosenOption));
+		
+		List<Polis> possiblePolis = new ArrayList<Polis>();
+		List<String> grantedOptionsPolis = new ArrayList<String>();
+		List<String> availableOptionsPolis = new ArrayList<String>();
+		List<String> polisTextOptions = new ArrayList<String>();
+		
+		String messagePolis = "Please choose polis to start selected project: "; //FIXME for gametexts...
+		
+		String chosenPolis = "";
+		
+		Integer countPolis = 0;
+		for(Polis po: p.getPlayerPolis()){
+			if(AvailableActionsManager.checkStartProjectAction(p, po, chosenProject)){
+				possiblePolis.add(po);
+				polisTextOptions.add(po.getName());
+				grantedOptionsPolis.add(countPolis.toString());
+				availableOptionsPolis.add(countPolis.toString());
+				countPolis++;
+			}
+		}
+		
+		ShowPlayerChoices(messagePolis,polisTextOptions);
+		chosenPolis = RequestPlayerChoices(grantedOptionsPolis,availableOptionsPolis);
+		
+		Polis chosenPolisByUser = possiblePolis.get(Integer.parseInt(chosenPolis));
+		
+		
+		PoliticAction pA = new PoliticAction();
+		pA.startProject(p, chosenProject, chosenPolisByUser);
+	
 	}
 	
 	public static void requestTrade(){
