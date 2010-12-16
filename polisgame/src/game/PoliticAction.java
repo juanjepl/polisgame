@@ -121,9 +121,11 @@ public class PoliticAction extends GameAction{
 	}
 	
 	/** Method to manage proxenus's movements */
-	public Boolean moveProxenus(Player player, Polis destination){
+	public Boolean moveProxenus(Player player, Polis destiny){
 		Boolean success = false;
-		//TODO
+		
+		
+		TextModeUi.showMessage("Proxenus moved to "+ destiny.getName()); //FIXME from gametexts
 		return success;
 	}
 	
@@ -147,6 +149,8 @@ public class PoliticAction extends GameAction{
 				player.getPlayerPolis().add(polis);
 				player.setSilver(player.getSilver()-2*polis.getBasePopulation());
 			}
+			
+			TextModeUi.showMessage("A civil war made at " + player.getPlayerProxenus().getPosition().getName());//FIXME from gametexts
 		}
 		return success;
 	}
