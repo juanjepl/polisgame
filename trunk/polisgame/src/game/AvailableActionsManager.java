@@ -151,7 +151,7 @@ public class AvailableActionsManager {
 		
 		if(existsProxenus){
 			for(Polis po: g.getGamePolis().values()){
-				if(checkMoveProxenusAction(p,proxenusLocation,po)){
+				if(checkMoveProxenusAction(g,p,proxenusLocation,po)){
 					available = true;
 					break;
 				}
@@ -457,9 +457,24 @@ public class AvailableActionsManager {
 		
 		return available;
 	}
-	public static Boolean checkMoveProxenusAction(Player player,Polis start, Polis destiny){
-		Boolean available = false;
-		//TODO
+	public static Boolean checkMoveProxenusAction(Game game, Player player, Polis start, Polis destiny){
+		Boolean available = true;
+
+		Boolean condition_moveFromPolisToPolis = start instanceof Polis && destiny instanceof Polis;
+		Boolean condition_existsWayForProxenus = GraphNavigatorManager.existsWayForProxenus(start, destiny, player);
+		Boolean condition_playerHaveMinimumAmountOfSilver = player.getSilver() >= GraphNavigatorManager.amountToPayForWay;
+
+		
+		Player enemyPlayer;
+		if(player.equals(game.getAthensPlayer())){
+			enemyPlayer = game.getSpartaPlayer();
+		}else{
+			enemyPlayer = game.getAthensPlayer();
+		}
+		
+		Boolean condition_onlyOneProxenusInDestiny = !enemyPlayer.getPlayerProxenus().getPosition().equals(destiny);
+		
+		available = condition_moveFromPolisToPolis && condition_existsWayForProxenus && condition_playerHaveMinimumAmountOfSilver && condition_onlyOneProxenusInDestiny;
 		return available;
 	}
 	public static Boolean checkCivilWarAction(Game game, Player player,Polis polis){

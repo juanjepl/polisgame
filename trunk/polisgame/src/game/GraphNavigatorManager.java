@@ -104,11 +104,11 @@ public class GraphNavigatorManager {
 		}
 	}
 
-public static Integer existsWayForProxenus ( Polis p1, Polis p2, Player player){
+public static Boolean existsWayForProxenus ( Polis p1, Polis p2, Player player){
 		
 		Graph graph = null;
 		if(p1.getSysName().equals(p2.getSysName())){
-			return -1;
+			return false;
 		}
 		else
 		{
@@ -136,7 +136,8 @@ public static Integer existsWayForProxenus ( Polis p1, Polis p2, Player player){
 		List<Vertex<? extends Position>> initialPositionAdjacents = graph.getGraph().get(v);
 		
 		
-		Integer exists = -1;
+		Boolean exists = false;
+		
 		List<Vertex<? extends Position>> visited = new ArrayList<Vertex<? extends Position>>();
 		List<Vertex<? extends Position>> queue = new ArrayList<Vertex<? extends Position>>();
 		Vertex<? extends Position> bestCandidate = initialPositionAdjacents.get(0);
@@ -192,7 +193,7 @@ public static Integer existsWayForProxenus ( Polis p1, Polis p2, Player player){
 		visited.add(v);
 		
 		
-		while(!queue.isEmpty() && exists == -1)
+		while(!queue.isEmpty() && !exists)
 		{
 			//extract first vertex
 			Vertex<? extends Position> element = queue.remove(0);
@@ -237,7 +238,7 @@ public static Integer existsWayForProxenus ( Polis p1, Polis p2, Player player){
 			//check if p2 vertex exists in queue
 			if(bestCandidate.equals(v2))
 			{
-				exists = 1; //devolver realmente el coste
+				exists = true; //devolver realmente el coste
 			}
 		}
 		

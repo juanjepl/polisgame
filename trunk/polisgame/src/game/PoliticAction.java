@@ -124,6 +124,10 @@ public class PoliticAction extends GameAction{
 	public Boolean moveProxenus(Player player, Polis destiny){
 		Boolean success = false;
 		
+		//proxenus pays amount needed of silver
+		player.setSilver(player.getSilver() - GraphNavigatorManager.amountToPayForWay);
+		
+		player.getPlayerProxenus().setPosition(destiny);
 		
 		TextModeUi.showMessage("Proxenus moved to "+ destiny.getName()); //FIXME from gametexts
 		return success;
