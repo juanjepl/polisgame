@@ -156,7 +156,7 @@ public class MilitaryAction extends GameAction{
 			for(int i = 0; i < numHoplites; i++)
 			{
 				Unit u = null;
-				List<Unit> unidadesDebug = territory.getUnits();
+
 				if(territory.getUnits().get(0) instanceof Hoplite && territory.getUnits().get(0).getOwner().equals(player))
 				{
 					u = territory.getUnits().remove(0);

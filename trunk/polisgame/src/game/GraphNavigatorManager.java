@@ -6,6 +6,7 @@ import java.util.Set;
 
 public class GraphNavigatorManager {
 
+	public static Integer amountToPayForWay = 0;
 	public GraphNavigatorManager()
 	{
 		
@@ -103,7 +104,7 @@ public class GraphNavigatorManager {
 		}
 	}
 
-public static Integer existsWayForProxenus ( Position p1, Position p2, Player player, String type){
+public static Integer existsWayForProxenus ( Polis p1, Polis p2, Player player){
 		
 		Graph graph = null;
 		if(p1.getSysName().equals(p2.getSysName())){
@@ -113,19 +114,8 @@ public static Integer existsWayForProxenus ( Position p1, Position p2, Player pl
 		{
 			
 		
-		if(type.equals("hoplite"))
-		{
-			graph = Game.getHopliteGraph();
-		}else if(type.equals("trirreme"))
-		{
-			graph = Game.getTrirremeGraph();
-		}else if(type.equals("tradeBoat"))
-		{
-			graph = Game.getTradeBoatGraph();
-		}else if(type.equals("proxenus"))
-		{
-			graph = Game.getProxenusGraph();
-		}
+		graph = Game.getProxenusGraph();
+		
 		
 		Set<Vertex<? extends Position>> searchInGraph = graph.getGraph().keySet();
 		
@@ -149,21 +139,58 @@ public static Integer existsWayForProxenus ( Position p1, Position p2, Player pl
 		Integer exists = -1;
 		List<Vertex<? extends Position>> visited = new ArrayList<Vertex<? extends Position>>();
 		List<Vertex<? extends Position>> queue = new ArrayList<Vertex<? extends Position>>();
+		Vertex<? extends Position> bestCandidate = initialPositionAdjacents.get(0);
+		Integer amountToPayForMovement = 0;
+		
+		//if initialPosition is sieged proxenus have to pay silver
+
+		if(p1.getSieged())
+		{
+			Integer oponentUnits = 0;
+			
+			//create a new list that contains only oponent units
+			for(Unit u: p1.getUnits())
+			{
+				if(!u.getOwner().equals(player))
+				{
+					oponentUnits++;
+				}
+			}
+			
+			amountToPayForMovement += oponentUnits;
+		}
 		
 		for(Vertex<? extends Position> vertex: initialPositionAdjacents)
 		{
 			
-			if(!vertex.getVertexReference().getLockForAPlayer(player))
+			Integer oponentUnits = 0;
+			
+			//create a new list that contains only oponent units
+			for(Unit u: vertex.getVertexReference().getUnits())
 			{
-					queue.add(vertex);
+				if(!u.getOwner().equals(player))
+				{
+					oponentUnits++;
+				}
+			}
+			
+			vertex.setWeight(oponentUnits);
+			
+			if(bestCandidate.getWeight() > vertex.getWeight())
+			{
+				bestCandidate = vertex;
 			}else
 			{
 				visited.add(vertex);
 			}
+
 			
 		}
+		queue.add(bestCandidate);
+		amountToPayForMovement += bestCandidate.getWeight();
 		
 		visited.add(v);
+		
 		
 		while(!queue.isEmpty() && exists == -1)
 		{
@@ -175,21 +202,46 @@ public static Integer existsWayForProxenus ( Position p1, Position p2, Player pl
 			
 			for(Vertex<? extends Position> vertex: adjacents)
 			{
-				//check if vertex isn't locked and isn't visited
-				if(!vertex.getVertexReference().getLockForAPlayer(player) && !visited.contains(vertex))
+				Integer oponentUnits = 0;
+				
+				//create a new list that contains only oponent units
+				for(Unit u: vertex.getVertexReference().getUnits())
+				{
+					if(!u.getOwner().equals(player))
+					{
+						oponentUnits++;
+					}
+				}
+				
+				vertex.setWeight(oponentUnits);
+				
+				//check if vertex isn't visited and calculate the weight
+				if(vertex.equals(v2))
+				{
+						bestCandidate = vertex;
+				}
+				else if(!visited.contains(vertex) && (bestCandidate.getWeight() > vertex.getWeight()))
 				{
 						//add vertex to queue
-						queue.add(vertex);
+						bestCandidate = vertex;
+				}else
+				{
+						visited.add(vertex);
 				}
 				
 			}
 			
+			queue.add(bestCandidate);
+			amountToPayForMovement += bestCandidate.getWeight();
+			
 			//check if p2 vertex exists in queue
-			if(queue.contains(v2))
+			if(bestCandidate.equals(v2))
 			{
 				exists = 1; //devolver realmente el coste
 			}
 		}
+		
+		amountToPayForWay = amountToPayForMovement;
 		
 		return exists;
 		}

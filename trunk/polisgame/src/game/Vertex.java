@@ -4,6 +4,7 @@ package game;
 public class Vertex<P extends Position>{
     
 	private P vertexReference;
+    private Integer weight;
     
     public Vertex(P vertexReference){
         this.vertexReference = vertexReference;
@@ -11,6 +12,16 @@ public class Vertex<P extends Position>{
     
     public Position getVertexReference(){
         return vertexReference;
+    }
+    
+    public Integer getWeight()
+    {
+    	return weight;
+    }
+    
+    public void setWeight(Integer weight)
+    {
+    	this.weight = weight;
     }
 
 }
