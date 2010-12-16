@@ -11,6 +11,7 @@ import java.util.Vector;
 import game.CreatorAction;
 import game.Game;
 import game.GraphNavigatorManager;
+import game.Market;
 import game.MilitaryAction;
 import game.Polis;
 import game.PoliticAction;
@@ -426,7 +427,7 @@ public class TextModeUi implements IUserInterface{ //TODO rescue language texts 
 		}else if(chosenOption.equals("1")){
 			requestStartAProject(g,p);
 		}else if(chosenOption.equals("2")){
-			requestTrade();
+			requestTrade(g,p);
 		}else if(chosenOption.equals("3")){	
 			requestMoveProxenus(g,p);
 		}else if(chosenOption.equals("4")){	
@@ -1159,13 +1160,149 @@ String message = ("Please, choose Polis to create the Proxenus: "); //FIXME resc
 	
 	}
 	
-	public static void requestTrade(){
+	public static void requestTrade(Game g, Player p){
+		
+		// To choose the market
+		
+		List<Market> possibleMarkets = new ArrayList<Market>();
+		List<String> grantedOptionsMarkets = new ArrayList<String>();
+		List<String> availableOptionsMarkets = new ArrayList<String>();
+		List<String> marketsTextOptions = new ArrayList<String>();
+		
+		String chosenMarketText = "";
+		String messageMarket = "Please choose a market for trade: "; //FIXME from gametexts...
+		
+		Integer countMarket = 0;
+		for(Market market : g.getGameMarkets().values()){
+			if(AvailableActionsManager.checkTradeAction(p, market, g.getRound())){
+				possibleMarkets.add(market);
+				grantedOptionsMarkets.add(countMarket.toString());
+				availableOptionsMarkets.add(countMarket.toString());
+				marketsTextOptions.add(market.getName());
+				countMarket++;
+			}
+		}
+		
+		ShowPlayerChoices(messageMarket,marketsTextOptions);
+		chosenMarketText = RequestPlayerChoices(grantedOptionsMarkets,availableOptionsMarkets);
+		
+		Market chosenMarket = possibleMarkets.get(Integer.parseInt(chosenMarketText));
+		
+		
+		// To choose the resource
+		
+		List<String> possibleResourcesToBeObtained = new ArrayList<String>();
+		List<String> grantedOptionsResourceToBeObtained = new ArrayList<String>();
+		List<String> availableOptionsResourcesToBeObtained = new ArrayList<String>();
+		List<String> resourcesToBeObtainedTextOptions = new ArrayList<String>();
+		
+		String chosenResourcesToBeObtainedText = "";
+		String messageResourcesToBeObtained = "Please choose resource that you want to obtain: "; //FIXME from gametexts
+		
+		Integer countResourcesToBeObtained = 0;
+		for(String resourceToBeObtained : chosenMarket.getResources().keySet()){
+			if(AvailableActionsManager.checkResourceAvailabilityInATrade(p,g.getRound(),chosenMarket,resourceToBeObtained)){
+				possibleResourcesToBeObtained.add(resourceToBeObtained);
+				grantedOptionsResourceToBeObtained.add(countResourcesToBeObtained.toString());
+				availableOptionsResourcesToBeObtained.add(countResourcesToBeObtained.toString());
+				
+				if(resourceToBeObtained.equals("Metal")){
+					resourcesToBeObtainedTextOptions.add("Metal"); //FIXME this metal from gametexts...
+				}else if(resourceToBeObtained.equals("Wood")){
+					resourcesToBeObtainedTextOptions.add("Madera"); //FIXME this metal from gametexts...
+				}else if(resourceToBeObtained.equals("Oil")){
+					resourcesToBeObtainedTextOptions.add("Aceite"); //FIXME this metal from gametexts...
+				}else if(resourceToBeObtained.equals("Silver")){
+					resourcesToBeObtainedTextOptions.add("Plata"); //FIXME this metal from gametexts...
+				}else if(resourceToBeObtained.equals("Wine")){
+					resourcesToBeObtainedTextOptions.add("Vino"); //FIXME this metal from gametexts...
+				}else if(resourceToBeObtained.equals("Wheat")){
+					resourcesToBeObtainedTextOptions.add("Trigo"); //FIXME this metal from gametexts...
+				}else{
+					throw new IllegalArgumentException("Territory with wrong value for resource");
+				}
+
+				countResourcesToBeObtained++;	
+			}
+		}
+		
+		ShowPlayerChoices(messageResourcesToBeObtained,resourcesToBeObtainedTextOptions);
+		chosenResourcesToBeObtainedText = RequestPlayerChoices(grantedOptionsResourceToBeObtained,availableOptionsResourcesToBeObtained);
+		
+		String chosenResourceToExploit = possibleResourcesToBeObtained.get(Integer.parseInt(chosenResourcesToBeObtainedText));
+		
+
+		// checks if exists multi element payment (to choose quantity)
+		
+		Boolean multi = false;
+		List<String> resourcesApplicables = new ArrayList<String>();
+		
+		if(chosenMarket.getResources().get(chosenResourceToExploit).keySet().size() > 1){	
+			Integer multiCount = 0;
+			for(String str : chosenMarket.getResources().get(chosenResourceToExploit).keySet()){
+				if(chosenMarket.getResources().get(chosenResourceToExploit).get(str) <= g.getRound().getMaximumPositionSlotsForThisRound()){ //.getMaximum... this number is also applicable here.
+					multiCount ++;
+					resourcesApplicables.add(str);
+					
+					if(multiCount > 2){
+						multi = true;
+					}
+				}
+			}
+		}
+		
+		//TODO
+		
+		
+		// To choose pay method
+		List<String> possibleResourcesToPay = new ArrayList<String>();
+		List<String> grantedOptionsResourceToPay = new ArrayList<String>();
+		List<String> availableOptionsResourcesToPay = new ArrayList<String>();
+		List<String> resourcesToPay = new ArrayList<String>();
+		
+		String chosenResourceToPayText = "";
+		String messageResourcesToPay = "Please choose resource for paying the trade: "; //FIXME from gametexts
+		
+		Integer countResourcesToPay = 0;
+		for(String payResource : chosenMarket.getResources().get(chosenResourceToExploit).keySet()){
+			if(AvailableActionsManager.checkIfICanPayThisTradeWithThisResource(p, g.getRound(), chosenMarket, chosenResourceToExploit, payResource)){
+				possibleResourcesToPay.add(payResource);
+				grantedOptionsResourceToPay.add(countResourcesToPay.toString());
+				availableOptionsResourcesToPay.add(countResourcesToPay.toString());
+				
+				if(payResource.equals("Metal")){
+					resourcesToPay.add("Metal"); //FIXME this metal from gametexts...
+				}else if(payResource.equals("Wood")){
+					resourcesToPay.add("Madera"); //FIXME this metal from gametexts...
+				}else if(payResource.equals("Oil")){
+					resourcesToPay.add("Aceite"); //FIXME this metal from gametexts...
+				}else if(payResource.equals("Silver")){
+					resourcesToPay.add("Plata"); //FIXME this metal from gametexts...
+				}else if(payResource.equals("Wine")){
+					resourcesToPay.add("Vino"); //FIXME this metal from gametexts...
+				}else if(payResource.equals("Wheat")){
+					resourcesToPay.add("Trigo"); //FIXME this metal from gametexts...
+				}else{
+					throw new IllegalArgumentException("Territory with wrong value for resource");
+				}
+
+				countResourcesToPay++;
+			}
+		}
+		
+		ShowPlayerChoices(messageResourcesToPay,resourcesToPay);
+		chosenResourceToPayText = RequestPlayerChoices(grantedOptionsResourceToPay,availableOptionsResourcesToPay);
+		
+		String chosenResource = possibleResourcesToPay.get(Integer.parseInt(chosenResourceToPayText));
+		
+		//PoliticAction pA = new PoliticAction();
+		//pA.trade(p, g.getRound(), g.getMarketChart(), chosenMarket, resource1, resource2);
+		
 		//TODO
 	}
 	
 	public static void requestMoveProxenus(Game g, Player p){
-		//TODO
-		
+
 		Polis proxenusStart = (Polis)p.getPlayerProxenus().getPosition();
 		
 		List<Polis> posibleGoals = new ArrayList<Polis>();
@@ -1178,7 +1315,7 @@ String message = ("Please, choose Polis to create the Proxenus: "); //FIXME resc
 		
 		Integer count = 0;
 		for(Polis po: g.getGamePolis().values()){
-			if(AvailableActionsManager.checkMoveProxenusAction(p, proxenusStart, po)){
+			if(AvailableActionsManager.checkMoveProxenusAction(g ,p, proxenusStart, po)){
 				posibleGoals.add(po);
 				grantedOptions.add(count.toString());
 				availableOptions.add(count.toString());
