@@ -1,5 +1,7 @@
 package game;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Map;
 
 /** Market position class */
@@ -35,5 +37,22 @@ public class Market extends Sea{
 			}
 		}
 		return associated;
+	}
+	
+	public List<String> getListOfDisponibleResources(String resource2)
+	{
+		List<String> list= new ArrayList<String>();
+		
+		for(String resource1: resources.keySet())
+		{
+			Map<String, Integer> resource2List = resources.get(resource1);
+			if(resource2List.containsKey(resource2))
+			{
+				list.add(resource1);
+				break;
+			}
+		}
+		
+		return list;
 	}
 }
