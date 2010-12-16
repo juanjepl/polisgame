@@ -457,6 +457,23 @@ public class AvailableActionsManager {
 		
 		return available;
 	}
+	
+	/** Utility method for Trades  */
+	public static Boolean checkResourceAvailabilityInATrade(Player p, Round r, Market m, String resource){
+		Boolean available = false;
+		//TODO -> String resource -> resource to be exploited.
+		//TODO remember : marketChart -> round r
+
+		return available;
+	}
+	
+	/** checks if i have enough amount of a resource for paying a trade in a market */
+	public static Boolean checkIfICanPayThisTradeWithThisResource(Player p, Round r, Market m, String resourceToBeExploited, String resourceForPay){
+		Boolean available = false;
+		//TODO
+		return available;
+	}
+	
 	public static Boolean checkMoveProxenusAction(Game game, Player player, Polis start, Polis destiny){
 		Boolean available = true;
 
