@@ -430,7 +430,7 @@ public class TextModeUi implements IUserInterface{ //TODO rescue language texts 
 		}else if(chosenOption.equals("3")){	
 			requestMoveProxenus(g,p);
 		}else if(chosenOption.equals("4")){	
-			requestCivilWar();
+			requestCivilWar(p);
 		}else{
 				//TODO -> possible exception
 		}
@@ -1197,8 +1197,11 @@ String message = ("Please, choose Polis to create the Proxenus: "); //FIXME resc
 		
 	}
 	
-	public static void requestCivilWar(){
-		//TODO
+	public static void requestCivilWar(Player p){
+		
+		PoliticAction pA = new PoliticAction();
+		pA.moveProxenus(p, (Polis)p.getPlayerProxenus().getPosition());
+
 	}
 	
 	
