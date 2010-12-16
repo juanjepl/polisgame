@@ -39,7 +39,7 @@ public class Market extends Sea{
 		return associated;
 	}
 	
-	public List<String> getListOfDisponibleResources(String resource2)
+	public List<String> getListOfAvailableResources(String resource2)
 	{
 		List<String> list= new ArrayList<String>();
 		
@@ -54,5 +54,10 @@ public class Market extends Sea{
 		}
 		
 		return list;
+	}
+	
+	public Map<String, Map<String, Integer>> getResources()
+	{
+		return resources;
 	}
 }
