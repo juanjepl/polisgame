@@ -10,6 +10,7 @@ import java.util.Vector;
 
 import game.CreatorAction;
 import game.Game;
+import game.GraphNavigatorManager;
 import game.MilitaryAction;
 import game.Polis;
 import game.PoliticAction;
@@ -427,7 +428,7 @@ public class TextModeUi implements IUserInterface{ //TODO rescue language texts 
 		}else if(chosenOption.equals("2")){
 			requestTrade();
 		}else if(chosenOption.equals("3")){	
-			requestMoveProxenus();
+			requestMoveProxenus(g,p);
 		}else if(chosenOption.equals("4")){	
 			requestCivilWar();
 		}else{
@@ -1162,8 +1163,38 @@ String message = ("Please, choose Polis to create the Proxenus: "); //FIXME resc
 		//TODO
 	}
 	
-	public static void requestMoveProxenus(){
+	public static void requestMoveProxenus(Game g, Player p){
 		//TODO
+		
+		Polis proxenusStart = (Polis)p.getPlayerProxenus().getPosition();
+		
+		List<Polis> posibleGoals = new ArrayList<Polis>();
+		List<String> grantedOptions = new ArrayList<String>();
+		List<String> availableOptions = new ArrayList<String>();
+		List<String> showTextOptions = new ArrayList<String>();
+		
+		String message = "Please choose destination for proxenus: "; //FIXME from gametexts...
+		String chosenOption = "";
+		
+		Integer count = 0;
+		for(Polis po: g.getGamePolis().values()){
+			if(AvailableActionsManager.checkMoveProxenusAction(p, proxenusStart, po)){
+				posibleGoals.add(po);
+				grantedOptions.add(count.toString());
+				availableOptions.add(count.toString());
+				showTextOptions.add(po.getName()+" ( "+GraphNavigatorManager.amountToPayForWay+" )");
+				count++;
+			}
+		}
+		
+		ShowPlayerChoices(message,showTextOptions);
+		chosenOption = RequestPlayerChoices(grantedOptions,availableOptions);
+		
+		Polis chosenPolis = posibleGoals.get(Integer.parseInt(chosenOption));
+		
+		PoliticAction pA = new PoliticAction();
+		pA.moveProxenus(p, chosenPolis);
+		
 	}
 	
 	public static void requestCivilWar(){
@@ -1336,8 +1367,6 @@ String message = ("Please, choose Polis to create the Proxenus: "); //FIXME resc
 	/** This method take the higher value from n roll dice  */
 	public static Integer showRollTheDice(Integer numRolls){
 		Integer diceValue = 0;
-		//TODO
-		
 		for(int i = 0; i < numRolls; i++){
 			System.out.println(" ");
 			System.out.print("Please, roll the dice (writte anything)"); //FIXME rescue text from gametexts
