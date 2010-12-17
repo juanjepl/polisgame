@@ -1,9 +1,9 @@
 package cfg;
 
-/** This class contains folders pahs and methods to change game's configurations, for example, switch language */
+/** This class contains folders paths and methods to change game's configurations, for example, switch language */
 public class GameConfigurations { 
 
-	// static atributes who saved the game folders path
+	// static attributes who saved the game folders path
 	private static String pathOfSeas = "src/data/seas/ES/";
 	private static String pathOfTradeDocks = "src/data/tradeDocks/ES/";
 	private static String pathOfMarkets = "src/data/markets/ES/";
@@ -12,6 +12,8 @@ public class GameConfigurations {
 	private static String pathOfProjects = "src/data/projects/ES/";
 	private static String pathOfGameEvents = "src/data/gameEvents/ES/";
 	private static String pathOfGraphs = "src/data/graphs/";
+	private static String pathOfGameTexts = "src/data/gameTexts/ES/";
+	
 	private static Integer minNumberToBattle = 8;
 	private static String starterPlayer = "sparta";
 	
@@ -44,6 +46,10 @@ public class GameConfigurations {
 
 	public static String getPathOfGameEvents() {
 		return pathOfGameEvents;
+	}
+	
+	public static String getPathOfGameTexts(){
+		return pathOfGameTexts;
 	}
 	
 	public static String getPathOfGraphs() {

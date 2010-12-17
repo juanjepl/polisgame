@@ -28,6 +28,7 @@ public class Game { //TODO add Graphs
 	private static Graph trirremeGraph;
 	private static Graph proxenusGraph;
 	private static Graph tradeBoatGraph;
+	private static Map<String,String> gameTexts;
 	
 	/** Game constructor */
 	public Game(Player sparta, Player athens, Map<String,Territory> territoriesMap, Map<String,Sea> seasMap, Map<String,TradeDock> tradeDocksMap, Map<String,Market> marketsMap, Map<String,Polis> polisMap, List<Project> gameProjects, List<List<GameEvent>> gameEventsList, Round theRound, MarketChart theMarketChart){
@@ -58,6 +59,8 @@ public class Game { //TODO add Graphs
 		proxenusGraph = graphFilesReader.readGraphs(polisMap, territoriesMap, seasMap, marketsMap, tradeDocksMap).get(2);
 		tradeBoatGraph = graphFilesReader.readGraphs(polisMap, territoriesMap, seasMap, marketsMap, tradeDocksMap).get(3);
 		
+		// graphFilesReader is the name of variable of a simple file reader, be careful with meaning.
+		gameTexts = graphFilesReader.readGameTexts();
 	}
 
 	
@@ -144,6 +147,10 @@ public class Game { //TODO add Graphs
 		return tradeBoatGraph;
 	}
 
+	public static Map<String,String> getGameTexts(){
+		return gameTexts;
+	}
+	
 	public void setStarterPlayer(){
 		if(GameConfigurations.getStarterPlayer().equals("sparta")){
 			whoHasTheTurn = spartaPlayer;
