@@ -267,6 +267,24 @@ public class PolReader{ // Reads .pol files
 		return territoriesMap;
 	}
 	
+	/** This method read texts in order to be used by user interfaces */
+	public Map<String,String> readGameTexts(){
+		Map<String,String> gameTexts = new HashMap<String,String>();
+		String pathOfGameTexts = GameConfigurations.getPathOfGameTexts();
+		
+		List<String> gameTextsContents = GenericReader.getFileContents(pathOfGameTexts+"gameTexts.pol");
+		
+		for(String s : gameTextsContents){
+			if(!(s.startsWith("") || s.startsWith(" ") || s.startsWith("#"))){
+				List<String> pairOfStrings = new ArrayList<String>(2);
+				pairOfStrings = StringUtilities.stringSplitterForPolis(s, ";");
+				gameTexts.put(pairOfStrings.get(0), pairOfStrings.get(1));
+		
+			}
+		}
+		return gameTexts;
+	}
+	
 	/** This method reads all graphs files and return a map with map type and map values */
 	public List<Graph> readGraphs(Map<String,Polis> polisMap,Map<String,Territory> territoriesMap,Map<String,Sea> seasMap, Map<String,Market> marketsMap, Map<String, TradeDock> tradesMap){
 		String pathOfGraphs = GameConfigurations.getPathOfGraphs();
