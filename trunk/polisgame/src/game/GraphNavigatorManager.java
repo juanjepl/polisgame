@@ -140,7 +140,7 @@ public static Boolean existsWayForProxenus ( Polis p1, Polis p2, Player player){
 		
 		List<Vertex<? extends Position>> visited = new ArrayList<Vertex<? extends Position>>();
 		List<Vertex<? extends Position>> queue = new ArrayList<Vertex<? extends Position>>();
-		Vertex<? extends Position> bestCandidate = initialPositionAdjacents.get(0);
+		Vertex<? extends Position> bestCandidate = null;
 		Integer amountToPayForMovement = 0;
 		
 		//if initialPosition is sieged proxenus have to pay silver
@@ -177,12 +177,19 @@ public static Boolean existsWayForProxenus ( Polis p1, Polis p2, Player player){
 			
 			vertex.setWeight(oponentUnits);
 			
-			if(bestCandidate.getWeight() > vertex.getWeight())
+			if(bestCandidate == null)
+			{
+				bestCandidate = vertex;
+			}
+			else if(bestCandidate.getWeight() > vertex.getWeight() || bestCandidate == null)
 			{
 				bestCandidate = vertex;
 			}else
 			{
-				visited.add(vertex);
+				if(!visited.contains(vertex))
+				{
+					visited.add(vertex);
+				}
 			}
 
 			
@@ -195,11 +202,16 @@ public static Boolean existsWayForProxenus ( Polis p1, Polis p2, Player player){
 		
 		while(!queue.isEmpty() && !exists)
 		{
+			bestCandidate = null;
 			//extract first vertex
 			Vertex<? extends Position> element = queue.remove(0);
 			//get adjacents of element and check if exists in visited
 			List<Vertex<? extends Position>> adjacents = graph.getGraph().get(element);
-			visited.add(element);
+			
+			if(!visited.contains(element))
+			{
+				visited.add(element);
+			}
 			
 			for(Vertex<? extends Position> vertex: adjacents)
 			{
@@ -217,7 +229,11 @@ public static Boolean existsWayForProxenus ( Polis p1, Polis p2, Player player){
 				vertex.setWeight(oponentUnits);
 				
 				//check if vertex isn't visited and calculate the weight
-				if(vertex.equals(v2))
+				if(bestCandidate == null)
+				{
+					bestCandidate = vertex;
+				}
+				else if(vertex.equals(v2))
 				{
 						bestCandidate = vertex;
 				}
@@ -227,7 +243,10 @@ public static Boolean existsWayForProxenus ( Polis p1, Polis p2, Player player){
 						bestCandidate = vertex;
 				}else
 				{
+					if(!visited.contains(vertex))
+					{
 						visited.add(vertex);
+					}
 				}
 				
 			}
