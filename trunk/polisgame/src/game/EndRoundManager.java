@@ -4,8 +4,6 @@ import java.util.LinkedList;
 import java.util.List;
 import java.util.Map;
 
-
-
 import ui.TextModeUi;
 
 /** This class, contains methods to manage the end of game rounds */
@@ -48,9 +46,8 @@ public class EndRoundManager {
 					// Check if polisToCheck is a neutral polis
 					boolean neutralPolis = true;
 					List<Unit> listOfUnitsToCheck = polisToCheck.getUnits();
-					for (int i = 0; i < listOfUnitsToCheck.size(); i++) {
-						if (listOfUnitsToCheck.get(i).getOwner().equals(
-								enemyPlayer)) {
+					for (Unit u : listOfUnitsToCheck) {
+						if (u.getOwner().equals(enemyPlayer)) {
 							neutralPolis = false;
 							break;
 						}
@@ -64,16 +61,13 @@ public class EndRoundManager {
 						// If not their units Die
 						if (!polisToCheck.getLockForAPlayer(player)) {
 
-							for (int i = 0; i < listOfUnitsToCheck.size(); i++) {
-								if (listOfUnitsToCheck.get(i).getOwner()
-										.equals(enemyPlayer)) {
+							for (Unit u : listOfUnitsToCheck) {
+								if (u.getOwner().equals(enemyPlayer)) {
 									// Remove
 									// Units from SiegedPolis
 									// Remove from Player
-									polisToCheck.removeUnit(listOfUnitsToCheck
-											.get(i));
-									player.getPlayerUnits().remove(
-											listOfUnitsToCheck.get(i));
+									polisToCheck.removeUnit(u);
+									player.getPlayerUnits().remove(u);
 
 								}
 							}
@@ -178,8 +172,8 @@ public class EndRoundManager {
 							} else {
 								// DO NOTHING BECAUSE HOPLITES ARE RIGHT
 							}
-							//refresh actualPopulation
-							//Change Sieged to false and add polis to player
+							// refresh actualPopulation
+							// Change Sieged to false and add polis to player
 							polisToCheck.setActualPopulation(newPopulation);
 							polisToCheck.setSieged(false);
 							player.addPolis(polisToCheck);
@@ -206,14 +200,12 @@ public class EndRoundManager {
 		List<Polis> listPolis;
 		listPolis = player.getPlayerPolis();
 		List<Project> listOfProjects;
-		Polis polisToCheck;
-		Project projectToCheck;
 
-		for (int i = 0; i < listPolis.size(); i++) {
-			polisToCheck = listPolis.get(i);
+		for (Polis polisToCheck : listPolis) {
+
 			listOfProjects = polisToCheck.getProjects();
-			for (int j = 0; j < listOfProjects.size(); j++) {
-				projectToCheck = listOfProjects.get(j);
+			for (Project projectToCheck : listOfProjects) {
+
 				if (projectToCheck.getUsed() && projectToCheck.getFinished()) {
 
 					if ((projectToCheck.getSysName()
@@ -223,14 +215,14 @@ public class EndRoundManager {
 						population = polisToCheck.getActualPopulation();
 
 						if (population % 2 == 0) {
-							population = population / 2;
+							population /= 2;
 							prestige = player.getPrestige();
-							prestige = prestige + population;
+							prestige += population;
 							player.setPrestige(prestige);
 						} else {
-							population = population / 2;
+							population /= 2;
 							prestige = player.getPrestige();
-							prestige = prestige + population + 1;
+							prestige += population + 1;
 							player.setPrestige(prestige);
 
 						}

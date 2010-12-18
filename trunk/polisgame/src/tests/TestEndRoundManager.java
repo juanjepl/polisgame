@@ -70,10 +70,35 @@ public class TestEndRoundManager {
 		project.setFinished(true);
 		project.setUsed(true);
 		player.getCapital().addProject(project);
-		endRound.checkProjects(player);
 		player.setPrestige(0);
 		player.getCapital().setActualPopulation(10);
-		assertTrue(player.getPrestige() > 0);
+		endRound.checkProjects(player);
+		assertTrue(player.getPrestige() == 5);
+	}
+	@Test
+	public void checkProjectsNotNullsAndFidiasArtistPopuplationImpar() {
+
+		Project project = null;
+
+		Player player = polis_game.getAthensPlayer();
+
+		for (Project proj : polis_game.getProjectList()) {
+			if (proj.getSysName().equalsIgnoreCase("phidiasArtist")) {
+
+				project = proj;
+				break;
+			}
+		}
+		if (project == null) {
+			System.out.println("ESTA NULO EL PROYECTO DE FIDIAS");
+		}
+		project.setFinished(true);
+		project.setUsed(true);
+		player.getCapital().addProject(project);
+		player.setPrestige(0);
+		player.getCapital().setActualPopulation(7);
+		endRound.checkProjects(player);
+		assertTrue(player.getPrestige() == 4);
 	}
 
 	@Test
