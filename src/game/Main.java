@@ -1,12 +1,18 @@
 package game;
 
-import ui.TextModeUi;
 
 /** Main class, where starts game main thread */
 public class Main{
 
 	public static void main(String[] args) {
 		
+		
+		
+		
+		
+		
+		
+		/**
 		TextModeUi.creditsMessage();
 		ElementsInitializer gameElements = new ElementsInitializer();
 		Game polis_game = gameElements.InitializeGameElements(); // Initializes all game elements
@@ -66,9 +72,7 @@ public class Main{
 			polis_game.getSpartaPlayer().setHasPassedTurn(false);
 		}
 		//TODO-> EndGameManager methods...
-		
+		**/
 	}
 }
-
-//TODO finish main loop
 

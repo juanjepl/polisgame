@@ -1,44 +1,50 @@
 package game;
 
+import exceptions.PolisGameRunningException;
+
 /**
  * This class creates an Hoplite for the player 'player'
  * taking the population neccesary from 'polis' using the
- * rules of the game (is necessary to know 'round'
+ * rules of the game (is necessary to know 'round')
+ * putting it into parent territory of the polis.
  */
 public class CreateHopliteAction extends CreatorAction{
 
 	private Player player;
 	private Polis polis;
 	private Round round;
+	private String resourceChosenByThePlayer;
 	
-	public CreateHopliteAction(Player pl, Polis po, Round ro){
+	public CreateHopliteAction(Player pl, Polis po, Round ro, String payment){
+		if(!(pl instanceof Player) || !(po instanceof Polis) || !(ro instanceof Round) || payment == null){
+			throw new IllegalArgumentException("Invalid type parameter(s) for CreateHopliteAction constructor");
+		}
+		if(!payment.equals("Metal") && !payment.equals("Silver")){
+			throw new PolisGameRunningException("String for paying resource in CreateHopliteAction, must be 'Metal' or 'Silver', your parameter -> '"+resourceChosenByThePlayer+"'");
+		}
+
 		player = pl;
 		polis = po;
 		round = ro;
+		resourceChosenByThePlayer = payment;
 		
-		if(player.getMetal() >= 1 && player.getSilver() < 1){
+		if(payment.equals("Metal")){
 			player.setMetal(player.getMetal() - 1);
-		}else if(player.getMetal() < 1 && player.getSilver() >= 1){
+		}else{ // equals ("Silver")
 			player.setSilver(player.getSilver() - 1);
-		}else{
-			
-			String resourceChosenByThePlayer = ""; //TODO take from text interface the pay method (string) 
-
-			if(resourceChosenByThePlayer.equals("Metal")){
-				player.setMetal(player.getMetal() - 1);
-			}else if(resourceChosenByThePlayer.equals("Silver")){
-				player.setSilver(player.getSilver() - 1);
-			}else{
-				throw new IllegalArgumentException("Resource "+resourceChosenByThePlayer+" is NOT a valid Resource for paying hoplite creation");
-			}	
 		}
+
 		polis.setActualPopulation(polis.getActualPopulation() - 1);
 		Hoplite hoplite = new Hoplite(player,polis.getPolisParentTerritory());
 		polis.getPolisParentTerritory().addUnit(hoplite);
-		player.addUnit(hoplite);
-		
+		player.addUnit(hoplite);		
 	}
 
+	
+	/**
+	 * Getter methods for class attributes
+	 */
+	
 	public Player getPlayer() {
 		return player;
 	}
@@ -49,5 +55,9 @@ public class CreateHopliteAction extends CreatorAction{
 
 	public Round getRound() {
 		return round;
+	}
+	
+	public String getResourceChosenByThePlayer(){
+		return resourceChosenByThePlayer;
 	}
 }
