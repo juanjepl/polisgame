@@ -4,7 +4,9 @@ import java.util.List;
 import java.util.ArrayList;
 import java.util.Arrays;
 
-/** Class with string utility methods */
+/**
+ * Class with string utility methods
+ */
 public class StringUtilities {
 
 	/**  This method splits a String using another String like delimiter */
@@ -14,6 +16,4 @@ public class StringUtilities {
 		wordsOfString = Arrays.asList(words); // converts array into a List
 		return wordsOfString;
 	}
-	
-	// more methods?
 }
