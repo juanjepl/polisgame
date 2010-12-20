@@ -2,10 +2,14 @@ package utils;
 
 import java.io.BufferedReader;
 import java.io.FileReader;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
-/** This class reads the content of a text file */
+/**
+ * This class reads the content of a text file,
+ * returning  a List with one string per line
+ */
 public class GenericReader {
 
 	public GenericReader(){}
@@ -20,34 +24,28 @@ public class GenericReader {
 	    BufferedReader br = null;
 
 	    try {
-			
-			
 			fr = new FileReader(filename);
 			br = new BufferedReader(fr);
 
 			String line;
-			while ((line = br.readLine()) != null){ // TODO white line == null?? test it.
-				
-				if(line.startsWith("#")){ // ignore line if starts with "#" character. (in order to add some comments in texts)
-					continue; // goes to next iteration
-				}else if(line == null)
-				{
+			while ((line = br.readLine()) != null){
+				if(line.startsWith("#") || line.startsWith(" ")){ // ignore line if starts with "#" or " " character (# -> for comments)
 					continue; // goes to next iteration
 				}
 				fileContents.add(line);
 			} 
 	    }
-	    catch (Exception e){
-	    	e.printStackTrace(); //FIXME modify this exception to best control about it
+	    catch (IOException e){
+	    	e.printStackTrace(); // Exception for opening file fails
 		} 
-	    finally {
+	    finally{
 			
-			try {
-				if (null != fr){
-					fr.close();  // closes the file.
+			try{
+				if(null != fr){
+					fr.close();
 				}
-			} catch (Exception e2){
-				e2.printStackTrace();
+			}catch(IOException e2){
+				e2.printStackTrace(); // Exception for closing file fails
 			}
 		}
 		return fileContents;
