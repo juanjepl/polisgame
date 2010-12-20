@@ -42,142 +42,154 @@ public class EndRoundManager {
 				// Locking for SiegedPolis
 
 				if (polisToCheck.getSieged()) {
-
 					// Check if polisToCheck is a neutral polis
-					boolean neutralPolis = true;
+					boolean possibleNeutralOrEnemyPolis = false;
 					List<Unit> listOfUnitsToCheck = polisToCheck.getUnits();
 					for (Unit u : listOfUnitsToCheck) {
-						if (u.getOwner().equals(enemyPlayer)) {
-							neutralPolis = false;
+						if (u.getOwner().equals(player)) {
+							possibleNeutralOrEnemyPolis = true;
 							break;
 						}
 					}
-					boolean siegedPolis;
-					if (neutralPolis) {
-						// Siege Complete
-						siegedPolis = true;
-					} else {
-						// Check if Siege have at last one lock
-						// If not their units Die
-						if (!polisToCheck.getLockForAPlayer(player)) {
-
-							for (Unit u : listOfUnitsToCheck) {
-								if (u.getOwner().equals(enemyPlayer)) {
-									// Remove
-									// Units from SiegedPolis
-									// Remove from Player
-									polisToCheck.removeUnit(u);
-									player.getPlayerUnits().remove(u);
-
-								}
-							}
-							// Siege Not Complete Because Owner Units DIE
-							siegedPolis = false;
-
-						} else {
-							// Siege Complete
-							siegedPolis = true;
-
+					if (possibleNeutralOrEnemyPolis) {
+						boolean polisNeutral = true;
+						boolean siegedComplete;
+						if (enemyPlayer.getPlayerPolis().contains(polisToCheck)) {
+							polisNeutral = false;
 						}
-						if (siegedPolis) {
-							// KILL Proxenus TODO
-							if ((!enemyPlayer.getPlayerProxenus().equals(null))
-									&& (enemyPlayer.getPlayerProxenus()
-											.getPosition().equals(polisToCheck))) {
-								enemyPlayer.setPlayerProxenus(null);
-							}
-							Integer rollDice = TextModeUi.showRollTheDice(1);
-							Integer newPopulation;
-							if (neutralPolis) {
-								newPopulation = polisToCheck
-										.getBasePopulation();
-								newPopulation = newPopulation - rollDice;
-							} else {
-								// NOT NEUTRAL POLIS
-								newPopulation = polisToCheck
-										.getActualPopulation();
-								newPopulation = newPopulation - rollDice;
-							}
-							if (newPopulation <= 0) {
-								newPopulation = 1;
-							}
-							if (newPopulation < polisToCheck
-									.getBasePopulation()) {
-								// FIXME USER INTERFACE REQUEST
-								// NEED HOPLITES TO GET BASEPOPULATION
-								// JUANJE ADVIDE
-								Integer hoplitesCounterStriker = 0;
+						if (polisNeutral) {
+							siegedComplete = true;
+						} else {
+
+							// Check if Siege have at last one lock
+							// If not their units Die
+							if (!polisToCheck.getLockForAPlayer(player)) {
 								for (Unit u : listOfUnitsToCheck) {
-									if ((u instanceof Hoplite)
-											&& (u.getOwner().equals(player))) {
-										hoplitesCounterStriker++;
+									if (u.getOwner().equals(player)) {
+										// Remove
+										// Units from SiegedPolis
+										// Remove from Player
+										polisToCheck.removeUnit(u);
+										player.getPlayerUnits().remove(u);
+
 									}
 								}
-								// FIXME
-								// Now UI must Return a int with hoplites to
-								// repoblate
-								// UI(hoplitesCounterStriker,max
-								// (basepopulation-hoplitesCounterStriker,
-								// hoplitesCounterStriker-basepopulation);
-								Integer UI = 0;
-								newPopulation = newPopulation + UI;
-								polisToCheck.setActualPopulation(newPopulation);
-								// Remove UI units of the list
-								while (UI > 0) {
+								// Siege Not Complete Because Owner Units DIE
+								siegedComplete = false;
+
+							} else {
+								// Siege Complete
+								siegedComplete = true;
+							}
+							if (siegedComplete) {
+								// KILL Proxenus TODO
+								if ((!enemyPlayer.getPlayerProxenus().equals(
+										null))
+										&& (enemyPlayer.getPlayerProxenus()
+												.getPosition()
+												.equals(polisToCheck))) {
+									enemyPlayer.setPlayerProxenus(null);
+								}
+
+								Integer rollDice = TextModeUi
+										.showRollTheDice(1);
+								Integer newPopulation;
+								if (polisNeutral) {
+									newPopulation = polisToCheck
+											.getBasePopulation();
+									newPopulation = newPopulation - rollDice;
+								} else {
+									// NOT NEUTRAL POLIS
+									newPopulation = polisToCheck
+											.getActualPopulation();
+									newPopulation = newPopulation - rollDice;
+								}
+								if (newPopulation <= 0) {
+									newPopulation = 1;
+								}
+								if (newPopulation < polisToCheck
+										.getBasePopulation()) {
+									// FIXME USER INTERFACE REQUEST
+									// NEED HOPLITES TO GET BASEPOPULATION
+									// JUANJE ADVIDE
+									Integer hoplitesCounterStriker = 0;
 									for (Unit u : listOfUnitsToCheck) {
 										if ((u instanceof Hoplite)
 												&& (u.getOwner().equals(player))) {
-											listOfUnitsToCheck.remove(u);
-											UI--;
+											hoplitesCounterStriker++;
 										}
 									}
-								}
-
-							}
-
-							// RepoblateTerritory with HoplitesStrikers
-							//
-							for (Unit u : listOfUnitsToCheck) {
-								if ((u instanceof Hoplite)
-										&& (u.getOwner().equals(player))) {
-									polisToCheck.getPolisParentTerritory()
-											.addUnit(u);
-									listOfUnitsToCheck.remove(u);
-								}
-							}
-							// Check round and move hoplites
-
-							Integer hoplitesOnTerritory = 0;
-
-							for (Unit u : polisToCheck
-									.getPolisParentTerritory().getUnits()) {
-								if ((u instanceof Hoplite)
-										&& (u.getOwner().equals(player))) {
-									hoplitesOnTerritory++;
-
-								}
-							}
-							Integer maxPostionsForTerritory = game.getRound()
-									.getMaximumPositionSlotsForThisRound();
-							if (hoplitesOnTerritory > maxPostionsForTerritory) {
-								// MOVE THE DIFERENCE
-								// UI
-								Integer hoplitesToMove = hoplitesOnTerritory
-										- maxPostionsForTerritory;
-								while (hoplitesToMove > 0) {
-									// UI MOVE HOPLITE
 									// FIXME
-									hoplitesToMove--;
+									// Now UI must Return a int with hoplites to
+									// repoblate
+									// UI(hoplitesCounterStriker,max
+									// (basepopulation-hoplitesCounterStriker,
+									// hoplitesCounterStriker-basepopulation);
+									Integer UI = 0;
+									newPopulation = newPopulation + UI;
+									polisToCheck
+											.setActualPopulation(newPopulation);
+									// Remove UI units of the list
+									while (UI > 0) {
+										for (Unit u : listOfUnitsToCheck) {
+											if ((u instanceof Hoplite)
+													&& (u.getOwner()
+															.equals(player))) {
+												listOfUnitsToCheck.remove(u);
+												UI--;
+											}
+										}
+									}
+
 								}
-							} else {
-								// DO NOTHING BECAUSE HOPLITES ARE RIGHT
+
+								// RepoblateTerritory with HoplitesStrikers
+								//
+								for (Unit u : listOfUnitsToCheck) {
+									if ((u instanceof Hoplite)
+											&& (u.getOwner().equals(player))) {
+										polisToCheck.getPolisParentTerritory()
+												.addUnit(u);
+										listOfUnitsToCheck.remove(u);
+									}
+								}
+								// Check round and move hoplites
+
+								Integer hoplitesOnTerritory = 0;
+
+								for (Unit u : polisToCheck
+										.getPolisParentTerritory().getUnits()) {
+									if ((u instanceof Hoplite)
+											&& (u.getOwner().equals(player))) {
+										hoplitesOnTerritory++;
+
+									}
+								}
+								Integer maxPostionsForTerritory = game
+										.getRound()
+										.getMaximumPositionSlotsForThisRound();
+								if (hoplitesOnTerritory > maxPostionsForTerritory) {
+									// MOVE THE DIFERENCE
+									// UI
+									Integer hoplitesToMove = hoplitesOnTerritory
+											- maxPostionsForTerritory;
+									while (hoplitesToMove > 0) {
+										// UI MOVE HOPLITE
+										// FIXME
+										hoplitesToMove--;
+									}
+								} else {
+									// DO NOTHING BECAUSE HOPLITES ARE RIGHT
+								}
+								// refresh actualPopulation
+								// Change Sieged to false and add polis to
+								// player
+								polisToCheck.setActualPopulation(newPopulation);
+								polisToCheck.setSieged(false);
+								player.addPolis(polisToCheck);
 							}
-							// refresh actualPopulation
-							// Change Sieged to false and add polis to player
-							polisToCheck.setActualPopulation(newPopulation);
-							polisToCheck.setSieged(false);
-							player.addPolis(polisToCheck);
 						}
+
 					}
 
 				}
