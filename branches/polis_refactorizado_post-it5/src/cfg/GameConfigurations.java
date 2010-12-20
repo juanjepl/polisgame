@@ -23,6 +23,8 @@ public class GameConfigurations {
 	
 	public GameConfigurations(){}
 	
+	
+	/** Static Getters for folder path's names (and others) */
 
 	public static String getPathOfSeas() {
 		return pathOfSeas;
@@ -82,10 +84,11 @@ public class GameConfigurations {
 		pathOfTerritories = "/data/territories/ES/";
 		pathOfProjects = "/data/projects/ES/";
 		pathOfGameEvents = "/data/gameEvents/ES/";
+		pathOfGameTexts = "src/data/gameTexts/ES/";
 	}
 	
 	/** Set game's texts to English */
-	public void setLanguageToEnglish(){ //TODO make first files in EN folders
+	public void setLanguageToEnglish(){
 		pathOfSeas = "/data/seas/EN/";
 		pathOfTradeDocks = "/data/tradeDocks/EN/";
 		pathOfMarkets = "/data/markets/EN/";
@@ -93,6 +96,6 @@ public class GameConfigurations {
 		pathOfTerritories = "/data/territories/EN/";
 		pathOfProjects = "/data/projects/EN/";
 		pathOfGameEvents = "/data/gameEvents/EN/";
+		pathOfGameTexts = "src/data/gameTexts/EN/";
 	}
-	
 }
