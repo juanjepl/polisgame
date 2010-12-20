@@ -1,9 +1,13 @@
 package cfg;
 
-/** This class contains folders paths and methods to change game's configurations, for example, switch language */
+
+/**
+ * This class contains folders path's names and methods
+ * to read and change game's configurations, for example, switch language
+ */
 public class GameConfigurations { 
 
-	// static attributes who saved the game folders path
+	// static attributes who saved the game folder's path
 	private static String pathOfSeas = "src/data/seas/ES/";
 	private static String pathOfTradeDocks = "src/data/tradeDocks/ES/";
 	private static String pathOfMarkets = "src/data/markets/ES/";
