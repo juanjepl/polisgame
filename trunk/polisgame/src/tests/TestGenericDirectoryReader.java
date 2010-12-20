@@ -29,13 +29,13 @@ public class TestGenericDirectoryReader {
 
 	@Test//(expected=FileNotFoundException.class)
 	public void testgetDirectoryFilesVoid(){
-		list = GenericDirectoryReader.getDirectoryFiles("src/tests/TestFiles/TestVoidDirectory");
+		list = GenericDirectoryReader.getDirectoryFilesContents("src/tests/TestFiles/TestVoidDirectory");
 		assert(list.isEmpty());
 		//TestUtiles.printListToList(list);
 	}
 	@Test
 	public void testgetDirectoryFiles() {
-		list = GenericDirectoryReader.getDirectoryFiles("src/tests/TestFiles/TestDirectory");
+		list = GenericDirectoryReader.getDirectoryFilesContents("src/tests/TestFiles/TestDirectory");
 //		assertTrue(list.get(0).contains("TestList.pol"));
 //		assertTrue(list.get(1).contains("TestListNull.pol"));
 //		assertTrue(list.get(2).contains("TestListSharp.pol"));
@@ -45,7 +45,7 @@ public class TestGenericDirectoryReader {
 
 	@Test
 	public void testgetDirectoryFilesMap() {
-		map = GenericDirectoryReader.getDirectoryFilesMap("src/tests/TestFiles/TestDirectory");
+		map = GenericDirectoryReader.getDirectoryFilesContentsInAMap("src/tests/TestFiles/TestDirectory");
 		//TestUtiles.printMapList(map);
 	}
 	

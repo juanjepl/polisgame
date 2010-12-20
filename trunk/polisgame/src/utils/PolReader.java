@@ -35,7 +35,7 @@ public class PolReader{ // Reads .pol files
 		String pathOfSeas = GameConfigurations.getPathOfSeas();
 		Map<String,Sea> seasMap = new HashMap<String,Sea>();
 
-		List<List<String>> seasTexts = GenericDirectoryReader.getDirectoryFiles(pathOfSeas);
+		List<List<String>> seasTexts = GenericDirectoryReader.getDirectoryFilesContents(pathOfSeas);
 		
 		for(List<String> seaInfo:seasTexts){
 			seasMap.put(seaInfo.get(0), new Sea(seaInfo.get(0),seaInfo.get(1))); //TODO not tested!!
@@ -49,7 +49,7 @@ public class PolReader{ // Reads .pol files
 		String pathOfTradeDocks = GameConfigurations.getPathOfTradeDocks();
 		Map<String,TradeDock> tradeDocksMap = new HashMap<String,TradeDock>();
 		
-		List<List<String>> tradeDocksTexts = GenericDirectoryReader.getDirectoryFiles(pathOfTradeDocks);
+		List<List<String>> tradeDocksTexts = GenericDirectoryReader.getDirectoryFilesContents(pathOfTradeDocks);
 		
 		for(List<String> tradeDockInfo:tradeDocksTexts){
 			tradeDocksMap.put(tradeDockInfo.get(0), new TradeDock(tradeDockInfo.get(0),tradeDockInfo.get(1)));
@@ -64,7 +64,7 @@ public class PolReader{ // Reads .pol files
 		String pathOfProjects = GameConfigurations.getPathOfProjects();
 		List<Project> projectList = new ArrayList<Project>();
 		
-		List<List<String>> projectTexts = GenericDirectoryReader.getDirectoryFiles(pathOfProjects);
+		List<List<String>> projectTexts = GenericDirectoryReader.getDirectoryFilesContents(pathOfProjects);
 		
 		for(List<String> projectInfo : projectTexts){
 			Map<String,Integer> proyectRequestedResources = new HashMap<String,Integer>();
@@ -114,7 +114,7 @@ public class PolReader{ // Reads .pol files
 		String pathOfMarkets = GameConfigurations.getPathOfMarkets();
 		Map<String,Market> marketsMap = new HashMap<String,Market>();
 
-		List<List<String>> marketsTexts = GenericDirectoryReader.getDirectoryFiles(pathOfMarkets);
+		List<List<String>> marketsTexts = GenericDirectoryReader.getDirectoryFilesContents(pathOfMarkets);
 		
 		Map<String, Map<String, Integer>> resources = new HashMap<String, Map<String, Integer>>();
 		
@@ -146,7 +146,7 @@ public class PolReader{ // Reads .pol files
 		String pathOfGameEvents = GameConfigurations.getPathOfGameEvents();
 		List<List<GameEvent>> gameEventsList = new ArrayList<List<GameEvent>>();
 
-		List<List<String>> gameEventsTexts = GenericDirectoryReader.getDirectoryFiles(pathOfGameEvents);
+		List<List<String>> gameEventsTexts = GenericDirectoryReader.getDirectoryFilesContents(pathOfGameEvents);
 		
 		List<GameEvent> gameEventListForRound3 = new ArrayList<GameEvent>();
 		List<GameEvent> gameEventListForRound4 = new ArrayList<GameEvent>();
@@ -183,7 +183,7 @@ public class PolReader{ // Reads .pol files
 		String pathOfPolis = GameConfigurations.getPathOfPolis();
 		Map<String,Polis> polisMap = new HashMap<String,Polis>();
 		
-		List<List<String>> gamePolisTexts = GenericDirectoryReader.getDirectoryFiles(pathOfPolis);
+		List<List<String>> gamePolisTexts = GenericDirectoryReader.getDirectoryFilesContents(pathOfPolis);
 		
 		for(List<String> polisInfo : gamePolisTexts){
 			List<Project> polisProjects = new ArrayList<Project>();
@@ -242,7 +242,7 @@ public class PolReader{ // Reads .pol files
 		String pathOfTerritories = GameConfigurations.getPathOfTerritories();
 		Map<String,Territory> territoriesMap = new HashMap<String,Territory>();
 		
-		List<List<String>> gameTerritoriesTexts = GenericDirectoryReader.getDirectoryFiles(pathOfTerritories);
+		List<List<String>> gameTerritoriesTexts = GenericDirectoryReader.getDirectoryFilesContents(pathOfTerritories);
 		for(List<String> gameTerritoryInfo : gameTerritoriesTexts){
 			
 			Map<String,Vector<Integer>> territoryResources = new HashMap<String,Vector<Integer>>();
@@ -290,7 +290,7 @@ public class PolReader{ // Reads .pol files
 		String pathOfGraphs = GameConfigurations.getPathOfGraphs();
 		Map<Vertex<? extends Position>, List<Vertex<? extends Position>>> graphVertexMap = new HashMap<Vertex<? extends Position>, List<Vertex<? extends Position>>>();
 		List<Graph> graphsList = new ArrayList<Graph>();
-		Map<String,List<String>> gameGraphTexts = GenericDirectoryReader.getDirectoryFilesMap(pathOfGraphs);
+		Map<String,List<String>> gameGraphTexts = GenericDirectoryReader.getDirectoryFilesContentsInAMap(pathOfGraphs);
 		Map<String,Vertex<? extends Position>> verticesMap = new HashMap<String, Vertex<? extends Position>>();
 		
 		for(String filename: gameGraphTexts.keySet()){
