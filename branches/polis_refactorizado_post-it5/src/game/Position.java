@@ -13,8 +13,7 @@ public abstract class Position {
 	public Position(String sysName,String name){
 		this.sysName = sysName;
 		this.name = name;
-		units = new ArrayList<Unit>(12); // why 10? -> by default, in the game, the maximum
-										 // number of units in a position 10 (last round -> 5+5
+		units = new ArrayList<Unit>();
 	}
 	
 	/**
@@ -79,26 +78,53 @@ public abstract class Position {
 		return playerUnits;
 	}
 	
+	/** Returns the hoplites for a specific player */
+	public List<Hoplite> getHoplitesForAPlayer(Player p){
+		List<Hoplite> playerHoplites = new ArrayList<Hoplite>();
+		for(Unit u : getUnitsForAPlayer(p)){
+			if(u instanceof Hoplite){
+				playerHoplites.add((Hoplite)u);
+			}
+		}
+		return playerHoplites;
+	}
+	
+	/** Returns the trirremes for a specific player */
+	public List<Trirreme> getTrirremesForAPlayer(Player p){
+		List<Trirreme> playerTrirremes = new ArrayList<Trirreme>();
+		for(Unit u : getUnitsForAPlayer(p)){
+			if(u instanceof Trirreme){
+				playerTrirremes.add((Trirreme)u);
+			}
+		}
+		return playerTrirremes;
+	}
+	
+	/** Returns the trade boats for a specific player */
+	public List<TradeBoat> getTradeBoatsForAPlayer(Player p){
+		List<TradeBoat> playerTradeBoats = new ArrayList<TradeBoat>();
+		for(Unit u : getUnitsForAPlayer(p)){
+			if(u instanceof TradeBoat){
+				playerTradeBoats.add((TradeBoat)u);
+			}
+		}
+		return playerTradeBoats;
+	}
+	
 	/** This method without attribute, returns the number of total free slots for this round */
 	public Integer getNumberOfTotalFreeSlots(Round round){
 		Integer slots = round.getMaximumPositionSlotsForThisRound() - getUnits().size();
+		if(slots < 0){
+			throw new PolisGameRunningException("A position cannot take a negative value for free slots");
+		}
 		return slots;
 	}
 	
 	/** This method without attribute, returns the number of free slots for this player and round in position */
 	public Integer getNumberOfFreeSlotsForAPlayer(Player player, Round round){
-		Integer slots = 0;
-		
-		if(getUnits().isEmpty()){
-			slots = round.getMaximumPositionSlotsForThisRound();
-		}else{
-			Integer playerUnits = 0;
-			for(Unit u : getUnits()){
-				if(u.getOwner().equals(player)){
-					playerUnits += 1;				
-				}
-				slots = round.getMaximumPositionSlotsForThisRound() - playerUnits; //FIXME can be an exception returning this a negative integer?
-			}
+		Integer slots = round.getMaximumPositionSlotsForThisRound() - getUnitsForAPlayer(player).size();
+		if(slots < 0){
+			throw new PolisGameRunningException("A position cannot take a negative value for free slots for a player");
 		}
 		return slots;
 	}
@@ -106,19 +132,18 @@ public abstract class Position {
 	/** This method returns a Boolean with "if we can cross this position" */
 	public Boolean getLockForAPlayer(Player player){
 		Boolean locked = false;
-		Integer owns = 0;
 		Integer enemies = 0;
-		for(Unit u: units){
+		Integer owns = 0;
+		for(Unit u:getUnits()){
 			if(u.getOwner().equals(player)){
 				owns += 1;
 			}else{
 				enemies += 1;
 			}
 		}
-		if(enemies > owns){ // >, not >=, in ties, position isn't locked
+		if(owns < enemies){
 			locked = true;
 		}
-		
 		return locked;
 	}
 }
