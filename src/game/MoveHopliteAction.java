@@ -7,7 +7,6 @@ package game;
 public class MoveHopliteAction extends MilitaryAction{
 	
 	Player player;
-	Round round;
 	Territory initialTerritory;
 	Territory endTerritory;
 	Integer numberOfUnits;
@@ -16,24 +15,23 @@ public class MoveHopliteAction extends MilitaryAction{
 	public MoveHopliteAction(Player pl, Round ro, Territory iniT, Territory endT, Integer troops, Boolean multiM){
 		super();
 		
-		if(pl == null || ro == null || iniT == null || endT == null || troops == null || multiM == null){
+		if(pl == null || iniT == null || endT == null || troops == null || multiM == null){
 			throw new IllegalArgumentException("Invalid parameter for MoveHopliteAction");
 		}
 		
 		player = pl;
-		round = ro;
 		initialTerritory = iniT;
 		endTerritory = endT;
 		numberOfUnits = troops;
 		multiMovement = multiM;
 		
-		// To move an Hoplite costs 1 prestige point (if is a multimovement, the set of movements costs 1, not 1 per moveement)
+		// To move an Hoplite costs 1 prestige point (if is a multi-movement, the set of movements costs 1, not 1 per movement)
 		if(!getMultiMovement()){
 			player.setPrestige(player.getPrestige() - 1);
 		}
 		
 		Integer counter = 0;
-		for(Hoplite hop : getInitialTerritory().getHoplitesForAPlayer(pl)){
+		for(Hoplite hop : getInitialTerritory().getHoplitesForAPlayer(getPlayer())){
 			if(counter < getNumberOfUnits()){
 				hop.setPosition(getEndTerritory());
 				getInitialTerritory().removeUnit(hop);
@@ -51,10 +49,6 @@ public class MoveHopliteAction extends MilitaryAction{
 	
 	public Player getPlayer() {
 		return player;
-	}
-
-	public Round getRound() {
-		return round;
 	}
 
 	public Territory getInitialTerritory() {

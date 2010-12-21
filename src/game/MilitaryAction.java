@@ -11,45 +11,6 @@ public class MilitaryAction extends GameAction{
 
 	public MilitaryAction(){}
 
-	
-	/** To move a Trirreme or Trirremes group, to other sea */
-	public Boolean moveTrirreme(Player player, Round round, Sea initialSea, Sea finalSea, Integer numberOfUnits,Boolean multiMovement) {
-		if (round == null) throw new NullPointerException("'round' can not be null");
-		if (player == null) throw new NullPointerException("'player' can not be null");
-		if (initialSea == null) throw new NullPointerException("'initialSea' can not be null");
-		if (finalSea == null) throw new NullPointerException("'finalSea' can not be null");
-		if (numberOfUnits == null) throw new NullPointerException("'numberOfUnits' can not be null");
-		
-		Boolean success = AvailableActionsManager.checkMoveTrirremeAction(player, round, initialSea, finalSea, numberOfUnits);
-		
-		if (success)
-		{
-			List<Unit> startSeaUnits = initialSea.getUnits();	
-			int unitMovedCount = 0;		
-			Iterator<Unit> it = startSeaUnits.iterator();
-			
-			while(it.hasNext() && unitMovedCount < numberOfUnits)
-			{
-				Unit unit = it.next();
-				
-				if (unit.getOwner() == player)
-				{
-					initialSea.removeUnit(unit);
-					finalSea.addUnit(unit);
-					unit.setPosition(finalSea);
-					unitMovedCount++;
-				}
-			}
-			
-			// Do not waste prestige if is 2nd movement of a multimovement for example
-			if(!multiMovement){
-				player.setPrestige(player.getPrestige() - 1);
-			}
-		}
-		
-		return success;
-	}
-	
 	/** Method to manage polis's siegues */
 	public Boolean siegePolis(Player player,Position initialPosition, Polis siegedPolis ){
 		
@@ -167,10 +128,5 @@ public class MilitaryAction extends GameAction{
 		
 		return success;
 	}
-
-	public String getActionType() {
-		return actionType;
-	}
-
 
 }
