@@ -4,29 +4,26 @@ import exceptions.PolisGameRunningException;
 
 /**
  * This class creates a Trirreme for the player 'player'
- * taking the population neccesary from 'polis' using the
- * rules of the game (is necessary to know 'round')
+ * taking the population neccesary from 'polis' and
  * putting it into a sea from polis's seas assigned
  */
 public class CreateTrirremeAction extends CreatorAction{
 
 	private Player player;
 	private Polis polis;
-	private Round round;
 	private Sea choosenSeaToPutTrirreme;
 	private String resourceChosenByThePlayer;
 
-	public CreateTrirremeAction(Player pl, Polis po, Round ro, Sea choosenSea, String payment){
-		if(!(pl instanceof Player) || !(po instanceof Polis) || !(ro instanceof Round) || !(choosenSea instanceof Sea) || payment == null){
-			throw new IllegalArgumentException("Invalid type parameter(s) for CreateHopliteAction constructor");
+	public CreateTrirremeAction(Player pl, Polis po, Sea choosenSea, String payment){
+		if(!(pl instanceof Player) || !(po instanceof Polis) || !(choosenSea instanceof Sea) || payment == null){
+			throw new IllegalArgumentException("Invalid type parameter(s) for CreateTrirremeAction constructor");
 		}
 		if(!payment.equals("Wood") && !payment.equals("Silver")){
-			throw new PolisGameRunningException("String for paying resource in CreateHopliteAction, must be 'Wood' or 'Silver', your parameter -> '"+resourceChosenByThePlayer+"'");
+			throw new PolisGameRunningException("String for paying resource in CreateTrirremeAction, must be 'Wood' or 'Silver', your parameter -> '"+resourceChosenByThePlayer+"'");
 		}
 		
 		player = pl;
 		polis = po;
-		round = ro;
 		resourceChosenByThePlayer = payment;
 		choosenSeaToPutTrirreme = choosenSea;
 		
@@ -38,7 +35,7 @@ public class CreateTrirremeAction extends CreatorAction{
 
 		polis.setActualPopulation(polis.getActualPopulation() - 1);
 		Trirreme trirreme = new Trirreme(player,choosenSeaToPutTrirreme);
-		polis.getPolisParentTerritory().addUnit(trirreme);
+		choosenSeaToPutTrirreme.addUnit(trirreme);
 		player.addUnit(trirreme);		
 	}
 	
@@ -52,10 +49,6 @@ public class CreateTrirremeAction extends CreatorAction{
 
 	public Polis getPolis() {
 		return polis;
-	}
-
-	public Round getRound() {
-		return round;
 	}
 	
 	public Sea getChoosenSeaToPutTrirreme(){

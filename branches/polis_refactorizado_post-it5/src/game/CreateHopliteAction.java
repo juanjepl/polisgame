@@ -4,19 +4,17 @@ import exceptions.PolisGameRunningException;
 
 /**
  * This class creates an Hoplite for the player 'player'
- * taking the population neccesary from 'polis' using the
- * rules of the game (is necessary to know 'round')
+ * taking the population neccesary from 'polis' and
  * putting it into parent territory of the polis.
  */
 public class CreateHopliteAction extends CreatorAction{
 
 	private Player player;
 	private Polis polis;
-	private Round round;
 	private String resourceChosenByThePlayer;
 	
-	public CreateHopliteAction(Player pl, Polis po, Round ro, String payment){
-		if(!(pl instanceof Player) || !(po instanceof Polis) || !(ro instanceof Round) || payment == null){
+	public CreateHopliteAction(Player pl, Polis po, String payment){
+		if(!(pl instanceof Player) || !(po instanceof Polis) || payment == null){
 			throw new IllegalArgumentException("Invalid type parameter(s) for CreateHopliteAction constructor");
 		}
 		if(!payment.equals("Metal") && !payment.equals("Silver")){
@@ -25,7 +23,6 @@ public class CreateHopliteAction extends CreatorAction{
 
 		player = pl;
 		polis = po;
-		round = ro;
 		resourceChosenByThePlayer = payment;
 		
 		if(payment.equals("Metal")){
@@ -40,7 +37,6 @@ public class CreateHopliteAction extends CreatorAction{
 		player.addUnit(hoplite);		
 	}
 
-	
 	/**
 	 * Getter methods for class attributes
 	 */
@@ -51,10 +47,6 @@ public class CreateHopliteAction extends CreatorAction{
 
 	public Polis getPolis() {
 		return polis;
-	}
-
-	public Round getRound() {
-		return round;
 	}
 	
 	public String getResourceChosenByThePlayer(){
