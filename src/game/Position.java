@@ -1,7 +1,8 @@
 package game;
 
 import java.util.List;
-import java.util.LinkedList;
+import java.util.ArrayList;
+import exceptions.PolisGameRunningException;
 
 /** Class who represents each game map position*/
 public abstract class Position {
@@ -12,10 +13,13 @@ public abstract class Position {
 	public Position(String sysName,String name){
 		this.sysName = sysName;
 		this.name = name;
-		this.units = new LinkedList<Unit>();
+		units = new ArrayList<Unit>(12); // why 10? -> by default, in the game, the maximum
+										 // number of units in a position 10 (last round -> 5+5
 	}
 	
-	/** Getters and setters */
+	/**
+	 * Getters and setters methods
+     */
 	
 	public String getSysName() {
 		return sysName;
@@ -30,6 +34,9 @@ public abstract class Position {
 	}
 	
 	public void setUnits(List<Unit> units){
+		if(units == null){
+			throw new IllegalArgumentException("Invalid parameter for setUnits()");
+		}
 		this.units = units;
 	}
 
@@ -43,7 +50,7 @@ public abstract class Position {
 		if(units.contains(unit)){
 			units.remove(unit);
 		}else{
-			//TODO manage this exception
+			throw new PolisGameRunningException("You cannot remove an unit that isn't yours");
 		}
 	}
 	
@@ -57,8 +64,19 @@ public abstract class Position {
 		if(units.containsAll(group)){
 			units.removeAll(group);
 		}else{
-			//TODO manage this exception
+			throw new PolisGameRunningException("You cannot remove units that aren't yours");
 		}
+	}
+	
+	/** Returns the units for a specific player */
+	public List<Unit> getUnitsForAPlayer(Player p){
+		List<Unit> playerUnits = new ArrayList<Unit>();
+		for(Unit u: units){
+			if(u.getOwner().equals(p)){
+				playerUnits.add(u);
+			}
+		}
+		return playerUnits;
 	}
 	
 	/** This method without attribute, returns the number of total free slots for this round */
@@ -85,7 +103,7 @@ public abstract class Position {
 		return slots;
 	}
 	
-	/** This method renurns a Boolean with "if we can cross this position" */
+	/** This method returns a Boolean with "if we can cross this position" */
 	public Boolean getLockForAPlayer(Player player){
 		Boolean locked = false;
 		Integer owns = 0;
@@ -99,9 +117,8 @@ public abstract class Position {
 		}
 		if(enemies > owns){ // >, not >=, in ties, position isn't locked
 			locked = true;
-		}else{
-			//Do nothing
 		}
+		
 		return locked;
 	}
 }
