@@ -40,7 +40,7 @@ public abstract class Round {
 	
 	/** This method adds a turn into round's turn list */
 	public void addTurn(Turn turn){
-		if(!(turn instanceof Turn)){
+		if(turn == null){
 			throw new IllegalArgumentException("Invalid paramter in addTurn(), must be a Turn instance");
 		}
 		turnList.add(turn);
@@ -70,7 +70,7 @@ public abstract class Round {
 	}
 
 	public void setGameEventInThisRound(GameEvent gameEventInThisRound){
-		if(!(gameEventInThisRound instanceof GameEvent)){
+		if(gameEventInThisRound == null){
 			throw new IllegalArgumentException("Invalid parameter for setGameEventInThisRound(), must be a GameEvent instance");
 		}
 		this.gameEventInThisRound = gameEventInThisRound;

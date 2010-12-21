@@ -11,6 +11,9 @@ public abstract class Position {
 	private List<Unit> units; // sheltered units in this position
 	
 	public Position(String sysName,String name){
+		if(sysName == null || name == null){
+			throw new IllegalArgumentException("Invalid parameter for Position constructor");
+		}
 		this.sysName = sysName;
 		this.name = name;
 		units = new ArrayList<Unit>();
@@ -40,7 +43,10 @@ public abstract class Position {
 	}
 
 	/** Adds an unit to the position */
-	public void addUnit(Unit unit){		
+	public void addUnit(Unit unit){
+		if(unit == null){
+			throw new IllegalArgumentException("Invalid parameter for addUnit()");
+		}
 		units.add(unit);
 	}
 	
@@ -55,6 +61,9 @@ public abstract class Position {
 	
 	/** Adds a group of units to the position */
 	public void addGroupOfUnits(List<Unit> group){
+		if(group == null){
+			throw new IllegalArgumentException("Invalid parameter for addGroupOfUnits()");
+		}
 		units.addAll(group);
 	}
 	

@@ -11,6 +11,8 @@ public class CreateProxenusAction extends CreatorAction{
 	private Polis polis;
 	
 	public CreateProxenusAction(Player pl, Polis po){
+		super();
+		
 		if(!(pl instanceof Player) || !(po instanceof Polis)){
 			throw new IllegalArgumentException("Invalid type parameter(s) for CreateProxenusAction constructor");
 		}
