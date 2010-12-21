@@ -2,14 +2,19 @@ package game;
 
 import java.util.List;
 import java.util.ArrayList;
+
+import exceptions.PolisGameRunningException;
 import utils.RandomCollections;
 
 /** Game player class */
 public class Player {
 	private String name;
-	private List<Polis> playerPolis;  // Polis of which we own
-	private List<Unit> playerUnits; // Units of the player
-	private TradeDock playerTradeDock; // Own Trade Dock
+	private Boolean hasPassedTurn;
+	private List<Polis> playerPolis;
+	private List<Unit> playerUnits;
+	private TradeDock playerTradeDock;
+	private Polis capital;
+	private Proxenus playerProxenus;
 	private Integer prestige;
 	private Integer wood;
 	private Integer metal;
@@ -17,15 +22,15 @@ public class Player {
 	private Integer oil;
 	private Integer wheat;
 	private Integer silver;
-	private Boolean hasPassedTurn; // If this player has passed the turn for actual round
-	private Polis capital;
-	private Proxenus playerProxenus = null;
-	
+
 	public Player(String name){
 		this.name = name;
 		hasPassedTurn = false;
 		playerPolis = new ArrayList<Polis>();
 		playerUnits = new ArrayList<Unit>();
+		playerTradeDock = null;
+		playerProxenus = null;
+		capital = null;
 		prestige = 0;
 		wood = 0;
 		metal = 0;
@@ -35,13 +40,15 @@ public class Player {
 		silver = 0;
 	}
 
-	/** Getters and setters */
+	/**
+	 * Getters and setters methods for Player class
+	 */
 	
 	public String getName() {
 		return name;
 	}
 
-	public void setName(String name) { // Player's name can be setted in order to, after this creation, we'll change it in game display
+	public void setName(String name) { // Player's name can be set in order to, after this creation, we'll change it in game display
 		this.name = name;
 	}
 
@@ -167,6 +174,11 @@ public class Player {
 		return playerPolis;
 	}
 
+	/** Method to get your 'bag of units' */
+	public List<Unit> getPlayerUnits() {
+		return playerUnits;
+	}
+	
 	public TradeDock getPlayerTradeDock() {
 		return playerTradeDock;
 	}
@@ -191,12 +203,21 @@ public class Player {
 		this.playerProxenus = playerProxenus;
 	}
 
+	public void killProxenus(){
+		playerProxenus = null;
+		for(Unit u: getPlayerUnits()){
+			if(u instanceof Proxenus){
+				removeUnit(u);
+			}
+		}
+	}
+	
 	/** Method to add a polis to our owns */
 	public void addPolis(Polis polis){
-		if (playerPolis.contains(polis)){
-			//FIXME Player must know that this polis is under own control
-		}else{
+		if (!playerPolis.contains(polis)){
 			playerPolis.add(polis);
+		}else{
+			throw new PolisGameRunningException("You cannot add another time a polis that you already have");
 		}
 	}
 
@@ -205,27 +226,25 @@ public class Player {
 		if (playerPolis.contains(polis)){
 			playerPolis.remove(polis);
 		}else {
-			//FIXME You can't remove a Polis that you don't have under your control.
+			throw new PolisGameRunningException("You cannot remove a polis from yours, if this polis does not exists in your 'bag of polis'");
 		}
 	}
 	
-	public List<Unit> getPlayerUnits() {
-		return playerUnits;
-	}
-	
+	/** Method to add an unit to our owns */
 	public void addUnit(Unit u){
 		if(!playerUnits.contains(u)){
 			playerUnits.add(u);
 		}else{
-			//FIXME possible exception
+			throw new PolisGameRunningException("You cannot add another time an unit that you already have");
 		}
 	}
 	
+	/** Method to remove polis from our owns */
 	public void removeUnit(Unit u){
 		if(playerUnits.contains(u)){
 			playerUnits.remove(u);
 		}else{
-			//FIXME possible exception
+			throw new PolisGameRunningException("You cannot remove an unit from yours, if this unit does not exists in your 'bag of units'");
 		}
 	}
 
@@ -240,8 +259,9 @@ public class Player {
 		
 		return (diceManager.getRandomSublist(dice, 1)).get(0);
 		
-		// Better solution:
+		//Better solution:
 		//Random generator = new Random()dice;
 		//return generator.nextInt(4) + 1;
+		//(actual solution is in order to reuse source code)
 	}
 }
