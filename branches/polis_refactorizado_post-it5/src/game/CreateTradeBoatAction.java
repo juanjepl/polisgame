@@ -14,6 +14,8 @@ public class CreateTradeBoatAction extends CreatorAction{
 	private String resourceChosenByThePlayer;
 	
 	public CreateTradeBoatAction(Player pl, Polis po, String payment){
+		super();
+		
 		if(!(pl instanceof Player) || !(po instanceof Polis) || payment == null){
 			throw new IllegalArgumentException("Invalid type parameter(s) for CreateTradeBoatAction constructor");
 		}

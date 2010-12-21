@@ -2,7 +2,6 @@ package game;
 
 import java.util.List;
 import java.util.Map;
-import ui.TextModeUi;
 import utils.PolReader;
 
 /** This class is responsible for initializing the elements of the game */
@@ -38,7 +37,7 @@ public class ElementsInitializer {
 		List<List<GameEvent>> gameEventsList = polisFilesReader.readGameEvents();
 		
 		//// Initialization of the round
-		Round theRound = new Round();
+		Round theRound = new Round3(gameProjects,gameEventsList.get(0)); //FIXME I take round 3 projects (first round)
 		
 		//// Initialization of the market chart
 		MarketChart theMarketChart = new MarketChart();

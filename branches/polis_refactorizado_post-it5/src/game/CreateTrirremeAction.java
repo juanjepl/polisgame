@@ -15,13 +15,15 @@ public class CreateTrirremeAction extends CreatorAction{
 	private String resourceChosenByThePlayer;
 
 	public CreateTrirremeAction(Player pl, Polis po, Sea choosenSea, String payment){
+		super();
+		
 		if(!(pl instanceof Player) || !(po instanceof Polis) || !(choosenSea instanceof Sea) || payment == null){
 			throw new IllegalArgumentException("Invalid type parameter(s) for CreateTrirremeAction constructor");
 		}
 		if(!payment.equals("Wood") && !payment.equals("Silver")){
 			throw new PolisGameRunningException("String for paying resource in CreateTrirremeAction, must be 'Wood' or 'Silver', your parameter -> '"+resourceChosenByThePlayer+"'");
 		}
-		
+
 		player = pl;
 		polis = po;
 		resourceChosenByThePlayer = payment;

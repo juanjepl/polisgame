@@ -6,59 +6,11 @@ import java.util.ArrayList;
 import java.util.Map;
 import java.util.Vector;
 
-import ui.TextModeUi;
-
 /** This class contains the methods for execute military actions in the game */
 public class MilitaryAction extends GameAction{
 
-	private final String actionType = "militaryAction"; // A constant to check action's type
-	
-	
 	public MilitaryAction(){}
-	
-	
-	/** To move an Hoplite or Hoplites group, to other position */
-	public Boolean moveHoplite(Player player, Round round, Territory initialPosition, Territory finalPosition, Integer numberOfUnits, Boolean multiMovement){
-		Boolean success = false;
-		success = AvailableActionsManager.checkMoveHopliteAction(player, round, initialPosition, finalPosition, numberOfUnits);
-		if(success){
-			List<Unit> unitsToMove = new ArrayList<Unit>();
-			Integer unitsCount = 0;
-			
-			for(Unit u: initialPosition.getUnits()){
-				if(u.getOwner().equals(player)){
-					if(unitsCount < numberOfUnits){
-						unitsToMove.add(u);
-						unitsCount += 1;
-					}else{
-						break;
-					}	
-				}
-			}
-			initialPosition.removeGroupOfUnits(unitsToMove);
-			finalPosition.addGroupOfUnits(unitsToMove);
-			
-			for(Unit u: unitsToMove){
-				u.setPosition(finalPosition);
-			}
-			
-			// Do not waste prestige if is 2nd movement of a multimovement for example
-			if(!multiMovement){
-				player.setPrestige(player.getPrestige()-1);
-			}
-			
-			if(!(numberOfUnits>1)){
-				TextModeUi.showMessage("Hoplite moved from "+initialPosition.getName()+" to "+finalPosition.getName());
-			}else{
-				TextModeUi.showMessage(numberOfUnits.toString()+" "+"Hoplites moved from "+initialPosition.getName()+" to "+finalPosition.getName());
-			}
-				
-		}else{
-			// Do nothing
-		}
 
-		return success;
-	}
 	
 	/** To move a Trirreme or Trirremes group, to other sea */
 	public Boolean moveTrirreme(Player player, Round round, Sea initialSea, Sea finalSea, Integer numberOfUnits,Boolean multiMovement) {
