@@ -15,8 +15,8 @@ public class Territory extends Position{
 	public Territory(String sysName,String name, Map<String,Vector<Integer>> resources){ 
 		super(sysName,name); // for this 2 attributes calls the position constructor
 		this.resources = resources;
-		this.plundered = false; // by default, territory's resources aren't plundered
-		this.plundersUnits = new ArrayList<Unit>();
+		plundered = false; // by default, territory's resources aren't plundered
+		plundersUnits = new ArrayList<Unit>();
 	}
 	
 	/** Getters and setters */
@@ -38,7 +38,7 @@ public class Territory extends Position{
 		return plundersUnits;
 	}
 	
-	public void setPlundersUnits(Unit u)
+	public void addPlunderUnit(Unit u)
 	{
 		plundersUnits.add(u);
 	}
