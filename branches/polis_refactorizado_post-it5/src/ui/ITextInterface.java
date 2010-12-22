@@ -16,5 +16,5 @@ public interface ITextInterface {
 	public void setMenu(IMenu nextMenu);
 	
 	/** Shows in text console, the "focused" menu */
-	public void showMenu();
+	public void showMenuContents();
 }
