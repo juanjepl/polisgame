@@ -14,7 +14,7 @@ public abstract class GenericGraphNavigator {
 	private Player player;
 	private Position position1;
 	private Position position2;
-	private Boolean exists;
+	protected Boolean exists;
 	protected Graph graph;
 	
 	public GenericGraphNavigator(Player player, Position position1, Position position2){
