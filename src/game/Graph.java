@@ -6,15 +6,15 @@ import java.util.Map;
 /** This class is used to calculate unit movements on the game map */
 public class Graph{
 
-	private Map<Vertex<? extends Position>, List<Vertex<? extends Position>>> graph; // They're all vertex of this graph
+	private Map<Vertex<? extends Position>, List<Vertex<? extends Position>>> mapGraph; // They're all vertex of this graph
 
 	
 	public Graph(Map<Vertex<? extends Position>, List<Vertex<? extends Position>>> graph){
-		this.graph = graph;
+		this.mapGraph = graph;
 	}
 
-	public Map<Vertex<? extends Position>, List<Vertex<? extends Position>>> getGraph(){
-		return graph;
+	public Map<Vertex<? extends Position>, List<Vertex<? extends Position>>> getMapGraph(){
+		return mapGraph;
 	}
 	
 }

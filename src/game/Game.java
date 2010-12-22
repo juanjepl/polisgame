@@ -28,7 +28,6 @@ public class Game { //TODO add Graphs
 	private Graph trirremeGraph;
 	private Graph proxenusGraph;
 	private Graph tradeBoatGraph;
-	private static Map<String,String> gameTexts;
 	
 	/** Game constructor */
 	public Game(Player sparta, Player athens, Map<String,Territory> territoriesMap, Map<String,Sea> seasMap, Map<String,TradeDock> tradeDocksMap, Map<String,Market> marketsMap, Map<String,Polis> polisMap, List<Project> gameProjects, List<List<GameEvent>> gameEventsList, Round theRound, MarketChart theMarketChart){
@@ -53,10 +52,6 @@ public class Game { //TODO add Graphs
 		round = theRound;
 		marketChart = theMarketChart;
 		
-		PolReader graphFilesReader = new PolReader();
-		
-		// graphFilesReader is the name of variable of a simple file reader, be careful with meaning.
-		gameTexts = graphFilesReader.readGameTexts();
 	}
 
 	
@@ -141,10 +136,6 @@ public class Game { //TODO add Graphs
 
 	public Graph getTradeBoatGraph() {
 		return tradeBoatGraph;
-	}
-
-	public static Map<String,String> getGameTexts(){
-		return gameTexts;
 	}
 	
 	public void setStarterPlayer(){
