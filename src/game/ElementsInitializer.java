@@ -36,6 +36,12 @@ public class ElementsInitializer {
 		//// Readings and initialization for game events
 		List<List<GameEvent>> gameEventsList = polisFilesReader.readGameEvents();
 		
+		//// Reading and initialization for graphs
+		//Graph hopliteGraph = TODO
+		//Graph trirremeGraph = TODO
+		//Graph tradeBoadGraph = TODO
+		//Graph proxenusGraph = TODO
+		
 		//// Initialization of the round
 		Round theRound = new Round3(gameProjects,gameEventsList.get(0)); //FIXME I take round 3 projects (first round)
 		

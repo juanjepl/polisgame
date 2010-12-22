@@ -24,10 +24,10 @@ public class Game { //TODO add Graphs
 	private List<GameEvent> gameEventsRound5b;
 	private MarketChart marketChart;
 	private Round round;
-	private static Graph hopliteGraph;
-	private static Graph trirremeGraph;
-	private static Graph proxenusGraph;
-	private static Graph tradeBoatGraph;
+	private Graph hopliteGraph;
+	private Graph trirremeGraph;
+	private Graph proxenusGraph;
+	private Graph tradeBoatGraph;
 	private static Map<String,String> gameTexts;
 	
 	/** Game constructor */
@@ -54,10 +54,6 @@ public class Game { //TODO add Graphs
 		marketChart = theMarketChart;
 		
 		PolReader graphFilesReader = new PolReader();
-		hopliteGraph = graphFilesReader.readGraphs(polisMap, territoriesMap, seasMap, marketsMap, tradeDocksMap).get(0);
-		trirremeGraph = graphFilesReader.readGraphs(polisMap, territoriesMap, seasMap, marketsMap, tradeDocksMap).get(1);
-		proxenusGraph = graphFilesReader.readGraphs(polisMap, territoriesMap, seasMap, marketsMap, tradeDocksMap).get(2);
-		tradeBoatGraph = graphFilesReader.readGraphs(polisMap, territoriesMap, seasMap, marketsMap, tradeDocksMap).get(3);
 		
 		// graphFilesReader is the name of variable of a simple file reader, be careful with meaning.
 		gameTexts = graphFilesReader.readGameTexts();
@@ -131,19 +127,19 @@ public class Game { //TODO add Graphs
 		this.whoHasTheTurn = whoHasTheTurn;
 	}
 	
-	public static Graph getHopliteGraph() {
+	public Graph getHopliteGraph() {
 		return hopliteGraph;
 	}
 
-	public static Graph getTrirremeGraph() {
+	public Graph getTrirremeGraph() {
 		return trirremeGraph;
 	}
 
-	public static Graph getProxenusGraph() {
+	public Graph getProxenusGraph() {
 		return proxenusGraph;
 	}
 
-	public static Graph getTradeBoatGraph() {
+	public Graph getTradeBoatGraph() {
 		return tradeBoatGraph;
 	}
 
@@ -161,6 +157,14 @@ public class Game { //TODO add Graphs
 		else{
 			//TODO possible exception if in game configurations, name isn't "sparta" or "athens"
 		}
+	}
+	
+	public void setRound(Round round){
+		if(round == null)
+		{
+			throw new IllegalArgumentException("round musn't be null");
+		}
+		this.round = round;
 	}
 	
 }
