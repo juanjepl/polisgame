@@ -8,9 +8,9 @@ public class MainMenu{// implements IMenu{
 
 	private String headerMessage;
 	private List<String> optionsList;
+	private Integer choosenOptionByThePlayer;
 	
 	public MainMenu(){
-		headerMessage = Game.getGameTexts().get("MainMenu_headerMessage");
 		//TODO
 	}
 	
