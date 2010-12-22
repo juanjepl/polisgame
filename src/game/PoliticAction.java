@@ -103,30 +103,4 @@ public abstract class PoliticAction extends GameAction{
 		TextModeUi.showMessage("Proxenus moved to "+ destiny.getName()); //FIXME from gametexts
 		return success;
 	}
-	
-	/** Method to manage when a proxenus causes a civilwar in a neutral or enemy polis */
-	public Boolean civilWar(Player player, Polis polis,Game game){
-		Boolean success = AvailableActionsManager.checkCivilWarAnyAction(game,player);
-		Player enemyPlayer;
-		if(player.equals(game.getAthensPlayer())){
-			enemyPlayer = game.getSpartaPlayer();
-		}else{
-			enemyPlayer = game.getAthensPlayer();
-		}
-		if(success){
-	/**First case,the polis is the enemy player's*/
-			if(enemyPlayer.getPlayerPolis().contains(polis)){
-				enemyPlayer.getPlayerPolis().remove(polis);
-				player.getPlayerPolis().add(polis);
-				player.setSilver(player.getSilver()-3*polis.getActualPopulation());
-	/**second case,the polis is neutral*/		
-			}else{
-				player.getPlayerPolis().add(polis);
-				player.setSilver(player.getSilver()-2*polis.getBasePopulation());
-			}
-			
-			TextModeUi.showMessage("A civil war made at " + player.getPlayerProxenus().getPosition().getName());//FIXME from gametexts
-		}
-		return success;
-	}
 }
