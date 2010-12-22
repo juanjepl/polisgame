@@ -15,6 +15,7 @@ public class Polis extends Position{
 	private Territory polisParentTerritory; // territory where is located this polis
 	private List<Sea> polisSeas; // seas in which flows the polis
 	private Boolean hasTradeDock; // if polis have a trade dock
+	private Player playerOwner;
 	
 	public Polis(String sysName,String name, Integer basePopulation, Integer maxGrowth, Integer maxPopulation, Territory polisParentTerritory, List<Project> possiblesProjects, List<Sea> polisSeas, Boolean hasTradeDock){
 		super(sysName,name); // for this 2 attributes uses Position constructor
@@ -28,38 +29,52 @@ public class Polis extends Position{
 		projects = new LinkedList<Project>();
 		actualPopulation = basePopulation;
 		sieged = false;
+		playerOwner = null;
 	}
 
-	/** Getters and setters */
+	/**
+	 * Getters and setters methods
+	 */
 	
 	public Integer getActualPopulation() {
 		return actualPopulation;
 	}
 
-	public void setActualPopulation(Integer actualPopulation) {
+	public void setActualPopulation(Integer actualPopulation){
+		if(actualPopulation == null || actualPopulation < 0){
+			throw new IllegalArgumentException("Invalid parameter for setActualPopulation");
+		}
 		this.actualPopulation = actualPopulation;
 	}
 
-	public Boolean getSieged() {
+	public Boolean getSieged(){
 		return sieged;
 	}
 
-	public void setSieged(Boolean sieged) {
+	public void setSieged(Boolean sieged){
+		if(sieged == null){
+			throw new IllegalArgumentException("Invalid paramter for setSieged(), must be true or false, not null");
+		}
 		this.sieged = sieged;
 	}
 
-	public List<Project> getPossiblesProjects() {
+	public List<Project> getPossiblesProjects(){
 		return possiblesProjects;
 	}
 
-	public List<Project> getProjects() {
+	public List<Project> getProjects(){
 		return projects;
 	}
 	
 	/** Method to add a project in this polis when a player use startProject() in PoliticAction */
 	public void addProject(Project p){
-		// FIXME add a precondition (p must be in possiblesProjects)
-		this.projects.add(p);
+		if(p == null){
+			throw new IllegalArgumentException("Invalid parameter for addProject()");
+		}
+		if(getProjects().contains(p)){
+			throw new IllegalArgumentException("Invalid project, it's already in the polis project list");
+		}
+		projects.add(p);
 	}
 
 	public Territory getPolisParentTerritory() {
@@ -86,4 +101,14 @@ public class Polis extends Position{
 		return hasTradeDock;
 	}
 	
+	public Player getPolisOwner(){
+		return playerOwner;
+	}
+	
+	public void setPolisOwner(Player p){
+		if(p == null){
+			throw new IllegalArgumentException("Invalid parameter for setPolisOwner(), must be a player instance");
+		}
+		playerOwner = p;
+	}
 }
