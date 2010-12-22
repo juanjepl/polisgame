@@ -2,39 +2,10 @@ package game;
 
 import java.util.List;
 
-import ui.TextModeUi;
-
-/** This class contains the methods for execute politic actions in the game */
-public class PoliticAction extends GameAction{
-
-	private final String actionType = "politicAction"; // A constant to check action's type
+public abstract class PoliticAction extends GameAction{
 
 	public PoliticAction(){}
-	
-	/** Method to manage when a player starts a project into a polis */
-	public Boolean startProject(Player player, Project project, Polis polis){
-		Boolean success = false;
-		
-		if (player != null && project != null && polis != null)
-		{
-			List<Polis> playerPolis = player.getPlayerPolis();
-			List<Project> polisPossibleProjects = polis.getPossiblesProjects();
-			List<Project> polisProjects = polis.getProjects();
-			
-			if (playerPolis.contains(polis) && polisPossibleProjects.contains(polis) && !polisProjects.contains(project))
-			{
-				project.setUsed(true);
-				polisProjects.add(project);
-				success = true;
-				
-				TextModeUi.showMessage("Project "+project.getName()+" started at "+polis.getName()); //FIXME from gametexts...
-				
-			}
-		}
-		
-		return success;
-	}
-	
+
 	/** Method to manage when a tradeboat swaps resources into a market */
 	public Boolean trade(Player player,Round round, MarketChart marketChart, Market market, String resource1, String resource2){
 		Boolean success = false;
@@ -158,10 +129,4 @@ public class PoliticAction extends GameAction{
 		}
 		return success;
 	}
-
-	public String getActionType() {
-		return actionType;
-	}
-	
-	
 }
