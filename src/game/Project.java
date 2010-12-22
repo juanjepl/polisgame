@@ -2,7 +2,10 @@ package game;
 
 import java.util.Map;
 
-/** Game project class*/
+/**
+ * This class represents a
+ * project in the game
+ */
 public abstract class Project {
 	private String sysName; // system name to compare strings for example
 	private String name;    // "beautiful" name to be displayed, it can change in translations
@@ -19,17 +22,22 @@ public abstract class Project {
 		this.prestige = prestige;
 		this.prestigeToPosterity = prestigeToPosterity;
 		this.resourcesRequired = resourcesRequired;
-		this.finished = false;
-		this.used = false;
+		finished = false;
+		used = false;
 	}
 	
-	/** Getters and setters */
+	/**
+	 * Getters and setters methods
+	 */
 	
 	public Boolean getFinished() {
 		return finished;
 	}
 	
 	public void setFinished(Boolean finished) {
+		if(finished == null){
+			throw new IllegalArgumentException("Invalid parameter for setFinished(), cannot be null");
+		}
 		this.finished = finished;
 	}
 	
@@ -57,7 +65,10 @@ public abstract class Project {
 		return used;
 	}
 
-	public void setUsed(Boolean used) {
+	public void setUsed(Boolean used){
+		if(used == null){
+			throw new IllegalArgumentException("Invalid parameter for setUsed(), cannot be null");
+		}
 		this.used = used;
 	}
 }
