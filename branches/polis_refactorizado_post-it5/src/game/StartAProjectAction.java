@@ -2,6 +2,10 @@ package game;
 
 import java.util.Map;
 
+/**
+ * This class manages the assignation
+ * of a project into a polis
+ */
 public class StartAProjectAction extends PoliticAction{
 	
 	Player player;
