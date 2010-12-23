@@ -1,5 +1,10 @@
 package ui;
 
+import game.Round;
+import game.Game;
+import game.Player;
+import game.Turn;
+
 /**
  * This interface's objetive is to manage
  * navigation between menu and another one:
@@ -17,4 +22,16 @@ public interface ITextInterface {
 	
 	/** Shows in text console, the "focused" menu */
 	public void showMenuContents();
+	
+	/** This method shows an ASCII ART with the game title */
+	public void showGameTitle();
+	
+	/** Shows a message when the round changes */
+	public void showChangeOfRound(Round theNewRound);
+	
+	/** Shows the actual Round-Turn-Action and Player who has the turn message */
+	public void showRTAPMessage(Player player, Turn turn);
+	
+	/** Shows the current state of the game */
+	public void showCurrentStateOfTheGame(Game theGame);
 }
