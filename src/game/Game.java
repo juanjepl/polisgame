@@ -2,13 +2,15 @@ package game;
 
 import java.util.List;
 import java.util.Map;
-
 import cfg.GameConfigurations;
-import utils.PolReader;
+import exceptions.PolisGameRunningException;
 
-/** The most important class in the game, It contains players, rounds, and any all elements of the game */
-public class Game { //TODO add Graphs
-
+/**
+ * The most important class in the game,
+ * it contains players, rounds, and any all
+ * elements of the game
+ */
+public class Game{
 	private Player spartaPlayer;
 	private Player athensPlayer;
 	private Player whoHasTheTurn;
@@ -51,12 +53,12 @@ public class Game { //TODO add Graphs
 		
 		round = theRound;
 		marketChart = theMarketChart;
-		
 	}
-
 	
-	/** Getter and Setters methods */
-	
+	/**
+	 * Getter and Setters methods
+	 * for this class
+	 */
 	
 	public Player getSpartaPlayer() {
 		return spartaPlayer;
@@ -118,7 +120,10 @@ public class Game { //TODO add Graphs
 		return whoHasTheTurn;
 	}
 
-	public void setWhoHasTheTurn(Player whoHasTheTurn) {
+	public void setWhoHasTheTurn(Player whoHasTheTurn){
+		if(whoHasTheTurn == null){
+			throw new IllegalArgumentException("Invalid parameter for setWhoHasTheTurn(), cannot be null");
+		}
 		this.whoHasTheTurn = whoHasTheTurn;
 	}
 	
@@ -146,7 +151,7 @@ public class Game { //TODO add Graphs
 			whoHasTheTurn = athensPlayer;
 		}
 		else{
-			//TODO possible exception if in game configurations, name isn't "sparta" or "athens"
+			throw new PolisGameRunningException("Wrong value of GameConfigurations.getStarterPlayer() when game called it");
 		}
 	}
 	
@@ -156,6 +161,5 @@ public class Game { //TODO add Graphs
 			throw new IllegalArgumentException("round musn't be null");
 		}
 		this.round = round;
-	}
-	
+	}	
 }

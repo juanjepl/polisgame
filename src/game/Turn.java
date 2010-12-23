@@ -1,46 +1,49 @@
 package game;
 
+import exceptions.PolisGameRunningException;
+
 /** Class that manage game turns */
-public class Turn {
-	private GameAction firstAction = null;
-	private GameAction secondAction = null;
+public class Turn{
+	private GameAction firstAction;
+	private GameAction secondAction;
 	private static Integer turnCount = 0;
 	
 	public Turn(){
+		firstAction = null;
+		secondAction = null;
 		turnCount++; // increases turn number for each instance of Turn
 	}
 
 	/** This method adds an action to the turn */
-	public void addAction(GameAction action) {
-		if (firstAction == null){
-			firstAction = action;
+	public void addGameAction(GameAction action){
+		if(action == null){
+			throw new IllegalArgumentException("Invalid parameter for addGameAction(), cannot be null");
 		}
-		else{
-			if(secondAction == null){
+		
+		if (firstAction == null && secondAction == null){
+			firstAction = action;
+		}else{
+			if((firstAction instanceof GameAction) && (secondAction == null)){
 				secondAction = action;
+			}else{
+				throw new PolisGameRunningException("Cannot add more than two actions in a Turn");
 			}
-			else{
-				//TODO Exception: no more than 2 actions by turn
-			}
-			
 		}
 	}
 
-	
-	/** Getters */
+	/**
+	 * Getters methods for this class
+	 */
 
-	public GameAction getFirstAction() {
+	public GameAction getFirstAction(){
 		return firstAction;
 	}
 
-	public GameAction getSecondAction() {
+	public GameAction getSecondAction(){
 		return secondAction;
 	}
 
-	public static Integer getTurnCount() {
+	public static Integer getTurnCount(){
 		return turnCount;
-	}
-	
-	
-	
+	}	
 }
