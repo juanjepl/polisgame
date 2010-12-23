@@ -527,6 +527,5 @@ public class AvailableActionsManager {
 		available = condition_isNeutralOrOponent && condition_isSieged && condition_notOponentCapital;
 		
 		return available;
-	}
-	
+	}	
 }
