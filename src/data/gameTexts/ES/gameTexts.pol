@@ -1,0 +1,14 @@
+﻿MainMenu_headerMessage;Por favor, elija una opción:
+TextInterface_newRoundMessage;Una nueva ronda ha comenzado:
+round;Ronda
+turn;Turno
+action;Accion
+player;Jugador
+sparthaPlayer;Jugador Espartano
+athensPlayer;Jugador Ateniense
+firstAction;1ª
+secondAction;2ª
+startGame;Empezar un nuevo Juego
+loadGame;Cargar una Partida salvada
+exit;Salir del Juego
+
