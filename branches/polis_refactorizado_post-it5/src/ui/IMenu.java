@@ -8,7 +8,7 @@ import java.util.List;
  */
 public interface IMenu {
 	/** returns the message for the Player with the kind of the chooses */	
-	public String getMessageHeader();
+	public String getHeaderMessage();
 	
 	/** returns the options available to be chosen*/
 	public List<String> getOptionsToBeChosen();

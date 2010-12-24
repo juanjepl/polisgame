@@ -1,0 +1,16 @@
+# System name
+samos
+# Name
+Samos
+# Base population
+3
+# Maximum population's growth
+2
+# Maximum population
+6
+# Possible projects
+demeterFestival:dionysusFestival
+# Parent territory
+ionia
+# Seas
+sporadesIslands

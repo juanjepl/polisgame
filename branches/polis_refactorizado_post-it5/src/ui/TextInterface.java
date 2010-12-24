@@ -19,14 +19,13 @@ public class TextInterface implements ITextInterface{
 	public TextInterface(){
 		PolReader gameTextsFileReader = new PolReader();
 		gameTexts = gameTextsFileReader.readGameTexts();
-		
-		//TODO IMenu mainMenu = new MainMenu(//TODO parameters);
-		//TODO showMenu;
+		focusedMenu = new MainMenu(getGameTexts());
+		//TODO
 	}
 
 	public void showMenuContents(){
 		System.out.println(" "); // White line
-		System.out.println(getMenu().getMessageHeader()); // Prints message for the player
+		System.out.println(getMenu().getHeaderMessage()); // Prints message for the player
 		System.out.println(" "); // White line
 		
 		// Shows the list of options to be chosen if exists
@@ -88,10 +87,8 @@ public class TextInterface implements ITextInterface{
 			throw new IllegalArgumentException("Invalid parameter for setMenu(), cannot be null");
 		}
 		focusedMenu = nextMenu;
-		showMenuContents();
 	}
-	
-	
+
 	/** Game Title message (last in source code file because its width) */
 	
 	public void showGameTitle(){

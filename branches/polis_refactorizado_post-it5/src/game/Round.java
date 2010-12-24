@@ -14,6 +14,10 @@ public abstract class Round {
 	private Integer maximumPositionSlotsForThisRound;
 	
 	public Round(String roundName,Integer maximumPositionSlotsForThisRound,List<Project> projectsOfTheGame,List<GameEvent> gameEventsOfTheGame){
+		if(roundName == null || maximumPositionSlotsForThisRound == null || projectsOfTheGame == null || gameEventsOfTheGame == null){
+			throw new IllegalArgumentException("Invalid parameter for Round constructor, cannot be null");
+		}
+		
 		turnList = new ArrayList<Turn>();
 		projectsInThisRound = new ArrayList<Project>();
 		this.maximumPositionSlotsForThisRound = maximumPositionSlotsForThisRound;

@@ -1,0 +1,16 @@
+# System name
+corinth
+# Name
+Corinto
+# Base population
+4
+# Maximum population's growth
+2
+# Maximum population
+6
+# Possible projects
+nemeanGames:isthmianGames:withEpseknionTheatre:normalTheatre
+# Parent territory
+megaris
+# Seas
+ionianSea:cycladesIslands
