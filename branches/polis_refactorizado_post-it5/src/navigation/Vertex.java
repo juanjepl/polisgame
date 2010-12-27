@@ -1,4 +1,6 @@
-package game;
+package navigation;
+
+import game.Position;
 
 /** This class represents a vertex, used like base component by Graph class */
 public class Vertex<P extends Position>{

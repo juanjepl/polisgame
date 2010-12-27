@@ -1,6 +1,5 @@
 package navigation;
 
-import game.Graph;
 import game.Player;
 import game.Position;
 

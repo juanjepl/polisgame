@@ -1,6 +1,6 @@
 package game;
 
-public class MoveProxenusAction extends MilitaryAction{
+public class MoveProxenusAction extends PoliticAction{
 
 	private Player player;
 	private Polis destiny;
@@ -10,6 +10,10 @@ public class MoveProxenusAction extends MilitaryAction{
 		super();
 		if(player == null){
 			throw new IllegalArgumentException("Player musn't be null");
+		}
+		
+		if(destiny == null){
+			throw new IllegalArgumentException("Destiny musn't be null");
 		}
 		
 		this.player = player;

@@ -1,4 +1,6 @@
-package game;
+package navigation;
+
+import game.Position;
 
 import java.util.List;
 import java.util.Map;

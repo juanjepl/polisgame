@@ -4,12 +4,10 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Set;
 
-import game.Graph;
 import game.Player;
 import game.Polis;
 import game.Position;
 import game.Unit;
-import game.Vertex;
 
 public class ProxenusGraphNavigator extends GenericGraphNavigator {
 
