@@ -1,18 +1,48 @@
 package game;
 
-import java.util.LinkedList;
-import java.util.List;
-import java.util.Map;
-
-import ui.TextModeUi;
 
 /** This class, contains methods to manage the end of game rounds */
 public class EndRoundManager {
 
+	EndRoundCheckSieges ercSieges;
+	EndRoundCheckProjects ercProjects;
+	EndRoundCheckFeeding ercFeeding;
+	EndRoundCheckGrowth ercGrowth;
+	EndRoundCheckMegalopolis ercMegalopolis;
+	EndRoundCheckGoodsAdjust ercGoodsAdjust;
+	EndRoundCheckPhoros ercPhoros;
+	EndRoundInitializeNextRound erInitializeNextRound;
+	
 	public EndRoundManager() {
+		//TODO with correct parameters
+		
+		ercSieges = new EndRoundCheckSieges();
+		ercProjects = new EndRoundCheckProjects();
+		ercFeeding = new EndRoundCheckFeeding();
+		ercGrowth = new EndRoundCheckGrowth();
+		ercMegalopolis = new EndRoundCheckMegalopolis();
+		ercGoodsAdjust = new EndRoundCheckGoodsAdjust();
+		ercPhoros = new EndRoundCheckPhoros();
+		erInitializeNextRound = new EndRoundInitializeNextRound();
+		
 	}
 
+	/** To reuse the same object in some endRounds of the game */
+	public void executeAgain(){
+		ercSieges = new EndRoundCheckSieges();
+		ercProjects = new EndRoundCheckProjects();
+		ercFeeding = new EndRoundCheckFeeding();
+		ercGrowth = new EndRoundCheckGrowth();
+		ercMegalopolis = new EndRoundCheckMegalopolis();
+		ercGoodsAdjust = new EndRoundCheckGoodsAdjust();
+		ercPhoros = new EndRoundCheckPhoros();
+		erInitializeNextRound = new EndRoundInitializeNextRound();
+	}
+	
+	
 	/** This method checks for any sieged polis, if siege completes or not */
+	
+	/*
 	public void checkSieges(Game game, Player player) {
 
 		if (game == null) {
@@ -186,11 +216,16 @@ public class EndRoundManager {
 
 		}
 	}
+	
+	*/
 
 	/**
 	 * This method checks for any started project, who player obtains its
 	 * prestige
 	 */
+	
+	/*
+	 
 	public void checkProjects(Player player) {
 		if (player == null) {
 			throw new NullPointerException(
@@ -239,8 +274,12 @@ public class EndRoundManager {
 		}
 
 	}
+	
+	*/
 
 	/** This method manages Player's population feeding */
+	
+	/*
 	public void checkFeeding(Player player) {
 		// check if player can feed with wheat
 		Integer amountOfWheatNeeded = 0;
@@ -295,10 +334,13 @@ public class EndRoundManager {
 
 	}
 
+*/
 	/**
 	 * This method manages if Players wanna to increase his population using his
 	 * wheat surplus
 	 */
+	
+	/*
 	public void checkGrowth(Player player, Round round) {
 
 		Map<String, Integer> option;
@@ -339,11 +381,15 @@ public class EndRoundManager {
 		}
 
 	}
+	
+	*/
 
 	/**
 	 * This method checks in any polis from a player, if has more population
 	 * than its base (and puts prestige like rules say)
 	 */
+	
+	/*
 	public void checkMegalopolis(Player player) {
 
 		for (Polis p : player.getPlayerPolis()) {
@@ -353,11 +399,13 @@ public class EndRoundManager {
 		}
 
 	}
-
+*/
 	/**
 	 * This method manages the by-two divison of perishables surplus (rounded
 	 * up)
 	 */
+	
+	/*
 	public void checkGoodsAdjust(Player player) {
 
 		player.setOil(Math.round((player.getOil() / 2)));
@@ -366,10 +414,12 @@ public class EndRoundManager {
 
 	}
 
+*/
 	/**
 	 * This method checks Phoros rule. (player can trade prestige to silver 1 to
 	 * 1)
 	 */
+	/*
 	public void checkPhoros(Player player) {
 
 		// ask to user how many prestige want to spend
@@ -385,7 +435,12 @@ public class EndRoundManager {
 		}
 	}
 
+*/
+	
+	
 	/** This method prepares the next round elements */
+	
+	/*
 	public void initializeNextRound(Game game) {
 
 		// All plundered territories reborns like not plundered
@@ -428,4 +483,6 @@ public class EndRoundManager {
 			// Do nothing (the turn is ordered by previous round ending)
 		}
 	}
+*/
 }
+

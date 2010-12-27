@@ -1,6 +1,7 @@
 package ui;
 
 import java.util.List;
+import java.util.ArrayList;
 import java.util.Map;
 
 public class MainMenu implements IMenu{
@@ -10,8 +11,10 @@ public class MainMenu implements IMenu{
 	private Integer playerChoice;
 	
 	public MainMenu(Map<String,String> gameTexts){
-		headerMessage = gameTexts.get("MainMenu_headerMessage");
-		
+		headerMessage = gameTexts.get("mainMenu_headerMessage");
+		playerChoice = null;
+		optionsToBeChosen = new ArrayList<String>();
+		//TODO
 	}
 	
 	/**

@@ -279,7 +279,6 @@ public class PolReader{ // Reads .pol files
 				List<String> pairOfStrings = new ArrayList<String>(2);
 				pairOfStrings = StringUtilities.stringSplitterForPolis(s, ";");
 				gameTexts.put(pairOfStrings.get(0), pairOfStrings.get(1));
-		
 			}
 		}
 		return gameTexts;
