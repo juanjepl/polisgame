@@ -1,5 +1,10 @@
 package game;
 
+import navigation.HopliteGraphNavigator;
+import navigation.ProxenusGraphNavigator;
+import navigation.TradeBoatGraphNavigator;
+import navigation.TrirremeGraphNavigator;
+
 /** This class contains methods for check available player's possible actions */
 public class AvailableActionsManager {
 
@@ -7,8 +12,8 @@ public class AvailableActionsManager {
 	
 	// 1ST LEVEL METHODS
 
-	public static Boolean checkCreatorAction(Game game,Player player){
-		return checkCreateHopliteAnyAction(game,player) || checkCreateTrirremeAnyAction(game,player) || checkCreateTradeBoatAnyAction(game,player) || checkCreateProxenusAnyAction(game,player);
+	public static Boolean checkCreatorAction(Round round,Player player){
+		return checkCreateHopliteAnyAction(round,player) || checkCreateTrirremeAnyAction(round,player) || checkCreateTradeBoatAnyAction(round,player) || checkCreateProxenusAnyAction(player);
 	}
 	public static Boolean checkMilitaryAction(Game game,Player player){
 		return checkMoveHopliteAnyAction(game,player) || checkMoveTrirremeAnyAction(game,player) || checkSiegePolisAnyAction(game,player) || checkPlunderTerritoryAnyAction(game,player);
@@ -19,39 +24,39 @@ public class AvailableActionsManager {
 
 	// 2ND LEVEL METHODS
 	
-	public static Boolean checkCreateHopliteAnyAction(Game g, Player p){
+	public static Boolean checkCreateHopliteAnyAction(Round r, Player p){
 		Boolean available = false;
-		for(Polis po : g.getGamePolis().values()){ 
-			if(checkCreateHopliteAction(p,po,g.getRound())){
+		for(Polis po : p.getPlayerPolis()){ 
+			if(checkCreateHopliteAction(p,po,r)){
 				available = true;
 				break;
 			}
 		}
 		return available;
 	}
-	public static Boolean checkCreateTrirremeAnyAction(Game g,Player p){
+	public static Boolean checkCreateTrirremeAnyAction(Round r,Player p){
 		Boolean available = false;
-		for(Polis po : g.getGamePolis().values()){ 
-			if(checkCreateTrirremeAction(p,po,g.getRound())){
+		for(Polis po : p.getPlayerPolis()){ 
+			if(checkCreateTrirremeAction(p,po,r)){
 				available = true;
 				break;
 			}
 		}
 		return available;
 	}
-	public static Boolean checkCreateTradeBoatAnyAction(Game g,Player p){
+	public static Boolean checkCreateTradeBoatAnyAction(Round r,Player p){
 		Boolean available = false;
-		for(Polis po : g.getGamePolis().values()){ 
-			if(checkCreateTradeBoatAction(p,po,g.getRound())){ 
+		for(Polis po : p.getPlayerPolis()){ 
+			if(checkCreateTradeBoatAction(p,po,r)){ 
 				available = true;
 				break;
 			}
 		}
 		return available;
 	}
-	public static Boolean checkCreateProxenusAnyAction(Game g,Player p){
+	public static Boolean checkCreateProxenusAnyAction(Player p){
 		Boolean available = false;
-		for(Polis po : g.getGamePolis().values()){ 
+		for(Polis po : p.getPlayerPolis()){ 
 			if(checkCreateProxenusAction(p,po)){ 
 				available = true;
 				break;
@@ -64,7 +69,7 @@ public class AvailableActionsManager {
 		Boolean available = false;
 		for(Territory terrInic : g.getGameTerritories().values()){
 			for(Territory terrDest : g.getGameTerritories().values()){
-				if(checkMoveHopliteAction(p,g.getRound(),terrInic,terrDest,1)){
+				if(checkMoveHopliteAction(g, p,g.getRound(),terrInic,terrDest,1)){
 					available = true;
 					break;
 				}
@@ -75,11 +80,12 @@ public class AvailableActionsManager {
 		}
 		return available;
 	}
+	
 	public static Boolean checkMoveTrirremeAnyAction(Game g,Player p){
 		Boolean available = false;
 		for(Sea seaInic : g.getGameSeas().values()){
 			for(Sea seaDest : g.getGameSeas().values()){
-				if(checkMoveTrirremeAction(p, g.getRound(),seaInic, seaDest,1)){
+				if(checkMoveTrirremeAction(g, p, g.getRound(),seaInic, seaDest,1)){
 					available = true;
 					break;
 				}
@@ -115,7 +121,7 @@ public class AvailableActionsManager {
 		Boolean available = false;
 		for(Project proj : g.getRound().getProjectsInThisRound()){
 			for(Polis po : p.getPlayerPolis()){
-				if(checkStartProjectAction(p,po,proj)){
+				if(checkStartProjectAction(po,proj)){
 					available = true;
 					break;
 				}
@@ -129,7 +135,7 @@ public class AvailableActionsManager {
 	public static Boolean checkTradeAnyAction(Game g,Player p){
 		Boolean available = false;
 		for(Market mar : g.getGameMarkets().values()){
-			if(checkTradeAction(p,mar,g.getRound())){
+			if(checkTradeAction(g,p,mar)){
 				available = true;
 				break;
 			}
@@ -173,7 +179,7 @@ public class AvailableActionsManager {
 		
 		if(existsProxenus){
 			for(Polis po: g.getGamePolis().values()){
-				if(checkCivilWarAction(g,p,po)){
+				if(checkCivilWarAction(p,po)){
 					available = true;
 					break;
 				}
@@ -251,7 +257,7 @@ public class AvailableActionsManager {
 	public static Boolean checkMoveHopliteActionFromX(Game game,Player player,Territory start, Integer troops){
 		Boolean available = false;
 		for(Territory terr: game.getGameTerritories().values()){
-			if(checkMoveHopliteAction(player,game.getRound(),start,terr,troops)){
+			if(checkMoveHopliteAction(game, player,game.getRound(),start,terr,troops)){
 				available = true;
 			}
 		}
@@ -259,7 +265,7 @@ public class AvailableActionsManager {
 	}
 	
 
-	public static Boolean checkMoveHopliteAction(Player player, Round round, Territory start, Territory destiny, Integer troops){
+	public static Boolean checkMoveHopliteAction(Game game, Player player, Round round, Territory start, Territory destiny, Integer troops){
 		Boolean available = false;
 
 		Boolean condition_notSame = !(start.equals(destiny));
@@ -280,7 +286,8 @@ public class AvailableActionsManager {
 			// Do nothing -> Already: condition_TroopsInStart = false 
 		}
 		Boolean condition_DestinyWithSlots = destiny.getNumberOfFreeSlotsForAPlayer(player, round) >= troops;
-		Boolean condition_WayStartToFinish = GraphNavigatorManager.existsWay(start,destiny,player,"hoplite");
+		HopliteGraphNavigator hopliteGraphNavigator = new HopliteGraphNavigator(player, start, destiny, game.getHopliteGraph());
+		Boolean condition_WayStartToFinish = hopliteGraphNavigator.getExists();
 		
 		available = condition_notSame && condition_havePrestige && condition_NumberOfTroops && condition_TroopsInStart && condition_DestinyWithSlots && condition_WayStartToFinish;
 		
@@ -291,14 +298,14 @@ public class AvailableActionsManager {
 	public static Boolean checkMoveTrirremeActionFromX(Game game, Player player, Sea start, Integer troops){
 		Boolean available = false;
 		for(Sea se: game.getGameSeas().values()){
-			if(checkMoveTrirremeAction(player,game.getRound(),start,se,troops)){
+			if(checkMoveTrirremeAction(game, player,game.getRound(),start,se,troops)){
 				available = true;
 			}
 		}
 		return available;
 	}
 	
-	public static Boolean checkMoveTrirremeAction(Player player, Round round, Sea start, Sea destiny, Integer troops){
+	public static Boolean checkMoveTrirremeAction(Game game, Player player, Round round, Sea start, Sea destiny, Integer troops){
 		Boolean available = false;
 		
 		Boolean condition_notSame = !(start.equals(destiny));
@@ -319,7 +326,9 @@ public class AvailableActionsManager {
 			// Do nothing -> Already: condition_TroopsInStart = false 
 		}
 		Boolean condition_DestinyWithSlots = destiny.getNumberOfFreeSlotsForAPlayer(player, round) >= troops;
-		Boolean condition_WayStartToFinish = GraphNavigatorManager.existsWay(start,destiny,player,"trirreme");
+		
+		TrirremeGraphNavigator trirremeGraphNavigator = new TrirremeGraphNavigator(player, start, destiny, game.getTrirremeGraph());
+		Boolean condition_WayStartToFinish = trirremeGraphNavigator.getExists();
 		
 		available = condition_notSame && condition_havePrestige && condition_NumberOfTroops && condition_TroopsInStart && condition_DestinyWithSlots && condition_WayStartToFinish;
 		
@@ -338,16 +347,13 @@ public class AvailableActionsManager {
 				for(Unit u: polis.getPolisParentTerritory().getUnits()){
 					if(u.getOwner().equals(player)){
 						realTroops += 1;
-					}else{
-						// Do nothing
 					}
 				}
 			}
 			
 			Boolean condition_minNumberOfUnits = realTroops >= polis.getBasePopulation();
 			Boolean condition_siegedPolis = !(polis.getSieged());
-			Boolean condition_isNotMine = !(player.getPlayerPolis().contains(polis));
-			
+			Boolean condition_isNotMine = !(polis.getPolisOwner().equals(player));
 			available = condition_havePrestige && condition_minNumberOfUnits && condition_siegedPolis && condition_isNotMine;
 		}
 		
@@ -400,7 +406,7 @@ public class AvailableActionsManager {
 		return available;
 	}
 
-	public static Boolean checkStartProjectAction(Player player,Polis polis,Project project){
+	public static Boolean checkStartProjectAction(Polis polis,Project project){
 		Boolean available = false;
 		
 		Boolean condition_haveResourcesRequired = true;
@@ -409,7 +415,7 @@ public class AvailableActionsManager {
 		for(String resourceName: project.getResourcesRequired().keySet())
 		{
 			Integer resource = project.getResourcesRequired().get(resourceName);
-			if(player.getResource(resourceName) < resource)
+			if(polis.getPolisOwner().getResource(resourceName) < resource)
 			{
 				condition_haveResourcesRequired = false;
 			}
@@ -436,93 +442,75 @@ public class AvailableActionsManager {
 		return available;
 	}
 	
-	public static Boolean checkTradeAction(Player player, Market market, Round round){
+	public static Boolean checkTradeAction(Game game, Player player, Market market){
 		Boolean available = false;
 		
-		Boolean condition_existWay = GraphNavigatorManager.existsWay(player.getPlayerTradeDock(),market,player,"tradeBoat");
+		TradeBoatGraphNavigator tradeBoatGraphNavigator = new TradeBoatGraphNavigator(player, player.getPlayerTradeDock(), market, game.getTradeBoatGraph());
+		Boolean condition_existWay = tradeBoatGraphNavigator.getExists();
 		
 		Boolean condition_disponible = market.getUnits().size() == 0;
 		
-		Boolean condition_spartaHasOnePolis = false;
-		for(Polis p:player.getPlayerPolis())
+		available = condition_existWay && condition_disponible;
+		
+		if(player.getCapital().getSysName().equals("sparta"))
 		{
-			if(p.getSysName().equals("gition") || p.getSysName().equals("pilos"))
+			Boolean condition_spartaHasOnePolis = false;
+			for(Polis p:player.getPlayerPolis())
 			{
-				condition_spartaHasOnePolis = true;
-				break;
+				if(p.getSysName().equals("gition") || p.getSysName().equals("pilos"))
+				{
+					condition_spartaHasOnePolis = true;
+					break;
+				}
 			}
+			available = available && condition_spartaHasOnePolis;
 		}
 		
-		available = condition_existWay && condition_disponible && condition_spartaHasOnePolis;
 		
 		return available;
 	}
 	
 	/** Utility method for Trades  */
-	public static Boolean checkResourceAvailabilityInATrade(Player p, Round r, Market m, String resource){
-		Boolean available = false;
-		//TODO -> String resource -> resource to be exploited.
-		//TODO remember : marketChart -> round r
-
-		return available;
+	public static Boolean checkResourceAvailabilityInATrade(Round r, Market m, String resource){
+		return m.getAssociatedResource(resource, r.getMaximumPositionSlotsForThisRound()) != null;
 	}
 	
 	/** checks if i have enough amount of a resource for paying a trade in a market */
-	public static Boolean checkIfICanPayThisTradeWithThisResource(Player p, Round r, Market m, String resourceToBeExploited, String resourceForPay){
-		Boolean available = false;
-		//TODO
-		return available;
+	public static Boolean checkIfICanPayThisTradeWithThisResource(Player p, MarketChart marketChart, String resourceForPay){
+		return p.getResource(resourceForPay) >= marketChart.getPrice(resourceForPay);
 	}
 	
 	public static Boolean checkMoveProxenusAction(Game game, Player player, Polis start, Polis destiny){
 		Boolean available = true;
 
-		Boolean condition_moveFromPolisToPolis = start instanceof Polis && destiny instanceof Polis;
-		Boolean condition_existsWayForProxenus = GraphNavigatorManager.existsWayForProxenus(start, destiny, player);
-		Boolean condition_playerHaveMinimumAmountOfSilver = player.getSilver() >= GraphNavigatorManager.amountToPayForWay;
-
-		
-		Player enemyPlayer;
-		if(player.equals(game.getAthensPlayer())){
-			enemyPlayer = game.getSpartaPlayer();
-		}else{
-			enemyPlayer = game.getAthensPlayer();
-		}
-		
-		Boolean condition_onlyOneProxenusInDestiny = !enemyPlayer.getPlayerProxenus().getPosition().equals(destiny);
-		
-		available = condition_moveFromPolisToPolis && condition_existsWayForProxenus && condition_playerHaveMinimumAmountOfSilver && condition_onlyOneProxenusInDestiny;
+		ProxenusGraphNavigator proxenusGraphNavigator = new ProxenusGraphNavigator(player, start, destiny, game.getProxenusGraph());
+		Boolean condition_existsWayForProxenus = proxenusGraphNavigator.getExists();
+		Boolean condition_playerHaveMinimumAmountOfSilver = player.getSilver() >= proxenusGraphNavigator.getAmountToPayForWay();
+		Boolean condition_onlyOneProxenusInDestiny = !destiny.getPolisOwner().getPlayerProxenus().getPosition().equals(destiny);
+			
+		available = condition_existsWayForProxenus && condition_playerHaveMinimumAmountOfSilver && condition_onlyOneProxenusInDestiny;
 		return available;
 	}
-	public static Boolean checkCivilWarAction(Game game, Player player,Polis polis){
+	
+	public static Boolean checkCivilWarAction(Player player,Polis polis){
 		Boolean available = false;
-
-		Player oponent;
-		if(game.getAthensPlayer().equals(player))
-		{
-			oponent = game.getSpartaPlayer();
-		}else
-		{
-			oponent = game.getAthensPlayer();
-		}
 		
 		Boolean condition_isNeutralOrOponent = true;
 
 		//check if player has minimum amount of silver 
-		if(!player.getPlayerPolis().contains(polis) && !oponent.getPlayerPolis().contains(polis))
-		{
+		if(!polis.getPolisOwner().equals(player) && polis.getPolisOwner() == null){
 			//is neutral
 			condition_isNeutralOrOponent = player.getSilver() >= (2 * polis.getBasePopulation());
 			
-		}else if(!player.getPlayerPolis().contains(polis) && oponent.getPlayerPolis().contains(polis))
+		}else if(!polis.getPolisOwner().equals(player) && polis.getPolisOwner() != null)
 		{
 			//oponent is owner
 			condition_isNeutralOrOponent = player.getSilver() >= (3 * polis.getActualPopulation());
 		}
 		
 		Boolean condition_isSieged = !polis.getSieged();
-	
-		Boolean condition_notOponentCapital = !oponent.getCapital().equals(polis);
+		
+		Boolean condition_notOponentCapital = !(polis.getPolisOwner().equals(player)) && !polis.getPolisOwner().getCapital().equals(polis);
 
 		available = condition_isNeutralOrOponent && condition_isSieged && condition_notOponentCapital;
 		
