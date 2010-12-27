@@ -159,5 +159,4 @@ public class TextInterface implements ITextInterface{
 		System.out.println("");
 		System.out.println("");
 	}
-	
 }

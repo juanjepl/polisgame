@@ -93,7 +93,7 @@ public class MarketChart {
 			else if(activeRound.equals("4")){
 				metalPrice = round4_prices.get(metalPricePointer);
 			}
-			else if((activeRound.equals("5a"))||(activeRound.equals("5b"))){
+			else if((activeRound.equals("5A"))||(activeRound.equals("5B"))){
 				metalPrice = round5_prices.get(metalPricePointer);
 			}		
 		}
@@ -115,7 +115,7 @@ public class MarketChart {
 			else if(activeRound.equals("4")){
 				woodPrice = round4_prices.get(woodPricePointer);
 			}
-			else if((activeRound.equals("5a"))||(activeRound.equals("5b"))){
+			else if((activeRound.equals("5A"))||(activeRound.equals("5B"))){
 				woodPrice = round5_prices.get(woodPricePointer);
 			}		
 		}
@@ -137,7 +137,7 @@ public class MarketChart {
 			else if(activeRound.equals("4")){
 				winePrice = round4_prices.get(winePricePointer);
 			}
-			else if((activeRound.equals("5a"))||(activeRound.equals("5b"))){
+			else if((activeRound.equals("5A"))||(activeRound.equals("5B"))){
 				winePrice = round5_prices.get(winePricePointer);
 			}		
 		}
@@ -159,7 +159,7 @@ public class MarketChart {
 			else if(activeRound.equals("4")){
 				oilPrice = round4_prices.get(oilPricePointer);
 			}
-			else if((activeRound.equals("5a"))||(activeRound.equals("5b"))){
+			else if((activeRound.equals("5A"))||(activeRound.equals("5B"))){
 				oilPrice = round5_prices.get(oilPricePointer);
 			}		
 		}
@@ -202,6 +202,5 @@ public class MarketChart {
 		}
 		
 		return value;
-	}
-	
+	}	
 }
