@@ -106,9 +106,7 @@ public class Polis extends Position{
 	}
 	
 	public void setPolisOwner(Player p){
-		if(p == null){
-			throw new IllegalArgumentException("Invalid parameter for setPolisOwner(), must be a player instance");
-		}
+		//can receive null as player. null indicates that polis is neutral
 		playerOwner = p;
 	}
 }
