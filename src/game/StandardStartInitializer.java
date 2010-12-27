@@ -6,7 +6,7 @@ public class StandardStartInitializer {
 	public StandardStartInitializer(){}
 	
 	/** Method responsible to initialize the game start */
-	public static void standardStart(Game theGame){
+	public void standardStart(Game theGame){
 	
 //// For Sparta	
 		// Put start resources
@@ -33,12 +33,14 @@ public class StandardStartInitializer {
 		for(Polis p : theGame.getSpartaPlayer().getPlayerPolis()){
 			if(p.getSysName().equals("sparta")){
 				p.setActualPopulation(4);
+				p.setPolisOwner(theGame.getSpartaPlayer());
 				break;
 			}
 		}	
 		for(Polis p : theGame.getSpartaPlayer().getPlayerPolis()){	
 			if(p.getSysName().equals("gythion")){
 				p.setActualPopulation(1);
+				p.setPolisOwner(theGame.getSpartaPlayer());
 				break;
 			}
 		}	
@@ -46,39 +48,41 @@ public class StandardStartInitializer {
 		for(Polis p : theGame.getSpartaPlayer().getPlayerPolis()){	
 			if(p.getSysName().equals("pylos")){
 				p.setActualPopulation(2);
+				p.setPolisOwner(theGame.getSpartaPlayer());
 				break;
 			}
 		}	
 		
 		
 		// Units assignation
-		Hoplite sparta_hop1 = new Hoplite(theGame.getSpartaPlayer(),theGame.getGameTerritories().get("laconia"));
+		Hoplite sparta_hop1 = new Hoplite(theGame.getSpartaPlayer() , theGame.getGameTerritories().get("laconia"));
 		theGame.getGameTerritories().get("laconia").addUnit(sparta_hop1);
 		theGame.getSpartaPlayer().addUnit(sparta_hop1);
 		
-		Hoplite sparta_hop2 = new Hoplite(theGame.getSpartaPlayer(),theGame.getGameTerritories().get("laconia"));
+		Hoplite sparta_hop2 = new Hoplite(theGame.getSpartaPlayer() , theGame.getGameTerritories().get("laconia"));
 		theGame.getGameTerritories().get("laconia").addUnit(sparta_hop2);
 		theGame.getSpartaPlayer().addUnit(sparta_hop2);
 		
-		Hoplite sparta_hop3 = new Hoplite(theGame.getSpartaPlayer(),theGame.getGameTerritories().get("laconia"));
+		Hoplite sparta_hop3 = new Hoplite(theGame.getSpartaPlayer() , theGame.getGameTerritories().get("laconia"));
 		theGame.getGameTerritories().get("laconia").addUnit(sparta_hop3);
 		theGame.getSpartaPlayer().addUnit(sparta_hop3);
 
-		Trirreme sparta_tri1 = new Trirreme(theGame.getSpartaPlayer(),theGame.getGameSeas().get("ionianSea"));
+		Trirreme sparta_tri1 = new Trirreme(theGame.getSpartaPlayer() , theGame.getGameSeas().get("ionianSea"));
 		theGame.getGameSeas().get("ionianSea").addUnit(sparta_tri1);
 		theGame.getSpartaPlayer().addUnit(sparta_tri1);
 		
-		Trirreme sparta_tri2 = new Trirreme(theGame.getSpartaPlayer(),theGame.getGameSeas().get("myrtoanSea"));
+		Trirreme sparta_tri2 = new Trirreme(theGame.getSpartaPlayer() , theGame.getGameSeas().get("myrtoanSea"));
 		theGame.getGameSeas().get("myrtoanSea").addUnit(sparta_tri2);
 		theGame.getSpartaPlayer().addUnit(sparta_tri2);
 		
-		TradeBoat sparta_tra1 = new TradeBoat(theGame.getSpartaPlayer(),theGame.getGameTradeDocks().get("spartaTradeDock"));
+		TradeBoat sparta_tra1 = new TradeBoat(theGame.getSpartaPlayer() , theGame.getGameTradeDocks().get("spartaTradeDock"));
 		theGame.getGameTradeDocks().get("spartaTradeDock").addUnit(sparta_tra1);
 		theGame.getSpartaPlayer().addUnit(sparta_tra1);
 		
-		Proxenus spartaProxenus = new Proxenus(theGame.getSpartaPlayer(),theGame.getGamePolis().get("sparta"));
+		Proxenus spartaProxenus = new Proxenus(theGame.getSpartaPlayer() , theGame.getGamePolis().get("sparta"));
 		theGame.getGamePolis().get("sparta").addUnit(spartaProxenus); // The proxenus in Sparta
-		theGame.getSpartaPlayer().setPlayerProxenus(spartaProxenus); // in this atribute, not in units list.
+		theGame.getSpartaPlayer().addUnit(spartaProxenus);
+		theGame.getSpartaPlayer().setPlayerProxenus(spartaProxenus); // direct access
 		
 //// For Athens	
 		// Put start resources	
@@ -104,21 +108,23 @@ public class StandardStartInitializer {
 		for(Polis p : theGame.getAthensPlayer().getPlayerPolis()){
 			if(p.getSysName().equals("athens")){
 				p.setActualPopulation(5);
+				p.setPolisOwner(theGame.getAthensPlayer());
 				break;
 			}
 		}
 		for(Polis p : theGame.getAthensPlayer().getPlayerPolis()){
 			if(p.getSysName().equals("chalcis")){
 				p.setActualPopulation(1);
+				p.setPolisOwner(theGame.getAthensPlayer());
 				break;
 			}
 		}
 		for(Polis p : theGame.getAthensPlayer().getPlayerPolis()){
 			if(p.getSysName().equals("chios")){
 				p.setActualPopulation(2);
+				p.setPolisOwner(theGame.getAthensPlayer());
 				break;
 			}
-			
 		}
 	
 		// Units assignation
@@ -160,7 +166,7 @@ public class StandardStartInitializer {
 		
 		Proxenus athensProxenus = new Proxenus(theGame.getAthensPlayer(),theGame.getGamePolis().get("athens"));
 		theGame.getGamePolis().get("athens").addUnit(athensProxenus);
-		theGame.getAthensPlayer().setPlayerProxenus(athensProxenus);// not in player units list
-		
+		theGame.getAthensPlayer().addUnit(athensProxenus);
+		theGame.getAthensPlayer().setPlayerProxenus(athensProxenus); // direct access
 	}
 }
