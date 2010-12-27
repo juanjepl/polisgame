@@ -6,21 +6,20 @@ package game;
  */
 public class EndGameManager {
 
-	private Player winner = null; // Player who wins the game. (null while game
-									// has not a winner)
-
 	public EndGameManager() {
 	}
 
 	/** This method checks if any player has lost his capital */
+	/*
 	public Boolean checkCapitals(Player polisGamer) {
 		if (polisGamer == null){throw new NullPointerException("Player in checkCapitals can´t be Null");}
 		// TODO this method checks no one player has lost his capital (game
 		// over)
 		return !polisGamer.getPlayerPolis().contains(polisGamer.getCapital());
 	}
-
+*/
 	/** This method checks if any player has lost all prestige points */
+	/*
 	public Boolean checkNoPrestige(Player playerGamer) {
 
 		// TODO this method checks no one player has lost all his prestige (game
@@ -28,13 +27,14 @@ public class EndGameManager {
 		if ( playerGamer == null){throw new NullPointerException("Player in CheckNoPrestige can´t be Null");}
 		return playerGamer.getPrestige() == 0;
 	}
-
+*/
 	/**
 	 * Checks the final score to decide a winner
 	 * @param player1 Player 1 of game
 	 * @param player2 Player 2 of game
 	 * @return winner player
 	 */
+	/*
 	public Player checkStandardEndGame(Player player1, Player player2) {
 
 		if (player1 == null) throw new NullPointerException("'player1' can not be null");
@@ -59,12 +59,13 @@ public class EndGameManager {
 		
 		return winner;
 	}
-	
+	*/
 	/**
 	 * Gets the total prestige of a player
 	 * @param player
 	 * @return 'player' total prestige
 	 */
+	/*
 	private int getPlayerTotalPrestige(Player player)
 	{
 		if (player == null) throw new NullPointerException("'player' can not be null");
@@ -85,30 +86,19 @@ public class EndGameManager {
 		
 		return (totalPopulation + playerPrestige + totalProjectPosterityPrestige);
 	}
-	
+	*/
 	/**
 	 * Gets the sum of all the resources of a player
 	 * @param player
 	 * @return sum of 'player' resources
 	 */
+	/*
 	private int getPlayerResourceCount(Player player)
 	{
 		if (player == null) throw new NullPointerException("'player' can not be null");
 		
 		return (player.getMetal() + player.getWood() + player.getWine() + player.getOil() + player.getSilver() + player.getWheat());
 	}
-
-	public Player getWinner() { // FIXME is it necessary?
-		// TODO
-		return winner;
-	}
-
-	/** This method ends the game */
-	// FIXME is also it necessary?
-	public void endTheGame() {
-
-		// TODO
-
-	}
-
+*/
+	// Integer getPlayerScore( )
 }

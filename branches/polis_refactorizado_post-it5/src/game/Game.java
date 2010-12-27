@@ -14,6 +14,7 @@ public class Game{
 	private Player spartaPlayer;
 	private Player athensPlayer;
 	private Player whoHasTheTurn;
+	private Player winner;
 	private List<Project> projectList;
 	private Map<String,Territory> gameTerritories ;
 	private Map<String,Sea> gameSeas;
@@ -38,6 +39,8 @@ public class Game{
 		athensPlayer = athens;
 		
 		setStarterPlayer(); // initializes starter player using a class own method
+		
+		winner = null;
 		
 		gameTerritories = territoriesMap;
 		gameSeas = seasMap;
@@ -66,6 +69,17 @@ public class Game{
 
 	public Player getAthensPlayer() {
 		return athensPlayer;
+	}
+	
+	public Player getWinner(){
+		return winner;
+	}
+	
+	public void setWinner(Player p){
+		if(p == null){
+			throw new IllegalArgumentException("Invalid parameter for setWinner(), cannot be null");
+		}
+		winner = p;
 	}
 
 	public List<Project> getProjectList() {
