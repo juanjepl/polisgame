@@ -1,4 +1,4 @@
-﻿MainMenu_headerMessage;Por favor, elija una opción:
+﻿mainMenu_headerMessage;Por favor, elija una opción:
 TextInterface_newRoundMessage;Una nueva ronda ha comenzado:
 round;Ronda
 turn;Turno
