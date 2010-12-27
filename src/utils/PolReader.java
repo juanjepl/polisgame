@@ -1,7 +1,6 @@
 package utils;
 
 import cfg.GameConfigurations;
-import game.Graph;
 import game.Position;
 import game.Sea;
 import game.TradeDock;
@@ -17,13 +16,15 @@ import game.ProjectGame;
 import game.Theatre;
 import game.Statue;
 import game.Festival;
-import game.Vertex;
 
 import java.util.Map;
 import java.util.HashMap;
 import java.util.List;
 import java.util.ArrayList;
 import java.util.Vector;
+
+import navigation.Graph;
+import navigation.Vertex;
 
 /** This class reads game files and returns game objects instantiations, each method one type of them */
 public class PolReader{ // Reads .pol files

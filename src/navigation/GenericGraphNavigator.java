@@ -4,10 +4,8 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Set;
 
-import game.Graph;
 import game.Player;
 import game.Position;
-import game.Vertex;
 
 public abstract class GenericGraphNavigator {
 
