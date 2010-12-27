@@ -36,6 +36,10 @@ public class TextInterface implements ITextInterface{
 		}
 	}
 	
+	public void askPlayerToChoose(){
+		//TODO
+	}
+	
 	public void showChangeOfRound(Round theNewRound){
 		if(theNewRound == null){
 			throw new IllegalArgumentException("Invalid parameter for showChangeOfRound, cannot be null");

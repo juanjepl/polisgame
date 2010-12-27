@@ -23,6 +23,9 @@ public interface ITextInterface {
 	/** Shows in text console, the "focused" menu */
 	public void showMenuContents();
 	
+	/** Asks to choose one of shown options */
+	public void askPlayerToChoose();
+	
 	/** This method shows an ASCII ART with the game title */
 	public void showGameTitle();
 	
