@@ -1,9 +1,9 @@
 package game;
 
-import java.util.LinkedList;
-import java.util.List;
-
-/** This class manages, the operations to do, when a turn finishes */
+/**
+ * This class manages, the operations to do,
+ * when a turn finishes
+ */
 public class EndTurnManager 
 {	
 	/**
@@ -12,6 +12,8 @@ public class EndTurnManager
 	 * with both players unit bets
 	 * @return list of pending battles
 	 */
+	
+	/*
 	public static List<BattleManager> checkBattles(Game game)
 	{
 		if (game == null) throw new NullPointerException("'game' can not be null");
@@ -39,4 +41,5 @@ public class EndTurnManager
 	{
 		//TODO
 	}
+	*/
 }
