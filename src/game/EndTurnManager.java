@@ -12,34 +12,38 @@ public class EndTurnManager
 	 * with both players unit bets
 	 * @return list of pending battles
 	 */
+	private Game game;
 	
-	/*
-	public static List<BattleManager> checkBattles(Game game)
+	public EndTurnManager(Game game)
 	{
-		if (game == null) throw new NullPointerException("'game' can not be null");
-		
-		LinkedList<BattleManager> battlePending = new LinkedList<BattleManager>();
-		Player sparta = game.getSpartaPlayer();
-		Player athens = game.getAthensPlayer();
-		
-		for(Territory terr : game.getGameTerritories().values())
-		{
-			BattleManager batman = new BattleManager(sparta, athens, terr);
-			if (batman.assaultAvailable()) battlePending.add(batman);
-		}
-		
-		for(Sea sea : game.getGameSeas().values())
-		{
-			BattleManager batman = new BattleManager(sparta, athens, sea);
-			if (batman.assaultAvailable()) battlePending.add(batman);
-		}
-		
-		return battlePending;
+		if (game == null) throw new IllegalArgumentException("game can not be null");
+		removePlundersUnitsFromTerritory();
 	}
 	
-	public static void removePlundersUnitsFromTerritory()
+	public Game getGame()
 	{
-		//TODO
+		return game;
 	}
-	*/
+	
+	
+	public void removePlundersUnitsFromTerritory()
+	{
+		Player player = getGame().getWhoHasTheTurn();
+		
+		for(Territory t: getGame().getGameTerritories().values())
+		{
+			//add plunders units to players units list
+			if(t.getPlundersUnits().size() > 0)
+			{
+				for(Unit u: t.getPlundersUnits())
+				{
+					player.addUnit(u);
+				}
+			
+				//remove plunders units list in territory
+				t.emptyPlundersUnits();
+			}
+		}
+	}
+	
 }

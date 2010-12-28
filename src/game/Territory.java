@@ -38,6 +38,11 @@ public class Territory extends Position{
 		return plundersUnits;
 	}
 	
+	public void emptyPlundersUnits()
+	{
+		plundersUnits = null;
+	}
+	
 	public void addPlunderUnit(Unit u)
 	{
 		plundersUnits.add(u);

@@ -9,55 +9,25 @@ import cfg.GameConfigurations;
  */
 public class BattleManager 
 {
-	// FIXME (spanish text)
 	
-	// Pasos a seguir:
-	// se comprueba que en el territorio o mar hay 8 o mas unidades entre los 2 bandos
-	// asalto
-	// cada jugador elige en secreto el numero de unidades en este asalto
-	// cada jugador elige en secreto una carta con el numero estimado de unidades en el asalto
-	// se muestran las unidades de cada uno elegidas
-	// se muestran cartas
-	// se decide ganador y unidades a "eliminar"
-	/// -> se comprueba si hay que hacer mas asaltos --> Debe hacerlo el usuario de esta clase, con 'assaultAvailable'.
-
-	private Player sparta = null;
-	private Player athens = null;
-	private Position position = null;
+	private Player sparta;
+	private Player athens;
+	private Position position;
 	
 	public BattleManager(Player sparta, Player athens, Position position)
 	{
-		setSparta(sparta);
-		setAthens(athens);
-		setPosition(position);
+		if (sparta == null) throw new IllegalArgumentException("'sparta' can not be null");
+		if (athens == null) throw new IllegalArgumentException("'athens' can not be null");
+		if (position == null) throw new IllegalArgumentException("'position' can not be null");
+		
+		this.sparta = sparta;
+		this.athens = athens;
+		this.position = position;
 	}
 	
 	public Player getSparta() 		{ return sparta; 	}
 	public Player getAthens() 		{ return athens;	}
 	public Position getPosition() 	{ return position; 	}
-	
-	public void setSparta(Player sparta)
-	{
-		if (sparta == null) throw new NullPointerException("'sparta' can not be null");
-		if (sparta == athens) throw new NullPointerException("'sparta' can not be the same than 'athens'");
-		
-		this.sparta = sparta;
-	}
-	
-	public void setAthens(Player athens)
-	{
-		if (athens == null) throw new NullPointerException("'athens' can not be null");
-		if (athens == sparta) throw new NullPointerException("'athens' can not be the same than 'player1'");
-		
-		this.athens = athens;
-	}
-	
-	public void setPosition(Position position)
-	{
-		if (position == null) throw new NullPointerException("'position' can not be null");
-		
-		this.position = position;
-	}
 	
 	/**
 	 * According to the playbook, if we have 8 or more units between the two players in the same region, we can make the assault.
@@ -65,7 +35,7 @@ public class BattleManager
 	 */
 	public Boolean assaultAvailable()
 	{
-		return (position.getUnits().size() >= GameConfigurations.getMinNumberToBattle());
+		return (getPosition().getUnits().size() >= GameConfigurations.getMinNumberToBattle());
 	}
 	
 	/**
@@ -110,14 +80,14 @@ public class BattleManager
 		Si el jugador que gana el asalto eligio menos cubos que el oponente, infringe tantas bajas 
 		como la diferencia y recibe ese Prestigio pero el tambien recibe 1 baja (pero que no aporta Prestigio al oponente). */
 		
-		int assaultUnitCount = spartaAttackUnitCount + athensAttackUnitCount;
+		Integer assaultUnitCount = spartaAttackUnitCount + athensAttackUnitCount;
 		
-		int spartaDistance = Math.abs(assaultUnitCount - spartaTotalUnitCountBet);
-		int athensDistance = Math.abs(assaultUnitCount - athensTotalUnitCountBet);
+		Integer spartaDistance = Math.abs(assaultUnitCount - spartaTotalUnitCountBet);
+		Integer athensDistance = Math.abs(assaultUnitCount - athensTotalUnitCountBet);
 		
-		int attackUnitCountDiff = Math.abs(spartaAttackUnitCount - athensAttackUnitCount);
+		Integer attackUnitCountDiff = Math.abs(spartaAttackUnitCount - athensAttackUnitCount);
 		
-		int winnerAttackUnitCount, loserAttackUnitCount;
+		Integer winnerAttackUnitCount, loserAttackUnitCount;
 			
 		if (spartaDistance < athensDistance || (spartaDistance == athensDistance && position instanceof Territory))
 		{
@@ -163,7 +133,7 @@ public class BattleManager
 		List<Unit> playerUnits = player.getPlayerUnits();
 		
 		Iterator<Unit> it = positionUnits.iterator();
-		int removedUnitCount = 0;
+		Integer removedUnitCount = 0;
 		
 		while(it.hasNext() && removedUnitCount <= count)
 		{
