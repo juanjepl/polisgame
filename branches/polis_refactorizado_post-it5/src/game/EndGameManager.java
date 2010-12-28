@@ -6,99 +6,40 @@ package game;
  */
 public class EndGameManager {
 
-	public EndGameManager() {
-	}
-
-	/** This method checks if any player has lost his capital */
-	/*
-	public Boolean checkCapitals(Player polisGamer) {
-		if (polisGamer == null){throw new NullPointerException("Player in checkCapitals can´t be Null");}
-		// TODO this method checks no one player has lost his capital (game
-		// over)
-		return !polisGamer.getPlayerPolis().contains(polisGamer.getCapital());
-	}
-*/
-	/** This method checks if any player has lost all prestige points */
-	/*
-	public Boolean checkNoPrestige(Player playerGamer) {
-
-		// TODO this method checks no one player has lost all his prestige (game
-		// over)
-		if ( playerGamer == null){throw new NullPointerException("Player in CheckNoPrestige can´t be Null");}
-		return playerGamer.getPrestige() == 0;
-	}
-*/
-	/**
-	 * Checks the final score to decide a winner
-	 * @param player1 Player 1 of game
-	 * @param player2 Player 2 of game
-	 * @return winner player
-	 */
-	/*
-	public Player checkStandardEndGame(Player player1, Player player2) {
-
-		if (player1 == null) throw new NullPointerException("'player1' can not be null");
-		if (player2 == null) throw new NullPointerException("'player2' can not be null");
+	private Game game;
+	private Player player;
+	private Player oponent;
+	
+	public EndGameManager(Game game, Player player) {
 		
-		Player winner = player1;
+		if (game == null) throw new IllegalArgumentException("game can not be null");
+		if (player == null) throw new IllegalArgumentException("player can not be null");
 		
-		int player1Score = getPlayerTotalPrestige(player1);
-		int player2Score = getPlayerTotalPrestige(player2);
+		this.player = player;
+		this.game = game;
 		
-		if (player1Score < player2Score)
+		if(getGame().getAthensPlayer().equals(player))
 		{
-			winner = player2;
-		}
-		else if (player1Score == player2Score)
+			this.oponent = getGame().getSpartaPlayer();
+		}else
 		{
-			int player1ResourceCount = getPlayerResourceCount(player1);
-			int player2ResourceCount = getPlayerResourceCount(player2);
-			
-			if (player1ResourceCount < player2ResourceCount) winner = player2;
+			this.oponent = getGame().getAthensPlayer();
 		}
-		
-		return winner;
 	}
-	*/
-	/**
-	 * Gets the total prestige of a player
-	 * @param player
-	 * @return 'player' total prestige
-	 */
-	/*
-	private int getPlayerTotalPrestige(Player player)
+
+	public Player getPlayer()
 	{
-		if (player == null) throw new NullPointerException("'player' can not be null");
-		
-		int totalPopulation = 0;
-		for(Polis polis: player.getPlayerPolis()) totalPopulation += polis.getActualPopulation();
-		
-		int playerPrestige = player.getPrestige();
-		
-		int totalProjectPosterityPrestige = 0;
-		for(Polis polis: player.getPlayerPolis())
-		{
-			for(Project project: polis.getProjects())
-			{
-				if (project.getFinished()) totalProjectPosterityPrestige += project.getPrestigeToPosterity();
-			}
-		}
-		
-		return (totalPopulation + playerPrestige + totalProjectPosterityPrestige);
+		return player;
 	}
-	*/
-	/**
-	 * Gets the sum of all the resources of a player
-	 * @param player
-	 * @return sum of 'player' resources
-	 */
-	/*
-	private int getPlayerResourceCount(Player player)
+	
+	public Game getGame()
 	{
-		if (player == null) throw new NullPointerException("'player' can not be null");
-		
-		return (player.getMetal() + player.getWood() + player.getWine() + player.getOil() + player.getSilver() + player.getWheat());
+		return game;
 	}
-*/
-	// Integer getPlayerScore( )
+	
+	public Player getOponent()
+	{
+		return oponent;
+	}
+
 }
