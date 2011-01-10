@@ -7,6 +7,7 @@ import java.util.Map;
 public abstract class AbstractMenu implements IMenu {
 	private Map<String, String> gameTexts;
 	private List<String> menuOptionsList;
+	private Integer playerChoice;
 	
 	public AbstractMenu(Map<String, String> gameTexts) {
 		if (gameTexts == null) throw new NullPointerException("'gameTexts' cannot be null");
@@ -22,6 +23,14 @@ public abstract class AbstractMenu implements IMenu {
 	
 	public List<String> getMenuOptionsList() {
 		return menuOptionsList;
+	}
+	
+	public Integer getPlayerChoice() {
+		return playerChoice;
+	}
+	
+	public void setPlayerChoice(Integer choice) {
+		playerChoice = choice;
 	}
 	
 	public abstract void execute();
