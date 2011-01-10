@@ -10,7 +10,7 @@ round;Ronda
 turn;Turno
 action;Accion
 player;Jugador
-sparthaPlayer;Jugador Espartano
+spartaPlayer;Jugador Espartano
 athensPlayer;Jugador Ateniense
 firstAction;1ª
 secondAction;2ª
@@ -18,3 +18,4 @@ startGame;Empezar un nuevo Juego
 loadGame;Cargar una Partida salvada
 exit;Salir
 exitGame;Salir del Juego
+gameMainMenu_requestPlayerNames;Introduzca los nombres de los jugadores
