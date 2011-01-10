@@ -1,8 +1,12 @@
 package ui;
 
 import java.util.List;
+import java.util.Map;
 
 public abstract class AbstractMenu implements IMenu {
+	public AbstractMenu(Map<String, String> gameTexts) {
+	}
+	
 	public abstract String getHeaderMessage();
 	
 	public abstract List<String> getMenuOptionList();
