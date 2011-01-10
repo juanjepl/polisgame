@@ -276,7 +276,7 @@ public class PolReader{ // Reads .pol files
 		List<String> gameTextsContents = GenericReader.getFileContents(pathOfGameTexts+"gameTexts.pol");
 		
 		for(String s : gameTextsContents){
-			if(!(s.startsWith("") || s.startsWith(" ") || s.startsWith("#"))){
+			if(!(s.startsWith(" ") || s.startsWith("#"))){
 				List<String> pairOfStrings = new ArrayList<String>(2);
 				pairOfStrings = StringUtilities.stringSplitterForPolis(s, ";");
 				gameTexts.put(pairOfStrings.get(0), pairOfStrings.get(1));
