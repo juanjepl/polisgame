@@ -37,6 +37,7 @@ public class TextInterface{
 			Integer counter = 0;
 			for(String optionInMenu : getMenu().getMenuOptionsList()){
 				System.out.println(counter.toString() + optionInMenu);
+				counter += 1;
 			}
 		}
 	}
