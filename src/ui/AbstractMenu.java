@@ -8,9 +8,13 @@ public abstract class AbstractMenu implements IMenu {
 	private Map<String, String> gameTexts;
 	private List<String> menuOptionsList;
 	private Integer playerChoice;
+	private List<IMenu> menuList;
 	
-	public AbstractMenu(Map<String, String> gameTexts) {
-		if (gameTexts == null) throw new NullPointerException("'gameTexts' cannot be null");
+	public AbstractMenu(Map<String, String> gameTexts,List<IMenu> menuList) {
+		if (gameTexts == null || menuList == null){
+			throw new IllegalArgumentException("Invalid parameter for AbstractMenu constructor, cannot be null");
+		}
+		this.menuList = menuList;
 		this.gameTexts = gameTexts;
 		this.menuOptionsList = new ArrayList<String>();
 	}
@@ -27,6 +31,10 @@ public abstract class AbstractMenu implements IMenu {
 	
 	public Integer getPlayerChoice() {
 		return playerChoice;
+	}
+	
+	public List<IMenu> getMenuList(){
+		return menuList;
 	}
 	
 	public void setPlayerChoice(Integer choice) {
