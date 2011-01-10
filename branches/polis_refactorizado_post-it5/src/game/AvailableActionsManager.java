@@ -13,13 +13,42 @@ public class AvailableActionsManager {
 	// 1ST LEVEL METHODS
 
 	public static Boolean checkCreatorAction(Round round,Player player){
-		return checkCreateHopliteAnyAction(round,player) || checkCreateTrirremeAnyAction(round,player) || checkCreateTradeBoatAnyAction(round,player) || checkCreateProxenusAnyAction(player);
+		Boolean checkPreviousAction = true;
+		if(round.getCurrentTurn().getFirstAction() != null)
+		{
+			if(round.getCurrentTurn().getFirstAction() instanceof CreatorAction)
+			{
+				checkPreviousAction = false;
+			}
+		}
+
+		return checkPreviousAction || checkCreateHopliteAnyAction(round,player) || checkCreateTrirremeAnyAction(round,player) || checkCreateTradeBoatAnyAction(round,player) || checkCreateProxenusAnyAction(player);
 	}
-	public static Boolean checkMilitaryAction(Game game,Player player){
-		return checkMoveHopliteAnyAction(game,player) || checkMoveTrirremeAnyAction(game,player) || checkSiegePolisAnyAction(game,player) || checkPlunderTerritoryAnyAction(game,player);
+	public static Boolean checkMilitaryAction(Game game, Player player){
+		
+		Boolean checkPreviousAction = true;
+		if(game.getRound().getCurrentTurn().getFirstAction() != null)
+		{
+			if(game.getRound().getCurrentTurn().getFirstAction() instanceof MilitaryAction)
+			{
+				checkPreviousAction = false;
+			}
+		}
+		
+		return checkPreviousAction || checkMoveHopliteAnyAction(game,player) || checkMoveTrirremeAnyAction(game,player) || checkSiegePolisAnyAction(game,player) || checkPlunderTerritoryAnyAction(game,player);
 	}	
 	public static Boolean checkPoliticAction(Game game,Player player){
-		return checkStartProjectAnyAction(game,player) || checkTradeAnyAction(game,player) || checkMoveProxenusAnyAction(game,player) || checkCivilWarAnyAction(game,player);
+		
+		Boolean checkPreviousAction = true;
+		if(game.getRound().getCurrentTurn().getFirstAction() != null)
+		{
+			if(game.getRound().getCurrentTurn().getFirstAction() instanceof PoliticAction)
+			{
+				checkPreviousAction = false;
+			}
+		}
+		
+		return checkPreviousAction || checkStartProjectAnyAction(game,player) || checkTradeAnyAction(game,player) || checkMoveProxenusAnyAction(game,player) || checkCivilWarAnyAction(game,player);
 	}
 
 	// 2ND LEVEL METHODS
