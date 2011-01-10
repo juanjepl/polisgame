@@ -2,11 +2,9 @@
 mainMenu_newGame;Nuevo Juego
 mainMenu_credits;Creditos
 mainMenu_exit;Salir
-
+abstractMenu_BadInputMessage;Por favor, introduzca un valor correcto para su eleccion
 creditsMenu_HeaderMessage;Titulos de credito de [ Polis ]
-
 back;Volver
-
 TextInterface_newRoundMessage;Una nueva ronda ha comenzado:
 round;Ronda
 turn;Turno
