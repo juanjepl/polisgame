@@ -1,12 +1,12 @@
-#Textos del juego
-﻿mainMenu_HeaderMessage;Por favor, elija una opción:
+#hola
 mainMenu_newGame;Nuevo Juego
+mainMenu_headerMessage;Por favor, elija una opción:
 mainMenu_credits;Creditos
 mainMenu_exit;Salir
 abstractMenu_BadInputMessage;Por favor, introduzca un valor correcto para su eleccion
 creditsMenu_HeaderMessage;Titulos de credito de [ Polis ]
 back;Volver
-TextInterface_newRoundMessage;Una nueva ronda ha comenzado:
+TextInterface_newRoundMessage;Una nueva ronda ha comenzado
 round;Ronda
 turn;Turno
 action;Accion
@@ -21,3 +21,9 @@ exit;Salir
 exitGame;Salir del Juego
 gameMainMenu_requestPlayerNames;Introduzca los nombres de los jugadores
 gameMainMenu_errorSameNames;Por favor, introduzca un nombre diferente del del otro jugador
+options;Opciones
+creatorAction;Acción de creación
+militaryAction;Acción militar
+politicAction;Acción política
+passTurn;Pasar turno
+gameMainMenu_headerMessage;Por favor, elija una opción:
