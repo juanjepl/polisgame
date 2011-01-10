@@ -11,7 +11,7 @@ import game.Turn;
  * This class implements a user interface
  * using text console
  */
-public class TextInterface implements ITextInterface{
+public class TextInterface{
 
 	private IMenu focusedMenu;
 	private Map<String,String> gameTexts;
