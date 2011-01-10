@@ -1,6 +1,7 @@
 package ui;
 
 import java.util.Map;
+import java.util.Queue;
 import utils.PolReader;
 import game.Player;
 import game.Round;
@@ -14,12 +15,15 @@ import game.Turn;
 public class TextInterface{
 
 	private IMenu focusedMenu;
+	private Queue<IMenu> menuQueue;
 	private Map<String,String> gameTexts;
+	private Map<String,Boolean> checkActionsMap;
 	
 	public TextInterface(){
 		PolReader gameTextsFileReader = new PolReader();
 		gameTexts = gameTextsFileReader.readGameTexts();
-		focusedMenu = new MainMenu(getGameTexts());
+
+		focusedMenu = new MainMenu(getGameTexts()); //FIXME
 		//TODO
 	}
 
@@ -29,15 +33,11 @@ public class TextInterface{
 		System.out.println(" "); // White line
 		
 		// Shows the list of options to be chosen if exists
-		if(!(getMenu().getOptionsToBeChosen().isEmpty())){
-			for(String optionInMenu : getMenu().getOptionsToBeChosen()){
+		if(!(getMenu().getMenuOptionList().isEmpty())){
+			for(String optionInMenu : getMenu().getMenuOptionList()){
 				System.out.println(optionInMenu);
 			}
 		}
-	}
-	
-	public void askPlayerToChoose(){
-		//TODO
 	}
 	
 	public void showChangeOfRound(Round theNewRound){
@@ -82,6 +82,14 @@ public class TextInterface{
 		return gameTexts;
 	}
 	
+	public Map<String,Boolean> getCheckActionsMap(){
+		return checkActionsMap;
+	}
+	
+	public Queue<IMenu> getMenuQueue(){
+		return menuQueue;
+	}
+	
 	public IMenu getMenu(){
 		return focusedMenu;
 	}
@@ -91,9 +99,14 @@ public class TextInterface{
 			throw new IllegalArgumentException("Invalid parameter for setMenu(), cannot be null");
 		}
 		focusedMenu = nextMenu;
+		//TODO
+		
 	}
 
-	/** Game Title message (last in source code file because its width) */
+	/**
+	 * Method that shows Game Title message
+	 *(last in source code file because its width)
+	 */
 	
 	public void showGameTitle(){
 		System.out.println(" ");

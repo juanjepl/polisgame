@@ -4,7 +4,7 @@ import java.util.List;
 import java.util.ArrayList;
 import java.util.Map;
 
-public class MainMenu implements IMenu{
+public class MainMenu extends AbstractMenu{
 
 	private String headerMessage;
 	private List<String> optionsToBeChosen;
