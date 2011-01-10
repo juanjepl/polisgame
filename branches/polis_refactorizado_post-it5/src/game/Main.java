@@ -1,6 +1,5 @@
 package game;
 
-import ui.ITextInterface;
 import ui.TextInterface;
 
 /** Main class, where starts game main thread */
@@ -9,7 +8,7 @@ public class Main{
 	public static void main(String[] args) {
 		
 		// First of all, we create an object type ITextInterface (the user interface(in text mode) for the game)
-		ITextInterface polisGameTextInterface = new TextInterface();
+		TextInterface polisGameTextInterface = new TextInterface();
 		
 		// We show the "welcome message"
 		polisGameTextInterface.showGameTitle();
