@@ -1,7 +1,8 @@
 package ui;
 
 import java.util.Map;
-import java.util.Queue;
+import java.util.List;
+import java.util.LinkedList;
 import utils.PolReader;
 import game.Player;
 import game.Round;
@@ -15,15 +16,16 @@ import game.Turn;
 public class TextInterface{
 
 	private IMenu focusedMenu;
-	private Queue<IMenu> menuQueue;
+	private List<IMenu> menuList;
 	private Map<String,String> gameTexts;
 	private Map<String,Boolean> checkActionsMap;
 	
 	public TextInterface(){
 		PolReader gameTextsFileReader = new PolReader();
 		gameTexts = gameTextsFileReader.readGameTexts();
-
-		focusedMenu = new MainMenu(getGameTexts()); //FIXME
+		
+		menuList = new LinkedList<IMenu>();
+		focusedMenu = new MainMenu(getGameTexts(),getMenuList());
 		//TODO
 	}
 
@@ -88,8 +90,8 @@ public class TextInterface{
 		return checkActionsMap;
 	}
 	
-	public Queue<IMenu> getMenuQueue(){
-		return menuQueue;
+	public List<IMenu> getMenuList(){
+		return menuList;
 	}
 	
 	public IMenu getMenu(){
@@ -101,8 +103,16 @@ public class TextInterface{
 			throw new IllegalArgumentException("Invalid parameter for setMenu(), cannot be null");
 		}
 		focusedMenu = nextMenu;
-		//TODO
 		
+		if(!(menuList.contains(nextMenu))){
+			menuList.add(nextMenu);
+		}else{
+			Integer limit = menuList.indexOf(nextMenu);
+			while(menuList.size() > limit){
+				menuList.remove((getMenuList().size()) - 1);
+			}
+		}
+		//TODO
 	}
 
 	/**

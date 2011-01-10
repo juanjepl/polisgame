@@ -3,7 +3,9 @@ mainMenu_newGame;Nuevo Juego
 mainMenu_credits;Creditos
 mainMenu_exit;Salir
 
+creditsMenu_HeaderMessage;Titulos de credito de [ Polis ]
 
+back;Volver
 
 TextInterface_newRoundMessage;Una nueva ronda ha comenzado:
 round;Ronda
@@ -16,5 +18,5 @@ firstAction;1ª
 secondAction;2ª
 startGame;Empezar un nuevo Juego
 loadGame;Cargar una Partida salvada
-exit;Salir del Juego
-
+exit;Salir
+exitGame;Salir del Juego
