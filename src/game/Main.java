@@ -5,7 +5,7 @@ import ui.TextInterface;
 /** Main class, where starts game main thread */
 public class Main{
 
-	public static void main(String[] args) {
+	public static void main(String []args) {
 		
 		// First of all, we create an object type ITextInterface (the user interface(in text mode) for the game)
 		TextInterface polisGameTextInterface = new TextInterface();

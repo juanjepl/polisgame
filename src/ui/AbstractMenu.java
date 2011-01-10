@@ -43,9 +43,20 @@ public abstract class AbstractMenu implements IMenu {
 	
 	public abstract void execute();
 
-	public Integer requestPlayerChoice() {
+	public Integer requestPlayerChoice(){
+		Integer choose;
+		
+		List<String> grantedOptions = new ArrayList<String>();
+		
+			
 		//TODO
-		return null;
+		
+		while(choose > getMenuOptionsList().size()){
+			
+		}
+		
+		
+		return choose;
 	}
 	
 	public abstract IMenu getNextMenu();
