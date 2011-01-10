@@ -21,9 +21,10 @@ exit;Salir
 exitGame;Salir del Juego
 gameMainMenu_requestPlayerNames;Introduzca los nombres de los jugadores
 gameMainMenu_errorSameNames;Por favor, introduzca un nombre diferente del del otro jugador
-options;Opciones
-creatorAction;Acción de creación
-militaryAction;Acción militar
-politicAction;Acción política
-passTurn;Pasar turno
+gameMainMenu_options;Opciones
+gameMainMenu_creatorAction;Acción de creación
+gameMainMenu_militaryAction;Acción militar
+gameMainMenu_politicAction;Acción política
+gameMainMenu_passTurn;Pasar turno
 gameMainMenu_headerMessage;Por favor, elija una opción:
+notAvailable;- No disponible -
