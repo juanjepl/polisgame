@@ -1,5 +1,8 @@
 package game;
 
+import java.util.List;
+
+import cfg.GameConfigurations;
 import ui.TextInterface;
 
 /** Main class, where starts game main thread */
@@ -16,16 +19,25 @@ public class Main{
 		// First menu, the main menu.
 		polisGameTextInterface.showMenuContents();
 		
+		polisGameTextInterface.requestPlayerNames();
 		
-		/**
-		TextModeUi.creditsMessage();
 		ElementsInitializer gameElements = new ElementsInitializer();
 		Game polis_game = gameElements.InitializeGameElements(); // Initializes all game elements
 		
-		StandardStartInitializer.standardStart(polis_game); // Initializes the game standard start position
-
+		StandardStartInitializer standardStartInitializer = new StandardStartInitializer();
+		standardStartInitializer.standardStart(polis_game);
+		
 		Boolean theEndOfTheGame = false;
-		polis_game.getRound().startRound(polis_game); // Starts initial round
+
+		while(!theEndOfTheGame)
+		{
+			
+		}
+		/**
+		TextModeUi.creditsMessage();
+		 // Initializes the game standard start position
+
+		
 		
 		while(!theEndOfTheGame){
 			

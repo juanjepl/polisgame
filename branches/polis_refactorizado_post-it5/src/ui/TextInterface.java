@@ -1,8 +1,12 @@
 package ui;
 
+import java.io.BufferedReader;
+import java.io.InputStreamReader;
 import java.util.Map;
 import java.util.List;
 import java.util.LinkedList;
+
+import cfg.GameConfigurations;
 import utils.PolReader;
 import game.Player;
 import game.Round;
@@ -40,7 +44,7 @@ public class TextInterface{
 		if(!(getMenu().getMenuOptionsList().isEmpty())){
 			Integer counter = 0;
 			for(String optionInMenu : getMenu().getMenuOptionsList()){
-				System.out.println(counter.toString() +" - " + optionInMenu);
+				System.out.println(counter.toString() + optionInMenu);
 				counter += 1;
 			}
 		}
@@ -115,6 +119,51 @@ public class TextInterface{
 			}
 		}
 		//TODO
+	}
+
+	public void requestPlayerNames()
+	{
+
+		System.out.println(" ");
+		System.out.println(getGameTexts().get("gameMainMenu_requestPlayerNames"));
+		System.out.println(" ");
+		System.out.println(getGameTexts().get("gameMainMenu_spartaPlayer") + " :");
+		
+		String spartaName = null;
+		String athensName = null;
+		
+		BufferedReader br = new BufferedReader(new InputStreamReader(System.in)); // request sparta player's name
+		try {
+			spartaName = br.readLine();
+		} catch (Exception e) {	
+			//TODO
+		}
+		
+		System.out.println(" ");
+		System.out.println(getGameTexts().get("gameMainMenu_athensPlayer") + " :");
+		
+		athensName = spartaName;
+		Boolean firstTime = true;
+		while(spartaName.equals(athensName)){
+			
+			if(!firstTime)
+			{
+				System.out.println(" ");
+				System.out.println(getGameTexts().get("gameMainMenu_errorSameNames") + " :");
+			}
+			
+			BufferedReader br2 = new BufferedReader(new InputStreamReader(System.in)); // request sparta player's name
+			try {
+				athensName = br2.readLine();
+			} catch (Exception e) {	
+				//TODO
+			}
+			
+			firstTime = false;
+		}
+		
+		GameConfigurations.setSpartaPlayerName(spartaName);
+		GameConfigurations.setAthensPlayerName(athensName);
 	}
 
 	/**
