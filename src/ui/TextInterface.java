@@ -33,9 +33,10 @@ public class TextInterface{
 		System.out.println(" "); // White line
 		
 		// Shows the list of options to be chosen if exists
-		if(!(getMenu().getMenuOptionList().isEmpty())){
-			for(String optionInMenu : getMenu().getMenuOptionList()){
-				System.out.println(optionInMenu);
+		if(!(getMenu().getMenuOptionsList().isEmpty())){
+			Integer counter = 0;
+			for(String optionInMenu : getMenu().getMenuOptionsList()){
+				System.out.println(counter.toString() + optionInMenu);
 			}
 		}
 	}
