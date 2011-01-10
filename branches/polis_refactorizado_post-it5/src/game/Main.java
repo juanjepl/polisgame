@@ -31,8 +31,23 @@ public class Main{
 
 		while(!theEndOfTheGame)
 		{
+			polisGameTextInterface.showNewRound(polis_game.getRound());
 			
+			Boolean theEndOfTheRound = false;
+			while(!theEndOfTheRound){
+								
+				Turn actualTurn = new Turn();
+				polis_game.getRound().addTurn(actualTurn);
+				polisGameTextInterface.showRTAPMessage(polis_game.getWhoHasTheTurn(), polis_game.getRound().getCurrentTurn());
+				
+				Boolean theEndOfTheTurn = false;
+				while(!theEndOfTheTurn){
+					//TODO
+				}
+				
+			}
 		}
+		
 		/**
 		TextModeUi.creditsMessage();
 		 // Initializes the game standard start position

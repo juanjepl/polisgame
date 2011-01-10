@@ -120,7 +120,12 @@ public class TextInterface{
 		}
 		//TODO
 	}
-
+	public void showNewRound(Round round)
+	{
+		System.out.println(" ");
+		System.out.println(getGameTexts().get("newRound")  + ": " + round.getRoundName());
+	}
+	
 	public void requestPlayerNames()
 	{
 
