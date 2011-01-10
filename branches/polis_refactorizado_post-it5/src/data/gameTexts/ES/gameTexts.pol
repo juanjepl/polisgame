@@ -1,3 +1,4 @@
+#Textos del juego
 ﻿mainMenu_HeaderMessage;Por favor, elija una opción:
 mainMenu_newGame;Nuevo Juego
 mainMenu_credits;Creditos
@@ -19,3 +20,4 @@ loadGame;Cargar una Partida salvada
 exit;Salir
 exitGame;Salir del Juego
 gameMainMenu_requestPlayerNames;Introduzca los nombres de los jugadores
+gameMainMenu_errorSameNames;Por favor, introduzca un nombre diferente del del otro jugador
