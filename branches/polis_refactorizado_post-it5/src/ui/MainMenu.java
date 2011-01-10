@@ -1,20 +1,12 @@
 package ui;
 
 import java.util.List;
-import java.util.ArrayList;
 import java.util.Map;
 
 public class MainMenu extends AbstractMenu{
-
-	private String headerMessage;
-	private List<String> optionsToBeChosen;
-	private Integer playerChoice;
 	
 	public MainMenu(Map<String,String> gameTexts){
-		headerMessage = gameTexts.get("mainMenu_headerMessage");
-		playerChoice = null;
-		optionsToBeChosen = new ArrayList<String>();
-		//TODO
+		super(gameTexts);
 	}
 	
 	/**
@@ -22,14 +14,24 @@ public class MainMenu extends AbstractMenu{
 	 */
 	
 	public String getHeaderMessage(){
-		return headerMessage;
+		return getGameTexts().get("mainMenu_HeaderMessage");
 	}
-	
-	public List<String> getOptionsToBeChosen(){
-		return optionsToBeChosen;
+
+	@Override
+	public void execute() {
+		// TODO Auto-generated method stub
+		
 	}
-	
-	public Integer getPlayerChoice(){
-		return playerChoice;
+
+	@Override
+	public List<String> getMenuOptionsList() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public IMenu getNextMenu() {
+		// TODO Auto-generated method stub
+		return null;
 	}
 }

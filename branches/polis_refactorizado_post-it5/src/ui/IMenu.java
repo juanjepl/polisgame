@@ -11,7 +11,7 @@ public interface IMenu {
 	public String getHeaderMessage();
 	
 	/** returns the options available to be chosen*/
-	public List<String> getMenuOptionList();
+	public List<String> getMenuOptionsList();
 	
 	/** Runs the menu and returns the next menu to show or null if there isn't any menu to show **/
 	public void execute();
