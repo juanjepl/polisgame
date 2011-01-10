@@ -1,4 +1,10 @@
-﻿mainMenu_headerMessage;Por favor, elija una opción:
+﻿mainMenu_HeaderMessage;Por favor, elija una opción:
+mainMenu_newGame;Nuevo Juego
+mainMenu_credits;Creditos
+mainMenu_exit;Salir
+
+
+
 TextInterface_newRoundMessage;Una nueva ronda ha comenzado:
 round;Ronda
 turn;Turno
