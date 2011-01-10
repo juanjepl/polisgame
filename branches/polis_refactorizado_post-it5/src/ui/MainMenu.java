@@ -20,7 +20,7 @@ public class MainMenu extends AbstractMenu{
 	 */
 	
 	public String getHeaderMessage(){
-		return getGameTexts().get("mainMenu_HeaderMessage");
+		return getGameTexts().get("mainMenu_headerMessage");
 	}
 
 	public void execute() {
