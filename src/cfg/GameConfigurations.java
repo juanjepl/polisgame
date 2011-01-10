@@ -21,6 +21,9 @@ public class GameConfigurations {
 	private static Integer minNumberToBattle = 8;
 	private static String starterPlayer = "sparta";
 	
+	private static String spartaPlayerName = null;
+	private static String athensPlayerName = null;
+	
 	public GameConfigurations(){}
 	
 	
@@ -97,5 +100,25 @@ public class GameConfigurations {
 		pathOfProjects = "/data/projects/EN/";
 		pathOfGameEvents = "/data/gameEvents/EN/";
 		pathOfGameTexts = "src/data/gameTexts/EN/";
+	}
+	
+	public static String getSpartaPlayerName()
+	{
+		return spartaPlayerName;
+	}
+	
+	public static void setSpartaPlayerName(String name)
+	{
+		spartaPlayerName = name;
+	}
+	
+	public static String getAthensPlayerName()
+	{
+		return athensPlayerName;
+	}
+	
+	public static void setAthensPlayerName(String name)
+	{
+		athensPlayerName = name;
 	}
 }
