@@ -1,5 +1,7 @@
 package ui;
 
+import java.io.BufferedReader;
+import java.io.InputStreamReader;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
@@ -44,19 +46,35 @@ public abstract class AbstractMenu implements IMenu {
 	public abstract void execute();
 
 	public Integer requestPlayerChoice(){
-		Integer choose;
+		String choose = "WrongValue"; // "Random" value for entering to next while
 		
+		// Granted values for player choose
 		List<String> grantedOptions = new ArrayList<String>();
-		
-			
-		//TODO
-		
-		while(choose > getMenuOptionsList().size()){
-			
+		for(int i=0 ; i<=getMenuOptionsList().size() ; i++){
+			grantedOptions.add(new Integer(i).toString());
 		}
 		
+		// request player's choose
 		
-		return choose;
+		Boolean showBadInputMessage = false;
+		while(!(grantedOptions.contains(choose))){
+			
+			if(showBadInputMessage){
+				System.out.println(" ");
+				System.out.println(getGameTexts().get("abstractMenu_BadInputMessage"));
+			}
+			
+			BufferedReader br = new BufferedReader(new InputStreamReader(System.in)); // request athens's player's name
+			try {
+				choose = br.readLine();
+			} catch (Exception e) {	
+				//TODO
+			}
+			
+			showBadInputMessage = true; // if fails input, next iteration shows the error message
+		}
+		
+		return Integer.parseInt(choose);
 	}
 	
 	public abstract IMenu getNextMenu();
