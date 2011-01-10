@@ -9,7 +9,7 @@ public class ExitMenu extends AbstractMenu {
 	}
 
 	public String getHeaderMessage() {
-		return "Salir";
+		return getGameTexts().get("exit");
 	}
 	
 	public void execute() {
