@@ -23,9 +23,10 @@ public class TextInterface{
 	public TextInterface(){
 		PolReader gameTextsFileReader = new PolReader();
 		gameTexts = gameTextsFileReader.readGameTexts();
-		
-		menuList = new LinkedList<IMenu>();
 		focusedMenu = new MainMenu(getGameTexts(),getMenuList());
+		menuList = new LinkedList<IMenu>();
+		menuList.add(focusedMenu); // First in the list
+		
 		//TODO
 	}
 
