@@ -11,8 +11,13 @@ public interface IMenu {
 	public String getHeaderMessage();
 	
 	/** returns the options available to be chosen*/
-	public List<String> getOptionsToBeChosen();
+	public List<String> getMenuOptionList();
+	
+	/** Runs the menu and returns the next menu to show or null if there isn't any menu to show **/
+	public void execute();
 	
 	/** returns the choose chosen by the Player */
-	public Integer getPlayerChoice();
+	public Integer requestPlayerChoice();
+	
+	public IMenu getNextMenu();
 }
