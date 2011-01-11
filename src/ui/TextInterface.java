@@ -90,15 +90,13 @@ public class TextInterface{
 	
 	public void setMenu(){
 		
-		if(!menuList.contains(focusedMenu))
-		{
-			menuList.add(focusedMenu);
-		}
-		
 		focusedMenu = focusedMenu.getNextMenu();
 		
 		if(focusedMenu.getAutoExecutable()){
+			
 			focusedMenu.execute();
+			setMenu();
+	
 		}else{
 			// Do nothing
 		}
@@ -106,6 +104,11 @@ public class TextInterface{
 		Integer limit = menuList.indexOf(focusedMenu) + 1; //limit + 1 index = size index
 		while(menuList.size() > limit){
 			menuList.remove((getMenuList().size()) - 1);
+		}
+		
+		if(!menuList.contains(focusedMenu))
+		{
+			menuList.add(focusedMenu);
 		}
 
 

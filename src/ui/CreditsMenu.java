@@ -27,7 +27,7 @@ public class CreditsMenu extends AbstractMenu{
 		IMenu nextMenu;
 		
 		if(getPlayerChoice().equals(0)){
-			nextMenu = getMenuList().get((getMenuList().size()) - 1);// Last element
+			nextMenu = getMenuList().get(getMenuList().size() - 1);// Last element
 		}else{
 			throw new PolisGameRunningException("Invalid option choosen at CreditsMenu");
 		}
