@@ -2,6 +2,8 @@ package game;
 
 import java.util.List;
 import java.util.Map;
+
+import cfg.GameConfigurations;
 import utils.PolReader;
 
 /** This class is responsible for initializing the elements of the game */
@@ -49,10 +51,8 @@ public class ElementsInitializer {
 		MarketChart theMarketChart = new MarketChart();
 				
 		//// Initialization of the game players
-		List<String> players = 	TextModeUi.requestPlayerNames(); // A method who request Game users their names
-		
-		Player sparta = new Player(players.get(0)); // When Game requests players names, the method returns a list with 2 names, this 2 lines takes this information to create Players instances.
-		Player athens = new Player(players.get(1));
+		Player sparta = new Player(GameConfigurations.getSpartaPlayerName());
+		Player athens = new Player(GameConfigurations.getAthensPlayerName());
 		
 		//// Initialization of the Game object, who contains all elements of the game initialized before.
 		Game polisGame = new Game(sparta,athens,territoriesMap,seasMap,tradeDocksMap,marketsMap,polisMap,gameProjects,gameEventsList,theRound,theMarketChart);
