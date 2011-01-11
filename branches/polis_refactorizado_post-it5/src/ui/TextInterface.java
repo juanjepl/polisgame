@@ -103,21 +103,25 @@ public class TextInterface{
 		return focusedMenu;
 	}
 	
-	public void setMenu(IMenu nextMenu){
-		if(nextMenu == null){
-			throw new IllegalArgumentException("Invalid parameter for setMenu(), cannot be null");
-		}
-		focusedMenu = nextMenu;
+	public void setMenu(){
 		
-		if(!(menuList.contains(nextMenu))){
-			menuList.add(nextMenu);
-		}else{
-			Integer limit = menuList.indexOf(nextMenu);
+		if(focusedMenu.getNextMenu() == null){
+			for(IMenu searchedMenu : getMenuList()){
+				if(searchedMenu instanceof GameMainMenu){
+					focusedMenu = searchedMenu;
+					break;
+				}
+			}
+			
+			Integer limit = menuList.indexOf(focusedMenu);
 			while(menuList.size() > limit){
 				menuList.remove((getMenuList().size()) - 1);
 			}
+
+		}else{
+			focusedMenu = focusedMenu.getNextMenu();
 		}
-		//TODO
+		//TODO posible ampliacion
 	}
 	public void showNewRound(Round round)
 	{
