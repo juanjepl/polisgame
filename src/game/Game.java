@@ -35,7 +35,7 @@ public class Game{
 	private Graph tradeBoatGraph;
 	
 	/** Game constructor */
-	public Game(Player sparta, Player athens, Map<String,Territory> territoriesMap, Map<String,Sea> seasMap, Map<String,TradeDock> tradeDocksMap, Map<String,Market> marketsMap, Map<String,Polis> polisMap, List<Project> gameProjects, List<List<GameEvent>> gameEventsList, Round theRound, MarketChart theMarketChart){
+	public Game(Player sparta, Player athens, Map<String,Territory> territoriesMap, Map<String,Sea> seasMap, Map<String,TradeDock> tradeDocksMap, Map<String,Market> marketsMap, Map<String,Polis> polisMap, List<Project> gameProjects, List<List<GameEvent>> gameEventsList, Round theRound, MarketChart theMarketChart, Graph hopliteGraph, Graph proxenusGraph, Graph tradeBoatGraph, Graph trirremeGraph){
 
 		spartaPlayer = sparta;
 		athensPlayer = athens;
@@ -58,6 +58,12 @@ public class Game{
 		
 		round = theRound;
 		marketChart = theMarketChart;
+		
+		this.hopliteGraph = hopliteGraph;
+		this.proxenusGraph = proxenusGraph;
+		this.tradeBoatGraph = tradeBoatGraph;
+		this.trirremeGraph = trirremeGraph;
+		
 	}
 	
 	/**
