@@ -48,3 +48,12 @@ gameMilitaryActionMoveHoplitesMenu_headerMessage;Por favor, elija origen y desti
 gameMilitaryActionMoveTrirremesMenu_headerMessage;Por favor, elija origen y destino:
 gameMilitaryActionBesiegePolisMenu_headerMessage;Por favor, elija la ciudad a asediar:
 gameMilitaryActionCollectionMenu_headerMessage;¿En qué ciudad quiere recolectar?
+gameCreationAction_headerMessage;Por favor, elija una acción militar entre las disponibles:
+gameCreationAction_createHoplitesOpt;Crear hoplitas
+gameCreationAction_createTrirremesOpt;Crear trirremes
+gameCreationAction_createMerchantsOpt;Crear mercaderes
+gameCreationAction_createProxenus;Crear próxeno
+gameCreationActionCreateHoplitesMenu_headerMessage;Por favor, elija la opción de crear hoplitas:
+gameCreationActionCreateTrirremesMenu_headerMessage;Por favor, elija la opción de crear trirremes:
+gameCreationActionCreateMerchantsMenu_headerMessage;Por favor, elija la opción de crear mercaderes:
+gameCreationActionCreateProxenussMenu_headerMessage;Por favor, elija la opción de crear hoplita:
