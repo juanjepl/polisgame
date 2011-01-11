@@ -14,6 +14,8 @@ public class PoliticActionMenu extends AbstractMenu {
 		this.game = game;
 		Map<String, String> texts = getGameTexts();
 		List<String> optionList = getMenuOptionsList();
+		
+		// TODO Hay que ver cuáles opciones de las siguientes están disponibles:
 		optionList.add(texts.get("gamePoliticActionMenu_startProjectOpt"));
 		optionList.add(texts.get("gamePoliticActionMenu_tradeOpt"));
 		optionList.add(texts.get("gamePoliticActionMenu_moveProxenusOpt"));
