@@ -31,7 +31,7 @@ public class MainMenu extends AbstractMenu{
 
 	public IMenu getNextMenu() {
 		
-		IMenu nextMenu;
+		IMenu nextMenu = null;
 		if(getPlayerChoice().equals(0))
 		{
 			nextMenu = new GameMainMenu(getGameTexts(),getMenuList());

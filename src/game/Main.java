@@ -19,6 +19,8 @@ public class Main{
 		// First menu, the main menu.
 		polisGameTextInterface.showMenuContents();
 		
+		polisGameTextInterface.getMenu().execute();
+		polisGameTextInterface.setMenu();
 		polisGameTextInterface.requestPlayerNames();
 		
 		ElementsInitializer gameElements = new ElementsInitializer();
@@ -45,18 +47,54 @@ public class Main{
 
 					if(!(polis_game.getWhoHasTheTurn().getHasPassedTurn())){
 						// First GameAction
-						TextModeUi.showMessage("-- First Action from this turn --"); //FIXME rescue this from gametexts.
-						TextModeUi.showAvailableActions(polis_game, polis_game.getWhoHasTheTurn());
-						
-						GameAction a1 = null; //FIXME
-						actualTurn.addAction(a1);
+						polisGameTextInterface.showFirstActionMessage();
+						polisGameTextInterface.getMenu().execute();
+
 					}
 					
+					if(!(polis_game.getWhoHasTheTurn().getHasPassedTurn())){
+						// First GameAction
+						polisGameTextInterface.showFirstActionMessage();
+						polisGameTextInterface.getMenu().execute();
+
+					}
 					
+					theEndOfTheTurn = true;
 				}
 				
+				// Changes the player in turn
+				if(polis_game.getWhoHasTheTurn().equals(polis_game.getSpartaPlayer())){
+					polis_game.setWhoHasTheTurn(polis_game.getAthensPlayer());
+				}
+				else{
+					polis_game.setWhoHasTheTurn(polis_game.getSpartaPlayer());
+				}
+
+				// Checks if exists battles in the end of this turn
+				EndTurnCheckBattles checkBattles = new EndTurnCheckBattles(polis_game);
+				//check if only one player is doing more turns. For each turn used consume one unit of resource TODO
+				//TODO
+				//TODO falta descontar a un jugador una unidad de recurso a elegir por el cuando el otro jugador pasa turno y el sigue usando turnos
+				//TODO
 			}
+			
+			polis_game.getAthensPlayer().setHasPassedTurn(false);
+			polis_game.getSpartaPlayer().setHasPassedTurn(false);
+			
+			//Check End Round methods and prepare next round
+			new EndRoundCheckSieges(polis_game.getWhoHasTheTurn());
+			new EndRoundCheckProjects(polis_game.getWhoHasTheTurn());
+			new EndRoundCheckFeeding();
+			new EndRoundCheckGrowth();
+			new EndRoundCheckMegalopolis(polis_game.getWhoHasTheTurn());
+			new EndRoundCheckGoodsAdjust(polis_game.getWhoHasTheTurn());
+			new EndRoundCheckPhoros();
+			new EndRoundInitializeNextRound();
+			
 		}
+		//TODO-> EndGameManager methods...
+		
+		
 		
 		/**
 		TextModeUi.creditsMessage();
