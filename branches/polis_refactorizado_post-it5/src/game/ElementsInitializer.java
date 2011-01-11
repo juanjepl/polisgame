@@ -3,6 +3,8 @@ package game;
 import java.util.List;
 import java.util.Map;
 
+import navigation.Graph;
+
 import cfg.GameConfigurations;
 import utils.PolReader;
 
@@ -39,10 +41,12 @@ public class ElementsInitializer {
 		List<List<GameEvent>> gameEventsList = polisFilesReader.readGameEvents();
 		
 		//// Reading and initialization for graphs
-		//Graph hopliteGraph = TODO
-		//Graph trirremeGraph = TODO
-		//Graph tradeBoadGraph = TODO
-		//Graph proxenusGraph = TODO
+		Graph hopliteGraph = polisFilesReader.readGraphs(polisMap, territoriesMap, seasMap, marketsMap, tradeDocksMap).get(0);
+		Graph proxenusGraph = polisFilesReader.readGraphs(polisMap, territoriesMap, seasMap, marketsMap, tradeDocksMap).get(1);
+		Graph tradeBoatGraph = polisFilesReader.readGraphs(polisMap, territoriesMap, seasMap, marketsMap, tradeDocksMap).get(2);
+		Graph trirremeGraph = polisFilesReader.readGraphs(polisMap, territoriesMap, seasMap, marketsMap, tradeDocksMap).get(3);
+		
+		
 		
 		//// Initialization of the round
 		Round theRound = new Round3(gameProjects,gameEventsList.get(0)); //FIXME I take round 3 projects (first round)
@@ -55,7 +59,7 @@ public class ElementsInitializer {
 		Player athens = new Player(GameConfigurations.getAthensPlayerName());
 		
 		//// Initialization of the Game object, who contains all elements of the game initialized before.
-		Game polisGame = new Game(sparta,athens,territoriesMap,seasMap,tradeDocksMap,marketsMap,polisMap,gameProjects,gameEventsList,theRound,theMarketChart);
+		Game polisGame = new Game(sparta,athens,territoriesMap,seasMap,tradeDocksMap,marketsMap,polisMap,gameProjects,gameEventsList,theRound,theMarketChart, hopliteGraph, proxenusGraph, tradeBoatGraph, trirremeGraph);
 		return polisGame;
 	}
 }

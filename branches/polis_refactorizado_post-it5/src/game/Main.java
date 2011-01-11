@@ -42,7 +42,17 @@ public class Main{
 				
 				Boolean theEndOfTheTurn = false;
 				while(!theEndOfTheTurn){
-					//TODO
+
+					if(!(polis_game.getWhoHasTheTurn().getHasPassedTurn())){
+						// First GameAction
+						TextModeUi.showMessage("-- First Action from this turn --"); //FIXME rescue this from gametexts.
+						TextModeUi.showAvailableActions(polis_game, polis_game.getWhoHasTheTurn());
+						
+						GameAction a1 = null; //FIXME
+						actualTurn.addAction(a1);
+					}
+					
+					
 				}
 				
 			}
