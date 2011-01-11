@@ -1,0 +1,59 @@
+#hola
+mainMenu_newGame;Nuevo Juego
+mainMenu_headerMessage;Por favor, elija una opción:
+mainMenu_credits;Creditos
+mainMenu_exit;Salir
+abstractMenu_BadInputMessage;Por favor, introduzca un valor correcto para su eleccion
+creditsMenu_HeaderMessage;Titulos de credito de [ Polis ]
+back;Volver
+TextInterface_newRoundMessage;Una nueva ronda ha comenzado
+round;Ronda
+turn;Turno
+action;Accion
+player;Jugador
+spartaPlayer;Jugador Espartano
+athensPlayer;Jugador Ateniense
+firstAction;1ª
+secondAction;2ª
+startGame;Empezar un nuevo Juego
+loadGame;Cargar una Partida salvada
+exit;Salir
+exitGame;Salir del Juego
+gameMainMenu_requestPlayerNames;Introduzca los nombres de los jugadores
+gameMainMenu_errorSameNames;Por favor, introduzca un nombre diferente del del otro jugador
+gameMainMenu_options;Opciones
+gameMainMenu_creatorAction;Acción de creación
+gameMainMenu_militaryAction;Acción militar
+gameMainMenu_politicAction;Acción política
+gameMainMenu_passTurn;Pasar turno
+gameMainMenu_headerMessage;Por favor, elija una opción:
+notAvailable;- No disponible -
+newRound;Nueva Ronda
+gamePoliticActionMenu_headerMessage;Por favor, elija una acción política entre las disponibles:
+gamePoliticActionMenu_startProjectOpt;Comenzar proyecto
+gamePoliticActionMenu_tradeOpt;Comerciar
+gamePoliticActionMenu_moveProxenusOpt;Mover próxeno
+gamePoliticActionMenu_makeCivilWarOpt;Provocar guerra civil
+gamePoliticActionMenu_cancel;Cancelar
+gamePoliticActionStartProjectMenu_headerMessager;Por favor, elija un proyecto entre los disponibles:
+gamePoliticActionTradeMenu_headerMessager;Por favor, elija el mercado en el que comerciar:
+gamePoliticActionMoveProxenusMenu_headerMessage;Por favor, elija el destino:
+gamePoliticActionMakeCivilWarMenu_headerMessage;¿Está seguro de que querer provocar una guerra civil en la ciudad donde está su próxeno?
+gameMilitaryActionMenu_headerMessage;Por favor, elija una acción militar entre las disponibles:
+gameMilitaryActionMenu_moveHoplitesOpt;Mover hoplitas
+gameMilitaryActionMenu_moveTrirremesOpt;Mover trirremes;
+gameMilitaryActionMenu_besiegePolisOpt;Asediar polis;
+gameMilitaryActionMenu_collectionOpt;Recolección;
+gameMilitaryActionMoveHoplitesMenu_headerMessage;Por favor, elija origen y destino:
+gameMilitaryActionMoveTrirremesMenu_headerMessage;Por favor, elija origen y destino:
+gameMilitaryActionBesiegePolisMenu_headerMessage;Por favor, elija la ciudad a asediar:
+gameMilitaryActionCollectionMenu_headerMessage;¿En qué ciudad quiere recolectar?
+gameCreationAction_headerMessage;Por favor, elija una acción militar entre las disponibles:
+gameCreationAction_createHoplitesOpt;Crear hoplitas
+gameCreationAction_createTrirremesOpt;Crear trirremes
+gameCreationAction_createMerchantsOpt;Crear mercaderes
+gameCreationAction_createProxenus;Crear próxeno
+gameCreationActionCreateHoplitesMenu_headerMessage;Por favor, elija la opción de crear hoplitas:
+gameCreationActionCreateTrirremesMenu_headerMessage;Por favor, elija la opción de crear trirremes:
+gameCreationActionCreateMerchantsMenu_headerMessage;Por favor, elija la opción de crear mercaderes:
+gameCreationActionCreateProxenussMenu_headerMessage;Por favor, elija la opción de crear hoplita:
