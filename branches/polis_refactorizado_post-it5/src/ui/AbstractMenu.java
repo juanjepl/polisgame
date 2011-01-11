@@ -20,7 +20,7 @@ public abstract class AbstractMenu implements IMenu {
 		this.menuList = menuList;
 		this.gameTexts = gameTexts;
 		this.menuOptionsList = new ArrayList<String>();
-		this.autoExecutable = false;
+		this.autoExecutable = true;
 	}
 	
 	public Map<String, String> getGameTexts() {
@@ -94,4 +94,21 @@ public abstract class AbstractMenu implements IMenu {
 	{
 		this.autoExecutable = auto;
 	}
+	
+
+	public void showMenuContents(){
+		System.out.println(" "); // White line
+		System.out.println(getHeaderMessage()); // Prints message for the player
+		System.out.println(" "); // White line
+		
+		// Shows the list of options to be chosen if exists
+		if(!(getMenuOptionsList().isEmpty())){
+			Integer counter = 0;
+			for(String optionInMenu : getMenuOptionsList()){
+				System.out.println(counter.toString() + " - "+ optionInMenu);
+				counter += 1;
+			}
+		}
+	}
+	
 }
