@@ -12,6 +12,8 @@ public class CreditsMenu extends AbstractMenu{
 		String back = getGameTexts().get("back");
 		getMenuOptionsList().add(back);
 		
+		setAutoExecutable(true);
+		
 	}
 	public String getHeaderMessage(){
 		return getGameTexts().get("creditsMenu_HeaderMessage");

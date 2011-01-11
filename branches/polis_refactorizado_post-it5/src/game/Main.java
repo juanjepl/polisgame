@@ -13,14 +13,11 @@ public class Main{
 		// First of all, we create an object type ITextInterface (the user interface(in text mode) for the game)
 		TextInterface polisGameTextInterface = new TextInterface();
 		
-		// We show the "welcome message"
-		polisGameTextInterface.showGameTitle();
-		
 		// First menu, the main menu.
-		polisGameTextInterface.showMenuContents();
 		
 		polisGameTextInterface.getMenu().execute();
 		polisGameTextInterface.setMenu();
+
 		polisGameTextInterface.requestPlayerNames();
 		
 		ElementsInitializer gameElements = new ElementsInitializer();

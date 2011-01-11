@@ -11,6 +11,7 @@ public abstract class AbstractMenu implements IMenu {
 	private List<String> menuOptionsList;
 	private Integer playerChoice;
 	private List<IMenu> menuList;
+	private Boolean autoExecutable;
 	
 	public AbstractMenu(Map<String, String> gameTexts,List<IMenu> menuList) {
 		if (gameTexts == null || menuList == null){
@@ -19,6 +20,7 @@ public abstract class AbstractMenu implements IMenu {
 		this.menuList = menuList;
 		this.gameTexts = gameTexts;
 		this.menuOptionsList = new ArrayList<String>();
+		this.autoExecutable = false;
 	}
 	
 	public Map<String, String> getGameTexts() {
@@ -81,5 +83,15 @@ public abstract class AbstractMenu implements IMenu {
 	
 	public void convertChoose(Integer choose) {
 		//TODO
+	}
+	
+	public Boolean getAutoExecutable()
+	{
+		return autoExecutable;
+	}
+	
+	public void setAutoExecutable(Boolean auto)
+	{
+		this.autoExecutable = auto;
 	}
 }

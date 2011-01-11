@@ -30,6 +30,8 @@ public class TextInterface{
 		
 		focusedMenu = new MainMenu(getGameTexts(),getMenuList());
 		menuList.add(focusedMenu); // First in the list
+		showGameTitle();
+		showMenuContents();
 		
 		//TODO
 	}
@@ -121,7 +123,11 @@ public class TextInterface{
 		}else{
 			focusedMenu = focusedMenu.getNextMenu();
 		}
-		//TODO posible ampliacion
+		showMenuContents();
+		if(focusedMenu.getAutoExecutable())
+		{
+			focusedMenu.execute();
+		}
 	}
 	public void showNewRound(Round round)
 	{
