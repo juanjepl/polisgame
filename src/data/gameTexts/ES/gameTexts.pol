@@ -30,3 +30,12 @@ gameMainMenu_headerMessage;Por favor, elija una opción:
 notAvailable;- No disponible -
 newRound;Nueva Ronda
 gamePoliticActionMenu_headerMessage;Por favor, elija una acción política:
+gamePoliticActionMenu_startProjectOpt;Comenzar proyecto
+gamePoliticActionMenu_tradeOpt;Comerciar
+gamePoliticActionMenu_moveProxenusOpt;Mover próxeno
+gamePoliticActionMenu_makeCivilWarOpt;Provocar guerra civil
+gamePoliticActionMenu_cancel;Cancelar
+gamePoliticActionStartProjectMenu_headerMessager;Por favor, elija un proyecto entre los disponibles:
+gamePoliticActionTradeMenu_headerMessager;Por favor, elija el mercado en el que comerciar:
+gamePoliticActionMoveProxenusMenu_headerMessage;Por favor, elija el destino:
+gamePoliticActionMakeCivilWarMenu_headerMessage;¿Está seguro de que querer provocar una guerra civil en la ciudad donde está su próxeno?
