@@ -13,8 +13,6 @@ public class ExitMenu extends AbstractMenu {
 	}
 	
 	public void execute() {
-		showMenuContents();
-		setPlayerChoice(requestPlayerChoice());
 		System.exit(0);
 	}
 
