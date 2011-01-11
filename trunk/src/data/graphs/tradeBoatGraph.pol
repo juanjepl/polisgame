@@ -1,0 +1,14 @@
+#System name
+tradeBoatGraph
+#territory
+illyria:ionianSea
+ionianSea:illyria:spartaTradeDock
+spartaTradeDock:ionianSea:myrtoanSea
+myrtoanSea:spartaTradeDock:athensTradeDock:sporadesIslands
+sporadesIslands:egypt:persianEmpire:athensTradeDock:thraceSea
+athensTradeDock:myrtoanSea:sporadesIslands:thraceSea
+thraceSea:thrace:euxinePontos:athensTradeDock:sporadesIslands
+thrace:thraceSea
+euxinePontos:thraceSea
+persianEmpire:sporadesIslands
+egypt:sporadesIslands
