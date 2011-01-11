@@ -29,3 +29,4 @@ gameMainMenu_passTurn;Pasar turno
 gameMainMenu_headerMessage;Por favor, elija una opción:
 notAvailable;- No disponible -
 newRound;Nueva Ronda
+gamePoliticActionMenu_headerMessage;Por favor, elija una acción política:
