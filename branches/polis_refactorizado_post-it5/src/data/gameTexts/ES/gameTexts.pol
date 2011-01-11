@@ -40,3 +40,11 @@ gamePoliticActionTradeMenu_headerMessager;Por favor, elija el mercado en el que 
 gamePoliticActionMoveProxenusMenu_headerMessage;Por favor, elija el destino:
 gamePoliticActionMakeCivilWarMenu_headerMessage;¿Está seguro de que querer provocar una guerra civil en la ciudad donde está su próxeno?
 gameMilitaryActionMenu_headerMessage;Por favor, elija una acción militar entre las disponibles:
+gameMilitaryActionMenu_moveHoplitesOpt;Mover hoplitas
+gameMilitaryActionMenu_moveTrirremesOpt;Mover trirremes;
+gameMilitaryActionMenu_besiegePolisOpt;Asediar polis;
+gameMilitaryActionMenu_collectionOpt;Recolección;
+gameMilitaryActionMoveHoplitesMenu_headerMessage;Por favor, elija origen y destino:
+gameMilitaryActionMoveTrirremesMenu_headerMessage;Por favor, elija origen y destino:
+gameMilitaryActionBesiegePolisMenu_headerMessage;Por favor, elija la ciudad a asediar:
+gameMilitaryActionCollectionMenu_headerMessage;¿En qué ciudad quiere recolectar?
