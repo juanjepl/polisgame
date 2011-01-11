@@ -6,7 +6,6 @@ import java.util.Map;
 public class ExitMenu extends AbstractMenu {
 	public ExitMenu(Map<String, String> gameTexts, List<IMenu> menuList) {
 		super(gameTexts, menuList);
-		setAutoExecutable(true);
 	}
 
 	public String getHeaderMessage() {
@@ -14,6 +13,8 @@ public class ExitMenu extends AbstractMenu {
 	}
 	
 	public void execute() {
+		showMenuContents();
+		setPlayerChoice(requestPlayerChoice());
 		System.exit(0);
 	}
 
