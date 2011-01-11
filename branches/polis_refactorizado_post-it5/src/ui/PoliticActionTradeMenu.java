@@ -20,7 +20,7 @@ public class PoliticActionTradeMenu extends AbstractMenu {
 	}
 
 	public String getHeaderMessage() {
-		return getGameTexts().get("gamePoliticActionTradeMenu_headerMessager");
+		return getGameTexts().get("gamePoliticActionTradeMenu_headerMessage");
 	}
 
 	public IMenu getNextMenu() {
@@ -31,5 +31,4 @@ public class PoliticActionTradeMenu extends AbstractMenu {
 		
 		return next;
 	}
-	
 }

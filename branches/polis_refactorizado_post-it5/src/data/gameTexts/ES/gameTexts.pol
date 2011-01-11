@@ -29,7 +29,7 @@ gameMainMenu_passTurn;Pasar turno
 gameMainMenu_headerMessage;Por favor, elija una opción:
 notAvailable;- No disponible -
 newRound;Nueva Ronda
-gamePoliticActionMenu_headerMessage;Por favor, elija una acción política:
+gamePoliticActionMenu_headerMessage;Por favor, elija una acción política entre las disponibles:
 gamePoliticActionMenu_startProjectOpt;Comenzar proyecto
 gamePoliticActionMenu_tradeOpt;Comerciar
 gamePoliticActionMenu_moveProxenusOpt;Mover próxeno
@@ -39,3 +39,4 @@ gamePoliticActionStartProjectMenu_headerMessager;Por favor, elija un proyecto en
 gamePoliticActionTradeMenu_headerMessager;Por favor, elija el mercado en el que comerciar:
 gamePoliticActionMoveProxenusMenu_headerMessage;Por favor, elija el destino:
 gamePoliticActionMakeCivilWarMenu_headerMessage;¿Está seguro de que querer provocar una guerra civil en la ciudad donde está su próxeno?
+gameMilitaryActionMenu_headerMessage;Por favor, elija una acción militar entre las disponibles:

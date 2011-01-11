@@ -20,7 +20,7 @@ public class PoliticActionStartProjectMenu extends AbstractMenu {
 	}
 
 	public String getHeaderMessage() {
-		return getGameTexts().get("gamePoliticActionStartProjectMenu_headerMessager");
+		return getGameTexts().get("gamePoliticActionStartProjectMenu_headerMessage");
 	}
 
 	public IMenu getNextMenu() {
@@ -28,7 +28,7 @@ public class PoliticActionStartProjectMenu extends AbstractMenu {
 		Integer choice = getPlayerChoice();
 		
 		//TODO: El numero de opciones (proyectos) es variable, no se puede poner un switch y ni una estructura fija de IFs
-		// next = getMenuList().get((getMenuList().size()) - 1); // Esto será para volver al menú anterior
+		// next = getMenuList().get((getMenuList().size()) - 1); // Esto sera para volver al menu anterior
 		
 		return next;
 	}
