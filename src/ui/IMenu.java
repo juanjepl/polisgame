@@ -20,4 +20,6 @@ public interface IMenu {
 	public Integer requestPlayerChoice();
 	
 	public IMenu getNextMenu();
+	
+	public Boolean getAutoExecutable();
 }
