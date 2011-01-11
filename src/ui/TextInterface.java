@@ -18,7 +18,6 @@ import game.Turn;
  * using text console
  */
 public class TextInterface{
-
 	private IMenu focusedMenu;
 	private List<IMenu> menuList;
 	private Map<String,String> gameTexts;
@@ -124,6 +123,11 @@ public class TextInterface{
 	{
 		System.out.println(" ");
 		System.out.println(getGameTexts().get("newRound")  + ": " + round.getRoundName());
+	}
+	
+	public void showFirstActionMessage(){
+		System.out.println(" ");
+		System.out.println("--- "+getGameTexts().get("firstAction") + " " + getGameTexts().get("action")+" ---");
 	}
 	
 	public void requestPlayerNames()
