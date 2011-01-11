@@ -43,7 +43,7 @@ public class TextInterface{
 		if(!(getMenu().getMenuOptionsList().isEmpty())){
 			Integer counter = 0;
 			for(String optionInMenu : getMenu().getMenuOptionsList()){
-				System.out.println(counter.toString() + optionInMenu);
+				System.out.println(counter.toString() + " - "+ optionInMenu);
 				counter += 1;
 			}
 		}
