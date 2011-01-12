@@ -1,0 +1,16 @@
+# System name
+sparta
+# Name
+Esparta
+# Base population
+4
+# Maximum population's growth
+3
+# Maximum population
+8
+# Possible projects
+demeterFestival:dionysusFestival:venusStatue:efeboStatue:zeusTemple:apolloTemple
+# Parent territory
+laconia
+# Seas
+none
