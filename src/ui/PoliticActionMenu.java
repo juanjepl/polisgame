@@ -10,9 +10,7 @@ import game.Player;
 
 public class PoliticActionMenu extends AbstractMenu {
 	private Game game;
-	private List<String> optionList;
 	private List<String> availableValuesForRequest;
-	private Map<String, String> texts;
 	private Player currentPlayer;
 	
 	public PoliticActionMenu(Map<String, String> gameTexts, List<IMenu> menuList, Game game) {
@@ -20,17 +18,19 @@ public class PoliticActionMenu extends AbstractMenu {
 		if (game == null) throw new IllegalArgumentException("'game' cannot be null");
 		
 		this.game = game;	
-		texts = getGameTexts();
-		optionList = getMenuOptionsList();
 		availableValuesForRequest = new ArrayList<String>();
 		currentPlayer = game.getWhoHasTheTurn();
 	}
 
 	public void execute() {
+		List<String> optionList = getMenuOptionsList();
+		Map<String, String> texts = getGameTexts();
+			
 		String startProjectText = texts.get("gamePoliticActionMenu_startProjectOpt");
 		String tradeText = texts.get("gamePoliticActionMenu_tradeOpt");
 		String moveProxenusText = texts.get("gamePoliticActionMenu_moveProxenusOpt");
 		String makeCivilWarText = texts.get("gamePoliticActionMenu_makeCivilWarOpt");
+		String cancelText = texts.get("gamePoliticActionMenu_cancel");
 		String notAvailableText = texts.get("notAvailable");
 		
 		// Opt 0 (Start Project):
@@ -70,7 +70,7 @@ public class PoliticActionMenu extends AbstractMenu {
 		}
 		
 		// Opt 4 (Exit):
-		optionList.add(texts.get("gamePoliticActionMenu_cancel"));
+		optionList.add(cancelText);
 		availableValuesForRequest.add("4");
 		
 		showMenuContents();
