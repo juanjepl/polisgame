@@ -50,7 +50,7 @@ public class GameMainMenu extends AbstractMenu{
 		getAvailableValuesForRequest().add("0");
 		
 		// Creator Action
-		if(AvailableActionsManager.checkCreatorAction(game.getRound(),game.getWhoHasTheTurn())){
+		if(AvailableActionsManager.checkCreatorAction(getGame().getRound(),getGame().getWhoHasTheTurn())){
 			getMenuOptionsList().add(creatorAction);
 			getAvailableValuesForRequest().add("1");
 		}else{
@@ -58,7 +58,7 @@ public class GameMainMenu extends AbstractMenu{
 		}
 		
 		// Military Action
-		if(AvailableActionsManager.checkMilitaryAction(game,game.getWhoHasTheTurn())){
+		if(AvailableActionsManager.checkMilitaryAction(getGame(),getGame().getWhoHasTheTurn())){
 			getMenuOptionsList().add(militaryAction);
 			getAvailableValuesForRequest().add("2");
 		}else{
@@ -66,7 +66,7 @@ public class GameMainMenu extends AbstractMenu{
 		}
 		
 		// Politic Action
-		if(AvailableActionsManager.checkPoliticAction(game,game.getWhoHasTheTurn())){
+		if(AvailableActionsManager.checkPoliticAction(getGame(),getGame().getWhoHasTheTurn())){
 			getMenuOptionsList().add(politicAction);
 			getAvailableValuesForRequest().add("3");
 		}else{
@@ -78,7 +78,7 @@ public class GameMainMenu extends AbstractMenu{
 		getAvailableValuesForRequest().add("4");
 		
 		showMenuContents();
-		requestPlayerChoice(getAvailableValuesForRequest());
+		setPlayerChoice(requestPlayerChoice(getAvailableValuesForRequest()));
 		
 		//TODO trabajando en ello...
 		
@@ -88,7 +88,7 @@ public class GameMainMenu extends AbstractMenu{
 		IMenu nextFocusedMenu = null;
 		
 		if(getPlayerChoice().equals(0)){
-			//TODO
+			nextFocusedMenu = new GameMainMenuOptions(getGameTexts(),getMenuList(), getGame().getWhoHasTheTurn(), getGame().getSpartaPlayer(), getGame().getAthensPlayer());
 		}else if(getPlayerChoice().equals(1)){
 			//TODO
 		}else if(getPlayerChoice().equals(2)){
