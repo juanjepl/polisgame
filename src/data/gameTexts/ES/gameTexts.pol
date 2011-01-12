@@ -1,4 +1,4 @@
-﻿#hola
+﻿# Texts for Game Text Interface
 mainMenu_newGame;Nuevo Juego
 mainMenu_headerMessage;Por favor, elija una opción:
 mainMenu_credits;Creditos
@@ -49,7 +49,7 @@ gameMilitaryActionMenu_collectionOpt;Recolección
 gameMilitaryActionMoveHoplitesMenu_headerMessage;Por favor, elija origen y destino:
 gameMilitaryActionMoveTrirremesMenu_headerMessage;Por favor, elija origen y destino:
 gameMilitaryActionBesiegePolisMenu_headerMessage;Por favor, elija la ciudad a asediar:
-gameMilitaryActionCollectionMenu_headerMessage;¿En qué ciudad quiere recolectar?
+gameMilitaryActionCollectionMenu_headerMessage;Por favor, seleccione (por terminar este mensaje):
 gameCreationAction_headerMessage;Por favor, elija una acción militar entre las disponibles:
 gameCreationAction_createHoplitesOpt;Crear hoplitas
 gameCreationAction_createTrirremesOpt;Crear trirremes
