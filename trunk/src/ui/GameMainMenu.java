@@ -1,6 +1,7 @@
 package ui;
 
 import game.AvailableActionsManager;
+import game.Game;
 
 import java.io.BufferedReader;
 import java.io.InputStreamReader;
@@ -12,12 +13,18 @@ import cfg.GameConfigurations;
 
 public class GameMainMenu extends AbstractMenu{
 
-	public GameMainMenu(Map<String, String> gameTexts, List<IMenu> menuList) {
+	private Game game;
+	public GameMainMenu(Map<String, String> gameTexts, List<IMenu> menuList, Game game) {
 		super(gameTexts, menuList);
-	
+		this.game = game;
 		
 	}
 
+	public Game getGame()
+	{
+		return game;
+	}
+	
 	public String getHeaderMessage() {
 		return getGameTexts().get("gameMainMenu_headerMessage");
 	}

@@ -1,11 +1,15 @@
 package ui;
 
+import game.Game;
+
 import java.util.List;
 import java.util.Map;
 
 public class MainMenu extends AbstractMenu{
 	
-	public MainMenu(Map<String,String> gameTexts, List<IMenu> menuList){
+	private Game game;
+	
+	public MainMenu(Map<String,String> gameTexts, List<IMenu> menuList, Game game){
 		super(gameTexts,menuList);
 		String newGame = getGameTexts().get("mainMenu_newGame");
 		String credits = getGameTexts().get("mainMenu_credits");
@@ -13,11 +17,16 @@ public class MainMenu extends AbstractMenu{
 		getMenuOptionsList().add(newGame);
 		getMenuOptionsList().add(credits);
 		getMenuOptionsList().add(exit);
+		this.game = game;
 	}
 	
 	/**
 	 * Getter methods for this class
 	 */
+	private Game getGame()
+	{
+		return game;
+	}
 	
 	public String getHeaderMessage(){
 		return getGameTexts().get("mainMenu_headerMessage");
@@ -35,7 +44,7 @@ public class MainMenu extends AbstractMenu{
 		IMenu nextMenu = null;
 		if(getPlayerChoice().equals(0))
 		{
-			nextMenu = new GameMainMenu(getGameTexts(),getMenuList());
+			nextMenu = new GameMainMenu(getGameTexts(),getMenuList(), getGame());
 		}else if(getPlayerChoice().equals(1))
 		{
 			nextMenu = new CreditsMenu(getGameTexts(),getMenuList());
