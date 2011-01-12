@@ -4,14 +4,14 @@ import java.util.List;
 
 import game.GameEvent;
 import game.Project;
-import game.Round3;
+import game.Round4;
 
 import org.junit.Before;
 import org.junit.Test;
 import org.mockito.Mock;
 import org.mockito.MockitoAnnotations;
 
-public class TestRound3 {
+public class TestRound4 {
 	
 	@Mock List<Project> mockProjectsInThisRound; 
 	@Mock List<GameEvent> mockGameEventInThisRound; 
@@ -24,21 +24,22 @@ public class TestRound3 {
 	{
 		mockNullProjectsInThisRound=null; 
 		mockNullGameEventInThisRound=null; 
+		
 		MockitoAnnotations.initMocks(this);
 	}
 	
 	@Test
-	public void testRound3Creation()
+	public void testRound4Creation()
 	{
-		Round3 u = new Round3(mockProjectsInThisRound,mockGameEventInThisRound);
+		Round4 u = new Round4(mockProjectsInThisRound,mockGameEventInThisRound);
 		assert(u.getProjectsInThisRound() == mockProjectsInThisRound);
 		assert(u.getGameEventInThisRound() == mockGameEventInThisRound);
 		
 	}
-	@Test (expected=IllegalArgumentException.class)
-	public void testNullRound3Creation()
+	@Test(expected=IllegalArgumentException.class)
+	public void testNullRound4Creation()
 	{
-		Round3 u = new Round3(null,null);
+		Round4 u = new Round4(null,null);
 		assert(u.getProjectsInThisRound() == mockNullProjectsInThisRound);
 		assert(u.getGameEventInThisRound() == mockNullGameEventInThisRound);
 		
