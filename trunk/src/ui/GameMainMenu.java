@@ -26,6 +26,10 @@ public class GameMainMenu extends AbstractMenu{
 		return game;
 	}
 	
+	public void setGame(Game game){
+		this.game = game;
+	}
+	
 	public String getHeaderMessage(){
 		return getGameTexts().get("gameMainMenu_headerMessage");
 	}
@@ -101,6 +105,5 @@ public class GameMainMenu extends AbstractMenu{
 
 	public List<String> getAvailableValuesForRequest(){
 		return availableValuesForRequest;
-	}
-	
+	}	
 }

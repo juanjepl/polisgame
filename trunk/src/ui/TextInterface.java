@@ -91,10 +91,8 @@ public class TextInterface{
 	
 	public void executeMenu()
 	{
-
 		while(getMenu().getAutoExecutable())
 		{
-			
 			getMenu().execute();
 			setMenu();
 			
@@ -102,8 +100,6 @@ public class TextInterface{
 			while(menuList.size() > limit){
 				menuList.remove((getMenuList().size()) - 1);
 			}
-			
-			
 		}
 	}
 	
@@ -130,4 +126,7 @@ public class TextInterface{
 		System.out.println("--- "+getGameTexts().get("secondAction") + " " + getGameTexts().get("action")+" ---");
 	}
 
+	public void setGame(Game game){
+		getMenu().setGame(game);
+	}
 }

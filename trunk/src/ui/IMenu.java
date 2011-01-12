@@ -1,6 +1,7 @@
 package ui;
 
 import java.util.List;
+import game.Game;
 
 /**
  * This Interface defines structure
@@ -24,4 +25,8 @@ public interface IMenu {
 	public Boolean getAutoExecutable();
 	
 	public void setAutoExecutable(Boolean auto);
+	
+	public void setGame(Game game);
+	
+	public Game getGame();
 }
