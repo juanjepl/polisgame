@@ -98,10 +98,10 @@ public class TextInterface{
 			getMenu().execute();
 			setMenu();
 			
-			//Integer limit = menuList.indexOf(focusedMenu) + 1; //limit + 1 index = size index
-			//while(menuList.size() > limit){
+			Integer limit = menuList.indexOf(focusedMenu) + 2; //limit + 2 index = size index
+			while(menuList.size() > limit){
 				menuList.remove((getMenuList().size()) - 1);
-			//}
+			}
 			
 			
 		}
@@ -123,6 +123,11 @@ public class TextInterface{
 	public void showFirstActionMessage(){
 		System.out.println(" ");
 		System.out.println("--- "+getGameTexts().get("firstAction") + " " + getGameTexts().get("action")+" ---");
+	}
+	
+	public void showSecondActionMessage(){
+		System.out.println(" ");
+		System.out.println("--- "+getGameTexts().get("secondAction") + " " + getGameTexts().get("action")+" ---");
 	}
 
 }

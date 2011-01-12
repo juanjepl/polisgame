@@ -42,14 +42,14 @@ public class Main{
 					if(!(polis_game.getWhoHasTheTurn().getHasPassedTurn())){
 						// First GameAction
 						polisGameTextInterface.showFirstActionMessage();
-						polisGameTextInterface.getMenu().execute();
+						polisGameTextInterface.executeMenu();
 
 					}
 					
 					if(!(polis_game.getWhoHasTheTurn().getHasPassedTurn())){
 						// First GameAction
-						polisGameTextInterface.showFirstActionMessage();
-						polisGameTextInterface.getMenu().execute();
+						polisGameTextInterface.showSecondActionMessage();
+						polisGameTextInterface.executeMenu();
 
 					}
 					
