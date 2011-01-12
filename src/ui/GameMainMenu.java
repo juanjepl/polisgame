@@ -46,11 +46,13 @@ public class GameMainMenu extends AbstractMenu{
 		String passTurn = getGameTexts().get("gameMainMenu_passTurn");
 		String notAvailable = getGameTexts().get("notAvailable");
 		
-		if(AvailableActionsManager.checkCreatorAction(game,p)){
+		if(!AvailableActionsManager.checkCreatorAction(game.getRound(),game.getWhoHasTheTurn())){
             creatorAction = creatorAction + notAvailable;
+		}else{
+			
 		}
 		
-		
+		//TODO trabajando en ello...
 		
 	}
 
@@ -101,6 +103,10 @@ public class GameMainMenu extends AbstractMenu{
 		
 		GameConfigurations.setSpartaPlayerName(spartaName);
 		GameConfigurations.setAthensPlayerName(athensName);
+		
+		//TODO
+		
+		
 	}
 	
 }

@@ -23,12 +23,12 @@ public class TextInterface{
 	private Map<String,String> gameTexts;
 	private Map<String,Boolean> checkActionsMap;
 	
-	public TextInterface(){
+	public TextInterface(Game game){
 		PolReader gameTextsFileReader = new PolReader();
 		gameTexts = gameTextsFileReader.readGameTexts();
 		menuList = new LinkedList<IMenu>();
 		
-		focusedMenu = new MainMenu(getGameTexts(),getMenuList());
+		focusedMenu = new MainMenu(getGameTexts(),getMenuList(),game);
 		menuList.add(focusedMenu); // First in the list
 		
 		//TODO
