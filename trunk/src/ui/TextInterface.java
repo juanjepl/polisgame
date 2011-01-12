@@ -24,6 +24,7 @@ public class TextInterface{
 	private Map<String,Boolean> checkActionsMap;
 	
 	public TextInterface(Game game){
+		//game can be null for initialization
 		PolReader gameTextsFileReader = new PolReader();
 		gameTexts = gameTextsFileReader.readGameTexts();
 		menuList = new LinkedList<IMenu>();
