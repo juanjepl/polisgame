@@ -43,6 +43,7 @@ public class Main{
 						// First GameAction
 						polisGameTextInterface.showFirstActionMessage();
 						polisGameTextInterface.getMenu().setAutoExecutable(true);
+						polisGameTextInterface.setGame(polis_game);
 						polisGameTextInterface.executeMenu();
 
 					}

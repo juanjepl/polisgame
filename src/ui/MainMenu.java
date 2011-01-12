@@ -27,7 +27,7 @@ public class MainMenu extends AbstractMenu{
 	/**
 	 * Getter methods for this class
 	 */
-	private Game getGame()
+	public Game getGame()
 	{
 		return game;
 	}

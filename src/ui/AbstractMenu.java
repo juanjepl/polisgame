@@ -5,6 +5,7 @@ import java.io.InputStreamReader;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
+import game.Game;
 
 public abstract class AbstractMenu implements IMenu {
 	private Map<String, String> gameTexts;
@@ -12,6 +13,7 @@ public abstract class AbstractMenu implements IMenu {
 	private Integer playerChoice;
 	private List<IMenu> menuList;
 	private Boolean autoExecutable;
+	private Game theGame;
 	
 	public AbstractMenu(Map<String, String> gameTexts,List<IMenu> menuList) {
 		if (gameTexts == null || menuList == null){
@@ -22,6 +24,8 @@ public abstract class AbstractMenu implements IMenu {
 		this.menuOptionsList = new ArrayList<String>();
 		this.autoExecutable = true;
 	}
+	
+	
 	
 	public Map<String, String> getGameTexts() {
 		return gameTexts;
@@ -43,6 +47,14 @@ public abstract class AbstractMenu implements IMenu {
 	
 	public void setPlayerChoice(Integer choice) {
 		playerChoice = choice;
+	}
+	
+	public Game getGame(){
+		return this.theGame;
+	}
+	
+	public void setGame(Game game){
+		theGame = game;
 	}
 	
 	public abstract void execute();
