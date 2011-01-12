@@ -73,11 +73,6 @@ public class GameMainMenu extends AbstractMenu{
 		getMenuOptionsList().add(passTurn);
 		getAvailableValuesForRequest().add("4");
 		
-		
-		if(GameConfigurations.getAthensPlayerName() == null && GameConfigurations.getSpartaPlayerName() == null){
-			requestPlayerNames();
-		}
-		
 		showMenuContents();
 		requestPlayerChoice(getAvailableValuesForRequest());
 		
@@ -103,48 +98,7 @@ public class GameMainMenu extends AbstractMenu{
 		}
 		return nextFocusedMenu;
 	}
-	
-	public void requestPlayerNames(){
-		System.out.println(" ");
-		System.out.println(getGameTexts().get("gameMainMenu_requestPlayerNames"));
-		System.out.println(" ");
-		System.out.println(getGameTexts().get("gameMainMenu_spartaPlayer") + " :");
-		
-		String spartaName = null;
-		String athensName = null;
-		
-		BufferedReader br = new BufferedReader(new InputStreamReader(System.in)); // request sparta player's name
-		try {
-			spartaName = br.readLine();
-		} catch (Exception e) {	
-			//TODO
-		}
-		
-		System.out.println(" ");
-		System.out.println(getGameTexts().get("gameMainMenu_athensPlayer") + " :");
-		
-		athensName = spartaName;
-		Boolean firstTime = true;
-		while(spartaName.equals(athensName)){
-			
-			if(!firstTime){
-				System.out.println(" ");
-				System.out.println(getGameTexts().get("gameMainMenu_errorSameNames") + " :");
-			}
-			
-			BufferedReader br2 = new BufferedReader(new InputStreamReader(System.in)); // request sparta player's name
-			try {
-				athensName = br2.readLine();
-			} catch (Exception e) {	
-				//TODO
-			}
-			
-			firstTime = false;
-		}
-		GameConfigurations.setSpartaPlayerName(spartaName);
-		GameConfigurations.setAthensPlayerName(athensName);	
-	}
-	
+
 	public List<String> getAvailableValuesForRequest(){
 		return availableValuesForRequest;
 	}

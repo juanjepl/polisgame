@@ -42,6 +42,7 @@ public class Main{
 					if(!(polis_game.getWhoHasTheTurn().getHasPassedTurn())){
 						// First GameAction
 						polisGameTextInterface.showFirstActionMessage();
+						polisGameTextInterface.getMenu().setAutoExecutable(true);
 						polisGameTextInterface.executeMenu();
 
 					}

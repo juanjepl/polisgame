@@ -2,8 +2,12 @@ package ui;
 
 import game.Game;
 
+import java.io.BufferedReader;
+import java.io.InputStreamReader;
 import java.util.List;
 import java.util.Map;
+
+import cfg.GameConfigurations;
 
 public class MainMenu extends AbstractMenu{
 	
@@ -46,6 +50,7 @@ public class MainMenu extends AbstractMenu{
 		{
 			nextMenu = new GameMainMenu(getGameTexts(),getMenuList(), getGame());
 			nextMenu.setAutoExecutable(false); //FIXME provisional.
+			requestPlayerNames();
 			
 		}else if(getPlayerChoice().equals(1))
 		{
@@ -61,6 +66,47 @@ public class MainMenu extends AbstractMenu{
 	 * Method that shows Game Title message
 	 *(last in source code file because its width)
 	 */
+	
+	public void requestPlayerNames(){
+		System.out.println(" ");
+		System.out.println(getGameTexts().get("gameMainMenu_requestPlayerNames"));
+		System.out.println(" ");
+		System.out.println(getGameTexts().get("spartaPlayer") + " :");
+		
+		String spartaName = null;
+		String athensName = null;
+		
+		BufferedReader br = new BufferedReader(new InputStreamReader(System.in)); // request sparta player's name
+		try {
+			spartaName = br.readLine();
+		} catch (Exception e) {	
+			//TODO
+		}
+		
+		System.out.println(" ");
+		System.out.println(getGameTexts().get("athensPlayer") + " :");
+		
+		athensName = spartaName;
+		Boolean firstTime = true;
+		while(spartaName.equals(athensName)){
+			
+			if(!firstTime){
+				System.out.println(" ");
+				System.out.println(getGameTexts().get("gameMainMenu_errorSameNames") + " :");
+			}
+			
+			BufferedReader br2 = new BufferedReader(new InputStreamReader(System.in)); // request sparta player's name
+			try {
+				athensName = br2.readLine();
+			} catch (Exception e) {	
+				//TODO
+			}
+			
+			firstTime = false;
+		}
+		GameConfigurations.setSpartaPlayerName(spartaName);
+		GameConfigurations.setAthensPlayerName(athensName);	
+	}
 	
 	public void showGameTitle(){
 		System.out.println(" ");
