@@ -1,9 +1,10 @@
-#hola
+﻿#hola
 mainMenu_newGame;Nuevo Juego
 mainMenu_headerMessage;Por favor, elija una opción:
 mainMenu_credits;Creditos
 mainMenu_exit;Salir
 abstractMenu_BadInputMessage;Por favor, introduzca un valor correcto para su eleccion
+abstractMenu_BadInputMessage;Opcion no disponible en este momento de la partida, por favor, seleccione otra diferente:
 creditsMenu_HeaderMessage;Titulos de credito de [ Polis ]
 back;Volver
 TextInterface_newRoundMessage;Una nueva ronda ha comenzado
@@ -27,6 +28,7 @@ gameMainMenu_militaryAction;Acción militar
 gameMainMenu_politicAction;Acción política
 gameMainMenu_passTurn;Pasar turno
 gameMainMenu_headerMessage;Por favor, elija una opción:
+gameMainMenuOptions_renamePlayer;Cambiar nickname
 notAvailable;- No disponible -
 newRound;Nueva Ronda
 gamePoliticActionMenu_headerMessage;Por favor, elija una acción política entre las disponibles:
@@ -41,9 +43,9 @@ gamePoliticActionMoveProxenusMenu_headerMessage;Por favor, elija el destino:
 gamePoliticActionMakeCivilWarMenu_headerMessage;¿Está seguro de que querer provocar una guerra civil en la ciudad donde está su próxeno?
 gameMilitaryActionMenu_headerMessage;Por favor, elija una acción militar entre las disponibles:
 gameMilitaryActionMenu_moveHoplitesOpt;Mover hoplitas
-gameMilitaryActionMenu_moveTrirremesOpt;Mover trirremes;
-gameMilitaryActionMenu_besiegePolisOpt;Asediar polis;
-gameMilitaryActionMenu_collectionOpt;Recolección;
+gameMilitaryActionMenu_moveTrirremesOpt;Mover trirremes
+gameMilitaryActionMenu_besiegePolisOpt;Asediar polis
+gameMilitaryActionMenu_collectionOpt;Recolección
 gameMilitaryActionMoveHoplitesMenu_headerMessage;Por favor, elija origen y destino:
 gameMilitaryActionMoveTrirremesMenu_headerMessage;Por favor, elija origen y destino:
 gameMilitaryActionBesiegePolisMenu_headerMessage;Por favor, elija la ciudad a asediar:
