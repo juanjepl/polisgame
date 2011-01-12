@@ -45,6 +45,8 @@ public class MainMenu extends AbstractMenu{
 		if(getPlayerChoice().equals(0))
 		{
 			nextMenu = new GameMainMenu(getGameTexts(),getMenuList(), getGame());
+			nextMenu.setAutoExecutable(false); //FIXME provisional.
+			
 		}else if(getPlayerChoice().equals(1))
 		{
 			nextMenu = new CreditsMenu(getGameTexts(),getMenuList());

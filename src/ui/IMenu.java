@@ -22,4 +22,6 @@ public interface IMenu {
 	public IMenu getNextMenu();
 	
 	public Boolean getAutoExecutable();
+	
+	public void setAutoExecutable(Boolean auto);
 }
