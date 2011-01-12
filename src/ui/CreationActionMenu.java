@@ -73,7 +73,7 @@ public class CreationActionMenu extends AbstractMenu {
 		}
 		
 		// Opt 4 (Exit):
-		optionList.add(texts.get("gamePoliticActionMenu_cancel"));
+		optionList.add(cancelText);
 		availableValuesForRequest.add("4");
 
 		showMenuContents();
