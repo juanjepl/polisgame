@@ -88,29 +88,29 @@ public class TextInterface{
 		return focusedMenu;
 	}
 	
-	public void setMenu(){
-		
-		focusedMenu = focusedMenu.getNextMenu();
-		
-		if(focusedMenu.getAutoExecutable()){
-			
-			focusedMenu.execute();
-			setMenu();
-	
-		}else{
-			// Do nothing
-		}
-		
-		Integer limit = menuList.indexOf(focusedMenu) + 1; //limit + 1 index = size index
-		while(menuList.size() > limit){
-			menuList.remove((getMenuList().size()) - 1);
-		}
-		
-		if(!menuList.contains(focusedMenu))
-		{
-			menuList.add(focusedMenu);
-		}
+	public void executeMenu()
+	{
 
+		while(getMenu().getAutoExecutable())
+		{
+			
+			getMenu().execute();
+			setMenu();
+			
+			//Integer limit = menuList.indexOf(focusedMenu) + 1; //limit + 1 index = size index
+			//while(menuList.size() > limit){
+				menuList.remove((getMenuList().size()) - 1);
+			//}
+			
+			
+		}
+	}
+	
+	public void setMenu(){
+
+		menuList.add(focusedMenu);
+
+		focusedMenu = focusedMenu.getNextMenu();
 
 	}
 	public void showNewRound(Round round)

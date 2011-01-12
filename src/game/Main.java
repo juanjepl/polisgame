@@ -15,8 +15,8 @@ public class Main{
 		
 		// First menu, the main menu.
 		
-		polisGameTextInterface.getMenu().execute();
-		polisGameTextInterface.setMenu();
+		polisGameTextInterface.executeMenu();
+
 		
 		ElementsInitializer gameElements = new ElementsInitializer();
 		Game polis_game = gameElements.InitializeGameElements(); // Initializes all game elements
