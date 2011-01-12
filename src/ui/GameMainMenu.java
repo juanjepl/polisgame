@@ -20,6 +20,19 @@ public class GameMainMenu extends AbstractMenu{
 		super(gameTexts, menuList);
 		this.game = game;
 		availableValuesForRequest = new ArrayList<String>();
+	}
+
+	public Game getGame(){
+		return game;
+	}
+	
+	public String getHeaderMessage(){
+		return getGameTexts().get("gameMainMenu_headerMessage");
+	}
+	
+	public void execute() {
+		
+		setAutoExecutable(true); // Only in this Menu class
 		
 		String notAvailable = getGameTexts().get("notAvailable");
 		String options = getGameTexts().get("gameMainMenu_options");
@@ -59,19 +72,7 @@ public class GameMainMenu extends AbstractMenu{
 		// Pass Turn
 		getMenuOptionsList().add(passTurn);
 		getAvailableValuesForRequest().add("4");
-	}
-
-	public Game getGame(){
-		return game;
-	}
-	
-	public String getHeaderMessage(){
-		return getGameTexts().get("gameMainMenu_headerMessage");
-	}
-	
-	public void execute() {
 		
-		setAutoExecutable(true); // Only in this Menu class
 		
 		if(GameConfigurations.getAthensPlayerName() == null && GameConfigurations.getSpartaPlayerName() == null){
 			requestPlayerNames();
