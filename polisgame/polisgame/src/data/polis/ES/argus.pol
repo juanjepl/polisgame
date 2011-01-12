@@ -1,0 +1,16 @@
+# System name
+argus
+# Name
+Argos
+# Base population
+3
+# Maximum population's growth
+1
+# Maximum population
+5
+# Possible projects
+nemeanGames:isthmianGames
+# Parent territory
+arcadia
+# Seas
+myrtoanSea
