@@ -59,9 +59,6 @@ public class GameMainMenu extends AbstractMenu{
 		// Pass Turn
 		getMenuOptionsList().add(passTurn);
 		getAvailableValuesForRequest().add("4");
-		
-		//TODO
-		
 	}
 
 	public Game getGame(){
@@ -88,14 +85,22 @@ public class GameMainMenu extends AbstractMenu{
 	}
 
 	public IMenu getNextMenu() {
-		return null; //TODO
+		IMenu nextFocusedMenu = null;
 		
-		
-		
-		
-		
-		
-		//TODO
+		if(getPlayerChoice().equals(0)){
+			//TODO
+		}else if(getPlayerChoice().equals(1)){
+			//TODO
+		}else if(getPlayerChoice().equals(2)){
+			//TODO
+		}else if(getPlayerChoice().equals(3)){
+			//TODO
+		}else if(getPlayerChoice().equals(4)){
+			//TODO
+		}else{ //(getPlayerChoice().equals(5))
+			//TODO
+		}
+		return nextFocusedMenu;
 	}
 	
 	public void requestPlayerNames(){
