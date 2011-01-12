@@ -79,6 +79,36 @@ public abstract class AbstractMenu implements IMenu {
 		return Integer.parseInt(choose);
 	}
 	
+	public Integer requestPlayerChoice(List<String> availableValues){
+		String choose = "WrongValue"; // "Random" value for entering to next while
+		
+		// Granted values for player choose
+		List<String> grantedOptions = new ArrayList<String>();
+		for(int i=0 ; i<=getMenuOptionsList().size() ; i++){
+			grantedOptions.add(new Integer(i).toString());
+		}
+		
+		// request player's choose
+		while(!(grantedOptions.contains(choose)) && !(availableValues.contains(choose))){
+			
+			BufferedReader br = new BufferedReader(new InputStreamReader(System.in)); // request athens's player's name
+			try {
+				choose = br.readLine();
+			} catch (Exception e) {	
+				//TODO
+			}
+			
+			if(!(grantedOptions.contains(choose)) && !(availableValues.contains(choose))){
+				System.out.println(" ");
+				System.out.println(getGameTexts().get("abstractMenu_BadInputMessage"));
+			}else if(grantedOptions.contains(choose) && !(availableValues.contains(choose))){
+				System.out.println(" ");
+				System.out.println(getGameTexts().get("abstractMenu_unAvailableMessage"));
+			}
+		}
+		return Integer.parseInt(choose);
+	}
+	
 	public abstract IMenu getNextMenu();
 	
 	public void convertChoose(Integer choose) {
