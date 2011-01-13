@@ -89,7 +89,7 @@ public class Main{
 			new EndRoundCheckMegalopolis(polis_game.getWhoHasTheTurn());
 			new EndRoundCheckGoodsAdjust(polis_game.getWhoHasTheTurn());
 			new EndRoundCheckPhoros();
-			new EndRoundInitializeNextRound();
+			new EndRoundInitializeNextRound(polis_game);
 			
 			new EndGameCheckNoPrestige(polis_game, polis_game.getWhoHasTheTurn());
 			new EndGameCheckCapitals(polis_game, polis_game.getWhoHasTheTurn());

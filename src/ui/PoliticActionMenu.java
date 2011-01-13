@@ -100,7 +100,7 @@ public class PoliticActionMenu extends AbstractMenu {
 			case 0:
 				// Exit:
 				next = getMenuList().get((getMenuList().size()-1) - 1); // Last element
-			break;
+				break;
 			case 1:
 				next = new PoliticActionStartProjectMenu(getGameTexts(), getMenuList(), game);
 				break;
