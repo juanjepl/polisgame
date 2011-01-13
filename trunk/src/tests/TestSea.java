@@ -1,14 +1,10 @@
 package tests;
 
-import game.Hoplite;
-import game.Player;
-import game.Position;
-import game.Sea;
 
+import game.Sea;
 import org.junit.Before;
 import org.junit.Test;
-import org.mockito.Mock;
-import org.mockito.MockitoAnnotations;
+
 
 public class TestSea {
 
@@ -24,7 +20,6 @@ public class TestSea {
 	{
 		nullSysName = null;
 		nullName = null;
-		MockitoAnnotations.initMocks(this);
 		sysName="jonico";
 		name="Jonico";
 	}
