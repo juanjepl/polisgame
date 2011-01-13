@@ -1,6 +1,5 @@
 package ui;
 
-import game.CreateHopliteAction;
 import game.Game;
 import game.Market;
 import game.TradeAction;
