@@ -42,6 +42,9 @@ public class CreateTrirremeChooseCreationSea extends AbstractMenu{
 		if(getPlayerChoice() != 0){			
 			cA = new CreateTrirremeAction(getGame().getWhoHasTheTurn(), getSelectedPolis() ,seasAvailables.get(getPlayerChoice() - 1) , getSelectedResource());
 			getGame().getRound().getCurrentTurn().addGameAction(cA);
+			
+			System.out.println(" ");
+			System.out.println(getGameTexts().get("CreateTrirremeChooseCreationSea_actionDoneMessage"+seasAvailables.get(getPlayerChoice() - 1).getName())); //FIXME "Trirreme creada en "
 		}
 		
 	}

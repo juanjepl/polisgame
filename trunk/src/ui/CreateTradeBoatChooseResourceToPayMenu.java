@@ -1,6 +1,6 @@
 package ui;
 
-import game.CreateHopliteAction;
+import game.CreateTradeBoatAction;
 import game.CreatorAction;
 import game.Game;
 import game.Polis;
@@ -8,12 +8,12 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
-public class CreateHopliteChooseResourceToPayMenu extends AbstractMenu{
+public class CreateTradeBoatChooseResourceToPayMenu extends AbstractMenu{
 
 	private Polis selectedPolis;
 	private String selectedResource;
 	
-	public CreateHopliteChooseResourceToPayMenu(Map<String, String> gameTexts, List<IMenu> menuList, Game game, Polis selectedPolis){
+	public CreateTradeBoatChooseResourceToPayMenu(Map<String, String> gameTexts, List<IMenu> menuList, Game game ,Polis selectedPolis){
 		super(gameTexts,menuList);
 		setGame(game);
 		
@@ -24,7 +24,7 @@ public class CreateHopliteChooseResourceToPayMenu extends AbstractMenu{
 	public void execute(){
 		
 		String silver = getGameTexts().get("silver");
-		String metal = getGameTexts().get("metal");
+		String wood = getGameTexts().get("wood");
 		
 		CreatorAction cA;
 		
@@ -36,9 +36,9 @@ public class CreateHopliteChooseResourceToPayMenu extends AbstractMenu{
 			payments.add("Silver");
 		}
 		
-		if(getGame().getWhoHasTheTurn().getMetal() > 0){
-			getMenuOptionsList().add(metal);
-			payments.add("Metal");
+		if(getGame().getWhoHasTheTurn().getWood() > 0){
+			getMenuOptionsList().add(wood);
+			payments.add("Wood");
 		}
 		
 		showMenuContents();
@@ -48,7 +48,7 @@ public class CreateHopliteChooseResourceToPayMenu extends AbstractMenu{
 			setSelectedResource(payments.get(0)); // 0 because is 1st string of the list
 			
 			// Do action
-			cA = new CreateHopliteAction(getGame().getWhoHasTheTurn(),getSelectedPolis(),getSelectedResource());
+			cA = new CreateTradeBoatAction(getGame().getWhoHasTheTurn(),getSelectedPolis(),getSelectedResource());
 			
 			// Introduces Action in the actual turn
 			getGame().getRound().getCurrentTurn().addGameAction(cA);
@@ -60,7 +60,7 @@ public class CreateHopliteChooseResourceToPayMenu extends AbstractMenu{
 			setSelectedResource(payments.get(1)); // 1 because is 2nd string of the list
 			
 			// Do action
-			cA = new CreateHopliteAction(getGame().getWhoHasTheTurn(),getSelectedPolis(),getSelectedResource());
+			cA = new CreateTradeBoatAction(getGame().getWhoHasTheTurn(),getSelectedPolis(),getSelectedResource());
 			
 			// Introduces Action in the actual turn
 			getGame().getRound().getCurrentTurn().addGameAction(cA);
@@ -90,17 +90,17 @@ public class CreateHopliteChooseResourceToPayMenu extends AbstractMenu{
 		return next;
 	}
 	
+	public void showActionDoneMessage(){
+		System.out.println(" "); // White space
+		System.out.println(getGameTexts().get("createTradeBoatChooseResourceToPayMenu_actionDoneMessage")+ getGame().getWhoHasTheTurn().getPlayerTradeDock().getName()); // FIXME gametext-> "Barco Mercante creado en "
+	}
+	
 	public String getHeaderMessage() {
-		return getGameTexts().get("createHopliteChooseResourceToPay_headerMessage"); //FIXME gametext-> "Elija un recurso a gastar para esta accion:"
+		return getGameTexts().get("createTradeBoatChooseResourceToPay_headerMessage"); //FIXME gametext-> "Elija un recurso a gastar para esta accion:"
 	}
 	
 	public Polis getSelectedPolis(){
 		return selectedPolis;
-	}
-	
-	public void showActionDoneMessage(){
-		System.out.println(" "); // White space
-		System.out.println(getGameTexts().get("createHopliteChooseResourceToPayMenu_actionDoneMessage")+ getSelectedPolis().getPolisParentTerritory().getName()); // FIXME gametext-> "Hoplita creado en "
 	}
 	
 	public String getSelectedResource(){
@@ -109,5 +109,5 @@ public class CreateHopliteChooseResourceToPayMenu extends AbstractMenu{
 	
 	public void setSelectedResource(String resource){
 		selectedResource = resource;
-	}
+	}	
 }

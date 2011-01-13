@@ -10,29 +10,19 @@ import game.Player;
 import game.Round;
 
 public class CreationActionMenu extends AbstractMenu {
-	private Game game;
 	private List<String> availableValuesForRequest;
 	private Player currentPlayer;
 	private Round currentRound;
 	
 	public CreationActionMenu(Map<String, String> gameTexts, List<IMenu> menuList, Game game) {
 		super(gameTexts, menuList);
-		if (game == null) throw new IllegalArgumentException("'game' cannot be null");
+		setGame(game);
 		
-		this.game = game;	
 		availableValuesForRequest = new ArrayList<String>();
 		currentPlayer = game.getWhoHasTheTurn();
 		currentRound = game.getRound();
 	}
-	
-	public Game getGame(){
-		return game;
-	}
-	
-	public void setGame(Game game){
-		this.game = game;
-	}
-	
+
 	public void execute() {
 		
 		if(getMenuOptionsList().isEmpty())
@@ -47,7 +37,7 @@ public class CreationActionMenu extends AbstractMenu {
 			String back = texts.get("back");
 			String notAvailableText = texts.get("notAvailable");
 			
-			// Opt 0 (Exit):
+			// Opt 0 (Back):
 			optionList.add(back);
 			availableValuesForRequest.add("0");
 			
@@ -106,16 +96,16 @@ public class CreationActionMenu extends AbstractMenu {
 				next = getMenuList().get((getMenuList().size()-1) - 1); // Last element
 				break;
 			case 1:
-				next = new CreateHopliteChoosePolisMenu(getGameTexts(), getMenuList(), game);
+				next = new CreateHopliteChoosePolisMenu(getGameTexts(), getMenuList(), getGame());
 				break;
 			case 2:
-				next = new CreateTrirremeChoosePolisMenu(getGameTexts(), getMenuList(), game);
+				next = new CreateTrirremeChoosePolisMenu(getGameTexts(), getMenuList(), getGame());
 				break;
 			case 3:
-				next = new CreationActionCreateMerchantsMenu(getGameTexts(), getMenuList(), game);
+				next = new CreateTradeBoatChoosePolisMenu(getGameTexts(), getMenuList(), getGame());
 				break;
 			case 4:
-				next = new CreationActionCreateProxenusMenu(getGameTexts(), getMenuList(), game);
+				next = new CreationActionCreateProxenusMenu(getGameTexts(), getMenuList(), getGame());
 				break;
 		}
 		
