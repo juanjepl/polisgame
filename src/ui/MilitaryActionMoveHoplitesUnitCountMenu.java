@@ -1,13 +1,11 @@
 package ui;
 
 import exceptions.PolisGameRunningException;
-import game.AvailableActionsManager;
 import game.Game;
 import game.Player;
 import game.Territory;
 
 import java.util.ArrayList;
-import java.util.Collection;
 import java.util.List;
 import java.util.Map;
 
@@ -17,7 +15,6 @@ public class MilitaryActionMoveHoplitesUnitCountMenu extends AbstractMenu {
 	private Territory originPosition;
 	private Territory destinationPosition;
 	private Integer unitToMoveCount;
-	private List<Territory> destinationPositions;
 	
 	public MilitaryActionMoveHoplitesUnitCountMenu(Map<String, String> gameTexts, List<IMenu> menuList, Game game, Territory originPosition, Territory destinationPosition) {
 		super(gameTexts, menuList);
@@ -56,6 +53,7 @@ public class MilitaryActionMoveHoplitesUnitCountMenu extends AbstractMenu {
 			}
 		}
 		
+		showMenuContents();
 		setPlayerChoice(requestPlayerChoice(getAvailableValuesForRequest()));
 	}
 
@@ -68,11 +66,17 @@ public class MilitaryActionMoveHoplitesUnitCountMenu extends AbstractMenu {
 	}
 
 	public IMenu getNextMenu() {
+		IMenu next;
 		Integer userChoice = getPlayerChoice();
 		if (userChoice < 0 || userChoice > (availableValuesForRequest.size() - 1)) throw new PolisGameRunningException("Option not available choosen at MilitaryActionMenu");
 
-		unitToMoveCount = userChoice;
-		//return new MilitaryActionMoveHoplitesMakeMenu(getGameTexts(), getMenuList(), game, originPosition, destinationPosition, unitToMoveCount);
-		return null;
+		if(userChoice.equals(0)){
+			next = getMenuList().get((getMenuList().size()-1) - 1);
+		} else {
+			unitToMoveCount = userChoice;
+			next = new MilitaryActionMoveHoplitesMakeMenu(getGameTexts(), getMenuList(), game, originPosition, destinationPosition, unitToMoveCount);
+		}
+		
+		return next;
 	}
 }

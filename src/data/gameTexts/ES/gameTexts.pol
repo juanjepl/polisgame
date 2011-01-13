@@ -47,7 +47,10 @@ gameMilitaryActionMenu_moveHoplitesOpt;Mover hoplitas
 gameMilitaryActionMenu_moveTrirremesOpt;Mover trirremes
 gameMilitaryActionMenu_besiegePolisOpt;Asediar polis
 gameMilitaryActionMenu_collectionOpt;Recolección
-gameMilitaryActionMoveHoplitesMenu_headerMessage;Por favor, elija origen y destino:
+gameMilitaryActionMoveHoplitesOriginMenu_headerMessage;Por favor, elija el territorio origen:
+gameMilitaryActionMoveHoplitesDestinationMenu_headerMessage;Por favor, elija el territorio destino:
+gameMilitaryActionMoveHoplitesUnitCountMenu_headerMessage;Por favor, elija el numero de hoplitas a mover:
+gameMilitaryActionMoveHoplitesMakeMenu_error;Numero de hoplitas incorrectos
 gameMilitaryActionMoveTrirremesMenu_headerMessage;Por favor, elija origen y destino:
 gameMilitaryActionBesiegePolisMenu_headerMessage;Por favor, elija la ciudad a asediar:
 gameMilitaryActionCollectionMenu_headerMessage;Por favor, seleccione (por terminar este mensaje):
@@ -60,3 +63,11 @@ gameCreationActionCreateHoplitesMenu_headerMessage;Por favor, elija la opción d
 gameCreationActionCreateTrirremesMenu_headerMessage;Por favor, elija la opción de crear trirremes:
 gameCreationActionCreateMerchantsMenu_headerMessage;Por favor, elija la opción de crear mercaderes:
 gameCreationActionCreateProxenussMenu_headerMessage;Por favor, elija la opción de crear hoplita:
+createHopliteChooseResourceToPay_headerMessage;Elija el recurso disponible a gastar (1 unidad):
+silver;Plata
+wheat;Trigo
+wine;Vino
+oil;Aceite
+prestige;Prestigio
+wood;Madera
+metal;Metal
