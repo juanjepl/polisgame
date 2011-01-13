@@ -101,7 +101,7 @@ public class CreateHopliteChooseResourceToPayMenu extends AbstractMenu{
 	
 	public void showActionDoneMessage(){
 		System.out.println(" "); // White space
-		System.out.println(getGameTexts().get("createHoplitechooseResourceToPayMenu_actionDoneMessage")+ getSelectedPolis().getPolisParentTerritory().getName()); // FIXME gametext-> "Hoplita creado en "
+		System.out.println(getGameTexts().get("createHopliteChooseResourceToPayMenu_actionDoneMessage")+ getSelectedPolis().getPolisParentTerritory().getName()); // FIXME gametext-> "Hoplita creado en "
 	}
 	
 	public String getSelectedResource(){

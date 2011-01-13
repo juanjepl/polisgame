@@ -109,7 +109,7 @@ public class CreationActionMenu extends AbstractMenu {
 				next = new CreateHopliteChoosePolisMenu(getGameTexts(), getMenuList(), game);
 				break;
 			case 2:
-				next = new CreationActionCreateTrirremesMenu(getGameTexts(), getMenuList(), game);
+				next = new CreateTrirremeChoosePolisMenu(getGameTexts(), getMenuList(), game);
 				break;
 			case 3:
 				next = new CreationActionCreateMerchantsMenu(getGameTexts(), getMenuList(), game);
