@@ -81,14 +81,14 @@ public class TestStatue {
 		assert (p.getResourcesRequired().equals(mockResourcesRequired));
 	}
 
-	@Test(expected = AssertionError.class)
+	@Test(expected = NullPointerException.class)
 	public void testNullPrestige() {
 		Statue p = new Statue(mockSysName, mockName, null,
 				mockPrestigeToPosterity, mockResourcesRequired);
 
 		assert (p.getSysName().equals(mockSysName));
 		assert (p.getName().equals(mockName));
-		assert (p.getPrestige() == (mockPrestige));
+		assert (p.getPrestige() == (2));
 		assert (p.getPrestigeToPosterity() == (mockPrestigeToPosterity));
 		assert (p.getResourcesRequired().equals(mockResourcesRequired));
 	}

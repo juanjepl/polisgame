@@ -78,27 +78,27 @@ public class TestArtist {
 		assert (artista.getResourcesRequired().equals(mockResourcesRequired));
 	}
 		
-	@Test (expected = AssertionError.class)
+	@Test (expected = NullPointerException.class)
 	public void testNullPrestige() {
 		Artist artista = new Artist(mockSysName, mockName, null,
 				mockPrestigeToPosterity, mockResourcesRequired);
 
 		assert (artista.getSysName().equals(mockSysName));
 		assert (artista.getName().equals(mockName));
-		assert (artista.getPrestige() == (mockPrestige));
+		assert (artista.getPrestige() == (2));
 		assert (artista.getPrestigeToPosterity() == (mockPrestigeToPosterity));
 		assert (artista.getResourcesRequired().equals(mockResourcesRequired));
 	}
 
-	@Test (expected = AssertionError.class)
+	@Test (expected = NullPointerException.class)
 	public void testNullPrestigeToPosterity() {
-		Artist artista = new Artist(mockSysName, mockName, null,
-				mockPrestigeToPosterity, mockResourcesRequired);
+		Artist artista = new Artist(mockSysName, mockName, mockPrestige,
+				null, mockResourcesRequired);
 
 		assert (artista.getSysName().equals(mockSysName));
 		assert (artista.getName().equals(mockName));
 		assert (artista.getPrestige() == (mockPrestige));
-		assert (artista.getPrestigeToPosterity() == (mockPrestigeToPosterity));
+		assert (artista.getPrestigeToPosterity() == (12));
 		assert (artista.getResourcesRequired().equals(mockResourcesRequired));
 	}
 
