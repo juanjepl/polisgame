@@ -1,5 +1,6 @@
 package tests;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import game.GameEvent;
@@ -13,23 +14,30 @@ import org.mockito.MockitoAnnotations;
 
 public class TestRound3 {
 	
-	@Mock List<Project> mockProjectsInThisRound; 
-	@Mock List<GameEvent> mockGameEventInThisRound; 
+	@Mock Project mockProject;
+	@Mock GameEvent mockGameEvent;
+	
+	List<Project> mockProjectsInThisRound; 
+	List<GameEvent> mockGameEventInThisRound; 
 
 	List<Project> mockNullProjectsInThisRound; 
-	GameEvent mockNullGameEventInThisRound; 	
+	List<GameEvent> mockNullGameEventInThisRound; 	
 		
 	@Before
 	public void setup()
 	{
 		mockNullProjectsInThisRound=null; 
-		mockNullGameEventInThisRound=null; 
+		mockNullGameEventInThisRound=null;
+		mockProjectsInThisRound= new ArrayList<Project>();
+		mockGameEventInThisRound= new ArrayList<GameEvent>();
 		MockitoAnnotations.initMocks(this);
 	}
 	
 	@Test
 	public void testRound3Creation()
 	{
+		mockProjectsInThisRound.add(mockProject);
+		mockGameEventInThisRound.add(mockGameEvent);
 		Round3 u = new Round3(mockProjectsInThisRound,mockGameEventInThisRound);
 		assert(u.getProjectsInThisRound() == mockProjectsInThisRound);
 		assert(u.getGameEventInThisRound() == mockGameEventInThisRound);
