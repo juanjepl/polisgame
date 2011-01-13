@@ -46,7 +46,7 @@ public void setup()
 	macedoniaSeas.add(new Sea("thraceSea","Mar de Tracia"));
 	mockPosition1=new Polis("pidna","Pidna", 2, 1, 3, macedonia, null, macedoniaSeas, null);
 	mockPosition2=new Polis("corcyra","Corcira", 2, 1, 3, arcanania, null, arcananiaSeas, null);
-	mockVertex = new Vertex(mockPosition1);
+	mockVertex = new Vertex<Position>(mockPosition1);
 	mockList= new ArrayList<Vertex<? extends Position>>();
 	mockMap=new HashMap<Vertex<? extends Position>, List<Vertex<? extends Position>>>();
 	mockList.add(mockVertex);
