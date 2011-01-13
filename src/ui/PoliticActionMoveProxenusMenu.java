@@ -2,6 +2,7 @@ package ui;
 
 import game.AvailableActionsManager;
 import game.Game;
+import game.MoveProxenusAction;
 import game.Polis;
 import game.Proxenus;
 import game.Unit;
@@ -9,6 +10,8 @@ import game.Unit;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
+
+import navigation.ProxenusGraphNavigator;
 
 public class PoliticActionMoveProxenusMenu extends AbstractMenu {
 
@@ -23,9 +26,14 @@ public class PoliticActionMoveProxenusMenu extends AbstractMenu {
 	}
 	
 	public void execute() {
+		
+		List<Polis> polisList = new ArrayList<Polis>(); 
+		
 		if(getMenuOptionsList().isEmpty())
 		{
+
 			List<String> optionList = getMenuOptionsList();
+			
 			Map<String, String> texts = getGameTexts();
 			
 			Polis proxenusLocation = null;
@@ -39,6 +47,7 @@ public class PoliticActionMoveProxenusMenu extends AbstractMenu {
 
 			// Opt 0 (Exit):
 			optionList.add(getGameTexts().get("back"));
+			polisList.add(null);
 			availableValuesForRequest.add("0");
 			
 			Integer index = 1;
@@ -47,6 +56,7 @@ public class PoliticActionMoveProxenusMenu extends AbstractMenu {
 				System.out.println(destiny.getName());
 				if(AvailableActionsManager.checkMoveProxenusAction(getGame(), getGame().getWhoHasTheTurn(),proxenusLocation,destiny)){
 					optionList.add(destiny.getName());
+					polisList.add(destiny);
 					availableValuesForRequest.add(index.toString());
 					index++;
 				}else {
@@ -56,7 +66,21 @@ public class PoliticActionMoveProxenusMenu extends AbstractMenu {
 		}
 		
 		setPlayerChoice(requestPlayerChoice(getAvailableValuesForRequest()));
-		// TODO
+		
+		//obtain destiny polis
+		
+		Polis destiny = polisList.get(getPlayerChoice());
+		
+		ProxenusGraphNavigator proxenusGraphNavigator = new ProxenusGraphNavigator(getGame().getWhoHasTheTurn(), (Polis) getGame().getWhoHasTheTurn().getPlayerProxenus().getPosition(), destiny, getGame().getProxenusGraph());
+		Integer amountToPay = proxenusGraphNavigator.getAmountToPayForWay();
+		//execute moveProxenusAction
+		MoveProxenusAction moveProxenusAction = new MoveProxenusAction(getGame().getWhoHasTheTurn(), destiny, amountToPay);
+		
+		// Introduces Action in the actual turn
+		getGame().getRound().getCurrentTurn().addGameAction(moveProxenusAction);
+		
+		// Finally a notification for the player
+		showActionDoneMessage(destiny.getName());
 	}
 
 	public String getHeaderMessage() {
@@ -71,9 +95,19 @@ public class PoliticActionMoveProxenusMenu extends AbstractMenu {
 			// Exit:
 			next = getMenuList().get((getMenuList().size()-1) - 1); // Last element
 			break;
+		
+		default:
+			next = new GameMainMenu(getGameTexts(),getMenuList(), getGame()); //go back to this menu with other player
+			next.setAutoExecutable(false); //FIXME provisional. //action completed
+				
 		}
 		
 		return next;
+	}
+	
+	public void showActionDoneMessage(String destinyName){
+		System.out.println(" "); // White space
+		System.out.println(getGameTexts().get("politicActionMoveProxenusMenu_proxenusMovedTo")+ " " + destinyName);//FIXME
 	}
 	
 	public List<String> getAvailableValuesForRequest(){
