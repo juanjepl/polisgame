@@ -106,7 +106,7 @@ public class CreationActionMenu extends AbstractMenu {
 				next = getMenuList().get((getMenuList().size()-1) - 1); // Last element
 				break;
 			case 1:
-				next = new CreationActionCreateHoplitesMenu(getGameTexts(), getMenuList(), game);
+				next = new CreateHopliteChoosePolisMenu(getGameTexts(), getMenuList(), game);
 				break;
 			case 2:
 				next = new CreationActionCreateTrirremesMenu(getGameTexts(), getMenuList(), game);
