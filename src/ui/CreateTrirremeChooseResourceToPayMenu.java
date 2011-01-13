@@ -3,8 +3,7 @@ package ui;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
-
-import game.CreateHopliteAction;
+import game.CreateTrirremeAction;
 import game.CreatorAction;
 import game.Game;
 import game.Polis;
@@ -37,7 +36,7 @@ public class CreateTrirremeChooseResourceToPayMenu extends AbstractMenu{
 			payments.add("Silver");
 		}
 		
-		if(getGame().getWhoHasTheTurn().getMetal() > 0){
+		if(getGame().getWhoHasTheTurn().getWood() > 0){
 			getMenuOptionsList().add(wood);
 			payments.add("Wood");
 		}
@@ -55,7 +54,7 @@ public class CreateTrirremeChooseResourceToPayMenu extends AbstractMenu{
 				
 			}else{
 				// Do action
-				cA = new CreateHopliteAction(getGame().getWhoHasTheTurn(),getSelectedPolis(),getSelectedResource());
+				cA = new CreateTrirremeAction(getGame().getWhoHasTheTurn(),getSelectedPolis(),getSelectedPolis().getPolisSeas().get(0),getSelectedResource());
 				
 				// Introduces Action in the actual turn
 				getGame().getRound().getCurrentTurn().addGameAction(cA);
@@ -74,7 +73,7 @@ public class CreateTrirremeChooseResourceToPayMenu extends AbstractMenu{
 				
 			}else{
 				// Do action
-				cA = new CreateHopliteAction(getGame().getWhoHasTheTurn(),getSelectedPolis(),getSelectedResource());
+				cA = new CreateTrirremeAction(getGame().getWhoHasTheTurn(),getSelectedPolis(),getSelectedPolis().getPolisSeas().get(0),getSelectedResource());
 				
 				// Introduces Action in the actual turn
 				getGame().getRound().getCurrentTurn().addGameAction(cA);
