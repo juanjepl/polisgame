@@ -15,13 +15,9 @@ public class MilitaryActionMenu extends AbstractMenu {
 		super(gameTexts, menuList);
 		if (game == null) throw new IllegalArgumentException("'game' cannot be null");
 		this.game = game;
-		
 		availableValuesForRequest = new ArrayList<String>();
-		
-		// TODO Hay que ver cuales opciones de las siguientes estan disponibles:
-		
-
 	}
+	
 	public Game getGame(){
 		return game;
 	}
@@ -35,7 +31,6 @@ public class MilitaryActionMenu extends AbstractMenu {
 		if(getMenuOptionsList().isEmpty())
 		{
 			Map<String, String> texts = getGameTexts();
-			List<String> optionList = getMenuOptionsList();
 			
 			String back = texts.get("back");
 			String notAvailable = texts.get("notAvailable");
