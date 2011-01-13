@@ -515,7 +515,7 @@ public class AvailableActionsManager {
 		ProxenusGraphNavigator proxenusGraphNavigator = new ProxenusGraphNavigator(player, start, destiny, game.getProxenusGraph());
 		Boolean condition_existsWayForProxenus = proxenusGraphNavigator.getExists();
 		Boolean condition_playerHaveMinimumAmountOfSilver = player.getSilver() >= proxenusGraphNavigator.getAmountToPayForWay();
-		Boolean condition_onlyOneProxenusInDestiny = !destiny.getPolisOwner().getPlayerProxenus().getPosition().equals(destiny);
+		Boolean condition_onlyOneProxenusInDestiny = destiny.getPolisOwner() == null || !destiny.getPolisOwner().getPlayerProxenus().getPosition().equals(destiny);
 			
 		available = condition_existsWayForProxenus && condition_playerHaveMinimumAmountOfSilver && condition_onlyOneProxenusInDestiny;
 		return available;
@@ -527,11 +527,11 @@ public class AvailableActionsManager {
 		Boolean condition_isNeutralOrOponent = true;
 
 		//check if player has minimum amount of silver 
-		if(!polis.getPolisOwner().equals(player) && polis.getPolisOwner() == null){
+		if(polis.getPolisOwner() == null){
 			//is neutral
 			condition_isNeutralOrOponent = player.getSilver() >= (2 * polis.getBasePopulation());
 			
-		}else if(!polis.getPolisOwner().equals(player) && polis.getPolisOwner() != null)
+		}else if(!polis.getPolisOwner().equals(player))
 		{
 			//oponent is owner
 			condition_isNeutralOrOponent = player.getSilver() >= (3 * polis.getActualPopulation());
@@ -539,7 +539,7 @@ public class AvailableActionsManager {
 		
 		Boolean condition_isSieged = !polis.getSieged();
 		
-		Boolean condition_notOponentCapital = !(polis.getPolisOwner().equals(player)) && !polis.getPolisOwner().getCapital().equals(polis);
+		Boolean condition_notOponentCapital = polis.getPolisOwner() == null || !(polis.getPolisOwner().equals(player)) && !polis.getPolisOwner().getCapital().equals(polis);
 
 		available = condition_isNeutralOrOponent && condition_isSieged && condition_notOponentCapital;
 		
