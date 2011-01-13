@@ -61,6 +61,7 @@ public class MilitaryActionMoveHoplitesOriginMenu extends AbstractMenu {
 			}
 		}
 		
+		showMenuContents();
 		setPlayerChoice(requestPlayerChoice(getAvailableValuesForRequest()));
 	}
 
@@ -73,10 +74,17 @@ public class MilitaryActionMoveHoplitesOriginMenu extends AbstractMenu {
 	}
 
 	public IMenu getNextMenu() {
+		IMenu next;
 		Integer userChoice = getPlayerChoice();
 		if (userChoice < 0 || userChoice > (availableValuesForRequest.size() - 1)) throw new PolisGameRunningException("Option not available choosen at MilitaryActionMenu");
 		
-		Territory choosenOriginPosition = originPositions.get(userChoice - 1);
-		return new MilitaryActionMoveHoplitesDestinationMenu(getGameTexts(), getMenuList(), game, choosenOriginPosition);
+		if(userChoice.equals(0)){
+			next = getMenuList().get((getMenuList().size()-1) - 1);
+		} else {
+			Territory choosenOriginPosition = originPositions.get(userChoice - 1);
+			next = new MilitaryActionMoveHoplitesDestinationMenu(getGameTexts(), getMenuList(), game, choosenOriginPosition);
+		}
+		
+		return next;
 	}
 }
