@@ -6,7 +6,7 @@ import java.util.List;
 import java.util.Map;
 import game.Player;
 import game.Position;
-import game.Territory;
+import game.Sea;
 
 import org.junit.Before;
 import org.junit.Test;
@@ -15,7 +15,7 @@ import navigation.Graph;
 import navigation.HopliteGraphNavigator;
 import navigation.Vertex;
 
-public class TestHopliteGraphNavigator {
+public class TestTrirremeGraphNavigator {
 
 	Player mockPlayer;
 	Position mockPosition1;
@@ -36,8 +36,8 @@ public void setup()
 	mockNullPosition=null;
 	mockNullGraph=null;
 	mockPlayer=new Player("Marsé");
-	mockPosition1=new Territory("acarnania","Acarnania", null);
-	mockPosition2=new Territory("macedonia","Macedonia", null);
+	mockPosition1=new Sea("ionianSea","Mar Jónico");
+	mockPosition2=new Sea("thraceSea","Mar de Tracia");
 	mockVertex = new Vertex<Position>(mockPosition1);
 	mockList= new ArrayList<Vertex<? extends Position>>();
 	mockMap=new HashMap<Vertex<? extends Position>, List<Vertex<? extends Position>>>();
