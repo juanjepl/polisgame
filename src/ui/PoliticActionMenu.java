@@ -31,56 +31,58 @@ public class PoliticActionMenu extends AbstractMenu {
 	}
 	
 	public void execute() {
-		List<String> optionList = getMenuOptionsList();
-		Map<String, String> texts = getGameTexts();
+		if(getMenuOptionsList().isEmpty())
+		{
+			List<String> optionList = getMenuOptionsList();
+			Map<String, String> texts = getGameTexts();
+				
+			String startProjectText = texts.get("gamePoliticActionMenu_startProjectOpt");
+			String tradeText = texts.get("gamePoliticActionMenu_tradeOpt");
+			String moveProxenusText = texts.get("gamePoliticActionMenu_moveProxenusOpt");
+			String makeCivilWarText = texts.get("gamePoliticActionMenu_makeCivilWarOpt");
+			String back = texts.get("back");
+			String notAvailableText = texts.get("notAvailable");
 			
-		String startProjectText = texts.get("gamePoliticActionMenu_startProjectOpt");
-		String tradeText = texts.get("gamePoliticActionMenu_tradeOpt");
-		String moveProxenusText = texts.get("gamePoliticActionMenu_moveProxenusOpt");
-		String makeCivilWarText = texts.get("gamePoliticActionMenu_makeCivilWarOpt");
-		String back = texts.get("back");
-		String notAvailableText = texts.get("notAvailable");
-		
-		// Opt 0 (Exit):
-		optionList.add(back);
-		availableValuesForRequest.add("0");
-		
-		// Opt 1 (Start Project):
-		if (AvailableActionsManager.checkStartProjectAnyAction(game, currentPlayer)) {
-			optionList.add(startProjectText);
-			availableValuesForRequest.add("1");
+			// Opt 0 (Exit):
+			optionList.add(back);
+			availableValuesForRequest.add("0");
+			
+			// Opt 1 (Start Project):
+			if (AvailableActionsManager.checkStartProjectAnyAction(game, currentPlayer)) {
+				optionList.add(startProjectText);
+				availableValuesForRequest.add("1");
+			}
+			else {
+				optionList.add(startProjectText + notAvailableText);
+			}
+			
+			// Opt 2 (Trade):
+			if (AvailableActionsManager.checkTradeAnyAction(game, currentPlayer)) {
+				optionList.add(tradeText);
+				availableValuesForRequest.add("2");
+			}
+			else {
+				optionList.add(tradeText + notAvailableText);
+			}
+			
+			// Opt 3 (Move proxenus):
+			if (AvailableActionsManager.checkMoveProxenusAnyAction(game, currentPlayer)) {
+				optionList.add(moveProxenusText);
+				availableValuesForRequest.add("3");
+			}
+			else {
+				optionList.add(moveProxenusText + notAvailableText);
+			}
+			
+			// Opt 4 (Make Civil War):
+			if (AvailableActionsManager.checkCivilWarAnyAction(game, currentPlayer)) {
+				optionList.add(makeCivilWarText);
+				availableValuesForRequest.add("4");
+			}
+			else {
+				optionList.add(makeCivilWarText + notAvailableText);
+			}
 		}
-		else {
-			optionList.add(startProjectText + notAvailableText);
-		}
-		
-		// Opt 2 (Trade):
-		if (AvailableActionsManager.checkTradeAnyAction(game, currentPlayer)) {
-			optionList.add(tradeText);
-			availableValuesForRequest.add("2");
-		}
-		else {
-			optionList.add(tradeText + notAvailableText);
-		}
-		
-		// Opt 3 (Move proxenus):
-		if (AvailableActionsManager.checkMoveProxenusAnyAction(game, currentPlayer)) {
-			optionList.add(moveProxenusText);
-			availableValuesForRequest.add("3");
-		}
-		else {
-			optionList.add(moveProxenusText + notAvailableText);
-		}
-		
-		// Opt 4 (Make Civil War):
-		if (AvailableActionsManager.checkCivilWarAnyAction(game, currentPlayer)) {
-			optionList.add(makeCivilWarText);
-			availableValuesForRequest.add("4");
-		}
-		else {
-			optionList.add(makeCivilWarText + notAvailableText);
-		}
-		
 		showMenuContents();
 		setPlayerChoice(requestPlayerChoice(getAvailableValuesForRequest()));
 	}

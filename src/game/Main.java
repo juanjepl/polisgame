@@ -72,6 +72,10 @@ public class Main{
 				//TODO
 				//TODO falta descontar a un jugador una unidad de recurso a elegir por el cuando el otro jugador pasa turno y el sigue usando turnos
 				//TODO
+				
+				//if both player has passed turn, the round finalize and start the next
+				theEndOfTheRound = polis_game.getAthensPlayer().getHasPassedTurn() && polis_game.getSpartaPlayer().getHasPassedTurn();
+				
 			}
 			
 			polis_game.getAthensPlayer().setHasPassedTurn(false);
@@ -89,6 +93,9 @@ public class Main{
 			
 			new EndGameCheckNoPrestige(polis_game, polis_game.getWhoHasTheTurn());
 			new EndGameCheckCapitals(polis_game, polis_game.getWhoHasTheTurn());
+			
+			//Show message for new Round created in EndRoundInitializeNextRound();
+			polisGameTextInterface.showChangeOfRound(polis_game.getRound());
 			
 		}
 		//TODO-> EndGameManager methods...

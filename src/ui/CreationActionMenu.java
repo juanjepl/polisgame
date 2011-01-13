@@ -34,56 +34,59 @@ public class CreationActionMenu extends AbstractMenu {
 	}
 	
 	public void execute() {
-		List<String> optionList = getMenuOptionsList();
-		Map<String, String> texts = getGameTexts();
 		
-		String createHoplitesText = texts.get("gameCreationAction_createHoplitesOpt");
-		String createTrirremesText = texts.get("gameCreationAction_createTrirremesOpt");
-		String createMerchantsText = texts.get("gameCreationAction_createMerchantsOpt");
-		String createProxenusText = texts.get("gameCreationAction_createProxenus");
-		String back = texts.get("back");
-		String notAvailableText = texts.get("notAvailable");
-		
-		// Opt 0 (Exit):
-		optionList.add(back);
-		availableValuesForRequest.add("0");
-		
-		// Opt 1 (Create Hoplites):
-		if (AvailableActionsManager.checkCreateHopliteAnyAction(currentRound, currentPlayer)) {
-			optionList.add(createHoplitesText);
-			availableValuesForRequest.add("1");
+		if(getMenuOptionsList().isEmpty())
+		{
+			List<String> optionList = getMenuOptionsList();
+			Map<String, String> texts = getGameTexts();
+			
+			String createHoplitesText = texts.get("gameCreationAction_createHoplitesOpt");
+			String createTrirremesText = texts.get("gameCreationAction_createTrirremesOpt");
+			String createMerchantsText = texts.get("gameCreationAction_createMerchantsOpt");
+			String createProxenusText = texts.get("gameCreationAction_createProxenus");
+			String back = texts.get("back");
+			String notAvailableText = texts.get("notAvailable");
+			
+			// Opt 0 (Exit):
+			optionList.add(back);
+			availableValuesForRequest.add("0");
+			
+			// Opt 1 (Create Hoplites):
+			if (AvailableActionsManager.checkCreateHopliteAnyAction(currentRound, currentPlayer)) {
+				optionList.add(createHoplitesText);
+				availableValuesForRequest.add("1");
+			}
+			else {
+				optionList.add(createHoplitesText + notAvailableText);
+			}
+			
+			// Opt 2 (Create Trirremes):
+			if (AvailableActionsManager.checkCreateTrirremeAnyAction(currentRound, currentPlayer)) {
+				optionList.add(createTrirremesText);
+				availableValuesForRequest.add("2");
+			}
+			else {
+				optionList.add(createTrirremesText + notAvailableText);
+			}
+			
+			// Opt 3 (Create Merchants/Trade Boats):
+			if (AvailableActionsManager.checkCreateTradeBoatAnyAction(currentRound, currentPlayer)) {
+				optionList.add(createMerchantsText);
+				availableValuesForRequest.add("3");
+			}
+			else {
+				optionList.add(createMerchantsText + notAvailableText);
+			}
+			
+			// Opt 4 (Create Proxenus):
+			if (AvailableActionsManager.checkCreateProxenusAnyAction(currentPlayer)) {
+				optionList.add(createProxenusText);
+				availableValuesForRequest.add("4");
+			}
+			else {
+				optionList.add(createProxenusText + notAvailableText);
+			}
 		}
-		else {
-			optionList.add(createHoplitesText + notAvailableText);
-		}
-		
-		// Opt 2 (Create Trirremes):
-		if (AvailableActionsManager.checkCreateTrirremeAnyAction(currentRound, currentPlayer)) {
-			optionList.add(createTrirremesText);
-			availableValuesForRequest.add("2");
-		}
-		else {
-			optionList.add(createTrirremesText + notAvailableText);
-		}
-		
-		// Opt 3 (Create Merchants/Trade Boats):
-		if (AvailableActionsManager.checkCreateTradeBoatAnyAction(currentRound, currentPlayer)) {
-			optionList.add(createMerchantsText);
-			availableValuesForRequest.add("3");
-		}
-		else {
-			optionList.add(createMerchantsText + notAvailableText);
-		}
-		
-		// Opt 4 (Create Proxenus):
-		if (AvailableActionsManager.checkCreateProxenusAnyAction(currentPlayer)) {
-			optionList.add(createProxenusText);
-			availableValuesForRequest.add("4");
-		}
-		else {
-			optionList.add(createProxenusText + notAvailableText);
-		}
-
 		showMenuContents();
 		setPlayerChoice(requestPlayerChoice(getAvailableValuesForRequest()));
 	}

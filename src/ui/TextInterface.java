@@ -92,7 +92,7 @@ public class TextInterface{
 	
 	public void executeMenu()
 	{
-		while(getMenu().getAutoExecutable())
+		while(getMenu() != null && getMenu().getAutoExecutable())
 		{
 			getMenu().execute();
 			setMenu();
