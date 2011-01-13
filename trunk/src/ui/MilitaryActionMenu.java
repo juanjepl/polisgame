@@ -1,31 +1,89 @@
 package ui;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 import exceptions.PolisGameRunningException;
+import game.AvailableActionsManager;
 import game.Game;
 
 public class MilitaryActionMenu extends AbstractMenu {
 	private Game game;
+	private List<String> availableValuesForRequest;
 	
 	public MilitaryActionMenu(Map<String, String> gameTexts, List<IMenu> menuList, Game game) {
 		super(gameTexts, menuList);
 		if (game == null) throw new IllegalArgumentException("'game' cannot be null");
 		this.game = game;
-		Map<String, String> texts = getGameTexts();
-		List<String> optionList = getMenuOptionsList();
+		
+		availableValuesForRequest = new ArrayList<String>();
 		
 		// TODO Hay que ver cuales opciones de las siguientes estan disponibles:
-		optionList.add(texts.get("gameMilitaryActionMenu_moveHoplitesOpt"));
-		optionList.add(texts.get("gameMilitaryActionMenu_moveTrirremesOpt"));
-		optionList.add(texts.get("gameMilitaryActionMenu_besiegePolisOpt"));
-		optionList.add(texts.get("gameMilitaryActionMenu_collectionOpt"));
-		optionList.add(texts.get("gamePoliticActionMenu_cancel"));
-	}
+		
 
+	}
+	public Game getGame(){
+		return game;
+	}
+	
+	public void setGame(Game game){
+		this.game = game;
+	}
+	
 	public void execute() {
-		setPlayerChoice(requestPlayerChoice());
-		// TODO
+		
+		if(getMenuOptionsList().isEmpty())
+		{
+			Map<String, String> texts = getGameTexts();
+			List<String> optionList = getMenuOptionsList();
+			
+			String back = texts.get("back");
+			String notAvailable = texts.get("notAvailable");
+			String moveHoplite = texts.get("gameMilitaryActionMenu_moveHoplitesOpt");
+			String moveTrirreme = texts.get("gameMilitaryActionMenu_moveTrirremesOpt");
+			String siegePolis = texts.get("gameMilitaryActionMenu_besiegePolisOpt");
+			String plunderTerritory = texts.get("gameMilitaryActionMenu_collectionOpt");
+			
+			// Options		
+			getMenuOptionsList().add(back);
+			getAvailableValuesForRequest().add("0");
+			
+			// Move Hoplite
+			if(AvailableActionsManager.checkMoveHopliteAnyAction(getGame(), getGame().getWhoHasTheTurn())){
+				getMenuOptionsList().add(moveHoplite);
+				getAvailableValuesForRequest().add("1");
+			}else{
+				getMenuOptionsList().add(moveHoplite + notAvailable);
+			}
+			
+			// Move Trirreme
+			if(AvailableActionsManager.checkMoveTrirremeAnyAction(getGame(), getGame().getWhoHasTheTurn())){
+				getMenuOptionsList().add(moveTrirreme);
+				getAvailableValuesForRequest().add("2");
+			}else{
+				getMenuOptionsList().add(moveTrirreme + notAvailable);
+			}
+			
+			// SiegePolis
+			if(AvailableActionsManager.checkSiegePolisAnyAction(getGame(), getGame().getWhoHasTheTurn())){
+				getMenuOptionsList().add(siegePolis);
+				getAvailableValuesForRequest().add("3");
+			}else{
+				getMenuOptionsList().add(siegePolis + notAvailable);
+			}
+			
+			// Plunder territory
+			if(AvailableActionsManager.checkPlunderTerritoryAnyAction(getGame(), getGame().getWhoHasTheTurn())){
+				getMenuOptionsList().add(plunderTerritory);
+				getAvailableValuesForRequest().add("4");
+			}else{
+				getMenuOptionsList().add(plunderTerritory + notAvailable);
+			}
+		}
+		
+		showMenuContents();
+		setPlayerChoice(requestPlayerChoice(getAvailableValuesForRequest()));
+
 	}
 
 	public String getHeaderMessage() {
@@ -33,29 +91,30 @@ public class MilitaryActionMenu extends AbstractMenu {
 	}
 
 	public IMenu getNextMenu() {
-		IMenu next = null;
+		IMenu nextMenu = null;
 		
-		// TODO Hay que ver cuales opciones de las siguientes estan disponibles:
-		/*switch (getPlayerChoice()) {
+		switch (getPlayerChoice()) {
 			case 0:
-				next = new MilitaryActionMoveHoplitesMenu(getGameTexts(), getMenuList(), game);
+				nextMenu = getMenuList().get((getMenuList().size()-1) - 1); //go back
 				break;
 			case 1:
-				next = new MilitaryActionMoveTrirremesMenu(getGameTexts(), getMenuList(), game);
+				nextMenu = new MilitaryActionMoveTrirremesMenu(getGameTexts(), getMenuList(), game);
 				break;
 			case 2:
-				next = new MilitaryActionBesiegePolisMenu(getGameTexts(), getMenuList(), game);
+				nextMenu = new MilitaryActionBesiegePolisMenu(getGameTexts(), getMenuList(), game);
 				break;
 			case 3:
-				next = new MilitaryActionCollectionMenu(getGameTexts(), getMenuList(), game);
+				nextMenu = new MilitaryActionCollectionMenu(getGameTexts(), getMenuList(), game);
 				break;
-			case 4:
-				next = getMenuList().get((getMenuList().size()) - 1); // Last element
-				break;
+
 			default:
-				throw new PolisGameRunningException("Invalid option choosen at MilitaryActionMenu");
-		}*/
+				
+		}
 		
-		return next;
+		return nextMenu;
+	}
+	
+	public List<String> getAvailableValuesForRequest(){
+		return availableValuesForRequest;
 	}
 }

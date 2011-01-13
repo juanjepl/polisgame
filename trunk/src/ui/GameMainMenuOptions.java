@@ -1,5 +1,6 @@
 package ui;
 
+import exceptions.PolisGameRunningException;
 import game.Player;
 
 import java.io.BufferedReader;
