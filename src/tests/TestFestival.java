@@ -82,27 +82,27 @@ public class TestFestival {
 		assert (p.getResourcesRequired().equals(mockResourcesRequired));
 	}
 
-	@Test(expected = AssertionError.class)
+	@Test(expected = NullPointerException.class)
 	public void testNullPrestige() {
 		Festival p = new Festival(mockSysName, mockName, null,
 				mockPrestigeToPosterity, mockResourcesRequired);
 
 		assert (p.getSysName().equals(mockSysName));
 		assert (p.getName().equals(mockName));
-		assert (p.getPrestige() == (mockPrestige));
+		assert (p.getPrestige() == (2));
 		assert (p.getPrestigeToPosterity() == (mockPrestigeToPosterity));
 		assert (p.getResourcesRequired().equals(mockResourcesRequired));
 	}
 
-	@Test(expected = AssertionError.class)
+	@Test(expected = NullPointerException.class)
 	public void testNullPrestigeToPosterity() {
-		Festival p = new Festival(mockSysName, mockName, null,
-				mockPrestigeToPosterity, mockResourcesRequired);
+		Festival p = new Festival(mockSysName, mockName,mockPrestige,
+				null, mockResourcesRequired);
 
 		assert (p.getSysName().equals(mockSysName));
 		assert (p.getName().equals(mockName));
 		assert (p.getPrestige() == (mockPrestige));
-		assert (p.getPrestigeToPosterity() == (mockPrestigeToPosterity));
+		assert (p.getPrestigeToPosterity() == (12));
 		assert (p.getResourcesRequired().equals(mockResourcesRequired));
 	}
 
