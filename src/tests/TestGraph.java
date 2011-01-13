@@ -44,7 +44,7 @@ public void testGraphCreation()
 	assert(g.getMapGraph().equals(mockMap));
 }
 	
-@Test(expected=IllegalArgumentException.class)
+@Test(expected=NullPointerException.class)
 public void testNullGraphCreation()
 {
 	mockNullMap.put(mockNullVertex, mockNullList);
@@ -52,5 +52,4 @@ public void testNullGraphCreation()
 	assert(g.getMapGraph().equals(mockNullMap));
 }
 	
-
 }
