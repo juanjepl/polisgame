@@ -1,5 +1,6 @@
 package tests;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import game.GameEvent;
@@ -13,35 +14,49 @@ import org.mockito.MockitoAnnotations;
 
 public class TestRound4 {
 	
-	@Mock List<Project> mockProjectsInThisRound; 
-	@Mock List<GameEvent> mockGameEventInThisRound; 
+	@Mock Project mockProject;
+	@Mock GameEvent mockGameEvent;
+	
+	List<Project> mockListProjects; 
+	List<GameEvent> mockListGameEvent; 
 
-	List<Project> mockNullProjectsInThisRound; 
-	GameEvent mockNullGameEventInThisRound; 	
+	List<Project> mockNullListProjects; 
+	List<GameEvent> mockNullListGameEvent; 	
 		
 	@Before
 	public void setup()
 	{
-		mockNullProjectsInThisRound=null; 
-		mockNullGameEventInThisRound=null; 
-		
+		mockListProjects= new ArrayList<Project>();
+		mockListGameEvent= new ArrayList<GameEvent>();
 		MockitoAnnotations.initMocks(this);
+		mockNullListProjects=null; 
+		mockNullListGameEvent=null;
+		
 	}
 	
 	@Test
 	public void testRound4Creation()
 	{
-		Round4 u = new Round4(mockProjectsInThisRound,mockGameEventInThisRound);
-		assert(u.getProjectsInThisRound() == mockProjectsInThisRound);
-		assert(u.getGameEventInThisRound() == mockGameEventInThisRound);
+		mockListProjects.add(mockProject);
+		mockListProjects.add(mockProject);
+		mockListProjects.add(mockProject);
+		mockListProjects.add(mockProject);
+		mockListProjects.add(mockProject);
+		mockListGameEvent.add(mockGameEvent);
+		mockListGameEvent.add(mockGameEvent);
+		mockListGameEvent.add(mockGameEvent);
+		mockListGameEvent.add(mockGameEvent);
+		mockListGameEvent.add(mockGameEvent);
+		Round4 u = new Round4(mockListProjects,mockListGameEvent);
+		assert(u.getProjectsInThisRound().contains(mockProject));
 		
 	}
-	@Test(expected=IllegalArgumentException.class)
+	@Test (expected=IllegalArgumentException.class)
 	public void testNullRound4Creation()
 	{
 		Round4 u = new Round4(null,null);
-		assert(u.getProjectsInThisRound() == mockNullProjectsInThisRound);
-		assert(u.getGameEventInThisRound() == mockNullGameEventInThisRound);
+		assert(u.getProjectsInThisRound() == mockNullListProjects);
+		assert(u.getGameEventInThisRound() == mockNullListGameEvent);
 		
 	}
 }
