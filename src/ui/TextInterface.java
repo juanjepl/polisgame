@@ -2,6 +2,7 @@ package ui;
 
 import java.io.BufferedReader;
 import java.io.InputStreamReader;
+import java.util.ArrayList;
 import java.util.Map;
 import java.util.List;
 import java.util.LinkedList;
@@ -27,7 +28,7 @@ public class TextInterface{
 		//game can be null for initialization
 		PolReader gameTextsFileReader = new PolReader();
 		gameTexts = gameTextsFileReader.readGameTexts();
-		menuList = new LinkedList<IMenu>();
+		menuList = new ArrayList<IMenu>();
 		
 		focusedMenu = new MainMenu(getGameTexts(),getMenuList(),game);
 		menuList.add(focusedMenu); // First in the list
@@ -97,7 +98,7 @@ public class TextInterface{
 			setMenu();
 			
 			Integer limit = menuList.indexOf(focusedMenu) + 2; //limit + 2 index = size index
-			while(menuList.size() > limit){
+			while(menuList.size() - 1 > limit){
 				menuList.remove((getMenuList().size()) - 1);
 			}
 		}
@@ -105,8 +106,10 @@ public class TextInterface{
 	
 	public void setMenu(){
 
-		menuList.add(focusedMenu);
-
+		if(!menuList.contains(focusedMenu))
+		{
+			menuList.add(focusedMenu);
+		}
 		focusedMenu = focusedMenu.getNextMenu();
 
 	}
