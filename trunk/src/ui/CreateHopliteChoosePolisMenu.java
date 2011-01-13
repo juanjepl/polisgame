@@ -14,12 +14,11 @@ public class CreateHopliteChoosePolisMenu extends AbstractMenu {
 	
 	public CreateHopliteChoosePolisMenu(Map<String, String> gameTexts, List<IMenu> menuList, Game game) {
 		super(gameTexts, menuList);
-		this.setGame(game);
+		setGame(game);
 		availablePolis = new ArrayList<Polis>();
 	}
 
 	public void execute(){
-		
 		// back option ("0" option)
 		String back = getGameTexts().get("back");
 		getMenuOptionsList().add(back);
