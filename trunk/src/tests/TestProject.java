@@ -12,6 +12,7 @@ import org.junit.Before;
 import org.junit.Test;
 import org.mockito.Mock;
 import org.mockito.MockitoAnnotations;
+
 public class TestProject {
 	@Mock
 	Player mockPlayer;
@@ -21,54 +22,52 @@ public class TestProject {
 	Player mockNullPlayer;
 	Position mockNullPosition;
 
-	
 	String mockSysName;
-	
+
 	String mockName;
-	
+
 	Integer mockPrestige;
-	
+
 	Integer mockPrestigeToPosterity;
-	
+
 	Map<String, Integer> mockResourcesRequired;
-	
+
 	Boolean mockFinished;
-	
+
 	Boolean mockUsed;
 
 	Project p;
-
 
 	@Before
 	public void setup() {
 		mockNullPlayer = null;
 		mockNullPosition = null;
-//		mockSysName = "Hercules";
-//		mockName = "Hercules";
-//		mockPrestige = 3;
-//		mockPrestigeToPosterity = 0;
-//		mockFinished = true;
-//		mockUsed = true;
-		
-//		 p = new ProjectGame(mockSysName, mockName, mockPrestige,
-//				mockPrestigeToPosterity, mockResourcesRequired);
-		
-		
+		// mockSysName = "Hercules";
+		// mockName = "Hercules";
+		// mockPrestige = 3;
+		// mockPrestigeToPosterity = 0;
+		// mockFinished = true;
+		// mockUsed = true;
+
+		// p = new ProjectGame(mockSysName, mockName, mockPrestige,
+		// mockPrestigeToPosterity, mockResourcesRequired);
+
 		MockitoAnnotations.initMocks(this);
 
 	}
-//
-//	@Test
-//	public void testProjectCreation() {
-//	 p = new ProjectGame(mockSysName, mockName, mockPrestige,
-//				mockPrestigeToPosterity, mockResourcesRequired);
-//		assert (p.getSysName().equals(mockSysName));
-//		assert (p.getName().equals(mockName));
-//		assert (p.getPrestige() == (mockPrestige));
-//		assert (p.getPrestigeToPosterity() == (mockPrestigeToPosterity));
-//		assert (p.getResourcesRequired().equals(mockResourcesRequired));
-//
-//	}
+
+	//
+	// @Test
+	// public void testProjectCreation() {
+	// p = new ProjectGame(mockSysName, mockName, mockPrestige,
+	// mockPrestigeToPosterity, mockResourcesRequired);
+	// assert (p.getSysName().equals(mockSysName));
+	// assert (p.getName().equals(mockName));
+	// assert (p.getPrestige() == (mockPrestige));
+	// assert (p.getPrestigeToPosterity() == (mockPrestigeToPosterity));
+	// assert (p.getResourcesRequired().equals(mockResourcesRequired));
+	//
+	// }
 	@Test(expected = NullPointerException.class)
 	public void testNullSysName() {
 		// Checks if Unit throws IllegalArgumentExceptions for null parameters
@@ -81,6 +80,7 @@ public class TestProject {
 		assert (p.getResourcesRequired().equals(mockResourcesRequired));
 
 	}
+
 	@Test(expected = NullPointerException.class)
 	public void testNullName() {
 		// Checks if Unit throws IllegalArgumentExceptions for null parameters
@@ -93,6 +93,7 @@ public class TestProject {
 		assert (p.getResourcesRequired().equals(mockResourcesRequired));
 
 	}
+
 	@Test(expected = NullPointerException.class)
 	public void testNullPrestige() {
 		// Checks if Unit throws IllegalArgumentExceptions for null parameters
@@ -106,12 +107,11 @@ public class TestProject {
 
 	}
 
-	
 	@Test(expected = NullPointerException.class)
 	public void testNullPrestigeToPosterity() {
 		// Checks if Unit throws IllegalArgumentExceptions for null parameters
-		Project p = new ProjectGame(mockSysName, mockName, mockPrestige,
-				null, mockResourcesRequired);
+		Project p = new ProjectGame(mockSysName, mockName, mockPrestige, null,
+				mockResourcesRequired);
 		assert (p.getSysName().equals(mockSysName));
 		assert (p.getName().equals(mockName));
 		assert (p.getPrestige() == (mockPrestige));
@@ -119,6 +119,7 @@ public class TestProject {
 		assert (p.getResourcesRequired().equals(mockResourcesRequired));
 
 	}
+
 	@Test(expected = NullPointerException.class)
 	public void testNullResourcesRequired() {
 		// Checks if Unit throws IllegalArgumentExceptions for null parameters
@@ -131,9 +132,6 @@ public class TestProject {
 		assert (p.getResourcesRequired().equals(mockResourcesRequired));
 
 	}
-
-
-
 
 	@Test(expected = IllegalArgumentException.class)
 	public void testNullPlayerUnitParameter() {
@@ -149,15 +147,4 @@ public class TestProject {
 		assert (u2.getPosition() == mockPosition);
 	}
 
-	@Test
-	public void getFinished()
-	{
-		
-		
-		
-	}
-	
-	
-	
-	
 }
