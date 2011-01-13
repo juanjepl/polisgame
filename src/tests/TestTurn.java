@@ -1,21 +1,13 @@
 package tests;
 
 import game.GameAction;
-import game.Position;
 import game.Turn;
-
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
 
 import org.junit.Before;
 import org.junit.Test;
 import org.mockito.Mock;
 import org.mockito.MockitoAnnotations;
 
-import navigation.Graph;
-import navigation.Vertex;
 
 public class TestTurn {
 
