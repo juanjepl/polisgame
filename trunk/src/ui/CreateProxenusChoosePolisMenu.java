@@ -4,10 +4,10 @@ import game.Game;
 import java.util.List;
 import java.util.Map;
 
-public class CreationActionCreateHoplitesMenu extends AbstractMenu {
+public class CreateProxenusChoosePolisMenu extends AbstractMenu {
 	private Game game;
 
-	public CreationActionCreateHoplitesMenu(Map<String, String> gameTexts, List<IMenu> menuList, Game game) {
+	public CreateProxenusChoosePolisMenu(Map<String, String> gameTexts, List<IMenu> menuList, Game game) {
 		super(gameTexts, menuList);
 		if (game == null) throw new IllegalArgumentException("'game' cannot be null");
 		this.game = game;
@@ -20,7 +20,7 @@ public class CreationActionCreateHoplitesMenu extends AbstractMenu {
 	}
 
 	public String getHeaderMessage() {
-		return getGameTexts().get("gameCreationActionCreateHoplitesMenu_headerMessage");
+		return getGameTexts().get("gameCreationActionCreateProxenusMenu_headerMessage");
 	}
 
 	public IMenu getNextMenu() {

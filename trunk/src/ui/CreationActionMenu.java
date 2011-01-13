@@ -105,7 +105,7 @@ public class CreationActionMenu extends AbstractMenu {
 				next = new CreateTradeBoatChoosePolisMenu(getGameTexts(), getMenuList(), getGame());
 				break;
 			case 4:
-				next = new CreationActionCreateProxenusMenu(getGameTexts(), getMenuList(), getGame());
+				next = new CreateProxenusChoosePolisMenu(getGameTexts(), getMenuList(), getGame());
 				break;
 		}
 		
