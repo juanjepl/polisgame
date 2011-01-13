@@ -11,17 +11,20 @@ import java.util.Collection;
 import java.util.List;
 import java.util.Map;
 
-public class MilitaryActionMoveHoplitesDestinationMenu extends AbstractMenu {
+public class MilitaryActionMoveHoplitesUnitCountMenu extends AbstractMenu {
 	private Game game;
 	private List<String> availableValuesForRequest;
 	private Territory originPosition;
+	private Territory destinationPosition;
+	private Integer unitToMoveCount;
 	private List<Territory> destinationPositions;
 	
-	public MilitaryActionMoveHoplitesDestinationMenu(Map<String, String> gameTexts, List<IMenu> menuList, Game game, Territory originPosition) {
+	public MilitaryActionMoveHoplitesUnitCountMenu(Map<String, String> gameTexts, List<IMenu> menuList, Game game, Territory originPosition, Territory destinationPosition) {
 		super(gameTexts, menuList);
 		if (game == null) throw new IllegalArgumentException("'game' cannot be null");
 		this.game = game;
 		this.originPosition = originPosition;
+		this.destinationPosition = destinationPosition;
 		availableValuesForRequest = new ArrayList<String>();
 	}
 
@@ -44,21 +47,13 @@ public class MilitaryActionMoveHoplitesDestinationMenu extends AbstractMenu {
 			optList.add(texts.get("back"));
 			availableValuesForRequest.add("0");
 			
-			// Opciones de territorios de destino
-			destinationPositions = new ArrayList<Territory>();
-			
-			Collection<Territory> gameTerritories = game.getGameTerritories().values();
-			for (Territory territory: gameTerritories) {
-				if(AvailableActionsManager.checkMoveHopliteAction(game, currentPlayer, game.getRound(), originPosition, territory, 1)) {
-					destinationPositions.add(territory);
-					
-					// Nueva opcion para el menu
-					optList.add(territory.getName());
-					Integer optionIndex = availableValuesForRequest.size();
-					availableValuesForRequest.add(optionIndex.toString());
-				}
+			// Opciones de numero de hoplitas a mover:
+			Integer originPositionUnitCount = originPosition.getHoplitesForAPlayer(currentPlayer).size();
+			for (int i = 0; i < originPositionUnitCount; i++) {
+				Integer optionIndex = availableValuesForRequest.size();
+				optList.add(optionIndex.toString());
+				availableValuesForRequest.add(optionIndex.toString());
 			}
-			
 		}
 		
 		setPlayerChoice(requestPlayerChoice(getAvailableValuesForRequest()));
@@ -69,14 +64,15 @@ public class MilitaryActionMoveHoplitesDestinationMenu extends AbstractMenu {
 	}
 
 	public String getHeaderMessage() {
-		return getGameTexts().get("gameMilitaryActionMoveHoplitesDestinationMenu_headerMessage");
+		return getGameTexts().get("gameMilitaryActionMoveHoplitesUnitCountMenu_headerMessage");
 	}
 
 	public IMenu getNextMenu() {
 		Integer userChoice = getPlayerChoice();
 		if (userChoice < 0 || userChoice > (availableValuesForRequest.size() - 1)) throw new PolisGameRunningException("Option not available choosen at MilitaryActionMenu");
 
-		Territory choosenDestinationPosition = destinationPositions.get(userChoice - 1);
-		return new MilitaryActionMoveHoplitesUnitCountMenu(getGameTexts(), getMenuList(), game, originPosition, choosenDestinationPosition);
+		unitToMoveCount = userChoice;
+		//return new MilitaryActionMoveHoplitesMakeMenu(getGameTexts(), getMenuList(), game, originPosition, destinationPosition, unitToMoveCount);
+		return null;
 	}
 }
