@@ -100,7 +100,10 @@ public class GameMainMenu extends AbstractMenu{
 		}else if(getPlayerChoice().equals(3)){
 			nextFocusedMenu = new PoliticActionMenu(getGameTexts(), getMenuList(), getGame());
 		}else if(getPlayerChoice().equals(4)){
-			//TODO
+			
+			getGame().getWhoHasTheTurn().setHasPassedTurn(true);
+			nextFocusedMenu = new GameMainMenu(getGameTexts(),getMenuList(), getGame()); //go back to this menu with other player
+			nextFocusedMenu.setAutoExecutable(false); //FIXME provisional.
 		}else{ //(getPlayerChoice().equals(5))
 			//TODO
 		}

@@ -17,6 +17,7 @@ public class EndTurnManager
 	public EndTurnManager(Game game)
 	{
 		if (game == null) throw new IllegalArgumentException("game can not be null");
+		this.game = game;
 		removePlundersUnitsFromTerritory();
 	}
 	
@@ -24,7 +25,6 @@ public class EndTurnManager
 	{
 		return game;
 	}
-	
 	
 	public void removePlundersUnitsFromTerritory()
 	{
