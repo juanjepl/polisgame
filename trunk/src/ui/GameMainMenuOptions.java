@@ -71,12 +71,12 @@ public class GameMainMenuOptions extends AbstractMenu {
 		IMenu nextMenu = null;
 		if(getPlayerChoice().equals(0))
 		{
-			nextMenu = getMenuList().get(getMenuList().size() - 1);
+			nextMenu = getMenuList().get((getMenuList().size()-1) - 1);
 			
 		}else if(getPlayerChoice().equals(1))
 		{
 			requestPlayerName();
-			nextMenu = getMenuList().get(getMenuList().size() - 1);
+			nextMenu = getMenuList().get((getMenuList().size()-1) - 1);
 		}
 		
 		return nextMenu;

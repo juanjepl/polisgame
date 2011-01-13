@@ -37,45 +37,49 @@ public class GameMainMenu extends AbstractMenu{
 	public void execute() {
 		
 		setAutoExecutable(true); // Only in this Menu class
-		
-		String notAvailable = getGameTexts().get("notAvailable");
-		String options = getGameTexts().get("gameMainMenu_options");
-		String creatorAction = getGameTexts().get("gameMainMenu_creatorAction");
-		String militaryAction = getGameTexts().get("gameMainMenu_militaryAction");
-		String politicAction = getGameTexts().get("gameMainMenu_politicAction");
-		String passTurn = getGameTexts().get("gameMainMenu_passTurn");
-		
-		// Options		
-		getMenuOptionsList().add(options);
-		getAvailableValuesForRequest().add("0");
-		
-		// Creator Action
-		if(AvailableActionsManager.checkCreatorAction(getGame().getRound(),getGame().getWhoHasTheTurn())){
-			getMenuOptionsList().add(creatorAction);
-			getAvailableValuesForRequest().add("1");
-		}else{
-			getMenuOptionsList().add(creatorAction + notAvailable);
+	
+		if(getMenuOptionsList().isEmpty())
+		{
+			String notAvailable = getGameTexts().get("notAvailable");
+			String options = getGameTexts().get("gameMainMenu_options");
+			String creatorAction = getGameTexts().get("gameMainMenu_creatorAction");
+			String militaryAction = getGameTexts().get("gameMainMenu_militaryAction");
+			String politicAction = getGameTexts().get("gameMainMenu_politicAction");
+			String passTurn = getGameTexts().get("gameMainMenu_passTurn");
+			
+			// Options		
+			getMenuOptionsList().add(options);
+			getAvailableValuesForRequest().add("0");
+			
+			// Creator Action
+			if(AvailableActionsManager.checkCreatorAction(getGame().getRound(),getGame().getWhoHasTheTurn())){
+				getMenuOptionsList().add(creatorAction);
+				getAvailableValuesForRequest().add("1");
+			}else{
+				getMenuOptionsList().add(creatorAction + notAvailable);
+			}
+			
+			// Military Action
+			if(AvailableActionsManager.checkMilitaryAction(getGame(),getGame().getWhoHasTheTurn())){
+				getMenuOptionsList().add(militaryAction);
+				getAvailableValuesForRequest().add("2");
+			}else{
+				getMenuOptionsList().add(militaryAction + notAvailable);
+			}
+			
+			// Politic Action
+			if(AvailableActionsManager.checkPoliticAction(getGame(),getGame().getWhoHasTheTurn())){
+				getMenuOptionsList().add(politicAction);
+				getAvailableValuesForRequest().add("3");
+			}else{
+				getMenuOptionsList().add(politicAction + notAvailable);
+			}
+			
+			// Pass Turn
+			getMenuOptionsList().add(passTurn);
+			getAvailableValuesForRequest().add("4");
+			
 		}
-		
-		// Military Action
-		if(AvailableActionsManager.checkMilitaryAction(getGame(),getGame().getWhoHasTheTurn())){
-			getMenuOptionsList().add(militaryAction);
-			getAvailableValuesForRequest().add("2");
-		}else{
-			getMenuOptionsList().add(militaryAction + notAvailable);
-		}
-		
-		// Politic Action
-		if(AvailableActionsManager.checkPoliticAction(getGame(),getGame().getWhoHasTheTurn())){
-			getMenuOptionsList().add(politicAction);
-			getAvailableValuesForRequest().add("3");
-		}else{
-			getMenuOptionsList().add(politicAction + notAvailable);
-		}
-		
-		// Pass Turn
-		getMenuOptionsList().add(passTurn);
-		getAvailableValuesForRequest().add("4");
 		
 		showMenuContents();
 		setPlayerChoice(requestPlayerChoice(getAvailableValuesForRequest()));
