@@ -98,7 +98,7 @@ public class GameMainMenu extends AbstractMenu{
 		}else if(getPlayerChoice().equals(2)){
 			nextFocusedMenu = new MilitaryActionMenu(getGameTexts(), getMenuList(), getGame());
 		}else if(getPlayerChoice().equals(3)){
-			//TODO
+			nextFocusedMenu = new PoliticActionMenu(getGameTexts(), getMenuList(), getGame());
 		}else if(getPlayerChoice().equals(4)){
 			//TODO
 		}else{ //(getPlayerChoice().equals(5))
