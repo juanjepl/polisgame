@@ -1,5 +1,7 @@
 package tests;
 
+import game.Position;
+
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -16,19 +18,19 @@ import navigation.Vertex;
 public class TestGraph {
 
 
-	@Mock Vertex mockVertex;
-	List mockList;
-	Map mockMap;
-	Map mockNullMap;
-	List mockNullList;
-	Vertex mockNullVertex;
+	@Mock Vertex<? extends Position> mockVertex;
+	List<Vertex<? extends Position>> mockList;
+	Map<Vertex<? extends Position>, List<Vertex<? extends Position>>> mockMap;
+	Map<Vertex<? extends Position>, List<Vertex<? extends Position>>> mockNullMap;
+	List<Vertex<? extends Position>> mockNullList;
+	Vertex<? extends Position> mockNullVertex;
 
 	
 @Before
 public void setup()
 {
-	mockList= new ArrayList<Vertex>();
-	mockMap=new HashMap<Vertex,List<Vertex>>();
+	mockList= new ArrayList<Vertex<? extends Position>>();
+	mockMap=new HashMap<Vertex<? extends Position>, List<Vertex<? extends Position>>>();
 	MockitoAnnotations.initMocks(this);
 	mockNullMap=null;
 	mockNullList=null;
