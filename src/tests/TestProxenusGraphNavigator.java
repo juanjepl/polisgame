@@ -5,7 +5,9 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import game.Player;
+import game.Polis;
 import game.Position;
+import game.Sea;
 import game.Territory;
 
 import org.junit.Before;
@@ -15,7 +17,7 @@ import navigation.Graph;
 import navigation.HopliteGraphNavigator;
 import navigation.Vertex;
 
-public class TestHopliteGraphNavigator {
+public class TestProxenusGraphNavigator {
 
 	Player mockPlayer;
 	Position mockPosition1;
@@ -36,8 +38,14 @@ public void setup()
 	mockNullPosition=null;
 	mockNullGraph=null;
 	mockPlayer=new Player("Marsé");
-	mockPosition1=new Territory("acarnania","Acarnania", null);
-	mockPosition2=new Territory("macedonia","Macedonia", null);
+	Territory arcanania =new Territory("acarnania","Acarnania", null);
+	Territory macedonia=new Territory("macedonia","Macedonia", null);
+	List<Sea> arcananiaSeas=new ArrayList<Sea>();
+	arcananiaSeas.add(new Sea("ionianSea","Mar Jónico"));
+	List<Sea> macedoniaSeas=new ArrayList<Sea>();
+	macedoniaSeas.add(new Sea("thraceSea","Mar de Tracia"));
+	mockPosition1=new Polis("pidna","Pidna", 2, 1, 3, macedonia, null, macedoniaSeas, null);
+	mockPosition2=new Polis("corcyra","Corcira", 2, 1, 3, arcanania, null, arcananiaSeas, null);
 	mockVertex = new Vertex(mockPosition1);
 	mockList= new ArrayList<Vertex<? extends Position>>();
 	mockMap=new HashMap<Vertex<? extends Position>, List<Vertex<? extends Position>>>();
