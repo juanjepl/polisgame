@@ -5,7 +5,6 @@ import java.util.List;
 
 import game.GameEvent;
 import game.Project;
-import game.Round;
 import game.Round3;
 
 import org.junit.Before;
@@ -27,17 +26,26 @@ public class TestRound3 {
 	@Before
 	public void setup()
 	{
-		mockNullListProjects=null; 
-		mockNullListGameEvent=null;
 		mockListProjects= new ArrayList<Project>();
 		mockListGameEvent= new ArrayList<GameEvent>();
 		MockitoAnnotations.initMocks(this);
+		mockNullListProjects=null; 
+		mockNullListGameEvent=null;
+		
 	}
 	
 	@Test
 	public void testRound3Creation()
 	{
 		mockListProjects.add(mockProject);
+		mockListProjects.add(mockProject);
+		mockListProjects.add(mockProject);
+		mockListProjects.add(mockProject);
+		mockListProjects.add(mockProject);
+		mockListGameEvent.add(mockGameEvent);
+		mockListGameEvent.add(mockGameEvent);
+		mockListGameEvent.add(mockGameEvent);
+		mockListGameEvent.add(mockGameEvent);
 		mockListGameEvent.add(mockGameEvent);
 		Round3 u = new Round3(mockListProjects,mockListGameEvent);
 		assert(u.getProjectsInThisRound().contains(mockProject));
