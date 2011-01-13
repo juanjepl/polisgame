@@ -24,7 +24,15 @@ public class CreationActionMenu extends AbstractMenu {
 		currentPlayer = game.getWhoHasTheTurn();
 		currentRound = game.getRound();
 	}
-
+	
+	public Game getGame(){
+		return game;
+	}
+	
+	public void setGame(Game game){
+		this.game = game;
+	}
+	
 	public void execute() {
 		List<String> optionList = getMenuOptionsList();
 		Map<String, String> texts = getGameTexts();
@@ -33,48 +41,48 @@ public class CreationActionMenu extends AbstractMenu {
 		String createTrirremesText = texts.get("gameCreationAction_createTrirremesOpt");
 		String createMerchantsText = texts.get("gameCreationAction_createMerchantsOpt");
 		String createProxenusText = texts.get("gameCreationAction_createProxenus");
-		String cancelText = texts.get("gamePoliticActionMenu_cancel");
+		String back = texts.get("back");
 		String notAvailableText = texts.get("notAvailable");
 		
-		// Opt 0 (Create Hoplites):
+		// Opt 0 (Exit):
+		optionList.add(back);
+		availableValuesForRequest.add("0");
+		
+		// Opt 1 (Create Hoplites):
 		if (AvailableActionsManager.checkCreateHopliteAnyAction(currentRound, currentPlayer)) {
 			optionList.add(createHoplitesText);
-			availableValuesForRequest.add("0");
+			availableValuesForRequest.add("1");
 		}
 		else {
 			optionList.add(createHoplitesText + notAvailableText);
 		}
 		
-		// Opt 1 (Create Trirremes):
+		// Opt 2 (Create Trirremes):
 		if (AvailableActionsManager.checkCreateTrirremeAnyAction(currentRound, currentPlayer)) {
 			optionList.add(createTrirremesText);
-			availableValuesForRequest.add("1");
+			availableValuesForRequest.add("2");
 		}
 		else {
 			optionList.add(createTrirremesText + notAvailableText);
 		}
 		
-		// Opt 2 (Create Merchants/Trade Boats):
+		// Opt 3 (Create Merchants/Trade Boats):
 		if (AvailableActionsManager.checkCreateTradeBoatAnyAction(currentRound, currentPlayer)) {
 			optionList.add(createMerchantsText);
-			availableValuesForRequest.add("2");
+			availableValuesForRequest.add("3");
 		}
 		else {
 			optionList.add(createMerchantsText + notAvailableText);
 		}
 		
-		// Opt 3 (Create Proxenus):
+		// Opt 4 (Create Proxenus):
 		if (AvailableActionsManager.checkCreateProxenusAnyAction(currentPlayer)) {
 			optionList.add(createProxenusText);
-			availableValuesForRequest.add("3");
+			availableValuesForRequest.add("4");
 		}
 		else {
 			optionList.add(createProxenusText + notAvailableText);
 		}
-		
-		// Opt 4 (Exit):
-		optionList.add(cancelText);
-		availableValuesForRequest.add("4");
 
 		showMenuContents();
 		setPlayerChoice(requestPlayerChoice(getAvailableValuesForRequest()));
@@ -91,20 +99,20 @@ public class CreationActionMenu extends AbstractMenu {
 		
 		switch (getPlayerChoice()) {
 			case 0:
-				next = new CreationActionCreateHoplitesMenu(getGameTexts(), getMenuList(), game);
+				// Exit:
+				next = getMenuList().get((getMenuList().size()-1) - 1); // Last element
 				break;
 			case 1:
-				next = new CreationActionCreateTrirremesMenu(getGameTexts(), getMenuList(), game);
+				next = new CreationActionCreateHoplitesMenu(getGameTexts(), getMenuList(), game);
 				break;
 			case 2:
-				next = new CreationActionCreateMerchantsMenu(getGameTexts(), getMenuList(), game);
+				next = new CreationActionCreateTrirremesMenu(getGameTexts(), getMenuList(), game);
 				break;
 			case 3:
-				next = new CreationActionCreateProxenusMenu(getGameTexts(), getMenuList(), game);
+				next = new CreationActionCreateMerchantsMenu(getGameTexts(), getMenuList(), game);
 				break;
 			case 4:
-				// Exit:
-				next = getMenuList().get((getMenuList().size()) - 1); // Last element
+				next = new CreationActionCreateProxenusMenu(getGameTexts(), getMenuList(), game);
 				break;
 		}
 		

@@ -94,7 +94,7 @@ public class GameMainMenu extends AbstractMenu{
 		if(getPlayerChoice().equals(0)){
 			nextFocusedMenu = new GameMainMenuOptions(getGameTexts(),getMenuList(), getGame().getWhoHasTheTurn(), getGame().getSpartaPlayer(), getGame().getAthensPlayer());
 		}else if(getPlayerChoice().equals(1)){
-			//TODO
+			nextFocusedMenu = new CreationActionMenu(getGameTexts(), getMenuList(), getGame());
 		}else if(getPlayerChoice().equals(2)){
 			nextFocusedMenu = new MilitaryActionMenu(getGameTexts(), getMenuList(), getGame());
 		}else if(getPlayerChoice().equals(3)){
