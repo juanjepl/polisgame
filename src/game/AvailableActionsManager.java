@@ -382,7 +382,7 @@ public class AvailableActionsManager {
 			
 			Boolean condition_minNumberOfUnits = realTroops >= polis.getBasePopulation();
 			Boolean condition_siegedPolis = !(polis.getSieged());
-			Boolean condition_isNotMine = !(polis.getPolisOwner().equals(player));
+			Boolean condition_isNotMine = polis.getPolisOwner() == null || !polis.getPolisOwner().equals(player);
 			available = condition_havePrestige && condition_minNumberOfUnits && condition_siegedPolis && condition_isNotMine;
 		}
 		
