@@ -98,11 +98,13 @@ public class Main{
 			polisGameTextInterface.showChangeOfRound(polis_game.getRound());
 			
 		}
-		//TODO-> EndGameManager methods...
+
 		new EndGameCheckNoPrestige(polis_game, polis_game.getWhoHasTheTurn());
 		new EndGameCheckCapitals(polis_game, polis_game.getWhoHasTheTurn());
 		new EndGameCheckStandardEndGame(polis_game, polis_game.getWhoHasTheTurn());
 
+		//TODO Show ressume list of players and show the winner
+		
 	}
 }
 
