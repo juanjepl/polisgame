@@ -92,12 +92,15 @@ public class MilitaryActionMenu extends AbstractMenu {
 				nextMenu = getMenuList().get((getMenuList().size()-1) - 1); //go back
 				break;
 			case 1:
-				nextMenu = new MilitaryActionMoveTrirremesMenu(getGameTexts(), getMenuList(), game);
+				nextMenu = new MilitaryActionMoveHoplitesOriginMenu(getGameTexts(), getMenuList(), game);
 				break;
 			case 2:
-				nextMenu = new MilitaryActionBesiegePolisMenu(getGameTexts(), getMenuList(), game);
+				nextMenu = new MilitaryActionMoveTrirremeOriginMenu(getGameTexts(), getMenuList(), game);
 				break;
 			case 3:
+				nextMenu = new MilitaryActionBesiegePolisMenu(getGameTexts(), getMenuList(), game);
+				break;
+			case 4:
 				nextMenu = new MilitaryActionCollectionMenu(getGameTexts(), getMenuList(), game);
 				break;
 
