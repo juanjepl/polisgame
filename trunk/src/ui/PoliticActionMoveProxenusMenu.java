@@ -11,23 +11,15 @@ import java.util.List;
 import java.util.Map;
 
 public class PoliticActionMoveProxenusMenu extends AbstractMenu {
-	private Game game;
+
 	private List<String> availableValuesForRequest;
 	
 	public PoliticActionMoveProxenusMenu(Map<String, String> gameTexts, List<IMenu> menuList, Game game) {
 		super(gameTexts, menuList);
+		this.setGame(game);
 		if (game == null) throw new IllegalArgumentException("'game' cannot be null");
-		this.game = game;
 		availableValuesForRequest = new ArrayList<String>();
 		// TODO
-	}
-
-	public Game getGame(){
-		return game;
-	}
-	
-	public void setGame(Game game){
-		this.game = game;
 	}
 	
 	public void execute() {
@@ -44,8 +36,12 @@ public class PoliticActionMoveProxenusMenu extends AbstractMenu {
 					}
 				}
 			}
-			System.out.println("proxeno "+ proxenusLocation);
-			Integer index = 0;
+
+			// Opt 0 (Exit):
+			optionList.add(getGameTexts().get("back"));
+			availableValuesForRequest.add("0");
+			
+			Integer index = 1;
 			
 			for(Polis destiny : getGame().getGamePolis().values()){ 
 				System.out.println(destiny.getName());
@@ -69,9 +65,13 @@ public class PoliticActionMoveProxenusMenu extends AbstractMenu {
 
 	public IMenu getNextMenu() {
 		IMenu next = null;
-		Integer choice = getPlayerChoice();
 		
-		// TODO
+		switch (getPlayerChoice()) {
+		case 0:
+			// Exit:
+			next = getMenuList().get((getMenuList().size()-1) - 1); // Last element
+			break;
+		}
 		
 		return next;
 	}

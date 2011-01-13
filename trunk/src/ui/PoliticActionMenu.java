@@ -3,31 +3,21 @@ package ui;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
-import exceptions.PolisGameRunningException;
 import game.AvailableActionsManager;
 import game.Game;
 import game.Player;
 
 public class PoliticActionMenu extends AbstractMenu {
-	private Game game;
+
 	private List<String> availableValuesForRequest;
 	private Player currentPlayer;
 	
-	public PoliticActionMenu(Map<String, String> gameTexts, List<IMenu> menuList, Game game) {
+	public PoliticActionMenu(Map<String, String> gameTexts, List<IMenu> menuList,Game game) {
 		super(gameTexts, menuList);
-		if (game == null) throw new IllegalArgumentException("'game' cannot be null");
-		
-		this.game = game;	
+		this.setGame(game);
 		availableValuesForRequest = new ArrayList<String>();
-		currentPlayer = game.getWhoHasTheTurn();
-	}
-
-	public Game getGame(){
-		return game;
-	}
-	
-	public void setGame(Game game){
-		this.game = game;
+		currentPlayer = getGame().getWhoHasTheTurn();
+		
 	}
 	
 	public void execute() {
@@ -48,7 +38,7 @@ public class PoliticActionMenu extends AbstractMenu {
 			availableValuesForRequest.add("0");
 			
 			// Opt 1 (Start Project):
-			if (AvailableActionsManager.checkStartProjectAnyAction(game, currentPlayer)) {
+			if (AvailableActionsManager.checkStartProjectAnyAction(getGame(), currentPlayer)) {
 				optionList.add(startProjectText);
 				availableValuesForRequest.add("1");
 			}
@@ -57,7 +47,7 @@ public class PoliticActionMenu extends AbstractMenu {
 			}
 			
 			// Opt 2 (Trade):
-			if (AvailableActionsManager.checkTradeAnyAction(game, currentPlayer)) {
+			if (AvailableActionsManager.checkTradeAnyAction(getGame(), currentPlayer)) {
 				optionList.add(tradeText);
 				availableValuesForRequest.add("2");
 			}
@@ -66,7 +56,7 @@ public class PoliticActionMenu extends AbstractMenu {
 			}
 			
 			// Opt 3 (Move proxenus):
-			if (AvailableActionsManager.checkMoveProxenusAnyAction(game, currentPlayer)) {
+			if (AvailableActionsManager.checkMoveProxenusAnyAction(getGame(), currentPlayer)) {
 				optionList.add(moveProxenusText);
 				availableValuesForRequest.add("3");
 			}
@@ -75,7 +65,7 @@ public class PoliticActionMenu extends AbstractMenu {
 			}
 			
 			// Opt 4 (Make Civil War):
-			if (AvailableActionsManager.checkCivilWarAnyAction(game, currentPlayer)) {
+			if (AvailableActionsManager.checkCivilWarAnyAction(getGame(), currentPlayer)) {
 				optionList.add(makeCivilWarText);
 				availableValuesForRequest.add("4");
 			}
@@ -93,8 +83,7 @@ public class PoliticActionMenu extends AbstractMenu {
 
 	public IMenu getNextMenu() {
 		IMenu next = null;
-		Integer choice = getPlayerChoice();
-		if (!availableValuesForRequest.contains(String.valueOf(choice))) throw new PolisGameRunningException("Option not available choosen at PoliticActionMenu");
+		//if (!availableValuesForRequest.contains(String.valueOf(choice))) throw new PolisGameRunningException("Option not available choosen at PoliticActionMenu");
 		
 		switch (getPlayerChoice()) {
 			case 0:
@@ -102,16 +91,16 @@ public class PoliticActionMenu extends AbstractMenu {
 				next = getMenuList().get((getMenuList().size()-1) - 1); // Last element
 				break;
 			case 1:
-				next = new PoliticActionStartProjectMenu(getGameTexts(), getMenuList(), game);
+				next = new PoliticActionStartProjectMenu(getGameTexts(), getMenuList(), getGame());
 				break;
 			case 2:
-				next = new PoliticActionTradeMenu(getGameTexts(), getMenuList(), game);
+				next = new PoliticActionTradeMenu(getGameTexts(), getMenuList(), getGame());
 				break;
 			case 3:
-				next = new PoliticActionMoveProxenusMenu(getGameTexts(), getMenuList(), game);
+				next = new PoliticActionMoveProxenusMenu(getGameTexts(), getMenuList(), getGame());
 				break;
 			case 4:
-				next = new PoliticActionMakeCivilWarMenu(getGameTexts(), getMenuList(), game);
+				next = new PoliticActionMakeCivilWarMenu(getGameTexts(), getMenuList(), getGame());
 				break;
 			
 		}

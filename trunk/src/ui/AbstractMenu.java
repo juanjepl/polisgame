@@ -6,6 +6,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 import game.Game;
+import game.Player;
 
 public abstract class AbstractMenu implements IMenu {
 	private Map<String, String> gameTexts;
@@ -151,6 +152,39 @@ public abstract class AbstractMenu implements IMenu {
 				counter += 1;
 			}
 		}
+	}
+	
+	public Integer rollTheDice(Integer t)
+	{
+		Integer dice = 0;
+		Integer times = t;
+		// request player's choose
+		while(times > 0){
+			
+			System.out.println(" ");
+			System.out.println(getGameTexts().get("abstractMenu_RollTheDiceMessage"));//FIXME
+			
+			BufferedReader br = new BufferedReader(new InputStreamReader(System.in)); // request athens's player's name
+			try {
+				br.readLine(); //don't need the result, only that user pressed any key
+			} catch (Exception e) {	
+				//TODO
+			}
+			
+			dice = dice + Player.rollTheDice();
+			
+			times--;
+		}
+		
+		if(t == 0) 
+		{
+			dice = 0;
+		}
+		else{
+			dice = dice / t; //media of t rolls
+		}
+		
+		return dice;
 	}
 	
 }
