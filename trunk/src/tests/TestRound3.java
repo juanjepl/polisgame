@@ -5,6 +5,7 @@ import java.util.List;
 
 import game.GameEvent;
 import game.Project;
+import game.Round;
 import game.Round3;
 
 import org.junit.Before;
@@ -17,38 +18,37 @@ public class TestRound3 {
 	@Mock Project mockProject;
 	@Mock GameEvent mockGameEvent;
 	
-	List<Project> mockProjectsInThisRound; 
-	List<GameEvent> mockGameEventInThisRound; 
+	List<Project> mockListProjects; 
+	List<GameEvent> mockListGameEvent; 
 
-	List<Project> mockNullProjectsInThisRound; 
-	List<GameEvent> mockNullGameEventInThisRound; 	
+	List<Project> mockNullListProjects; 
+	List<GameEvent> mockNullListGameEvent; 	
 		
 	@Before
 	public void setup()
 	{
-		mockNullProjectsInThisRound=null; 
-		mockNullGameEventInThisRound=null;
-		mockProjectsInThisRound= new ArrayList<Project>();
-		mockGameEventInThisRound= new ArrayList<GameEvent>();
+		mockNullListProjects=null; 
+		mockNullListGameEvent=null;
+		mockListProjects= new ArrayList<Project>();
+		mockListGameEvent= new ArrayList<GameEvent>();
 		MockitoAnnotations.initMocks(this);
 	}
 	
 	@Test
 	public void testRound3Creation()
 	{
-		mockProjectsInThisRound.add(mockProject);
-		mockGameEventInThisRound.add(mockGameEvent);
-		Round3 u = new Round3(mockProjectsInThisRound,mockGameEventInThisRound);
-		assert(u.getProjectsInThisRound() == mockProjectsInThisRound);
-		assert(u.getGameEventInThisRound() == mockGameEventInThisRound);
+		mockListProjects.add(mockProject);
+		mockListGameEvent.add(mockGameEvent);
+		Round3 u = new Round3(mockListProjects,mockListGameEvent);
+		assert(u.getProjectsInThisRound().contains(mockProject));
 		
 	}
 	@Test (expected=IllegalArgumentException.class)
 	public void testNullRound3Creation()
 	{
 		Round3 u = new Round3(null,null);
-		assert(u.getProjectsInThisRound() == mockNullProjectsInThisRound);
-		assert(u.getGameEventInThisRound() == mockNullGameEventInThisRound);
+		assert(u.getProjectsInThisRound() == mockNullListProjects);
+		assert(u.getGameEventInThisRound() == mockNullListGameEvent);
 		
 	}
 }

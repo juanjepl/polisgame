@@ -39,25 +39,9 @@ public class TestHoplite {
 	{
 		//Checks if Unit throws IllegalArgumentExceptions for null parameters
 		Hoplite u = new Hoplite(mockNullPlayer, mockNullPosition);
-		assert(u.getOwner() == mockPlayer);
-		assert(u.getPosition() == mockPosition);
+		assert(u.getOwner() == mockNullPlayer);
+		assert(u.getPosition() == mockNullPosition);
 		
-	}
-	
-	@Test(expected=IllegalArgumentException.class)
-	public void testNullPlayerUnitParameter()
-	{
-		Hoplite u2 = new Hoplite(mockNullPlayer, mockPosition);
-		assert(u2.getOwner() == mockPlayer);
-		assert(u2.getPosition() == mockPosition);
-	}
-	
-	@Test(expected=IllegalArgumentException.class)
-	public void testNullPositionUnitParameter()
-	{
-		Hoplite u2 = new Hoplite(mockPlayer, mockNullPosition);
-		assert(u2.getOwner() == mockPlayer);
-		assert(u2.getPosition() == mockPosition);
 	}
 
 }
