@@ -22,6 +22,7 @@ public class ProxenusGraphNavigator extends GenericGraphNavigator {
 		this.graph = graph;
 		this.polis1 = polis1;
 		this.polis2 = polis2;
+		amountToPayForWay = 0;
 		existsWay();
 	}
 	
