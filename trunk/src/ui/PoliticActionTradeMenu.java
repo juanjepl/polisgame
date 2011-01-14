@@ -48,7 +48,7 @@ public class PoliticActionTradeMenu extends AbstractMenu {
 	}
 
 	public String getHeaderMessage() {
-		return getGameTexts().get("gamePoliticActionTradeMenu_headerMessage");
+		return getGameTexts().get("politicActionTradeMenu_headerMessage");
 	}
 
 	public IMenu getNextMenu() {
@@ -62,7 +62,7 @@ public class PoliticActionTradeMenu extends AbstractMenu {
 		default:
 			
 			Market market = getGame().getGameMarkets().get(getMenuList().get(getPlayerChoice()));
-			next = new TradeChooseResourcesMenu(getGameTexts(), getMenuList(), getGame(), market);
+			next = new PoliticActionTradeChooseResourcesMenu(getGameTexts(), getMenuList(), getGame(), market);
 			break;
 		}
 		return next;

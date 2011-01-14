@@ -77,7 +77,7 @@ public class PoliticActionStartProjectSelectPolisMenu extends AbstractMenu{
 	}
 
 	public String getHeaderMessage() {
-		return getGameTexts().get("gamePoliticActionStartProjectMenuSelectPolis_headerMessage");
+		return getGameTexts().get("politicActionStartProjectSelectPolisMenu_headerMessage");
 	}
 
 	public IMenu getNextMenu() {
@@ -98,7 +98,7 @@ public class PoliticActionStartProjectSelectPolisMenu extends AbstractMenu{
 	
 	public void showActionDoneMessage(String projectName){
 		System.out.println(" "); // White space
-		System.out.println(getGameTexts().get("PoliticActionStartProjectSelectPolisMenu_projectHaveBeenCreated")+ " " + projectName);//FIXME
+		System.out.println(getGameTexts().get("politicActionStartProjectSelectPolisMenu_projectHaveBeenCreated")+ " " + projectName);//FIXME
 	}
 	
 	
