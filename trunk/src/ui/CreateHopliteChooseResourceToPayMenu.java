@@ -96,7 +96,7 @@ public class CreateHopliteChooseResourceToPayMenu extends AbstractMenu{
 	}
 	
 	public String getHeaderMessage() {
-		return getGameTexts().get("createHopliteChooseResourceToPay_headerMessage"); //FIXME gametext-> "Elija un recurso a gastar para esta accion:"
+		return getGameTexts().get("createHopliteChooseResourceToPay_headerMessage");
 	}
 	
 	public Polis getSelectedPolis(){
@@ -105,7 +105,7 @@ public class CreateHopliteChooseResourceToPayMenu extends AbstractMenu{
 	
 	public void showActionDoneMessage(){
 		System.out.println(" "); // White space
-		System.out.println(getGameTexts().get("createHopliteChooseResourceToPayMenu_actionDoneMessage")+ getSelectedPolis().getPolisParentTerritory().getName()); // FIXME gametext-> "Hoplita creado en "
+		System.out.println(getGameTexts().get("createHopliteChooseResourceToPayMenu_actionDoneMessage")+ getSelectedPolis().getPolisParentTerritory().getName());
 	}
 	
 	public String getSelectedResource(){

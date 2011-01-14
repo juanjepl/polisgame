@@ -38,7 +38,7 @@ public class CreateHopliteChoosePolisMenu extends AbstractMenu {
 	}
 
 	public String getHeaderMessage() {
-		return getGameTexts().get("createHopliteChoosePolisMenu_headerMessage"); //FIXME "Seleccione la Polis desde donde crear el Hoplita:"
+		return getGameTexts().get("createHopliteChoosePolisMenu_headerMessage");
 	}
 
 	public IMenu getNextMenu() {

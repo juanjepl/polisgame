@@ -38,7 +38,7 @@ public class CreateTrirremeChoosePolisMenu extends AbstractMenu {
 	}
 	
 	public String getHeaderMessage() {
-		return getGameTexts().get("gameCreationActionCreateTrirremesMenu_headerMessage");
+		return getGameTexts().get("createTrirremeChoosePolisMenu_headerMessage");
 	}
 
 	public IMenu getNextMenu() {

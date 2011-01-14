@@ -119,7 +119,7 @@ public class CreateTrirremeChooseResourceToPayMenu extends AbstractMenu{
 	}
 	
 	public String getHeaderMessage() {
-		return getGameTexts().get("createTrirremeChooseResourceToPay_headerMessage"); //FIXME gametext-> "Elija un recurso a gastar para esta accion:"
+		return getGameTexts().get("createTrirremeChooseResourceToPay_headerMessage");
 	}
 	
 	public Polis getSelectedPolis(){
@@ -128,7 +128,7 @@ public class CreateTrirremeChooseResourceToPayMenu extends AbstractMenu{
 	
 	public void showActionDoneMessage(){
 		System.out.println(" "); // White space
-		System.out.println(getGameTexts().get("createTrirremeChooseResourceToPayMenu_actionDoneMessage")+ getSelectedPolis().getPolisSeas().get(0).getName()); // FIXME gametext-> "Trirreme creada en "
+		System.out.println(getGameTexts().get("createTrirremeChooseResourceToPayMenu_actionDoneMessage")+ getSelectedPolis().getPolisSeas().get(0).getName());
 	}
 	
 	public String getSelectedResource(){
