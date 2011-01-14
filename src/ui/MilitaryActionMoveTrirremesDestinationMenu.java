@@ -4,20 +4,20 @@ import exceptions.PolisGameRunningException;
 import game.AvailableActionsManager;
 import game.Game;
 import game.Player;
-import game.Territory;
+import game.Sea;
 
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
 import java.util.Map;
 
-public class MilitaryActionMoveHoplitesDestinationMenu extends AbstractMenu {
+public class MilitaryActionMoveTrirremesDestinationMenu extends AbstractMenu {
 	private Game game;
 	private List<String> availableValuesForRequest;
-	private Territory originPosition;
-	private List<Territory> destinationPositions;
+	private Sea originPosition;
+	private List<Sea> destinationPositions;
 	
-	public MilitaryActionMoveHoplitesDestinationMenu(Map<String, String> gameTexts, List<IMenu> menuList, Game game, Territory originPosition) {
+	public MilitaryActionMoveTrirremesDestinationMenu(Map<String, String> gameTexts, List<IMenu> menuList, Game game, Sea originPosition) {
 		super(gameTexts, menuList);
 		if (game == null) throw new IllegalArgumentException("'game' cannot be null");
 		this.game = game;
@@ -44,12 +44,12 @@ public class MilitaryActionMoveHoplitesDestinationMenu extends AbstractMenu {
 			optList.add(texts.get("back"));
 			availableValuesForRequest.add("0");
 			
-			// Opciones de territorios de destino
-			destinationPositions = new ArrayList<Territory>();
+			// Opciones de oceanos de destino
+			destinationPositions = new ArrayList<Sea>();
 			
-			Collection<Territory> gameTerritories = game.getGameTerritories().values();
-			for (Territory territory: gameTerritories) {
-				if(AvailableActionsManager.checkMoveHopliteAction(game, currentPlayer, game.getRound(), originPosition, territory, 1)) {
+			Collection<Sea> gameTerritories = game.getGameSeas().values();
+			for (Sea territory: gameTerritories) {
+				if(AvailableActionsManager.checkMoveTrirremeAction(game, currentPlayer, game.getRound(), originPosition, territory, 1)) {
 					destinationPositions.add(territory);
 					
 					// Nueva opcion para el menu
@@ -70,20 +70,20 @@ public class MilitaryActionMoveHoplitesDestinationMenu extends AbstractMenu {
 	}
 
 	public String getHeaderMessage() {
-		return getGameTexts().get("gameMilitaryActionMoveHoplitesDestinationMenu_headerMessage");
+		return getGameTexts().get("gameMilitaryActionMoveTrirremesDestinationMenu_headerMessage");
 	}
 
 	public IMenu getNextMenu() {
 		IMenu next;
 	
 		Integer userChoice = getPlayerChoice();
-		if (userChoice < 0 || userChoice > (availableValuesForRequest.size() - 1)) throw new PolisGameRunningException("Option not available choosen at MilitaryActionMoveHoplitesDestinationMenu");
+		if (userChoice < 0 || userChoice > (availableValuesForRequest.size() - 1)) throw new PolisGameRunningException("Option not available choosen at MilitaryActionMoveTrirremesDestinationMenu");
 		
 		if(userChoice.equals(0)){
 			next = getMenuList().get((getMenuList().size()-1) - 1);
 		} else {
-			Territory choosenDestinationPosition = destinationPositions.get(userChoice - 1);
-			next = new MilitaryActionMoveHoplitesUnitCountMenu(getGameTexts(), getMenuList(), game, originPosition, choosenDestinationPosition);
+			Sea choosenDestinationPosition = destinationPositions.get(userChoice - 1);
+			next = new MilitaryActionMoveTrirremesUnitCountMenu(getGameTexts(), getMenuList(), game, originPosition, choosenDestinationPosition);
 		}
 		
 		return next;

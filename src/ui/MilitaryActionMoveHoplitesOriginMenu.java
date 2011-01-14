@@ -76,7 +76,7 @@ public class MilitaryActionMoveHoplitesOriginMenu extends AbstractMenu {
 	public IMenu getNextMenu() {
 		IMenu next;
 		Integer userChoice = getPlayerChoice();
-		if (userChoice < 0 || userChoice > (availableValuesForRequest.size() - 1)) throw new PolisGameRunningException("Option not available choosen at MilitaryActionMenu");
+		if (userChoice < 0 || userChoice > (availableValuesForRequest.size() - 1)) throw new PolisGameRunningException("Option not available choosen at MilitaryActionMoveHoplitesOriginMenu");
 		
 		if(userChoice.equals(0)){
 			next = getMenuList().get((getMenuList().size()-1) - 1);

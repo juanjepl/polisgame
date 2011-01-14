@@ -51,7 +51,12 @@ gameMilitaryActionMoveHoplitesOriginMenu_headerMessage;Por favor, elija el terri
 gameMilitaryActionMoveHoplitesDestinationMenu_headerMessage;Por favor, elija el territorio destino:
 gameMilitaryActionMoveHoplitesUnitCountMenu_headerMessage;Por favor, elija el numero de hoplitas a mover:
 gameMilitaryActionMoveHoplitesMakeMenu_error;Numero de hoplitas incorrectos
-gameMilitaryActionMoveTrirremesMenu_headerMessage;Por favor, elija origen y destino:
+gameMilitaryActionMoveHoplitesMakeMenu_success;Hoplitas movidos correctamente
+gameMilitaryActionMoveTrirremesOriginMenu_headerMessage;Por favor, elija el territorio origen:
+gameMilitaryActionMoveTrirremesDestinationMenu_headerMessage;Por favor, elija el territorio destino:
+gameMilitaryActionMoveTrirremesUnitCountMenu_headerMessage;Por favor, elija el numero de trirremes a mover:
+gameMilitaryActionMoveTrirremesMakeMenu_error;Numero de trirremes incorrectos
+gameMilitaryActionMoveTrirremesMakeMenu_success;Trirremes movidos correctamente
 gameMilitaryActionBesiegePolisMenu_headerMessage;Por favor, elija la ciudad a asediar:
 gameMilitaryActionCollectionMenu_headerMessage;Por favor, seleccione (por terminar este mensaje):
 gameCreationAction_headerMessage;Por favor, elija una acción militar entre las disponibles:

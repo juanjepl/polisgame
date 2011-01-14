@@ -2,22 +2,22 @@ package ui;
 
 import game.AvailableActionsManager;
 import game.Game;
-import game.MoveHopliteAction;
+import game.MoveTrirremeAction;
 import game.Player;
-import game.Territory;
+import game.Sea;
 
 //import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
-public class MilitaryActionMoveHoplitesMakeMenu extends AbstractMenu {
+public class MilitaryActionMoveTrirremesMakeMenu extends AbstractMenu {
 	private Game game;
 	//private List<String> availableValuesForRequest;
-	private Territory originPosition;
-	private Territory destinationPosition;
+	private Sea originPosition;
+	private Sea destinationPosition;
 	private Integer unitToMoveCount;
 	
-	public MilitaryActionMoveHoplitesMakeMenu(Map<String, String> gameTexts, List<IMenu> menuList, Game game, Territory originPosition, Territory destinationPosition, Integer unitToMoveCount) {
+	public MilitaryActionMoveTrirremesMakeMenu(Map<String, String> gameTexts, List<IMenu> menuList, Game game, Sea originPosition, Sea destinationPosition, Integer unitToMoveCount) {
 		super(gameTexts, menuList);
 		if (game == null) throw new IllegalArgumentException("'game' cannot be null");
 		this.game = game;
@@ -39,13 +39,13 @@ public class MilitaryActionMoveHoplitesMakeMenu extends AbstractMenu {
 		Map<String, String> texts = getGameTexts();
 		Player currentPlayer = game.getWhoHasTheTurn();
 
-		if(AvailableActionsManager.checkMoveHopliteAction(game, currentPlayer, game.getRound(), originPosition, destinationPosition, unitToMoveCount)) {
-			MoveHopliteAction action = new MoveHopliteAction(currentPlayer, game.getRound(), originPosition, destinationPosition, unitToMoveCount, (unitToMoveCount > 1));
+		if(AvailableActionsManager.checkMoveTrirremeAction(game, currentPlayer, game.getRound(), originPosition, destinationPosition, unitToMoveCount)) {
+			MoveTrirremeAction action = new MoveTrirremeAction(currentPlayer, originPosition, destinationPosition, unitToMoveCount, (unitToMoveCount > 1));
 			System.out.println(texts.get("gameMilitaryActionMoveHoplitesMakeMenu_success"));
 			game.getRound().getCurrentTurn().addGameAction(action);
 		}
 		else {
-			System.out.println(texts.get("gameMilitaryActionMoveHoplitesMakeMenu_error"));
+			System.out.println(texts.get("gameMilitaryActionMoveTrirremesMakeMenu_error"));
 		}
 	}
 
@@ -54,7 +54,7 @@ public class MilitaryActionMoveHoplitesMakeMenu extends AbstractMenu {
 	}*/
 
 	public String getHeaderMessage() {
-		return getGameTexts().get("gameMilitaryActionMoveHoplitesUnitCountMenu_headerMessage");
+		return getGameTexts().get("gameMilitaryActionMoveTrirremesUnitCountMenu_headerMessage");
 	}
 
 	public IMenu getNextMenu() {

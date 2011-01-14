@@ -95,7 +95,7 @@ public class MilitaryActionMenu extends AbstractMenu {
 				nextMenu = new MilitaryActionMoveHoplitesOriginMenu(getGameTexts(), getMenuList(), game);
 				break;
 			case 2:
-				nextMenu = new MilitaryActionMoveTrirremeOriginMenu(getGameTexts(), getMenuList(), game);
+				nextMenu = new MilitaryActionMoveTrirremesOriginMenu(getGameTexts(), getMenuList(), game);
 				break;
 			case 3:
 				nextMenu = new MilitaryActionBesiegePolisMenu(getGameTexts(), getMenuList(), game);
