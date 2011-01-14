@@ -26,6 +26,9 @@ public class CreateHopliteChooseResourceToPayMenu extends AbstractMenu{
 		String silver = getGameTexts().get("silver");
 		String metal = getGameTexts().get("metal");
 		
+		String back = getGameTexts().get("back");
+		getMenuOptionsList().add(back);
+		
 		CreatorAction cA;
 		
 		List<String> payments = new ArrayList<String>();

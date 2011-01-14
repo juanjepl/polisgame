@@ -28,6 +28,10 @@ public class CreateTrirremeChooseResourceToPayMenu extends AbstractMenu{
 		
 		CreatorAction cA;
 		
+		String back = getGameTexts().get("back");
+		getMenuOptionsList().add(back);
+		
+		
 		List<String> payments = new ArrayList<String>();
 		
 		// two if blocks, not one with else if

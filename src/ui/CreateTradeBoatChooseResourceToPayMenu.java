@@ -26,6 +26,10 @@ public class CreateTradeBoatChooseResourceToPayMenu extends AbstractMenu{
 		String silver = getGameTexts().get("silver");
 		String wood = getGameTexts().get("wood");
 		
+		String back = getGameTexts().get("back");
+		
+		getMenuOptionsList().add(back);
+		
 		CreatorAction cA;
 		
 		List<String> payments = new ArrayList<String>();
