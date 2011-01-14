@@ -60,7 +60,7 @@ public class PoliticActionStartProjectMenu extends AbstractMenu {
 	}
 
 	public String getHeaderMessage() {
-		return getGameTexts().get("gamePoliticActionStartProjectMenu_headerMessage");
+		return getGameTexts().get("politicActionStartProjectMenu_headerMessage");
 	}
 
 	public IMenu getNextMenu() {

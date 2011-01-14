@@ -80,12 +80,23 @@ createHopliteChoosePolisMenu_headerMessage;Seleccione la Polis desde donde crear
 createTradeBoatChoosePolisMenu_headerMessage;Seleccione la Polis desde donde crear el barco mercante:
 createProxenusChoosePolisMenu_headerMessage;Seleccion la Polis donde crear el Proxeno (Costo: 5 unidades de Plata):
 createProxenusChoosePolisMenu_actionDoneMessage;Proxeno creado en 
-createHopliteChooseResourceToPay_headerMessage;Seleccione un recurso a gastar:
-createHopliteChooseResourceToPay_actionDoneMessage;Hoplita creado en 
-createTradeBoatChooseResourceToPay_actionDoneMessage;Barco mercante creado en 
-createTradeBoatChooseResourceToPay_headerMessage;Seleccione un recurso a gastar:
-createTrirremeChooseCreationSea_actionDoneMessage;Trirreme creada en 
-createTrirremeChooseCreationSea_headerMessage;Seleccione el mar donde situar la trirreme creada:
+createHopliteChooseResourceToPayMenu_headerMessage;Seleccione un recurso a gastar:
+createHopliteChooseResourceToPayMenu_actionDoneMessage;Hoplita creado en 
+createTradeBoatChooseResourceToPayMenu_actionDoneMessage;Barco mercante creado en 
+createTradeBoatChooseResourceToPayMenu_headerMessage;Seleccione un recurso a gastar:
+createTrirremeChooseCreationSeaMenu_actionDoneMessage;Trirreme creada en 
+createTrirremeChooseCreationSeaMenu_headerMessage;Seleccione el mar donde situar la trirreme creada:
 createTrirremeChoosePolisMenu_headerMessage;Seleccione la Polis desde donde crear la trirreme:
-createTrirremeChooseResourceToPay_headerMessage;Seleccione un recurso a gastar:
-createTrirremeChooseResourceToPay_actionDoneMessage;Trirreme creada en 
+createTrirremeChooseResourceToPayMenu_headerMessage;Seleccione un recurso a gastar:
+createTrirremeChooseResourceToPayMenu_actionDoneMessage;Trirreme creada en 
+politicActionMoveProxenusMenu_headerMessage;Seleccione la Polis donde mover el Proxeno:
+politicActionMoveProxenusMenu_proxenusMovedTo;Proxeno movido a 
+politicActionStartProjectMenu_headerMessage;Seleccione el proyecto a crear:
+politicActionStartProjectSelectPolisMenu_headerMessage;Seleccione la Polis donde crear el proyecto:
+politicActionStartProjectSelectPolisMenu_projectHaveBeenCreated;Se ha creado el proyecto 
+politicActionTradeMenu_headerMessage;Seleccione el mercado donde comerciar:
+politicActionTradeChooseResourcesMenu_headerMessage;Seleccione el recurso a conseguir:
+politicActionTradeChooseResourcesNeededMenu_headerMessage;Seleccione el recurso con el que comprar:
+politicActionTradeChooseResourceNeededMenu_tradedBy;intercambiado por
+politicActionMakeCivilWarMenu_headerMessage;Provocar guerra civil:
+politicActionCivilWarMenu_civilWarDone;Guerra civil provocada en 

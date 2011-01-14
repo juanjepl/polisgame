@@ -87,7 +87,7 @@ public class PoliticActionMoveProxenusMenu extends AbstractMenu {
 	}
 
 	public String getHeaderMessage() {
-		return getGameTexts().get("gamePoliticActionMoveProxenusMenu_headerMessage");
+		return getGameTexts().get("politicActionMoveProxenusMenu_headerMessage");
 	}
 
 	public IMenu getNextMenu() {

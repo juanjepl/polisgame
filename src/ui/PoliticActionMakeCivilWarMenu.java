@@ -36,7 +36,7 @@ public class PoliticActionMakeCivilWarMenu extends AbstractMenu {
 	}
 
 	public String getHeaderMessage() {
-		return getGameTexts().get("gamePoliticActionMakeCivilWarMenu_headerMessage");
+		return getGameTexts().get("politicActionMakeCivilWarMenu_headerMessage");
 	}
 
 	public IMenu getNextMenu() {
@@ -58,7 +58,7 @@ public class PoliticActionMakeCivilWarMenu extends AbstractMenu {
 	
 	public void showActionDoneMessage(String polisName){
 		System.out.println(" "); // White space
-		System.out.println(getGameTexts().get("PoliticActionCivilWarMenu_civilWarDone")+ " " + polisName);//FIXME
+		System.out.println(getGameTexts().get("politicActionCivilWarMenu_civilWarDone")+ " " + polisName);//FIXME
 	}
 	
 
