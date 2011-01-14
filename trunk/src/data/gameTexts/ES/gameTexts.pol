@@ -24,13 +24,13 @@ gameMainMenu_requestPlayerNames;Introduzca los nombres de los jugadores
 gameMainMenu_errorSameNames;Por favor, introduzca un nombre diferente del del otro jugador
 gameMainMenu_options;Opciones
 gameMainMenu_creatorAction;Accion de creacion
-gameMainMenu_militaryAction;Acción militar
-gameMainMenu_politicAction;Acción politica
+gameMainMenu_militaryAction;Accion militar
+gameMainMenu_politicAction;Accion politica
 gameMainMenu_passTurn;Pasar turno
 gameMainMenu_headerMessage;Por favor, elija una opcion:
 gameMainMenuOptions_renamePlayer;Cambiar nickname
 gameMainMenuOptions_chooseNick;Nuevo nick:
-notAvailable;- No disponible -
+notAvailable; - No disponible -
 newRound;Nueva Ronda
 gamePoliticActionMenu_headerMessage;Por favor, elija una accion politica entre las disponibles:
 gamePoliticActionMenu_startProjectOpt;Comenzar proyecto
