@@ -53,7 +53,9 @@ public class PoliticActionMoveProxenusMenu extends AbstractMenu {
 			Integer index = 1;
 			
 			for(Polis destiny : getGame().getGamePolis().values()){ 
-				System.out.println(destiny.getName());
+				System.out.println(proxenusLocation.getName() + " a " + destiny.getName());
+				if(!destiny.getSysName().equals("samos") && !destiny.getSysName().equals("chios"))
+				{
 				if(AvailableActionsManager.checkMoveProxenusAction(getGame(), getGame().getWhoHasTheTurn(),proxenusLocation,destiny)){
 					optionList.add(destiny.getName());
 					polisList.add(destiny);
@@ -61,6 +63,7 @@ public class PoliticActionMoveProxenusMenu extends AbstractMenu {
 					index++;
 				}else {
 					optionList.add(destiny.getName() + texts.get("notAvailable"));
+				}
 				}
 			}
 		}
