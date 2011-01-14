@@ -7,21 +7,24 @@ import game.Player;
 import game.Territory;
 
 import java.util.ArrayList;
+import java.util.Collection;
 import java.util.List;
 import java.util.Map;
+import java.util.Vector;
 
-public class MilitaryActionCollectionMenu extends AbstractMenu {
+public class MilitaryActionCollectionResourceMenu extends AbstractMenu {
 	private Game game;
 	private List<String> availableValuesForRequest;
-	private List<Territory> territoriesToPlunder;
+	private Territory territoryToPlunder;
 	
-	public MilitaryActionCollectionMenu(Map<String, String> gameTexts, List<IMenu> menuList, Game game) {
+	public MilitaryActionCollectionResourceMenu(Map<String, String> gameTexts, List<IMenu> menuList, Game game, Territory territoryToPlunder) {
 		super(gameTexts, menuList);
 		if (game == null) throw new IllegalArgumentException("'game' cannot be null");
 		this.game = game;
+		this.territoryToPlunder = territoryToPlunder;
 		availableValuesForRequest = new ArrayList<String>();
 	}
-	
+
 	public Game getGame(){
 		return game;
 	}
@@ -29,7 +32,7 @@ public class MilitaryActionCollectionMenu extends AbstractMenu {
 	public void setGame(Game game){
 		this.game = game;
 	}
-
+	
 	public void execute() {
 		if(getMenuOptionsList().isEmpty()) {
 			List<String> optList = getMenuOptionsList();
@@ -41,18 +44,10 @@ public class MilitaryActionCollectionMenu extends AbstractMenu {
 			optList.add(texts.get("back"));
 			availableValuesForRequest.add("0");
 			
-			// Opciones de territorios a saquear
-			Map<String, Territory> gameTerritories = game.getGameTerritories();
-			for (Territory territory: gameTerritories.values()) {
-				if (AvailableActionsManager.checkPlunderTerritoryAction(currentPlayer, territory, game.getRound(), 1)) {
-					territoriesToPlunder.add(territory);
-					
-					// Nueva opcion para el menu
-					optList.add(territory.getName());
-					Integer optionIndex = availableValuesForRequest.size();
-					availableValuesForRequest.add(optionIndex.toString());
-				}
-			}
+			
+			// Opciones de recursos
+			Map<String, Vector<Integer>> territoryResources = territoryToPlunder.getResources();
+			
 		}
 		
 		showMenuContents();
@@ -62,21 +57,22 @@ public class MilitaryActionCollectionMenu extends AbstractMenu {
 	private List<String> getAvailableValuesForRequest() {
 		return availableValuesForRequest;
 	}
-	
+
 	public String getHeaderMessage() {
-		return getGameTexts().get("gameMilitaryActionCollectionMenu_headerMessage");
+		return getGameTexts().get("gameMilitaryActionMoveTrirremesDestinationMenu_headerMessage");
 	}
 
 	public IMenu getNextMenu() {
 		IMenu next;
+	
 		Integer userChoice = getPlayerChoice();
-		if (userChoice < 0 || userChoice > (availableValuesForRequest.size() - 1)) throw new PolisGameRunningException("Option not available choosen at MilitaryActionCollectionMenu");
+		if (userChoice < 0 || userChoice > (availableValuesForRequest.size() - 1)) throw new PolisGameRunningException("Option not available choosen at MilitaryActionMoveTrirremesDestinationMenu");
 		
 		if(userChoice.equals(0)){
 			next = getMenuList().get((getMenuList().size()-1) - 1);
 		} else {
-			Territory choosenTerritoryToPlunder = territoriesToPlunder.get(userChoice - 1);
-			next = new MilitaryActionCollectionResourceMenu(getGameTexts(), getMenuList(), game, choosenTerritoryToPlunder);
+			Sea choosenDestinationPosition = destinationPositions.get(userChoice - 1);
+			next = new MilitaryActionMoveTrirremesUnitCountMenu(getGameTexts(), getMenuList(), game, originPosition, choosenDestinationPosition);
 		}
 		
 		return next;
