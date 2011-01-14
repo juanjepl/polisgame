@@ -48,7 +48,7 @@ public class AvailableActionsManager {
 			}
 		}
 		
-		return checkPreviousAction || checkStartProjectAnyAction(game,player) || checkTradeAnyAction(game,player) || checkMoveProxenusAnyAction(game,player) || checkCivilWarAnyAction(game,player);
+		return checkPreviousAction || checkStartProjectAnyAction(game,player) || checkTradeAnyAction(game,player) || checkMoveProxenusAnyAction(game,player) || checkCivilWarAction(player, (Polis) player.getPlayerProxenus().getPosition());
 	}
 
 	// 2ND LEVEL METHODS
@@ -194,7 +194,7 @@ public class AvailableActionsManager {
 		}
 		return available;
 	}
-	public static Boolean checkCivilWarAnyAction(Game g,Player p){
+	/*public static Boolean checkCivilWarAnyAction(Game g,Player p){
 		Boolean available = false;
 		Boolean existsProxenus = false;
 		
@@ -214,8 +214,9 @@ public class AvailableActionsManager {
 				}
 			}
 		}
+		
 		return available;
-	}
+	}*/
 	
 	// 3RD LEVEL METHODS
 	
@@ -524,7 +525,7 @@ public class AvailableActionsManager {
 	public static Boolean checkCivilWarAction(Player player,Polis polis){
 		Boolean available = false;
 		
-		Boolean condition_isNeutralOrOponent = true;
+		Boolean condition_isNeutralOrOponent = false;
 
 		//check if player has minimum amount of silver 
 		if(polis.getPolisOwner() == null){

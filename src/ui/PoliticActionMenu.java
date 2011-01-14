@@ -6,6 +6,7 @@ import java.util.Map;
 import game.AvailableActionsManager;
 import game.Game;
 import game.Player;
+import game.Polis;
 
 public class PoliticActionMenu extends AbstractMenu {
 
@@ -65,7 +66,7 @@ public class PoliticActionMenu extends AbstractMenu {
 			}
 			
 			// Opt 4 (Make Civil War):
-			if (AvailableActionsManager.checkCivilWarAnyAction(getGame(), currentPlayer)) {
+			if (AvailableActionsManager.checkCivilWarAction(currentPlayer, (Polis) currentPlayer.getPlayerProxenus().getPosition())) {
 				optionList.add(makeCivilWarText);
 				availableValuesForRequest.add("4");
 			}
