@@ -34,7 +34,7 @@ public class Main{
 								
 				Turn actualTurn = new Turn();
 				polis_game.getRound().addTurn(actualTurn);
-				polisGameTextInterface.showRTAPMessage(polis_game.getWhoHasTheTurn(), polis_game.getRound().getCurrentTurn());
+				polisGameTextInterface.showCurrentStateOfTheGame(polis_game);
 				
 				Boolean theEndOfTheTurn = false;
 				while(!theEndOfTheTurn){
