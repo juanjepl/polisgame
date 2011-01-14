@@ -17,7 +17,6 @@ public class TextInterface{
 	private IMenu focusedMenu;
 	private List<IMenu> menuList;
 	private Map<String,String> gameTexts;
-	private Map<String,Boolean> checkActionsMap;
 	
 	public TextInterface(Game game){
 		//game can be null for initialization
@@ -61,6 +60,25 @@ public class TextInterface{
 			throw new IllegalArgumentException("Invalid parameter for showCurrentStateOfTheGame(), cannot be null");
 		}
 		
+		// Shows Round+Turn+Action+Player message (R+T+A+P)
+		
+		Player focusedPlayer = theGame.getWhoHasTheTurn();
+		
+		showRTAPMessage(focusedPlayer,theGame.getRound().getCurrentTurn());
+		
+		System.out.println(" ");
+		System.out.println("--- " + getGameTexts().get("resources") + " ---"); 
+		System.out.println("[" + getGameTexts().get("prestige") +"]: " + focusedPlayer.getPrestige().toString() + " " + getGameTexts().get("units"));
+		System.out.println("[" + getGameTexts().get("metal") +"]: " + focusedPlayer.getMetal().toString() + " " + getGameTexts().get("units"));
+		System.out.println("[" + getGameTexts().get("wood") +"]: " + focusedPlayer.getWood().toString() + " " + getGameTexts().get("units"));
+		System.out.println("[" + getGameTexts().get("wheat") +"]: " + focusedPlayer.getWheat().toString() + " " + getGameTexts().get("units"));
+		System.out.println("[" + getGameTexts().get("oil") +"]: " + focusedPlayer.getOil().toString() + " " + getGameTexts().get("units"));
+		System.out.println("[" + getGameTexts().get("wine") +"]: " + focusedPlayer.getWine().toString() + " " + getGameTexts().get("units"));
+		System.out.println("[" + getGameTexts().get("silver") +"]: " + focusedPlayer.getSilver().toString() + " " + getGameTexts().get("units"));
+		
+		
+		//+  + " " + "[" + getGameTexts().get("silver") +"]: " + focusedPlayer.getSilver().toString() + " " + getGameTexts().get("units") + " " +"[" + getGameTexts().get("Wood") +"]: " + focusedPlayer.getWood().toString() + " " + getGameTexts().get("units") + " " +"[" + getGameTexts().get("wheat") +"]: " + focusedPlayer.getWheat().toString() + " " + getGameTexts().get("units") + " " +"[" + getGameTexts().get("wine") +"]: " + focusedPlayer.getWine().toString() + " " + getGameTexts().get("units") + " " + "[" + getGameTexts().get("oil") +"]: " + focusedPlayer.getOil().toString() + " " + getGameTexts().get("units") );
+		
 		//TODO
 		//TODO
 	}
@@ -71,10 +89,6 @@ public class TextInterface{
 	
 	public Map<String,String> getGameTexts(){
 		return gameTexts;
-	}
-	
-	public Map<String,Boolean> getCheckActionsMap(){
-		return checkActionsMap;
 	}
 	
 	public List<IMenu> getMenuList(){
