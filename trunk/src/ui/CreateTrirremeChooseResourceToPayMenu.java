@@ -22,6 +22,8 @@ public class CreateTrirremeChooseResourceToPayMenu extends AbstractMenu{
 	}
 	
 	public void execute(){
+		// clear options for possible back re-execute
+		getMenuOptionsList().clear();
 		
 		String silver = getGameTexts().get("silver");
 		String wood = getGameTexts().get("wood");

@@ -20,6 +20,9 @@ public class CreateProxenusChoosePolisMenu extends AbstractMenu {
 	}
 
 	public void execute() {
+		// clear options for possible back re-execute
+		getMenuOptionsList().clear();
+		
 		// back option ("0" option)
 		String back = getGameTexts().get("back");
 		getMenuOptionsList().add(back);

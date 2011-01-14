@@ -23,6 +23,8 @@ public class CreateTrirremeChooseCreationSea extends AbstractMenu{
 	}
 	
 	public void execute(){
+		// clear options for possible back re-execute
+		getMenuOptionsList().clear();
 		
 		CreatorAction cA;
 		
