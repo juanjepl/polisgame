@@ -37,7 +37,7 @@ public class CreateTradeBoatChoosePolisMenu extends AbstractMenu {
 	}
 
 	public String getHeaderMessage() {
-		return getGameTexts().get("CreateTradeBoatChoosePolisMenu_headerMessage"); //FIXME "Seleccione la polis donde crear su Barco Mercante:"
+		return getGameTexts().get("createTradeBoatChoosePolisMenu_headerMessage");
 	}
 
 	public IMenu getNextMenu() {

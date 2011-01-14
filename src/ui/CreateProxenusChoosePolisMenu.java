@@ -48,7 +48,7 @@ public class CreateProxenusChoosePolisMenu extends AbstractMenu {
 			
 			// Player notification
 			System.out.println(" ");
-			System.out.println(getGameTexts().get("createProxenusChoosePolisMenu"+getAvailablePolis().get(getPlayerChoice() - 1))); //FIXME "Proxeno creado en "
+			System.out.println(getGameTexts().get("createProxenusChoosePolisMenu_actionDoneMessage" + getAvailablePolis().get(getPlayerChoice() - 1)));
 			
 		}else{
 			// Do nothing, option "0" is for back
@@ -56,7 +56,7 @@ public class CreateProxenusChoosePolisMenu extends AbstractMenu {
 	}
 
 	public String getHeaderMessage() {
-		return getGameTexts().get("createProxenusChoosePolisMenu_headerMessage"); //FIXME "Seleccione la polis donde crear el Próxeno (Costo: 5 unidades de plata):
+		return getGameTexts().get("createProxenusChoosePolisMenu_headerMessage");
 	}
 
 	public IMenu getNextMenu() {

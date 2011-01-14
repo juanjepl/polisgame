@@ -98,11 +98,11 @@ public class CreateTradeBoatChooseResourceToPayMenu extends AbstractMenu{
 	
 	public void showActionDoneMessage(){
 		System.out.println(" "); // White space
-		System.out.println(getGameTexts().get("createTradeBoatChooseResourceToPayMenu_actionDoneMessage")+ getGame().getWhoHasTheTurn().getPlayerTradeDock().getName()); // FIXME gametext-> "Barco Mercante creado en "
+		System.out.println(getGameTexts().get("createTradeBoatChooseResourceToPayMenu_actionDoneMessage")+ getGame().getWhoHasTheTurn().getPlayerTradeDock().getName());
 	}
 	
 	public String getHeaderMessage() {
-		return getGameTexts().get("createTradeBoatChooseResourceToPay_headerMessage"); //FIXME gametext-> "Elija un recurso a gastar para esta accion:"
+		return getGameTexts().get("createTradeBoatChooseResourceToPay_headerMessage");
 	}
 	
 	public Polis getSelectedPolis(){
