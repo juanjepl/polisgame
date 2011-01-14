@@ -18,6 +18,7 @@ public abstract class Round {
 			throw new IllegalArgumentException("Invalid parameter for Round constructor, cannot be null");
 		}
 		
+		this.roundName = roundName;
 		turnList = new ArrayList<Turn>();
 		projectsInThisRound = new ArrayList<Project>();
 		this.maximumPositionSlotsForThisRound = maximumPositionSlotsForThisRound;
