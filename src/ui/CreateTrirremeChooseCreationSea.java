@@ -46,7 +46,7 @@ public class CreateTrirremeChooseCreationSea extends AbstractMenu{
 			getGame().getRound().getCurrentTurn().addGameAction(cA);
 			
 			System.out.println(" ");
-			System.out.println(getGameTexts().get("createTrirremeChooseCreationSea_actionDoneMessage" + seasAvailables.get(getPlayerChoice() - 1).getName()));
+			System.out.println(getGameTexts().get("createTrirremeChooseCreationSeaMenu_actionDoneMessage" + seasAvailables.get(getPlayerChoice() - 1).getName()));
 		}
 		
 	}
@@ -69,7 +69,7 @@ public class CreateTrirremeChooseCreationSea extends AbstractMenu{
 	}
 
 	public String getHeaderMessage(){
-		return getGameTexts().get("createTrirremeChooseCreationSea_headerMessage");
+		return getGameTexts().get("createTrirremeChooseCreationSeaMenu_headerMessage");
 	}
 	
 	public Polis getSelectedPolis() {

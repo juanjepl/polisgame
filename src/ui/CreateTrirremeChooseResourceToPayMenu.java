@@ -119,7 +119,7 @@ public class CreateTrirremeChooseResourceToPayMenu extends AbstractMenu{
 	}
 	
 	public String getHeaderMessage() {
-		return getGameTexts().get("createTrirremeChooseResourceToPay_headerMessage");
+		return getGameTexts().get("createTrirremeChooseResourceToPayMenu_headerMessage");
 	}
 	
 	public Polis getSelectedPolis(){

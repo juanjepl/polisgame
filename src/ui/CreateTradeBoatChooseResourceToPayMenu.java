@@ -102,7 +102,7 @@ public class CreateTradeBoatChooseResourceToPayMenu extends AbstractMenu{
 	}
 	
 	public String getHeaderMessage() {
-		return getGameTexts().get("createTradeBoatChooseResourceToPay_headerMessage");
+		return getGameTexts().get("createTradeBoatChooseResourceToPayMenu_headerMessage");
 	}
 	
 	public Polis getSelectedPolis(){

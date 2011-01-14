@@ -96,7 +96,7 @@ public class CreateHopliteChooseResourceToPayMenu extends AbstractMenu{
 	}
 	
 	public String getHeaderMessage() {
-		return getGameTexts().get("createHopliteChooseResourceToPay_headerMessage");
+		return getGameTexts().get("createHopliteChooseResourceToPayMenu_headerMessage");
 	}
 	
 	public Polis getSelectedPolis(){
