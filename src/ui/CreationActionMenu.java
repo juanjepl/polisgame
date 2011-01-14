@@ -87,8 +87,8 @@ public class CreationActionMenu extends AbstractMenu {
 
 	public IMenu getNextMenu() {
 		IMenu next = null;
-		Integer choice = getPlayerChoice();
-		if (!availableValuesForRequest.contains(String.valueOf(choice))) throw new PolisGameRunningException("Option not available choosen at CreationActionMenu");
+		//Integer choice = getPlayerChoice();
+		//if (!availableValuesForRequest.contains(String.valueOf(choice))) throw new PolisGameRunningException("Option not available choosen at CreationActionMenu");
 		
 		switch (getPlayerChoice()) {
 			case 0:

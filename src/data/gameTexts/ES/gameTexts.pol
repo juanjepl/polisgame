@@ -66,10 +66,6 @@ gameCreationAction_createHoplitesOpt;Crear hoplitas
 gameCreationAction_createTrirremesOpt;Crear trirremes
 gameCreationAction_createMerchantsOpt;Crear mercaderes
 gameCreationAction_createProxenus;Crear proxeno
-gameCreationActionCreateHoplitesMenu_headerMessage;Por favor, elija la opcion de crear hoplitas:
-gameCreationActionCreateTrirremesMenu_headerMessage;Por favor, elija la opcion de crear trirremes:
-gameCreationActionCreateMerchantsMenu_headerMessage;Por favor, elija la opcion de crear mercaderes:
-gameCreationActionCreateProxenussMenu_headerMessage;Por favor, elija la opcion de crear hoplita:
 createHopliteChooseResourceToPay_headerMessage;Elija el recurso disponible a gastar (1 unidad):
 silver;Plata
 wheat;Trigo
@@ -80,3 +76,16 @@ wood;Madera
 metal;Metal
 resources;Recursos
 units;Unidades
+createHopliteChoosePolisMenu_headerMessage;Seleccione la Polis desde donde crear el hoplita:
+createTradeBoatChoosePolisMenu_headerMessage;Seleccione la Polis desde donde crear el barco mercante:
+createProxenusChoosePolisMenu_headerMessage;Seleccion la Polis donde crear el Proxeno (Costo: 5 unidades de Plata):
+createProxenusChoosePolisMenu_actionDoneMessage;Proxeno creado en 
+createHopliteChooseResourceToPay_headerMessage;Seleccione un recurso a gastar:
+createHopliteChooseResourceToPay_actionDoneMessage;Hoplita creado en 
+createTradeBoatChooseResourceToPay_actionDoneMessage;Barco mercante creado en 
+createTradeBoatChooseResourceToPay_headerMessage;Seleccione un recurso a gastar:
+createTrirremeChooseCreationSea_actionDoneMessage;Trirreme creada en 
+createTrirremeChooseCreationSea_headerMessage;Seleccione el mar donde situar la trirreme creada:
+createTrirremeChoosePolisMenu_headerMessage;Seleccione la Polis desde donde crear la trirreme:
+createTrirremeChooseResourceToPay_headerMessage;Seleccione un recurso a gastar:
+createTrirremeChooseResourceToPay_actionDoneMessage;Trirreme creada en 
