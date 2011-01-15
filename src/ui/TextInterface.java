@@ -172,6 +172,7 @@ public class TextInterface{
 			proxenuspos = focusedPlayer.getPlayerProxenus().getPosition().getName();
 		}
 		
+		System.out.println(" "); // White line
 		System.out.println(proxenusposmess + proxenuspos); 
 		
 		
