@@ -194,29 +194,6 @@ public class AvailableActionsManager {
 		}
 		return available;
 	}
-	/*public static Boolean checkCivilWarAnyAction(Game g,Player p){
-		Boolean available = false;
-		Boolean existsProxenus = false;
-		
-		for(Polis po: g.getGamePolis().values()){
-			for(Unit u: po.getUnits()){
-				if(u instanceof Proxenus && u.getOwner().equals(p)){
-					existsProxenus = true;
-				}
-			}
-		}
-		
-		if(existsProxenus){
-			for(Polis po: g.getGamePolis().values()){
-				if(checkCivilWarAction(p,po)){
-					available = true;
-					break;
-				}
-			}
-		}
-		
-		return available;
-	}*/
 	
 	// 3RD LEVEL METHODS
 	
@@ -474,12 +451,15 @@ public class AvailableActionsManager {
 	
 	public static Boolean checkTradeAction(Game game, Player player, Market market){
 		Boolean available = false;
-		
+		System.out.println("mercado: " + market.getSysName());
 		TradeBoatGraphNavigator tradeBoatGraphNavigator = new TradeBoatGraphNavigator(player, player.getPlayerTradeDock(), market, game.getTradeBoatGraph());
 		Boolean condition_existWay = tradeBoatGraphNavigator.getExists();
 		
+		System.out.println("existWay: " + condition_existWay);
+		
 		Boolean condition_disponible = market.getUnits().size() == 0;
 		
+		System.out.println("disponible: " + condition_disponible);
 		available = condition_existWay && condition_disponible;
 		
 		if(player.getCapital().getSysName().equals("sparta"))
@@ -493,6 +473,8 @@ public class AvailableActionsManager {
 					break;
 				}
 			}
+			System.out.println("spartaHasOnePolis" + condition_spartaHasOnePolis);
+			System.out.println("");
 			available = available && condition_spartaHasOnePolis;
 		}
 		

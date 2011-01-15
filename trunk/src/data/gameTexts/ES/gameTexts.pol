@@ -108,3 +108,13 @@ politicActionMakeCivilWarMenu_headerMessage;Provocar guerra civil:
 politicActionCivilWarMenu_civilWarDone;Guerra civil provocada en 
 yes;Si
 no;No
+playerPolis;Polis del jugador
+startedProject;Proyecto comenzado
+finishedProjects; Proyectos finalizados
+none;Ninguno
+hoplites;Hoplita(s)
+trirremes;Trirreme(s)
+tradeBoats;Barco(s) mercante(s)
+proxenusPosition;Posicion del proxeno:
+noProxenus;Sin Proxeno
+marketChartPrices;Precios de mercado
