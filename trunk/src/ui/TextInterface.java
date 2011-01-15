@@ -172,11 +172,10 @@ public class TextInterface{
 			proxenuspos = focusedPlayer.getPlayerProxenus().getPosition().getName();
 		}
 		
-		System.out.println(" "); // White line
 		System.out.println(proxenusposmess + proxenuspos); 
 		
-		
 		// MarketChart Prices
+		System.out.println(" "); // White line
 		System.out.println("::::" + getGameTexts().get("marketChartPrices") + "::::");
 		System.out.println(getGameTexts().get("metal") + ": " + theGame.getMarketChart().getMetalPrice().toString());
 		System.out.println(getGameTexts().get("wood") + ": " + theGame.getMarketChart().getWoodPrice().toString());
