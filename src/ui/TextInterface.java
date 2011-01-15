@@ -4,10 +4,19 @@ import java.util.ArrayList;
 import java.util.Map;
 import java.util.List;
 import utils.PolReader;
+import game.Market;
 import game.Player;
+import game.Position;
+import game.Project;
+import game.Proxenus;
 import game.Round;
 import game.Game;
+import game.Sea;
+import game.Territory;
+import game.TradeDock;
 import game.Turn;
+import game.Polis;
+import game.Unit;
 
 /**
  * This class implements a user interface
@@ -67,20 +76,113 @@ public class TextInterface{
 		showRTAPMessage(focusedPlayer,theGame.getRound().getCurrentTurn());
 		
 		System.out.println(" ");
-		System.out.println("--- " + getGameTexts().get("resources") + " ---"); 
-		System.out.println("[" + getGameTexts().get("prestige") +"]: " + focusedPlayer.getPrestige().toString() + " " + getGameTexts().get("units"));
-		System.out.println("[" + getGameTexts().get("metal") +"]: " + focusedPlayer.getMetal().toString() + " " + getGameTexts().get("units"));
-		System.out.println("[" + getGameTexts().get("wood") +"]: " + focusedPlayer.getWood().toString() + " " + getGameTexts().get("units"));
-		System.out.println("[" + getGameTexts().get("wheat") +"]: " + focusedPlayer.getWheat().toString() + " " + getGameTexts().get("units"));
-		System.out.println("[" + getGameTexts().get("oil") +"]: " + focusedPlayer.getOil().toString() + " " + getGameTexts().get("units"));
-		System.out.println("[" + getGameTexts().get("wine") +"]: " + focusedPlayer.getWine().toString() + " " + getGameTexts().get("units"));
-		System.out.println("[" + getGameTexts().get("silver") +"]: " + focusedPlayer.getSilver().toString() + " " + getGameTexts().get("units"));
+		System.out.println("::::" + getGameTexts().get("resources") + "::::"); 
+		System.out.println(
+		"[" + getGameTexts().get("prestige") +": " + focusedPlayer.getPrestige().toString() + "]" + "  " + 
+		"[" + getGameTexts().get("metal") +": " + focusedPlayer.getMetal().toString() + "]" + "  " + 
+		"[" + getGameTexts().get("wood") +": " + focusedPlayer.getWood().toString() + "]" + "  " +
+		"[" + getGameTexts().get("wheat") +": " + focusedPlayer.getWheat().toString() + "]" + "  " +
+		"[" + getGameTexts().get("oil") +": " + focusedPlayer.getOil().toString() + "]" + "  " +
+		"[" + getGameTexts().get("wine") +": " + focusedPlayer.getWine().toString() + "]" + "  " +
+		"[" + getGameTexts().get("silver") +": " + focusedPlayer.getSilver().toString() + "]"
+		);
+		
+		System.out.println(" ");
+		System.out.println("::::" + getGameTexts().get("playerPolis") + "::::"); //FIXME "Polis del jugador"	
+		
+		for(Polis po:focusedPlayer.getPlayerPolis()){
+			System.out.println("[" + po.getName() + "]" + " => " + "[" + po.getActualPopulation().toString() + "] " + "(" + po.getBasePopulation().toString() + ") " + po.getMaxPopulation().toString() + " " + po.getMaxGrowth().toString());
+			
+			String startedProject = "  -> " + getGameTexts().get("startedProject") + ": "; //FIXME "Proyecto comenzado"
+			String finishedProjects = "  -> " + getGameTexts().get("finishedProjects") + ": " ; //FIXME "Proyectos finalizados"
+			String none = getGameTexts().get("none"); //FIXME "Ninguno"
+			
+			List<String> projectsFinished = new ArrayList<String>();
+			
+			// started project
+			Boolean started = false;
+			if(!po.getProjects().isEmpty()){
+				for(Project proj : po.getProjects()){
+					if(!proj.getFinished()){
+						startedProject = startedProject + proj.getName();
+						started = true;
+						break;
+					}	
+				}	
+			}
+			if(started == false){
+				startedProject = startedProject + none;
+			}
+			
+			System.out.println(startedProject);
+			
+			// finished projects
+			Boolean existsAnyFinishedProject = false;
+			if(!po.getProjects().isEmpty()){
+				for(Project proj : po.getProjects()){
+					if(proj.getFinished()){
+						projectsFinished.add(proj.getName());
+						existsAnyFinishedProject = true;
+					}	
+				}
+				
+				for(String s : projectsFinished){
+					finishedProjects = finishedProjects + s + " ";
+				}
+			}
+			
+			if(!existsAnyFinishedProject){
+				finishedProjects = finishedProjects + none;
+			}
+
+			System.out.println(finishedProjects);
+		}
+		
+		// Units location
+		
+		System.out.println(" ");
+		System.out.println("::::" + getGameTexts().get("units") + "::::"); 
+
+		List<Position> wherePlayerHaveUnits = new ArrayList<Position>();
+		
+		for(Unit u : focusedPlayer.getPlayerUnits()){
+			if(!wherePlayerHaveUnits.contains(u.getPosition()) && !(u instanceof Proxenus)){
+				wherePlayerHaveUnits.add(u.getPosition());
+			}
+		}
+		
+		for(Position pos : wherePlayerHaveUnits){
+			if(pos instanceof Territory || pos instanceof Polis){
+				System.out.println("[" + pos.getName() +"] -> " + pos.getHoplitesForAPlayer(focusedPlayer).size() + " " + getGameTexts().get("hoplites")); //FIXME "Hoplita(s)"
+			}
+			
+			else if(pos instanceof Market || pos instanceof TradeDock){
+				System.out.println("[" + pos.getName() +"] -> " + pos.getTradeBoatsForAPlayer(focusedPlayer).size() + " " + getGameTexts().get("tradeBoats")); //FIXME "Barco(s) Mercante(s)"
+			}
+			
+			else if(pos instanceof Sea){
+				System.out.println("[" + pos.getName() +"] -> " + pos.getTrirremesForAPlayer(focusedPlayer).size() + " " + getGameTexts().get("trirremes")); //FIXME "Trirreme(s)"
+			}
+		}
+		
+		String proxenusposmess = getGameTexts().get("proxenusPosition"); //FIXME "Posicion del proxeno: "
+		String proxenuspos;
+		
+		if(focusedPlayer.getPlayerProxenus() == null){
+			proxenuspos = getGameTexts().get("noProxenus"); //FIXME "Sin Proxeno"
+		}else{
+			proxenuspos = focusedPlayer.getPlayerProxenus().getPosition().getName();
+		}
+		
+		System.out.println(proxenusposmess + proxenuspos); 
 		
 		
-		//+  + " " + "[" + getGameTexts().get("silver") +"]: " + focusedPlayer.getSilver().toString() + " " + getGameTexts().get("units") + " " +"[" + getGameTexts().get("Wood") +"]: " + focusedPlayer.getWood().toString() + " " + getGameTexts().get("units") + " " +"[" + getGameTexts().get("wheat") +"]: " + focusedPlayer.getWheat().toString() + " " + getGameTexts().get("units") + " " +"[" + getGameTexts().get("wine") +"]: " + focusedPlayer.getWine().toString() + " " + getGameTexts().get("units") + " " + "[" + getGameTexts().get("oil") +"]: " + focusedPlayer.getOil().toString() + " " + getGameTexts().get("units") );
-		
-		//TODO
-		//TODO
+		// MarketChart Prices
+		System.out.println("::::" + getGameTexts().get("marketChartPrices") + "::::"); //FIXME "Precios de mercado"
+		System.out.println(getGameTexts().get("metal") + ": " + theGame.getMarketChart().getMetalPrice().toString());
+		System.out.println(getGameTexts().get("wood") + ": " + theGame.getMarketChart().getWoodPrice().toString());
+		System.out.println(getGameTexts().get("wine") + ": " + theGame.getMarketChart().getWinePrice().toString());
+		System.out.println(getGameTexts().get("oil") + ": " + theGame.getMarketChart().getOilPrice().toString());
 	}
 	
 	/**
@@ -123,8 +225,6 @@ public class TextInterface{
 		
 		focusedMenu = getMenu().getNextMenu();
 		
-		
-
 	}
 	public void showNewRound(Round round)
 	{
@@ -134,12 +234,12 @@ public class TextInterface{
 	
 	public void showFirstActionMessage(){
 		System.out.println(" ");
-		System.out.println("--- "+getGameTexts().get("firstAction") + " " + getGameTexts().get("action")+" ---");
+		System.out.println("---------- "+getGameTexts().get("firstAction") + " " + getGameTexts().get("action")+" ----------");
 	}
 	
 	public void showSecondActionMessage(){
 		System.out.println(" ");
-		System.out.println("--- "+getGameTexts().get("secondAction") + " " + getGameTexts().get("action")+" ---");
+		System.out.println("---------- "+getGameTexts().get("secondAction") + " " + getGameTexts().get("action")+" ----------");
 	}
 
 	public void setGame(Game game){
