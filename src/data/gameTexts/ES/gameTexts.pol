@@ -58,9 +58,12 @@ gameMilitaryActionMoveTrirremesUnitCountMenu_headerMessage;Por favor, elija el n
 gameMilitaryActionMoveTrirremesMakeMenu_error;Numero de trirremes incorrectos
 gameMilitaryActionMoveTrirremesMakeMenu_success;Trirremes movidos correctamente
 gameMilitaryActionBesiegePolisMenu_headerMessage;Por favor, elija la ciudad a asediar:
+gameMilitaryActionBesiegePolisMakeMenu_error;La ciudad no se puede saquear
+gameMilitaryActionBesiegePolisMakeMenu_success;Ciudad saqueada correctamente
 gameMilitaryActionCollectionMenu_headerMessage;Por favor, seleccione el territorio a saquear:
-gameMilitaryActionCollectionMakeMenu_error;La ciudad no se puede saquear
-gameMilitaryActionCollectionMakeMenu_success;Ciudad saqueada correctamente
+gameMilitaryActionCollectionResourceMenu_headerMessage;Por favor, seleccione el recurso a saquear:
+gameMilitaryActionCollectionMakeMenu_error;El territorio no se puede saquear
+gameMilitaryActionCollectionMakeMenu_success;Territorio saqueada correctamente
 gameCreationAction_headerMessage;Por favor, elija una accion militar entre las disponibles:
 gameCreationAction_createHoplitesOpt;Crear hoplitas
 gameCreationAction_createTrirremesOpt;Crear trirremes
