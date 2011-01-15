@@ -48,9 +48,9 @@ public class MilitaryActionCollectionResourceMenu extends AbstractMenu {
 			for (String resourceName: territoryResources.keySet()) {
 				
 				// Opcion de recurso
-				optList.add(texts.get(resourceName.toLowerCase()));
+				optList.add(texts.get(resourceName));
 				availableValuesForRequest.add(i.toString());
-				availableResources.put(i, resourceName.toLowerCase());
+				availableResources.put(i, resourceName);
 				i++;
 			}
 		}
@@ -68,8 +68,7 @@ public class MilitaryActionCollectionResourceMenu extends AbstractMenu {
 	}
 
 	public IMenu getNextMenu() {
-		//IMenu next;
-		IMenu next = null;
+		IMenu next;
 		
 		Integer userChoice = getPlayerChoice();
 		if (userChoice < 0 || userChoice > (availableValuesForRequest.size() - 1)) throw new PolisGameRunningException("Option not available choosen at MilitaryActionMoveTrirremesDestinationMenu");
@@ -78,7 +77,7 @@ public class MilitaryActionCollectionResourceMenu extends AbstractMenu {
 			next = getMenuList().get((getMenuList().size()-1) - 1);
 		} else {
 			String resourceToPlunder = availableResources.get(userChoice);
-			//next = new MilitaryActionMoveTrirremesUnitCountMenu(getGameTexts(), getMenuList(), game, territoryToPlunder, resourceToPlunder);
+			next = new MilitaryActionCollectionUnitCountMenu(getGameTexts(), getMenuList(), game, territoryToPlunder, resourceToPlunder);
 		}
 		
 		return next;
