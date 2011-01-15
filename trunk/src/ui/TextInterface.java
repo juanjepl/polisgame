@@ -35,8 +35,7 @@ public class TextInterface{
 		
 		focusedMenu = new MainMenu(getGameTexts(),getMenuList(),game);
 		menuList.add(focusedMenu); // First in the list
-		
-		//TODO
+
 	}
 
 	public void showChangeOfRound(Round theNewRound){
@@ -69,10 +68,9 @@ public class TextInterface{
 			throw new IllegalArgumentException("Invalid parameter for showCurrentStateOfTheGame(), cannot be null");
 		}
 		
-		// Shows Round+Turn+Action+Player message (R+T+A+P)
-		
 		Player focusedPlayer = theGame.getWhoHasTheTurn();
 		
+		// Shows Round+Turn+Action+Player message (R+T+A+P)
 		showRTAPMessage(focusedPlayer,theGame.getRound().getCurrentTurn());
 		
 		System.out.println(" ");
@@ -88,14 +86,14 @@ public class TextInterface{
 		);
 		
 		System.out.println(" ");
-		System.out.println("::::" + getGameTexts().get("playerPolis") + "::::"); //FIXME "Polis del jugador"	
+		System.out.println("::::" + getGameTexts().get("playerPolis") + "::::");	
 		
 		for(Polis po:focusedPlayer.getPlayerPolis()){
 			System.out.println("[" + po.getName() + "]" + " => " + "[" + po.getActualPopulation().toString() + "] " + "(" + po.getBasePopulation().toString() + ") " + po.getMaxPopulation().toString() + " " + po.getMaxGrowth().toString());
 			
-			String startedProject = "  -> " + getGameTexts().get("startedProject") + ": "; //FIXME "Proyecto comenzado"
-			String finishedProjects = "  -> " + getGameTexts().get("finishedProjects") + ": " ; //FIXME "Proyectos finalizados"
-			String none = getGameTexts().get("none"); //FIXME "Ninguno"
+			String startedProject = "  -> " + getGameTexts().get("startedProject") + ": ";
+			String finishedProjects = "  -> " + getGameTexts().get("finishedProjects") + ": " ;
+			String none = getGameTexts().get("none");
 			
 			List<String> projectsFinished = new ArrayList<String>();
 			
@@ -153,23 +151,23 @@ public class TextInterface{
 		
 		for(Position pos : wherePlayerHaveUnits){
 			if(pos instanceof Territory || pos instanceof Polis){
-				System.out.println("[" + pos.getName() +"] -> " + pos.getHoplitesForAPlayer(focusedPlayer).size() + " " + getGameTexts().get("hoplites")); //FIXME "Hoplita(s)"
+				System.out.println("[" + pos.getName() +"] -> " + pos.getHoplitesForAPlayer(focusedPlayer).size() + " " + getGameTexts().get("hoplites"));
 			}
 			
 			else if(pos instanceof Market || pos instanceof TradeDock){
-				System.out.println("[" + pos.getName() +"] -> " + pos.getTradeBoatsForAPlayer(focusedPlayer).size() + " " + getGameTexts().get("tradeBoats")); //FIXME "Barco(s) Mercante(s)"
+				System.out.println("[" + pos.getName() +"] -> " + pos.getTradeBoatsForAPlayer(focusedPlayer).size() + " " + getGameTexts().get("tradeBoats"));
 			}
 			
 			else if(pos instanceof Sea){
-				System.out.println("[" + pos.getName() +"] -> " + pos.getTrirremesForAPlayer(focusedPlayer).size() + " " + getGameTexts().get("trirremes")); //FIXME "Trirreme(s)"
+				System.out.println("[" + pos.getName() +"] -> " + pos.getTrirremesForAPlayer(focusedPlayer).size() + " " + getGameTexts().get("trirremes"));
 			}
 		}
 		
-		String proxenusposmess = getGameTexts().get("proxenusPosition"); //FIXME "Posicion del proxeno: "
+		String proxenusposmess = getGameTexts().get("proxenusPosition");
 		String proxenuspos;
 		
 		if(focusedPlayer.getPlayerProxenus() == null){
-			proxenuspos = getGameTexts().get("noProxenus"); //FIXME "Sin Proxeno"
+			proxenuspos = getGameTexts().get("noProxenus");
 		}else{
 			proxenuspos = focusedPlayer.getPlayerProxenus().getPosition().getName();
 		}
@@ -178,7 +176,7 @@ public class TextInterface{
 		
 		
 		// MarketChart Prices
-		System.out.println("::::" + getGameTexts().get("marketChartPrices") + "::::"); //FIXME "Precios de mercado"
+		System.out.println("::::" + getGameTexts().get("marketChartPrices") + "::::");
 		System.out.println(getGameTexts().get("metal") + ": " + theGame.getMarketChart().getMetalPrice().toString());
 		System.out.println(getGameTexts().get("wood") + ": " + theGame.getMarketChart().getWoodPrice().toString());
 		System.out.println(getGameTexts().get("wine") + ": " + theGame.getMarketChart().getWinePrice().toString());
