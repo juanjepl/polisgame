@@ -89,7 +89,17 @@ public class TextInterface{
 		System.out.println("::::" + getGameTexts().get("playerPolis") + "::::");	
 		
 		for(Polis po:focusedPlayer.getPlayerPolis()){
-			System.out.println("[" + po.getName() + "]" + " => " + "[" + po.getActualPopulation().toString() + "] " + "(" + po.getBasePopulation().toString() + ") " + po.getMaxPopulation().toString() + " " + po.getMaxGrowth().toString());
+			
+			String polisData = "[" + po.getName() + "]" + " => " + "[" + po.getActualPopulation().toString() + "] " + "(" + po.getBasePopulation().toString() + ") " + po.getMaxPopulation().toString() + " " + po.getMaxGrowth().toString();
+			String sieged = getGameTexts().get("sieged");
+			
+			if(po.getSieged()){
+				polisData = polisData + " - " + sieged + getGameTexts().get("yes");
+			}else{
+				polisData = polisData + " - " + sieged + getGameTexts().get("no");
+			}
+			
+			System.out.println(polisData);
 			
 			String startedProject = "  -> " + getGameTexts().get("startedProject") + ": ";
 			String finishedProjects = "  -> " + getGameTexts().get("finishedProjects") + ": " ;
@@ -134,6 +144,7 @@ public class TextInterface{
 			}
 
 			System.out.println(finishedProjects);
+			
 		}
 		
 		// Units location
@@ -144,7 +155,7 @@ public class TextInterface{
 		List<Position> wherePlayerHaveUnits = new ArrayList<Position>();
 		
 		for(Unit u : focusedPlayer.getPlayerUnits()){
-			if(!wherePlayerHaveUnits.contains(u.getPosition()) && !(u instanceof Proxenus)){
+			if(!wherePlayerHaveUnits.contains(u.getPosition()) && !(u instanceof Proxenus)){ // we prefer calculate proxenus in other place
 				wherePlayerHaveUnits.add(u.getPosition());
 			}
 		}
@@ -163,7 +174,7 @@ public class TextInterface{
 			}
 		}
 		
-		String proxenusposmess = getGameTexts().get("proxenusPosition");
+		String proxenusposmess = getGameTexts().get("proxenusPosition" + " ");
 		String proxenuspos;
 		
 		if(focusedPlayer.getPlayerProxenus() == null){
