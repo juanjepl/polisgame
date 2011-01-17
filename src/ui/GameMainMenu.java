@@ -2,14 +2,9 @@ package ui;
 
 import game.AvailableActionsManager;
 import game.Game;
-
-import java.io.BufferedReader;
-import java.io.InputStreamReader;
 import java.util.List;
 import java.util.ArrayList;
 import java.util.Map;
-
-import cfg.GameConfigurations;
 
 public class GameMainMenu extends AbstractMenu{
 	
@@ -83,9 +78,6 @@ public class GameMainMenu extends AbstractMenu{
 		
 		showMenuContents();
 		setPlayerChoice(requestPlayerChoice(getAvailableValuesForRequest()));
-		
-		//TODO trabajando en ello...
-		
 	}
 
 	public IMenu getNextMenu() {
@@ -103,9 +95,9 @@ public class GameMainMenu extends AbstractMenu{
 			
 			getGame().getWhoHasTheTurn().setHasPassedTurn(true);
 			nextFocusedMenu = new GameMainMenu(getGameTexts(),getMenuList(), getGame()); //go back to this menu with other player
-			nextFocusedMenu.setAutoExecutable(false); //FIXME provisional.
-		}else{ //(getPlayerChoice().equals(5))
-			//TODO
+			nextFocusedMenu.setAutoExecutable(false);
+		}else{
+			// Nothing
 		}
 		return nextFocusedMenu;
 	}
