@@ -4,7 +4,7 @@ mainMenu_headerMessage;Por favor, elija una opcion:
 mainMenu_credits;Creditos
 mainMenu_exit;Salir
 abstractMenu_BadInputMessage;Por favor, introduzca un valor correcto para su eleccion
-abstractMenu_UnavailableMessage;Opcion no disponible en este momento de la partida, por favor, seleccione otra diferente:
+abstractMenu_UnAvailableMessage;Opcion no disponible en este momento de la partida, por favor, seleccione otra diferente:
 creditsMenu_HeaderMessage;Titulos de credito de [ Polis ]
 back;Volver
 TextInterface_newRoundMessage;Una nueva ronda ha comenzado
