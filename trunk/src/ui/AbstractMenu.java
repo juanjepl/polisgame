@@ -65,7 +65,7 @@ public abstract class AbstractMenu implements IMenu {
 		
 		// Granted values for player choose
 		List<String> grantedOptions = new ArrayList<String>();
-		for(int i=0 ; i<=getMenuOptionsList().size() ; i++){
+		for(int i=0 ; i < getMenuOptionsList().size() ; i++){
 			grantedOptions.add(new Integer(i).toString());
 		}
 		
@@ -97,12 +97,13 @@ public abstract class AbstractMenu implements IMenu {
 		
 		// Granted values for player choose
 		List<String> grantedOptions = new ArrayList<String>();
-		for(int i=0 ; i<=getMenuOptionsList().size() ; i++){
+		for(int i=0 ; i < getMenuOptionsList().size() ; i++){
 			grantedOptions.add(new Integer(i).toString());
 		}
 		
 		// request player's choose
-		while(!(grantedOptions.contains(choose)) && !(availableValues.contains(choose))){
+		Boolean correct = false;
+		while(correct == false){
 			
 			BufferedReader br = new BufferedReader(new InputStreamReader(System.in)); // request athens's player's name
 			try {
@@ -116,17 +117,15 @@ public abstract class AbstractMenu implements IMenu {
 				System.out.println(getGameTexts().get("abstractMenu_BadInputMessage"));
 			}else if(grantedOptions.contains(choose) && !(availableValues.contains(choose))){
 				System.out.println(" ");
-				System.out.println(getGameTexts().get("abstractMenu_unAvailableMessage"));
+				System.out.println(getGameTexts().get("abstractMenu_UnAvailableMessage"));
+			}else{ // (both contains player choice)
+				correct = true;
 			}
 		}
 		return Integer.parseInt(choose);
 	}
 	
 	public abstract IMenu getNextMenu();
-	
-	public void convertChoose(Integer choose) {
-		//TODO
-	}
 	
 	public Boolean getAutoExecutable()
 	{
