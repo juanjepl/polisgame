@@ -192,6 +192,25 @@ public class TextInterface{
 		System.out.println(getGameTexts().get("wood") + ": " + theGame.getMarketChart().getWoodPrice().toString());
 		System.out.println(getGameTexts().get("wine") + ": " + theGame.getMarketChart().getWinePrice().toString());
 		System.out.println(getGameTexts().get("oil") + ": " + theGame.getMarketChart().getOilPrice().toString());
+	
+		// Projects for this round
+		System.out.println(" ");
+		System.out.println("::::" + getGameTexts().get("projectsForThisRound") + "::::");
+		for(Project project : theGame.getRound().getProjectsInThisRound()){
+			if(project.getUsed() == false){
+				String projName = project.getName() + " -> ";
+				for(String s : project.getResourcesRequired().keySet()){
+					String auxS = s;
+					auxS = auxS.toLowerCase();
+					projName = projName + getGameTexts().get(auxS) + ": " + project.getResourcesRequired().get(s) + "   " ;
+				}
+				if(project.getSysName().equals("phidiasArtist")){
+					System.out.println(projName + getGameTexts().get("prestigePhidias") + " (" + project.getPrestigeToPosterity().toString() + ")");
+				}else{
+					System.out.println(projName + project.getPrestige().toString() + " (" + project.getPrestigeToPosterity().toString() + ")");
+				}
+			}
+		}
 	}
 	
 	/**
