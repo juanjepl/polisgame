@@ -174,7 +174,7 @@ public class TextInterface{
 			}
 		}
 		
-		String proxenusposmess = getGameTexts().get("proxenusPosition" + " ");
+		String proxenusposmess = getGameTexts().get("proxenusPosition") + " ";
 		String proxenuspos;
 		
 		if(focusedPlayer.getPlayerProxenus() == null){
