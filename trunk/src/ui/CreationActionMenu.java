@@ -3,7 +3,6 @@ package ui;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
-import exceptions.PolisGameRunningException;
 import game.AvailableActionsManager;
 import game.Game;
 import game.Player;
