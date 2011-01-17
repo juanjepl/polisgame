@@ -118,4 +118,5 @@ tradeBoats;Barco(s) mercante(s)
 proxenusPosition;Posicion del proxeno:
 noProxenus;Sin Proxeno
 marketChartPrices;Precios de mercado
-sieged;Asediada: 
+sieged;Asediada:
+projectsForThisRound;Proyectos repartidos para esta ronda:
