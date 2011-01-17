@@ -149,6 +149,7 @@ public class AvailableActionsManager {
 	public static Boolean checkStartProjectAnyAction(Game g,Player p){
 		Boolean available = false;
 		for(Project proj : g.getRound().getProjectsInThisRound()){
+			System.out.println("proyecto: "+proj.getSysName());
 			for(Polis po : p.getPlayerPolis()){
 				if(checkStartProjectAction(po,proj)){
 					available = true;
@@ -159,6 +160,7 @@ public class AvailableActionsManager {
 				break;
 			}
 		}
+		System.out.println("");
 		return available;
 	}
 	public static Boolean checkTradeAnyAction(Game g,Player p){
@@ -422,6 +424,7 @@ public class AvailableActionsManager {
 		for(String resourceName: project.getResourcesRequired().keySet())
 		{
 			Integer resource = project.getResourcesRequired().get(resourceName);
+		
 			if(polis.getPolisOwner().getResource(resourceName) < resource)
 			{
 				condition_haveResourcesRequired = false;
@@ -443,7 +446,6 @@ public class AvailableActionsManager {
 			}
 		}
 		
-		
 		available = condition_haveResourcesRequired && condition_existProject && condition_notSiegedPolis && condition_notStartedProject ;
 
 		return available;
@@ -451,15 +453,15 @@ public class AvailableActionsManager {
 	
 	public static Boolean checkTradeAction(Game game, Player player, Market market){
 		Boolean available = false;
-		System.out.println("mercado: " + market.getSysName());
+		//System.out.println("mercado: " + market.getSysName());
 		TradeBoatGraphNavigator tradeBoatGraphNavigator = new TradeBoatGraphNavigator(player, player.getPlayerTradeDock(), market, game.getTradeBoatGraph());
 		Boolean condition_existWay = tradeBoatGraphNavigator.getExists();
 		
-		System.out.println("existWay: " + condition_existWay);
+		//System.out.println("existWay: " + condition_existWay);
 		
 		Boolean condition_disponible = market.getUnits().size() == 0;
 		
-		System.out.println("disponible: " + condition_disponible);
+		//System.out.println("disponible: " + condition_disponible);
 		available = condition_existWay && condition_disponible;
 		
 		if(player.getCapital().getSysName().equals("sparta"))
@@ -473,8 +475,8 @@ public class AvailableActionsManager {
 					break;
 				}
 			}
-			System.out.println("spartaHasOnePolis" + condition_spartaHasOnePolis);
-			System.out.println("");
+			//System.out.println("spartaHasOnePolis" + condition_spartaHasOnePolis);
+			//System.out.println("");
 			available = available && condition_spartaHasOnePolis;
 		}
 		

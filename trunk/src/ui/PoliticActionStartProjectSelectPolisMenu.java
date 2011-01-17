@@ -4,8 +4,6 @@ import game.AvailableActionsManager;
 import game.Game;
 import game.Polis;
 import game.Project;
-import game.StartAProjectAction;
-import game.TradeAction;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -62,17 +60,8 @@ public class PoliticActionStartProjectSelectPolisMenu extends AbstractMenu{
 		
 		showMenuContents();
 		setPlayerChoice(requestPlayerChoice(getAvailableValuesForRequest()));
+
 		
-		Polis polis = getPossiblePolis().get(getPlayerChoice());
-		//FIXME payment = map resources
-		// Do action
-		StartAProjectAction startProject = new StartAProjectAction(getGame().getWhoHasTheTurn(),polis,getProject(), payment);
-		
-		// Introduces Action in the actual turn
-		getGame().getRound().getCurrentTurn().addGameAction(startProject);
-		
-		// Finally a notification for the player
-		showActionDoneMessage(getProject().getName());
 		
 	}
 
@@ -89,18 +78,12 @@ public class PoliticActionStartProjectSelectPolisMenu extends AbstractMenu{
 			break;
 		
 		default:
-			next = new GameMainMenu(getGameTexts(),getMenuList(), getGame()); //go back to this menu with other player
-			next.setAutoExecutable(false); //FIXME provisional. //action completed
+			//create new menu and pass selected project
+			next = new PoliticActionStartProjectSelectResourcesMenu(getGameTexts(),getMenuList(), getGame(), getProject(), getPossiblePolis().get(getPlayerChoice() - 1));
 			break;
 		}
 		return next;
 	}
-	
-	public void showActionDoneMessage(String projectName){
-		System.out.println(" "); // White space
-		System.out.println(getGameTexts().get("politicActionStartProjectSelectPolisMenu_projectHaveBeenCreated")+ " " + projectName);//FIXME
-	}
-	
 	
 	public List<String> getAvailableValuesForRequest(){
 		return availableValuesForRequest;

@@ -42,7 +42,7 @@ public class PoliticActionStartProjectMenu extends AbstractMenu {
 			
 			for(Polis po : getGame().getWhoHasTheTurn().getPlayerPolis()){
                 for(Project proj: getGame().getRound().getProjectsInThisRound()){
-                        if(AvailableActionsManager.checkStartProjectAction(po, proj)){
+                        if(AvailableActionsManager.checkStartProjectAction(po, proj) && po.getPossiblesProjects().contains(proj)){
                                 possibleProjects.add(proj);
                                 optionList.add(proj.getName());
                                 availableValuesForRequest.add(index.toString());
@@ -73,7 +73,7 @@ public class PoliticActionStartProjectMenu extends AbstractMenu {
 		
 		default:
 			//create new menu and pass selected project
-			next = new PoliticActionStartProjectSelectPolisMenu(getGameTexts(),getMenuList(), getGame(), getPossibleProjects().get(getPlayerChoice()));
+			next = new PoliticActionStartProjectSelectPolisMenu(getGameTexts(),getMenuList(), getGame(), getPossibleProjects().get(getPlayerChoice() - 1));
 			break;
 		}
 		return next;
