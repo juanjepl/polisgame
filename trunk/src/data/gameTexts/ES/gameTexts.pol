@@ -110,7 +110,7 @@ yes;Si
 no;No
 playerPolis;Polis del jugador
 startedProject;Proyecto comenzado
-finishedProjects; Proyectos finalizados
+finishedProjects;Proyectos finalizados
 none;Ninguno
 hoplites;Hoplita(s)
 trirremes;Trirreme(s)
@@ -118,3 +118,4 @@ tradeBoats;Barco(s) mercante(s)
 proxenusPosition;Posicion del proxeno:
 noProxenus;Sin Proxeno
 marketChartPrices;Precios de mercado
+sieged;Asediada: 
