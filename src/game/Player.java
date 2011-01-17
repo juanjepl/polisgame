@@ -110,25 +110,26 @@ public class Player {
 	
 	public Integer getResource(String resource)
 	{
+		String resourcelower = resource.toLowerCase();
 		Integer value = 0;
 		
-		if(resource.equals("silver"))
+		if(resourcelower.equals("silver"))
 		{
 			value = silver;
-		}else if(resource.equals("wheat"))
+		}else if(resourcelower.equals("wheat"))
 		{
 			value = wheat;
 		}
-		else if(resource.equals("oil"))
+		else if(resourcelower.equals("oil"))
 		{
 			value = oil;
-		}else if(resource.equals("wine"))
+		}else if(resourcelower.equals("wine"))
 		{
 			value = wine;
-		}else if(resource.equals("metal"))
+		}else if(resourcelower.equals("metal"))
 		{
 			value = metal;
-		}else if(resource.equals("wood"))
+		}else if(resourcelower.equals("wood"))
 		{
 			value = wood;
 		}
