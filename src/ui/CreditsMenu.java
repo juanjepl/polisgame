@@ -46,11 +46,11 @@ public class CreditsMenu extends AbstractMenu{
 		System.out.println("*  Equipo desarrollador:                               *");
 		System.out.println("*                                                      *");
 		System.out.println("*                   Samuel Navas Portillo              *");
-		System.out.println("*                   Juan Jesús Pérez Luna              *");
-		System.out.println("*                   José Antonio Jiménez Carmona       *");
+		System.out.println("*                   Juan Jesus Perez Luna              *");
+		System.out.println("*                   Jose Antonio Jimenez Carmona       *");
 		System.out.println("*                   Manuel de los Santos Campos        *");
-		System.out.println("*                   Ángel Martínez Olivares            *");
-		System.out.println("*                   María José Sancha Maya             *");
+		System.out.println("*                   Angel Martinez Olivares            *");
+		System.out.println("*                   Maria Jose Sancha Maya             *");
 		System.out.println("*                                                      *");
 		System.out.println("********************************************************");
 		System.out.println(" ");
