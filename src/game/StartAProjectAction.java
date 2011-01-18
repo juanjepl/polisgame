@@ -26,7 +26,8 @@ public class StartAProjectAction extends PoliticAction{
 		paymentChosenByThePlayer = payment;
 
 		for(String str : getPaymentChosenByThePlayer().keySet()){
-			getPlayer().setResource(str, getPlayer().getResource(str) - getPaymentChosenByThePlayer().get(str));
+			String lowerSTR = str.toLowerCase();
+			getPlayer().setResource(lowerSTR, getPlayer().getResource(lowerSTR) - getPaymentChosenByThePlayer().get(lowerSTR));
 		}
 		
 		getProject().setUsed(true);
