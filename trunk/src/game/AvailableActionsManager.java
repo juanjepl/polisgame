@@ -453,15 +453,12 @@ public class AvailableActionsManager {
 	
 	public static Boolean checkTradeAction(Game game, Player player, Market market){
 		Boolean available = false;
-		//System.out.println("mercado: " + market.getSysName());
+
 		TradeBoatGraphNavigator tradeBoatGraphNavigator = new TradeBoatGraphNavigator(player, player.getPlayerTradeDock(), market, game.getTradeBoatGraph());
 		Boolean condition_existWay = tradeBoatGraphNavigator.getExists();
 		
-		//System.out.println("existWay: " + condition_existWay);
-		
 		Boolean condition_disponible = market.getUnits().size() == 0;
 		
-		//System.out.println("disponible: " + condition_disponible);
 		available = condition_existWay && condition_disponible;
 		
 		if(player.getCapital().getSysName().equals("sparta"))
@@ -469,14 +466,14 @@ public class AvailableActionsManager {
 			Boolean condition_spartaHasOnePolis = false;
 			for(Polis p:player.getPlayerPolis())
 			{
-				if(p.getSysName().equals("gition") || p.getSysName().equals("pilos"))
+
+				if(p.getSysName().equals("gythion") || p.getSysName().equals("pylos"))
 				{
 					condition_spartaHasOnePolis = true;
 					break;
 				}
 			}
-			//System.out.println("spartaHasOnePolis" + condition_spartaHasOnePolis);
-			//System.out.println("");
+
 			available = available && condition_spartaHasOnePolis;
 		}
 		
