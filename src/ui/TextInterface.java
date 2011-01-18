@@ -273,4 +273,9 @@ public class TextInterface{
 	public void setGame(Game game){
 		getMenu().setGame(game);
 	}
+	
+	public void showTheWinner(Game game)
+	{
+		//TODO
+	}
 }

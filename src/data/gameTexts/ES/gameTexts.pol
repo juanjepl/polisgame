@@ -46,7 +46,7 @@ gameMilitaryActionMenu_headerMessage;Por favor, elija una accion militar entre l
 gameMilitaryActionMenu_moveHoplitesOpt;Mover hoplitas
 gameMilitaryActionMenu_moveTrirremesOpt;Mover trirremes
 gameMilitaryActionMenu_besiegePolisOpt;Asediar polis
-gameMilitaryActionMenu_collectionOpt;Recoleccion
+gameMilitaryActionMenu_collectionOpt;Saquear Territorio
 gameMilitaryActionMoveHoplitesOriginMenu_headerMessage;Elija el territorio origen:
 gameMilitaryActionMoveHoplitesDestinationMenu_headerMessage;Elija el territorio destino:
 gameMilitaryActionMoveHoplitesUnitCountMenu_headerMessage;Elija el numero de hoplitas a mover:
@@ -70,7 +70,7 @@ gameMilitaryActionCollectionMakeMenu_error;El territorio no se puede saquear
 gameCreationAction_headerMessage;Por favor, elija una accion militar entre las disponibles:
 gameCreationAction_createHoplitesOpt;Crear hoplitas
 gameCreationAction_createTrirremesOpt;Crear trirremes
-gameCreationAction_createMerchantsOpt;Crear mercaderes
+gameCreationAction_createMerchantsOpt;Crear barco mercante
 gameCreationAction_createProxenus;Crear proxeno
 createHopliteChooseResourceToPay_headerMessage;Elija el recurso disponible a gastar (1 unidad):
 silver;Plata
