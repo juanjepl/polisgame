@@ -106,6 +106,9 @@ politicActionTradeChooseResourcesNeededMenu_headerMessage;Seleccione el recurso 
 politicActionTradeChooseResourceNeededMenu_tradedBy;intercambiado por
 politicActionMakeCivilWarMenu_headerMessage;Provocar guerra civil:
 politicActionCivilWarMenu_civilWarDone;Guerra civil provocada en 
+politicActionStartProjectSelectResourcesMenu_headerMessage;Seleccione los recursos para pagar el proyecto:
+politicActionStartProjectSelectResourcesMenu_payResources;Seleccionar recursos para pagar
+politicActionStartProjectSelectResourcesMenu_selectResource;Selecciona el recurso con el que vas a pagar:
 yes;Si
 no;No
 playerPolis;Polis del jugador

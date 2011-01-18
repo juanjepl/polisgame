@@ -23,6 +23,7 @@ public class StartAProjectAction extends PoliticAction{
 		player = pl;
 		polis = po;
 		project = proj;
+		paymentChosenByThePlayer = payment;
 
 		for(String str : getPaymentChosenByThePlayer().keySet()){
 			getPlayer().setResource(str, getPlayer().getResource(str) - getPaymentChosenByThePlayer().get(str));
