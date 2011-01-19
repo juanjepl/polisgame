@@ -12,7 +12,6 @@ import java.util.Map;
 
 public class MilitaryActionMoveTrirremesMakeMenu extends AbstractMenu {
 	private Game game;
-	//private List<String> availableValuesForRequest;
 	private Sea originPosition;
 	private Sea destinationPosition;
 	private Integer unitToMoveCount;
@@ -24,7 +23,6 @@ public class MilitaryActionMoveTrirremesMakeMenu extends AbstractMenu {
 		this.originPosition = originPosition;
 		this.destinationPosition = destinationPosition;
 		this.unitToMoveCount = unitToMoveCount;
-		//availableValuesForRequest = new ArrayList<String>();
 	}
 
 	public Game getGame(){
@@ -48,10 +46,6 @@ public class MilitaryActionMoveTrirremesMakeMenu extends AbstractMenu {
 			System.out.println(texts.get("gameMilitaryActionMoveTrirremesMakeMenu_error"));
 		}
 	}
-
-	/*private List<String> getAvailableValuesForRequest() {
-		return availableValuesForRequest;
-	}*/
 
 	public String getHeaderMessage() {
 		return getGameTexts().get("gameMilitaryActionMoveTrirremesUnitCountMenu_headerMessage");
