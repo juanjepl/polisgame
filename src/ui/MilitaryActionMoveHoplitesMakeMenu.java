@@ -12,7 +12,6 @@ import java.util.Map;
 
 public class MilitaryActionMoveHoplitesMakeMenu extends AbstractMenu {
 	private Game game;
-	//private List<String> availableValuesForRequest;
 	private Territory originPosition;
 	private Territory destinationPosition;
 	private Integer unitToMoveCount;
@@ -24,7 +23,6 @@ public class MilitaryActionMoveHoplitesMakeMenu extends AbstractMenu {
 		this.originPosition = originPosition;
 		this.destinationPosition = destinationPosition;
 		this.unitToMoveCount = unitToMoveCount;
-		//availableValuesForRequest = new ArrayList<String>();
 	}
 
 	public Game getGame(){
@@ -49,16 +47,21 @@ public class MilitaryActionMoveHoplitesMakeMenu extends AbstractMenu {
 		}
 	}
 
-	/*private List<String> getAvailableValuesForRequest() {
-		return availableValuesForRequest;
-	}*/
-
 	public String getHeaderMessage() {
 		return getGameTexts().get("gameMilitaryActionMoveHoplitesUnitCountMenu_headerMessage");
 	}
 
 	public IMenu getNextMenu() {
+		IMenu next = null;
+		
 		// Volvemos al menu de juego:
-		return getMenuList().get(0);
+		for(IMenu iteratedMenu : getMenuList()){
+			if(iteratedMenu instanceof GameMainMenu){
+				next = iteratedMenu;
+				next.setAutoExecutable(false);
+			}
+		}
+		
+		return next;
 	}
 }
