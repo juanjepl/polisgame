@@ -1,8 +1,5 @@
 package game;
 
-import java.util.List;
-
-import cfg.GameConfigurations;
 import ui.TextInterface;
 
 /** Main class, where starts game main thread */
@@ -82,14 +79,7 @@ public class Main{
 			polis_game.getSpartaPlayer().setHasPassedTurn(false);
 			
 			//Check End Round methods and prepare next round
-			new EndRoundCheckSieges(polis_game.getWhoHasTheTurn());
-			new EndRoundCheckProjects(polis_game.getWhoHasTheTurn());
-			new EndRoundCheckFeeding();
-			new EndRoundCheckGrowth();
-			new EndRoundCheckMegalopolis(polis_game.getWhoHasTheTurn());
-			new EndRoundCheckGoodsAdjust(polis_game.getWhoHasTheTurn());
-			new EndRoundCheckPhoros();
-			new EndRoundInitializeNextRound(polis_game);
+			new EndRoundManager(polis_game);
 			
 			new EndGameCheckNoPrestige(polis_game, polis_game.getWhoHasTheTurn());
 			new EndGameCheckCapitals(polis_game, polis_game.getWhoHasTheTurn());
