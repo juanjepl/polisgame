@@ -2,7 +2,6 @@ package ui;
 
 import game.AvailableActionsManager;
 import game.Game;
-import game.MoveTrirremeAction;
 import game.Player;
 import game.Polis;
 import game.SiegePolisAction;
@@ -13,7 +12,6 @@ import java.util.Map;
 
 public class MilitaryActionBesiegePolisMakeMenu extends AbstractMenu {
 	private Game game;
-	//private List<String> availableValuesForRequest;
 	private Polis polisToSiege;
 	
 	public MilitaryActionBesiegePolisMakeMenu(Map<String, String> gameTexts, List<IMenu> menuList, Game game, Polis polisToSiege) {
@@ -21,7 +19,6 @@ public class MilitaryActionBesiegePolisMakeMenu extends AbstractMenu {
 		if (game == null) throw new IllegalArgumentException("'game' cannot be null");
 		this.game = game;
 		this.polisToSiege = polisToSiege;
-		//availableValuesForRequest = new ArrayList<String>();
 	}
 
 	public Game getGame(){
@@ -46,16 +43,21 @@ public class MilitaryActionBesiegePolisMakeMenu extends AbstractMenu {
 		}
 	}
 
-	/*private List<String> getAvailableValuesForRequest() {
-		return availableValuesForRequest;
-	}*/
-
 	public String getHeaderMessage() {
 		return getGameTexts().get("gameMilitaryActionBesiegePolisMakeMenu_headerMessage");
 	}
 
 	public IMenu getNextMenu() {
+		IMenu next = null;
+		
 		// Volvemos al menu de juego:
-		return getMenuList().get(0);
+		for(IMenu iteratedMenu : getMenuList()){
+			if(iteratedMenu instanceof GameMainMenu){
+				next = iteratedMenu;
+				next.setAutoExecutable(false);
+			}
+		}
+		
+		return next;
 	}
 }
