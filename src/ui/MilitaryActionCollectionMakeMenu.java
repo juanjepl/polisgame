@@ -53,7 +53,16 @@ public class MilitaryActionCollectionMakeMenu extends AbstractMenu {
 	}
 
 	public IMenu getNextMenu() {
+		IMenu next = null;
+		
 		// Volvemos al menu de juego:
-		return getMenuList().get(0);
+		for(IMenu iteratedMenu : getMenuList()){
+			if(iteratedMenu instanceof GameMainMenu){
+				next = iteratedMenu;
+				next.setAutoExecutable(false);
+			}
+		}
+		
+		return next;
 	}
 }
