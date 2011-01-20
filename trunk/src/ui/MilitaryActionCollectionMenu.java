@@ -20,6 +20,7 @@ public class MilitaryActionCollectionMenu extends AbstractMenu {
 		if (game == null) throw new IllegalArgumentException("'game' cannot be null");
 		this.game = game;
 		availableValuesForRequest = new ArrayList<String>();
+		territoriesToPlunder = new ArrayList<Territory>();
 	}
 	
 	public Game getGame(){

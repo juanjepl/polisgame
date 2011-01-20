@@ -48,6 +48,7 @@ public class Main{
 					if(!(polis_game.getWhoHasTheTurn().getHasPassedTurn())){
 						// First GameAction
 						polisGameTextInterface.showSecondActionMessage();
+						polisGameTextInterface.getMenu().setAutoExecutable(true);
 						polisGameTextInterface.executeMenu();
 
 					}
@@ -64,14 +65,10 @@ public class Main{
 				}
 
 				// Checks if exists battles in the end of this turn
-				EndTurnCheckBattles checkBattles = new EndTurnCheckBattles(polis_game);
-				//check if only one player is doing more turns. For each turn used consume one unit of resource TODO
-				//TODO
-				//TODO falta descontar a un jugador una unidad de recurso a elegir por el cuando el otro jugador pasa turno y el sigue usando turnos
-				//TODO
+				new EndTurnCheckBattles(polis_game);
 				
 				//if both player has passed turn, the round finalize and start the next
-				theEndOfTheRound = polis_game.getAthensPlayer().getHasPassedTurn() && polis_game.getSpartaPlayer().getHasPassedTurn();
+				theEndOfTheRound = polis_game.getAthensPlayer().getHasPassedTurn() == true && polis_game.getSpartaPlayer().getHasPassedTurn() == true;
 				
 			}
 			
@@ -84,8 +81,10 @@ public class Main{
 			new EndGameCheckNoPrestige(polis_game, polis_game.getWhoHasTheTurn());
 			new EndGameCheckCapitals(polis_game, polis_game.getWhoHasTheTurn());
 			
+			System.out.println("Llegados a este punto se llevarian a cabo los calculos necesarios para los fines de ronda");
+			System.exit(0);
 			//Show message for new Round created in EndRoundInitializeNextRound();
-			polisGameTextInterface.showChangeOfRound(polis_game.getRound());
+			//polisGameTextInterface.showChangeOfRound(polis_game.getRound());
 			
 		}
 

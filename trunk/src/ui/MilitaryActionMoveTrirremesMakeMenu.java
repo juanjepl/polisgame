@@ -39,7 +39,7 @@ public class MilitaryActionMoveTrirremesMakeMenu extends AbstractMenu {
 
 		if(AvailableActionsManager.checkMoveTrirremeAction(game, currentPlayer, game.getRound(), originPosition, destinationPosition, unitToMoveCount)) {
 			MoveTrirremeAction action = new MoveTrirremeAction(currentPlayer, originPosition, destinationPosition, unitToMoveCount, (unitToMoveCount > 1));
-			System.out.println(texts.get("gameMilitaryActionMoveHoplitesMakeMenu_success"));
+			System.out.println(texts.get("gameMilitaryActionMoveTrirremesMakeMenu_success"));
 			game.getRound().getCurrentTurn().addGameAction(action);
 		}
 		else {

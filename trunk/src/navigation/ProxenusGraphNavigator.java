@@ -122,8 +122,9 @@ public class ProxenusGraphNavigator extends GenericGraphNavigator {
 			
 			visited.add(v);
 			
-			
-			while(!queue.isEmpty() && !exists)
+			Integer counter = 0;
+			//The counter is temporal and preventive method while we're testing the way for all polis
+			while(!queue.isEmpty() && !exists && counter < 10)
 			{
 				bestCandidate = null;
 				//extract first vertex
@@ -182,6 +183,8 @@ public class ProxenusGraphNavigator extends GenericGraphNavigator {
 				{
 					exists = true; //devolver realmente el coste
 				}
+				
+				counter++;
 			}
 			
 			amountToPayForWay = amountToPayForMovement;

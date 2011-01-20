@@ -96,13 +96,6 @@ public abstract class GenericGraphNavigator {
 							//add vertex to queue
 							queue.add(vertex);
 							
-							//System.out.print("Pila: ");
-							//for(Vertex<? extends Position> vertice:queue)
-							//{
-							//	System.out.print(vertice.getVertexReference().getSysName() + " ");
-							//}
-							//System.out.println(" ");
-							//System.out.println(" ");
 					}
 					
 				}

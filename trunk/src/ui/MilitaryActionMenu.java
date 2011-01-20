@@ -67,7 +67,7 @@ public class MilitaryActionMenu extends AbstractMenu {
 			}
 			
 			// Plunder territory
-			if(AvailableActionsManager.checkPlunderTerritoryAnyAction(getGame(), getGame().getWhoHasTheTurn())){
+			if(!AvailableActionsManager.checkPlunderTerritoryAnyAction(getGame(), getGame().getWhoHasTheTurn())){
 				getMenuOptionsList().add(plunderTerritory);
 				getAvailableValuesForRequest().add("4");
 			}else{

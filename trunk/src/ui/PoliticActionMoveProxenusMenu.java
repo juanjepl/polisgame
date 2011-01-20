@@ -34,8 +34,6 @@ public class PoliticActionMoveProxenusMenu extends AbstractMenu {
 
 			List<String> optionList = getMenuOptionsList();
 			
-			Map<String, String> texts = getGameTexts();
-			
 			Polis proxenusLocation = null;
 			for(Polis po: getGame().getGamePolis().values()){
 				for(Unit u: po.getUnits()){
@@ -53,21 +51,19 @@ public class PoliticActionMoveProxenusMenu extends AbstractMenu {
 			Integer index = 1;
 			
 			for(Polis destiny : getGame().getGamePolis().values()){ 
-				System.out.println(proxenusLocation.getName() + " a " + destiny.getName());
-				if(!destiny.getSysName().equals("samos") && !destiny.getSysName().equals("chios"))
-				{
+				
 				if(AvailableActionsManager.checkMoveProxenusAction(getGame(), getGame().getWhoHasTheTurn(),proxenusLocation,destiny)){
 					optionList.add(destiny.getName());
 					polisList.add(destiny);
 					availableValuesForRequest.add(index.toString());
 					index++;
-				}else {
-					optionList.add(destiny.getName() + texts.get("notAvailable"));
 				}
-				}
+				
+				
 			}
 		}
 		
+		showMenuContents();
 		setPlayerChoice(requestPlayerChoice(getAvailableValuesForRequest()));
 		
 		//obtain destiny polis
