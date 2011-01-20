@@ -34,8 +34,8 @@ public class MoveTrirremeAction extends MilitaryAction{
 		for(Trirreme tri : getInitialSea().getTrirremesForAPlayer(getPlayer())){
 			if(counter < getNumberOfUnits()){
 				tri.setPosition(getEndSea());
-				getInitialSea().addUnit(tri);
-				getEndSea().removeUnit(tri);
+				getEndSea().addUnit(tri);
+				getInitialSea().removeUnit(tri);
 				counter += 1;
 			}else{
 				break;

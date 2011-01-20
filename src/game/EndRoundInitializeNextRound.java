@@ -1,9 +1,9 @@
 package game;
 
-public class EndRoundInitializeNextRound extends EndRoundManager{
+public class EndRoundInitializeNextRound{
 
 	public EndRoundInitializeNextRound(Game game)
 	{
-		super(game);
+
 	}
 }

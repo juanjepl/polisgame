@@ -34,9 +34,5 @@ public class TestSiegePolisAction {
 		SiegePolisAction spa=new SiegePolisAction(mockPlayer, mockPolis);
 		assert(mockPlayer.getPrestige()==spa.getPlayer().getPrestige());
 	}
-	@Test
-	public void TestSiegePolisActionSetSiegedNotTrue(){
-		SiegePolisAction spa=new SiegePolisAction(mockPlayer, mockPolis);
-		assert(mockPolis.getSieged().equals(false));
-	}
+	
 }

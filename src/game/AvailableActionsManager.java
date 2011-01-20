@@ -149,7 +149,7 @@ public class AvailableActionsManager {
 	public static Boolean checkStartProjectAnyAction(Game g,Player p){
 		Boolean available = false;
 		for(Project proj : g.getRound().getProjectsInThisRound()){
-			System.out.println("proyecto: "+proj.getSysName());
+
 			for(Polis po : p.getPlayerPolis()){
 				if(checkStartProjectAction(po,proj)){
 					available = true;
@@ -160,7 +160,7 @@ public class AvailableActionsManager {
 				break;
 			}
 		}
-		System.out.println("");
+		
 		return available;
 	}
 	public static Boolean checkTradeAnyAction(Game g,Player p){
@@ -493,10 +493,12 @@ public class AvailableActionsManager {
 	
 	public static Boolean checkMoveProxenusAction(Game game, Player player, Polis start, Polis destiny){
 		Boolean available = true;
-
+		
 		ProxenusGraphNavigator proxenusGraphNavigator = new ProxenusGraphNavigator(player, start, destiny, game.getProxenusGraph());
 		Boolean condition_existsWayForProxenus = proxenusGraphNavigator.getExists();
+		//Boolean condition_existsWayForProxenus = true;
 		Boolean condition_playerHaveMinimumAmountOfSilver = player.getSilver() >= proxenusGraphNavigator.getAmountToPayForWay();
+		//Boolean condition_playerHaveMinimumAmountOfSilver = true;
 		Boolean condition_onlyOneProxenusInDestiny = destiny.getPolisOwner() == null || !destiny.getPolisOwner().getPlayerProxenus().getPosition().equals(destiny);
 			
 		available = condition_existsWayForProxenus && condition_playerHaveMinimumAmountOfSilver && condition_onlyOneProxenusInDestiny;

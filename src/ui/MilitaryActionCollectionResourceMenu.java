@@ -45,10 +45,10 @@ public class MilitaryActionCollectionResourceMenu extends AbstractMenu {
 			// Opciones de recursos
 			Map<String, Vector<Integer>> territoryResources = territoryToPlunder.getResources();
 			Integer i = 1;
+			
 			for (String resourceName: territoryResources.keySet()) {
-				
 				// Opcion de recurso
-				optList.add(texts.get(resourceName));
+				optList.add(texts.get(resourceName.toLowerCase()));
 				availableValuesForRequest.add(i.toString());
 				availableResources.put(i, resourceName);
 				i++;

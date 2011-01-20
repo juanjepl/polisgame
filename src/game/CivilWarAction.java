@@ -3,7 +3,7 @@ package game;
 /**
  * This class manages the civil wars *
  */
-public class CivilWarAction extends MilitaryAction{
+public class CivilWarAction extends PoliticAction{
 	
 	Player player;
 	
